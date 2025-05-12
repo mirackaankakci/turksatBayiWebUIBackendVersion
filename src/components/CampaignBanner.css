@@ -1,0 +1,118 @@
+/* src/components/CampaignBanner.css */
+
+.campaign-banner {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  border-bottom-left-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+  padding: 2rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Başlık ve liste */
+.campaign-content {
+  max-width: 600px;
+}
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+.features li {
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+}
+
+/* Butonlar */
+.buttons {
+  display: flex;
+  gap: 1rem;
+}
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.btn.primary {
+  background-color: #1e3a8a;
+  color: #fff;
+}
+.btn.secondary {
+  background-color: #fff;
+  color: #1e40af;
+}
+
+/* Kahve fincanları */
+.coffee-images {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+.coffee {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border: 0.5rem solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.coffee-1 { transform: rotate(-15deg); }
+.coffee-2 { transform: rotate(10deg); }
+
+/* Alt form bölümü */
+.quick-form {
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.quick-form .tab {
+  background: #1e3a8a;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+.quick-form .input {
+  border: none;
+  border-left: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  flex: 1;
+  outline: none;
+}
+.quick-form .input:first-of-type {
+  border-left: none;
+}
+.submit-btn {
+  background: #1e3a8a;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.submit-btn img {
+  width: 1rem;
+  height: 1rem;
+}
