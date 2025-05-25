@@ -6,6 +6,7 @@ import CampaignBanner from "./components/CampaignBanner"
 
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
+import Footer from './components/footer'
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
       <div className="bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
     <ResponsiveMenu />
     </div>
-    <div className="pt-[100px]">
+    <div className="pt-[100px] " >
     <Routes>
       <Route path="/" element={<HomePage/>} />
       <Route path="/campaign" element={<div></div>} />
@@ -25,6 +26,8 @@ function App() {
       <Route path="/donate" element={<div>Donate</div>} />
     </Routes>
     </div>
+    <Footer />
+
     </div>
   )
 }

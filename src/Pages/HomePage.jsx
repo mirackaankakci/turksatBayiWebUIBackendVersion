@@ -8,6 +8,7 @@ import Campaigns from "../components/HomePageComponents/Campainings";
 import AltYapiSorgulama from "../components/HomePageComponents/AltYapiSorgulama";
 import MovieBanner from "../components/HomePageComponents/movieBanner";
 import PropertiesDiv from "../components/propertiesDiv";
+import KablonetAdvantage from "../components/HomePageComponents/KablonetAdvantage";
 
 function HomePage() {
   const navItems = [
@@ -198,11 +199,10 @@ function HomePage() {
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className={`text-sm sm:text-base lg:text-lg font-medium block px-3 py-1.5 transition-colors duration-200 ${
-                      item.current
-                        ? "text-[#2F3F8E] border-b-2 border-[#3499D2]"
-                        : "text-gray-500 hover:text-[#2F3F8E] hover:border-b border-gray-300"
-                    }`}
+                    className={`text-sm sm:text-base lg:text-lg font-medium block px-3 py-1.5 transition-colors duration-200 ${item.current
+                      ? "text-[#2F3F8E] border-b-2 border-[#3499D2]"
+                      : "text-gray-500 hover:text-[#2F3F8E] hover:border-b border-gray-300"
+                      }`}
                   >
                     {item.name}
                   </a>
@@ -245,6 +245,51 @@ function HomePage() {
 
       <div>
         <MovieBanner />
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div className="relative rounded-lg border border-gray-300 z-50 bg-white max-w-7xl mx-auto md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+          {/* Logo & Tagline */}
+          <div className="text-center sm:text-left mb-3 sm:mb-0">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2F3F8E]">
+              Kablonet Avantajları
+            </h1>
+            <p className="text-sm sm:text-base lg:text-lg text-[#3499D2] mt-1">
+              Kablonet internet kullanan kullanıcıların elde ettiği avantajlar
+            </p>
+          </div>
+        </div>
+      <div className="relative mx-auto w-full px-4 py-16 sm:px-6 sm:py-24 md:py-32 lg:px-8 lg:py-40 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
+        {/* Üst kısım - şerit görsel */}
+        <img
+          src={ustserit}
+          alt="Üst Şerit"
+          className="absolute -top-1 left-0 w-full h-auto pointer-events-none select-none"
+          style={{ zIndex: 0 }}
+        />
+
+        {/* Alt kısım - şerit görsel */}
+        <img
+          src={serit}
+          alt="Alt Şerit"
+          className="absolute -bottom-1 left-0 w-full h-auto pointer-events-none select-none"
+          style={{ zIndex: 0 }}
+        />
+
+        {/* Campaign cards container */}
+        <KablonetAdvantage />
       </div>
     </div>
   );

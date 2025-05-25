@@ -76,7 +76,12 @@ const PropertiesDiv = () => {
           <div 
             key={index} 
             className={`${card.gradient} rounded-xl text-white shadow-lg relative overflow-hidden`}
-            style={{ minHeight: '160px' }}
+            style={{ 
+              backgroundImage: `url(${card.icon})`, 
+              backgroundRepeat: 'no-repeat', 
+              backgroundPosition: 'center',
+              minHeight: '160px' 
+            }}
           >
             {/* Kart İçeriği */}
             <div className="p-6">
@@ -102,7 +107,7 @@ const PropertiesDiv = () => {
                 onError={(e) => {
                   console.log("Image failed to load:", card.icon);
                   e.target.onerror = null;
-                  e.target.src = "https://via.placeholder.com/100?text=Icon";
+                  
                 }}
               />
             </div>

@@ -118,7 +118,7 @@ const MovieBanner = () => {
   return (
     <>
       {/* Banner Başlık */}
-        <div className="relative rounded-lg border border-gray-300 z-50 bg-white max-w-7xl mx-auto md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+        <div className="relative rounded-lg border border-gray-300 z-50 bg-white max-w-7xl mx-auto mt-[130px] md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
           {/* Logo & Tagline */}
           <div className="text-center sm:text-left mb-3 sm:mb-0">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2F3F8E]">
@@ -137,7 +137,7 @@ const MovieBanner = () => {
         <div 
           className="absolute inset-0 transition-all duration-1000 ease-in-out"
           style={{ 
-            background: currentMovie.background,
+            background: 'url(...) no-repeat center',
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
@@ -217,9 +217,7 @@ const MovieBanner = () => {
                       src={currentMovie.poster} 
                       alt={currentMovie.title}
                       className="w-20 h-28 xs:w-24 xs:h-36 sm:w-32 sm:h-48 md:w-40 md:h-60 lg:w-48 lg:h-72 object-cover rounded-lg sm:rounded-xl shadow-2xl transform transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        e.target.src = `https://via.placeholder.com/300x450/667eea/FFFFFF?text=${encodeURIComponent(currentMovie.title.substring(0, 8))}`;
-                      }}
+
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 rounded-lg sm:rounded-xl"></div>
                   </div>
