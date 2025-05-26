@@ -10,6 +10,7 @@ import Footer from './components/footer'
 import HemenBasvur from './Pages/HemenBasvur'
 import Kampanyalar from './Pages/Kampanyalar'
 import CampaignDetail from './components/CampaignDetail'
+import NetTariffs from './Pages/NetTariffs'
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
       <Route path="/kampanyalar" element={<Kampanyalar />} />
       <Route path="/kampanyalar/:kategori" element={<Kampanyalar />} />
       <Route path="/kampanyalar/:kategori/:kampanyaId" element={<CampaignDetail />} />
-      <Route path="/contact" element={<div>Contact</div>} />
+      <Route path="/tarifeler" element={<NetTariffs/>} />
       <Route path="/donate" element={<div>Donate</div>} />
     </Routes>
     </div>

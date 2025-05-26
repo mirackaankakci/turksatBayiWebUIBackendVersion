@@ -118,7 +118,7 @@ const MovieBanner = () => {
   return (
     <>
       {/* Banner Başlık */}
-        <div className="relative rounded-lg border border-gray-300 z-50 bg-white max-w-7xl mx-auto mt-[130px] md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+        <div className="relative rounded-lg border border-gray-300 z-30 bg-white max-w-7xl mx-auto mt-[130px] md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
           {/* Logo & Tagline */}
           <div className="text-center sm:text-left mb-3 sm:mb-0">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2F3F8E]">
@@ -143,7 +143,7 @@ const MovieBanner = () => {
           }}
         >
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]"></div>
           
           {/* İçerik */}
           <div className="relative z-10 h-full flex items-center">

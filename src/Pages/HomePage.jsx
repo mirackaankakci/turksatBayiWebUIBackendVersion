@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import serit from "../assets/serit.png";
 import ustserit from "../assets/ustserit.png";
 import aileboyu from "../assets/aileboyu.png";
@@ -12,6 +13,7 @@ import KablonetAdvantage from "../components/HomePageComponents/KablonetAdvantag
 import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight  } from 'react-icons/fa';
 
 function HomePage() {
+  const navigate = useNavigate();
   // Seçilen kategoriyi tutacak state değişkeni
   const [selectedCategory, setSelectedCategory] = useState("internet"); // Varsayılan olarak internet kategorisini seçelim
 
@@ -93,9 +95,7 @@ function HomePage() {
             <div className="mt-3 sm:mt-4 md:mt-6 lg:mt-8 flex gap-1 sm:gap-3 md:gap-5">
               <button
                 className="flex items-center font-bold text-[12px] sm:text-[14px] md:text-[15px] lg:text-[18px] xl:text-[22px] px-2.5 pr-4 py-1.5 sm:px-3.5 sm:pr-4.5 md:px-5 md:pr-6 lg:px-6 lg:pr-8 rounded-md sm:rounded-lg bg-[#000F73] text-white shadow-sm transition-colors hover:bg-[#2F3F8E] cursor-pointer"
-                onClick={() => {
-                  /* İşlev burada */
-                }}
+                onClick={() => navigate('/hemenbasvur')}  
               >
                 <img
                   src={arrow}
@@ -106,12 +106,10 @@ function HomePage() {
                   Başvuru
                 </span>
               </button>
-
+              
               <button
                 className="flex items-center font-bold text-[12px] sm:text-[14px] md:text-[15px] lg:text-[18px] xl:text-[22px] px-2.5 pr-4 py-1.5 sm:px-3.5 sm:pr-4.5 md:px-5 md:pr-6 lg:px-6 lg:pr-8 rounded-md sm:rounded-lg bg-white text-[#3499d2] shadow-sm transition-colors hover:bg-gray-100 cursor-pointer"
-                onClick={() => {
-                  /* İşlev burada */
-                }}
+                onClick={() => navigate('/kampanyalar')}
               >
                 <img
                   src={star}
@@ -191,7 +189,7 @@ function HomePage() {
 
       {/* Alt bölüm - Kampanya kartları */}
       <div className="relative bg-red mt-5">
-        <div className="relative rounded-lg border border-gray-300 z-50 bg-white max-w-7xl mx-auto md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+        <div className="relative rounded-lg border border-gray-300 z-30 bg-white max-w-7xl mx-auto md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
           {/* Logo & Tagline */}
           <div className="text-center sm:text-left mb-3 sm:mb-0">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2F3F8E]">
@@ -251,7 +249,7 @@ function HomePage() {
       </div>
 
       {/* Altyapı sorgulama bölümü - Responsive düzeltme */}
-      <div className="relative bg-white w-full max-w-7xl mx-auto -mt-[80px] sm:-mt-[100px] lg:-mt-[130px] mb-10 rounded-lg z-50 shadow-lg overflow-hidden">
+      <div className="relative bg-white w-full max-w-7xl mx-auto -mt-[80px] sm:-mt-[100px] lg:-mt-[130px] mb-10 rounded-lg z-30 shadow-lg overflow-hidden">
         <AltYapiSorgulama />
       </div>
 
@@ -276,7 +274,7 @@ function HomePage() {
 
 
 
-        <div className="relative rounded-lg border border-gray-300 z-50 bg-white max-w-7xl mx-auto md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0">
+        <div className="relative rounded-lg border border-gray-300 z-50 mt-[100px] bg-white max-w-7xl mx-auto md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0 ">
           {/* Logo & Tagline */}
           <div className="text-center sm:text-left mb-3 sm:mb-0">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#2F3F8E]">

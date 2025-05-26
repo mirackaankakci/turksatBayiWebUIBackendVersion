@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { CampaignData } from '../helpers/CampaingData';
-import { FaWifi, FaTv, FaPhoneAlt, FaCheckCircle, FaInfoCircle, FaArrowRight, FaRegFileAlt } from 'react-icons/fa';
+import serit from "../assets/serit.png";
+import { FaWifi, FaTv, FaPhoneAlt, FaCheckCircle, FaInfoCircle, FaArrowRight, FaRegFileAlt, FaMoneyBillWave, FaListAlt, FaPhoneVolume, FaLaptop } from 'react-icons/fa';
+import { styleTable } from '../utils/htmlUtils';
 
 const CampaignDetail = () => {
   const { kampanyaId } = useParams();
@@ -9,7 +11,8 @@ const CampaignDetail = () => {
   const [selectedTerm, setSelectedTerm] = useState('24');
   const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+  const [activeTab, setActiveTab] = useState('ucretlendirme');
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -33,7 +36,7 @@ const CampaignDetail = () => {
     // Form verilerini API'ye gönderme işlemi burada yapılabilir
     console.log('Form gönderildi:', formData);
     alert('Başvurunuz alındı! Kısa sürede sizinle iletişime geçeceğiz.');
-    
+
     // Formu temizle
     setFormData({
       name: '',
@@ -43,31 +46,30 @@ const CampaignDetail = () => {
       agreement: false
     });
   };
-  
+
   // Kampanya verilerini yükle
   useEffect(() => {
     // Gerçek bir API'den veri çekiyormuş gibi bir gecikme ekleyelim
     setLoading(true);
-    
+
     setTimeout(() => {
       // URL'den gelen ID'ye göre kampanya bul (gerçek uygulamada bu bir API çağrısı olurdu)
-      // Artık indeks yerine kampanyanın ID'sine göre arama yapıyoruz
       const foundCampaign = CampaignData.find(camp => camp.id.toString() === kampanyaId);
-      
+
       if (foundCampaign) {
         setCampaign(foundCampaign);
       } else {
         // Kampanya bulunamadıysa kampanyalar sayfasına yönlendir
         navigate('/kampanyalar');
       }
-      
+
       setLoading(false);
     }, 500);
   }, [kampanyaId, navigate]);
-  
+
   // Kategori ikonunu belirle
   const getCategoryIcon = (category) => {
-    switch(category) {
+    switch (category) {
       case 'internet':
         return <FaWifi className="text-blue-500" />;
       case 'tv':
@@ -101,8 +103,8 @@ const CampaignDetail = () => {
           <p className="text-gray-600 mb-6">
             Aradığınız kampanya bulunamadı veya artık mevcut değil. Güncel kampanyalarımızı incelemek için aşağıdaki bağlantıyı kullanabilirsiniz.
           </p>
-          <Link 
-            to="/kampanyalar" 
+          <Link
+            to="/kampanyalar"
             className="bg-blue-600 text-white px-6 py-2 rounded-md inline-flex items-center hover:bg-blue-700 transition"
           >
             Kampanyalara Dön <FaArrowRight className="ml-2" />
@@ -115,8 +117,14 @@ const CampaignDetail = () => {
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
       {/* Hero Banner */}
-      <div className="relative bg-gradient-to-r from-blue-900 to-blue-600 text-white py-16 md:py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
+      <div className="relative mx-auto w-full px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-24 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2] text-white">
+        <img
+          src={serit}
+          alt="Serit"
+          className="absolute -bottom-1 left-0 w-full h-auto pointer-events-none select-none"
+          style={{ zIndex: 0 }}
+        />
+        <div className="absolute inset-0 overflow-hidden text-white">
           <svg className="absolute left-0 top-0 h-full opacity-10" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -129,208 +137,666 @@ const CampaignDetail = () => {
             <path fill="currentColor" d="M45.4,-51.6C58.2,-39.9,67.7,-25,70.5,-8.6C73.4,7.9,69.6,25.9,58.9,36.6C48.3,47.4,30.8,50.9,14.2,54.9C-2.4,58.9,-18.1,63.4,-34.6,59.4C-51.1,55.4,-68.4,43,-70.9,28.3C-73.5,13.6,-61.3,-3.4,-51.6,-18.9C-42,-34.4,-35,-48.4,-24.5,-59.1C-14,-69.9,0,-77.4,14.1,-74.3C28.1,-71.1,42.1,-57.4,45.4,-51.6Z" transform="translate(100 100)" />
           </svg>
         </div>
-        
+
         <div className="container mx-auto max-w-6xl relative">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="flex items-center mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Mobil görünümde resim üstte - desktop görünümde sağda */}
+            <div className="flex justify-center md:hidden order-first mb-6">
+              <img
+                src={campaign.imgsrc || "/src/assets/aileboyu.png"}
+                alt={campaign.kampanyaAdi}
+                className="max-h-48 drop-shadow-xl object-contain"
+              />
+            </div>
+            
+            <div className="order-last md:order-first">
+              <div className="flex flex-wrap items-center gap-2 mb-4">
                 {getCategoryIcon(campaign.category)}
-                <span className="ml-2 text-sm bg-blue-800 px-3 py-1 rounded-full">
-                  {campaign.category === 'internet' ? 'Kablonet' : 
-                   campaign.category === 'tv' ? 'Kablo TV' : 
-                   campaign.category === 'combo' ? 'Kombo Paket' : 'Kampanya'}
+                <span className="text-xs sm:text-sm bg-blue-800 px-2 py-1 rounded-full">
+                  {campaign.category === 'internet' ? 'Kablonet' :
+                    campaign.category === 'tv' ? 'Kablo TV' :
+                      campaign.category === 'combo' ? 'Kombo Paket' : 'Kampanya'}
                 </span>
                 {campaign.popular === "true" && (
-                  <span className="ml-2 text-sm bg-green-500 px-3 py-1 rounded-full">
+                  <span className="text-xs sm:text-sm bg-green-500 px-2 py-1 rounded-full">
                     Popüler
                   </span>
                 )}
               </div>
-              
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{campaign.kampanyaAdi}</h1>
-              <p className="text-lg md:text-xl text-blue-100 mb-6">{campaign.aciklama}</p>
-              
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8">
+
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{campaign.kampanyaAdi}</h1>
+              <p className="text-base sm:text-lg md:text-xl text-blue-100 mb-6">{campaign.aciklama}</p>
+
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 sm:p-6 mb-6">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-xl font-semibold">Taahhüt Seçenekleri</h2>
+                  <h2 className="text-lg sm:text-xl font-semibold">Taahhüt Seçenekleri</h2>
                 </div>
-                
-                <div className="flex justify-start gap-4 mb-6">
-                  <button 
+
+                <div className="flex justify-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <button
                     onClick={() => setSelectedTerm('12')}
-                    className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                      selectedTerm === '12' 
-                        ? 'bg-white text-blue-700' 
+                    className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
+                      selectedTerm === '12'
+                        ? 'bg-white text-blue-700'
                         : 'bg-blue-800/50 hover:bg-blue-800'
                     }`}
                   >
                     12 Ay
                   </button>
-                  <button 
+                  <button
                     onClick={() => setSelectedTerm('24')}
-                    className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                      selectedTerm === '24' 
-                        ? 'bg-white text-blue-700' 
+                    className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
+                      selectedTerm === '24'
+                        ? 'bg-white text-blue-700'
                         : 'bg-blue-800/50 hover:bg-blue-800'
                     }`}
                   >
                     24 Ay
                   </button>
                 </div>
-                
+
                 <div className="flex items-baseline">
-                  <span className="text-4xl font-bold mr-1 text-white">
+                  <span className="text-3xl sm:text-4xl font-bold mr-1 text-white">
                     {selectedTerm === '12' ? campaign.taahut12Fiyat : campaign.taahut24Fiyat}
                   </span>
                   <span className="text-blue-100">/ay</span>
                 </div>
-                
-                <div className="text-sm text-blue-200 mt-2">
-                  {selectedTerm === '12' 
+
+                <div className="text-xs sm:text-sm text-blue-200 mt-2">
+                  {selectedTerm === '12'
                     ? `24 Ay taahhüt seçeneği: ${campaign.taahut24Fiyat}/ay`
                     : `12 Ay taahhüt seçeneği: ${campaign.taahut12Fiyat}/ay`
                   }
                 </div>
               </div>
-              
-              <button 
+
+              <button
                 onClick={() => document.getElementById('basvuru-formu').scrollIntoView({ behavior: 'smooth' })}
-                className="bg-green-500 hover:bg-green-600 transition-colors text-white font-medium px-8 py-3 rounded-md inline-flex items-center"
+                className="bg-green-500 hover:bg-green-600 transition-colors text-white font-medium px-6 sm:px-8 py-2.5 sm:py-3 rounded-md inline-flex items-center w-full sm:w-auto justify-center sm:justify-start"
               >
                 <FaArrowRight className="mr-2" />
                 Hemen Başvur
               </button>
             </div>
-            
+
+            {/* Sadece desktop görünümünde sağda resim */}
             <div className="hidden md:flex justify-center">
-              <img 
-                src={campaign.imgsrc || "/src/assets/aileboyu.png"} 
+              <img
+                src={campaign.imgsrc || "/src/assets/aileboyu.png"}
                 alt={campaign.kampanyaAdi}
-                className="max-h-96 drop-shadow-2xl object-contain" 
+                className="max-h-96 drop-shadow-2xl object-contain"
               />
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* İçerik Bölümü */}
-      <div className="container mx-auto max-w-6xl px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="container mx-auto max-w-6xl px-4 py-8 sm:py-12">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {/* Ana İçerik */}
           <div className="md:col-span-2">
-            <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
-              <div className="border-b border-gray-200">
-                <div className="flex">
-                  <button className="px-6 py-4 font-medium text-blue-600 border-b-2 border-blue-600">
-                    Kampanya Detayı
-                  </button>
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Kampanya Özellikleri</h2>
-                
-                <ul className="space-y-4 mb-8">
-                  {campaign.ozellikler.map((ozellik, index) => (
-                    <li key={index} className="flex items-start">
-                      <FaCheckCircle className="text-green-500 mt-1 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{ozellik}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Kampanya Hakkında</h2>
-                
-                <div className="prose max-w-none text-gray-700">
-                  <p className="mb-4">
-                    {campaign.kampanyaAdi} ile Türksat Kablo'nun sunduğu yüksek hız ve kaliteli hizmet avantajlarından faydalanabilirsiniz.
-                    Bu özel kampanya kapsamında seçtiğiniz taahhüt süresine göre uygun fiyatlarla hizmetlerimizden yararlanabilirsiniz.
-                  </p>
-                  
-                  <p className="mb-4">
-                    {campaign.category === 'internet' && "Kablonet ile kesintisiz ve yüksek hızda internet deneyimi yaşayın. Fiber altyapımız sayesinde daha stabil ve güvenilir bir bağlantıya sahip olun."}
-                    {campaign.category === 'tv' && "Kablo TV ile yüzlerce kanal, dijital görüntü ve ses kalitesiyle evinizde. HD kanallar ve geniş içerik seçenekleriyle televizyon keyfini doyasıya yaşayın."}
-                    {campaign.category === 'combo' && "Kombo paketlerimizle internet, televizyon ve telefon hizmetlerini tek pakette birleştirerek hem zamandan hem de bütçenizden tasarruf edin."}
-                  </p>
-                  
-                  <h3 className="text-xl font-bold text-gray-800 my-4">Neden Bu Kampanya?</h3>
-                  
-                  <ul className="list-disc pl-6 space-y-2 mb-6">
-                    <li>Uygun fiyat garantisi</li>
-                    <li>Kolay kurulum ve hızlı aktivasyon</li>
-                    <li>7/24 teknik destek</li>
-                    <li>Memnuniyet garantisi</li>
-                    <li>Taahhüt süresi boyunca fiyat avantajı</li>
-                  </ul>
-                </div>
+            {/* Sekme Başlıkları */}
+            <div className="bg-white rounded-t-xl shadow-md overflow-hidden mb-0">
+              <div className="flex flex-wrap">
+                <button
+                  onClick={() => setActiveTab('ucretlendirme')}
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
+                    activeTab === 'ucretlendirme'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-600 hover:text-blue-600'
+                  }`}
+                >
+                  <FaMoneyBillWave className="inline-block mr-2 mb-1" />
+                  Ücretlendirme
+                </button>
+                <button
+                  onClick={() => setActiveTab('detaylar')}
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
+                    activeTab === 'detaylar'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-600 hover:text-blue-600'
+                  }`}
+                >
+                  <FaListAlt className="inline-block mr-2 mb-1" />
+                  Detaylar
+                </button>
+                <button
+                  onClick={() => setActiveTab('iletisim')}
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
+                    activeTab === 'iletisim'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-600 hover:text-blue-600'
+                  }`}
+                >
+                  <FaPhoneVolume className="inline-block mr-2 mb-1" />
+                  İletişim
+                </button>
+                <button
+                  onClick={() => setActiveTab('cihazlar')}
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
+                    activeTab === 'cihazlar'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-600 hover:text-blue-600'
+                  }`}
+                >
+                  <FaLaptop className="inline-block mr-2 mb-1" />
+                  Cihazlar
+                </button>
               </div>
             </div>
-            
-            {/* Sıkça Sorulan Sorular */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
-              <div className="p-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6">Sıkça Sorulan Sorular</h2>
-                
-                <div className="space-y-4">
-                  <div className="border-b border-gray-200 pb-4">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Bu kampanyadan kimler faydalanabilir?</h3>
-                    <p className="text-gray-700">
-                      Bu kampanya, altyapımızın bulunduğu bölgelerdeki yeni müşterilerimiz için geçerlidir. Mevcut müşterilerimiz için farklı kampanyalarımız bulunmaktadır.
-                    </p>
-                  </div>
-                  
-                  <div className="border-b border-gray-200 pb-4">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Taahhüt süresi dolmadan iptal etmek istersem ne olur?</h3>
-                    <p className="text-gray-700">
-                      Taahhüt süresi dolmadan hizmeti iptal etmeniz durumunda, o ana kadar kampanyalı fiyat üzerinden sağlanan indirimler ve varsa kurulum ücretleri fatura edilir.
-                    </p>
-                  </div>
-                  
-                  <div className="border-b border-gray-200 pb-4">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Kurulum ücreti var mı?</h3>
-                    <p className="text-gray-700">
-                      Bu kampanyada kurulum ücreti bulunmamaktadır. Teknik ekibimiz ücretsiz olarak kurulum hizmeti sağlamaktadır.
-                    </p>
-                  </div>
-                  
+
+            {/* Sekme İçerikleri */}
+            <div className="bg-white rounded-b-xl shadow-md overflow-hidden mb-6 sm:mb-8">
+              <div className="p-4 sm:p-6">
+                {/* Ücretlendirme Sekmesi */}
+                {activeTab === 'ucretlendirme' && (
                   <div>
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Altyapı kontrolü nasıl yaparım?</h3>
-                    <p className="text-gray-700">
-                      Adresinizde altyapı kontrolü yapmak için başvuru formunu doldurabilir veya müşteri hizmetlerimizi arayabilirsiniz. Ekiplerimiz en kısa sürede adresinizde kontrol yapacaktır.
-                    </p>
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                      Kampanya Detayları
+                    </h2>
+                    
+                    <div className="overflow-x-auto mb-6">
+                      {campaign.ucretlendirme ? (
+                        <div dangerouslySetInnerHTML={{ __html: styleTable(campaign.ucretlendirme) }} />
+                      ) : (
+                        <table className="w-full border-collapse">
+                          <thead>
+                            <tr>
+                              <th className="p-3 bg-gray-500 text-white text-center font-semibold border border-gray-300">TARİFE</th>
+                              <th className="p-3 bg-gray-500 text-white text-center font-semibold border border-gray-300">CİHAZ KİRALAMA</th>
+                              <th className="p-3 bg-gray-500 text-white text-center font-semibold border border-gray-300">HERŞEY DAHİL</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {campaign.tarifePaketleri ? (
+                              campaign.tarifePaketleri.map((paket, index) => (
+                                <tr key={index} className={index % 2 === 0 ? "bg-blue-100" : "bg-gray-100"}>
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      <p className="font-medium text-gray-800">{paket.paketAdi || "KabloTV Temel Paket"}</p>
+                                      <p className="text-sm mt-2">{paket.hizDetay || "16 Mbps veya 50 Mbps Sınırsız Kablonet"}</p>
+                                      
+                                      {paket.ilkDonemFiyat && (
+                                        <p className="mt-2">
+                                          İlk {paket.ilkDonemSure || "3"} ay <span className="font-bold">{paket.ilkDonemFiyat}</span>
+                                        </p>
+                                      )}
+                                      
+                                      {paket.sonrakiDonemFiyat && (
+                                        <p className="mt-1">
+                                          Sonraki {paket.sonrakiDonemSure || "9"} ay <span className="font-bold">{paket.sonrakiDonemFiyat}</span>
+                                        </p>
+                                      )}
+                                      
+                                      {paket.bolgeNotu && (
+                                        <p className="text-xs mt-3 text-gray-600">({paket.bolgeNotu})</p>
+                                      )}
+                                    </div>
+                                  </td>
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      {paket.cihazDetaylari && paket.cihazDetaylari.map((cihaz, i) => (
+                                        <p key={i} className={i > 0 ? "mt-2" : ""}>
+                                          {cihaz.ad} <span className="font-bold">{cihaz.fiyat}</span>
+                                        </p>
+                                      )) || (
+                                        <>
+                                          <p>Modem <span className="font-bold">{paket.modemFiyat || "60 TL/Ay"}</span></p>
+                                          {paket.tvBoxFiyat && (
+                                            <p className="mt-2">
+                                              HD Kutu/Conax /TV Box <span className="font-bold">{paket.tvBoxFiyat}</span>
+                                            </p>
+                                          )}
+                                        </>
+                                      )}
+                                    </div>
+                                  </td>
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      {paket.herSeyDahilDetaylari && paket.herSeyDahilDetaylari.map((hsd, i) => (
+                                        <p key={i} className={i > 0 ? "mt-2" : ""}>
+                                          {hsd.ad} <span className="font-bold">{hsd.fiyat}</span>
+                                        </p>
+                                      )) || (
+                                        <>
+                                          <p>
+                                            İlk {paket.ilkDonemSure || "3"} ay <span className="font-bold">{paket.herSeyDahilIlkDonemFiyat || "444 TL/Ay"}</span>
+                                          </p>
+                                          <p className="mt-2">
+                                            Sonraki {paket.sonrakiDonemSure || "9"} ay <span className="font-bold">{paket.herSeyDahilSonrakiDonemFiyat || "489 TL/Ay"}</span>
+                                          </p>
+                                        </>
+                                      )}
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))
+                            ) : (
+                              <>
+                                <tr className="bg-blue-100">
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      <p className="font-medium text-gray-800">KabloTV Temel Paket</p>
+                                      <p className="text-sm mt-2">16 Mbps veya 50 Mbps Sınırsız Kablonet</p>
+                                      <p className="mt-2">
+                                        İlk 3 ay <span className="font-bold">349 TL/Ay</span>
+                                      </p>
+                                      <p className="mt-1">
+                                        Sonraki 9 ay <span className="font-bold">439 TL/Ay</span>
+                                      </p>
+                                      <p className="text-xs mt-3 text-gray-600">(Sadece Türksat Altyapı Bölgesinde)</p>
+                                    </div>
+                                  </td>
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      <p>Modem <span className="font-bold">60 TL/Ay</span></p>
+                                      <p className="mt-2">
+                                        HD Kutu/Conax /TV Box <span className="font-bold">35 TL/Ay</span>
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      <p>
+                                        İlk 3 ay <span className="font-bold">444 TL/Ay</span>
+                                      </p>
+                                      <p className="mt-2">
+                                        Sonraki 9 ay <span className="font-bold">489 TL/Ay</span>
+                                      </p>
+                                    </div>
+                                  </td>
+                                </tr>
+                                
+                                <tr className="bg-gray-100">
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      <p className="font-medium text-gray-800">TV Her Yerde Temel Paket</p>
+                                      <p className="text-sm mt-2">16 Mbps veya 50 Mbps Sınırsız Kablonet</p>
+                                      <p className="mt-2">
+                                        İlk 3 ay <span className="font-bold">349 TL/Ay</span>
+                                      </p>
+                                      <p className="mt-1">
+                                        Sonraki 9 ay <span className="font-bold">439 TL/Ay</span>
+                                      </p>
+                                      <p className="text-xs mt-3 text-gray-600">(Türksat ve Türk Telekom Altyapı Bölgesinde)</p>
+                                    </div>
+                                  </td>
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      <p>Modem <span className="font-bold">60 TL/Ay</span></p>
+                                      <p className="mt-2">
+                                        Türksat TV Box <span className="font-bold">35 TL/Ay</span>
+                                      </p>
+                                    </div>
+                                  </td>
+                                  <td className="p-4 border border-gray-300">
+                                    <div className="text-center">
+                                      <p>
+                                        İlk 3 ay <span className="font-bold">444 TL/Ay</span>
+                                      </p>
+                                      <p className="mt-2">
+                                        Sonraki 9 ay <span className="font-bold">534 TL/Ay</span>
+                                      </p>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </>
+                            )}
+                          </tbody>
+                        </table>
+                      )}
+                    </div>
+                    
+                    <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-2">Kampanya Notları</h3>
+                      <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                        {campaign.kampanyaNotlari ? (
+                          campaign.kampanyaNotlari.map((not, index) => (
+                            <li key={index}>{not}</li>
+                          ))
+                        ) : (
+                          <>
+                            <li>Fiyatlarımıza KDV ve ÖİV dahildir.</li>
+                            <li>Taahhüt süresi kampanya başlangıç tarihinden itibaren başlar ve seçilen taahhüt süresi boyunca geçerlidir.</li>
+                            <li>Taahhüt süresi dolmadan iptal durumunda kampanya bedeli tahsil edilir.</li>
+                            <li>Aktivasyon ücreti ilk faturanıza yansıtılacaktır.</li>
+                          </>
+                        )}
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {/* Detaylar Sekmesi */}
+                {activeTab === 'detaylar' && (
+                  <div>
+                    {campaign.detaylarHtml ? (
+                      <div dangerouslySetInnerHTML={{ __html: campaign.detaylarHtml }} />
+                    ) : (
+                      <>
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Kampanya Özellikleri</h2>
+
+                        <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                          {campaign.ozellikler && campaign.ozellikler.map((ozellik, index) => (
+                            <li key={index} className="flex items-start">
+                              <FaCheckCircle className="text-green-500 mt-1 mr-2 sm:mr-3 flex-shrink-0" />
+                              <span className="text-gray-700 text-sm sm:text-base">{ozellik}</span>
+                            </li>
+                          ))}
+                        </ul>
+
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Kampanya Koşulları</h2>
+                        
+                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+                          <ul className="space-y-2 text-sm text-gray-700">
+                            {campaign.kampanyaKosullari ? (
+                              campaign.kampanyaKosullari.map((kosul, index) => (
+                                <li key={index} className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>{kosul}</span>
+                                </li>
+                              ))
+                            ) : (
+                              <>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Kampanyada; teknik imkanlar doğrultusunda Docsis, GPON, xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>xDSL ve FTTx altyapılarında Akıllı Sınırsız Kablonet Tarifeleri bulunmamaktadır.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Kampanya kapsamında 12 ay veya 24 Ay taahhüt istenecektir.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Kampanya kapsamında, <span className="text-blue-600 font-medium">Türksat Kablonet</span> aktivasyon ücreti alınmayacaktır.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Taahhüt süresi boyunca 12 Ay taahhüt için; 16 Mbps kadar Sınırsız Kablonet 455,00 TL/Ay, 24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır.</span>
+                                </li>
+                                <li className="flex items-start">
+                                  <span className="text-gray-500 font-bold mr-2">•</span>
+                                  <span>Taahüt süresi boyunca 24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır</span>
+                                </li>
+                              </>
+                            )}
+                          </ul>
+                        </div>
+
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Kampanya Hakkında</h2>
+
+                        <div className="prose max-w-none text-gray-700">
+                          <p className="mb-4">
+                            {campaign.kampanyaAdi} ile Türksat Kablo'nun sunduğu yüksek hız ve kaliteli hizmet avantajlarından faydalanabilirsiniz.
+                            Bu özel kampanya kapsamında seçtiğiniz taahhüt süresine göre uygun fiyatlarla hizmetlerimizden yararlanabilirsiniz.
+                          </p>
+
+                          <p className="mb-4">
+                            {campaign.category === 'internet' && "Kablonet ile kesintisiz ve yüksek hızda internet deneyimi yaşayın. Fiber altyapımız sayesinde daha stabil ve güvenilir bir bağlantıya sahip olun."}
+                            {campaign.category === 'tv' && "Kablo TV ile yüzlerce kanal, dijital görüntü ve ses kalitesiyle evinizde. HD kanallar ve geniş içerik seçenekleriyle televizyon keyfini doyasıya yaşayın."}
+                            {campaign.category === 'combo' && "Kombo paketlerimizle internet, televizyon ve telefon hizmetlerini tek pakette birleştirerek hem zamandan hem de bütçenizden tasarruf edin."}
+                          </p>
+
+                          {campaign.detayAciklama && <p className="mb-4">{campaign.detayAciklama}</p>}
+                        </div>
+                        
+                        {/* SSS */}
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-6">Sıkça Sorulan Sorular</h2>
+
+                        <div className="space-y-4">
+                          {campaign.faq ? (
+                            campaign.faq.map((item, index) => (
+                              <div key={index} className="border-b border-gray-200 pb-4">
+                                <h3 className="text-lg font-medium text-gray-900 mb-2">{item.soru}</h3>
+                                <p className="text-gray-700">{item.cevap}</p>
+                              </div>
+                            ))
+                          ) : (
+                            <>
+                              <div className="border-b border-gray-200 pb-4">
+                                <h3 className="text-lg font-medium text-gray-900 mb-2">Bu kampanyadan kimler faydalanabilir?</h3>
+                                <p className="text-gray-700">
+                                  Bu kampanya, altyapımızın bulunduğu bölgelerdeki yeni müşterilerimiz için geçerlidir. Mevcut müşterilerimiz için farklı kampanyalarımız bulunmaktadır.
+                                </p>
+                              </div>
+
+                              <div className="border-b border-gray-200 pb-4">
+                                <h3 className="text-lg font-medium text-gray-900 mb-2">Taahüt süresi dolmadan iptal etmek istersem ne olur?</h3>
+                                <p className="text-gray-700">
+                                  Taahüt süresi dolmadan hizmeti iptal etmeniz durumunda, o ana kadar kampanyalı fiyat üzerinden sağlanan indirimler ve varsa kurulum ücretleri fatura edilir.
+                                </p>
+                              </div>
+
+                              <div className="border-b border-gray-200 pb-4">
+                                <h3 className="text-lg font-medium text-gray-900 mb-2">Kurulum ücreti var mı?</h3>
+                                <p className="text-gray-700">
+                                  Bu kampanyada kurulum ücreti bulunmamaktadır. Teknik ekibimiz ücretsiz olarak kurulum hizmeti sağlamaktadır.
+                                </p>
+                              </div>
+
+                              <div>
+                                <h3 className="text-lg font-medium text-gray-900 mb-2">Altyapı kontrolü nasıl yaparım?</h3>
+                                <p className="text-gray-700">
+                                  Adresinizde altyapı kontrolü yapmak için başvuru formunu doldurabilir veya müşteri hizmetlerimizi arayabilirsiniz. Ekiplerimiz en kısa sürede adresinizde kontrol yapacaktır.
+                                </p>
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
+
+                {/* İletişim Sekmesi */}
+                {activeTab === 'iletisim' && (
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">Bize Ulaşın</h2>
+                    
+                    <div className="grid md:grid-cols-2 gap-6 mb-8">
+                      <div className="bg-blue-50 p-5 rounded-lg">
+                        <h3 className="text-lg font-semibold text-gray-800 mb-3">Müşteri Hizmetleri</h3>
+                        <div className="space-y-2">
+                          <p className="flex items-center text-gray-700">
+                            <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                            </svg>
+                            0850 532 50 00
+                          </p>
+                          <p className="flex items-center text-gray-700">
+                            <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            musterihizmetleri@turksat.com.tr
+                          </p>
+                        </div>
+                        <p className="mt-4 text-sm text-gray-600">
+                          7 gün 24 saat hizmetinizdeyiz.
+                        </p>
+                      </div>
+                      
+                      <div className="bg-blue-50 p-5 rounded-lg">
+                        <h3 className="text-lg font-semibold text-gray-800 mb-3">Teknik Destek</h3>
+                        <div className="space-y-2">
+                          <p className="flex items-center text-gray-700">
+                            <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                            </svg>
+                            0850 532 50 00
+                          </p>
+                          <p className="flex items-center text-gray-700">
+                            <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                            teknikdestek@turksat.com.tr
+                          </p>
+                        </div>
+                        <p className="mt-4 text-sm text-gray-600">
+                          Teknik sorunlarınız için 7/24 destek alabilirsiniz.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 p-5 rounded-lg">
+                      <h3 className="text-lg font-semibold text-gray-800 mb-3">En Yakın Bayi</h3>
+                      <p className="text-gray-700 mb-4">
+                        Size en yakın Türksat Bayi'yi bulmak için adresinizi girin veya haritadan seçin.
+                      </p>
+                      <button className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition-colors flex items-center">
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        Bayi Bul
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Cihazlar Sekmesi */}
+                {activeTab === 'cihazlar' && (
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
+                      Cihaz Seçenekleri
+                    </h2>
+                    
+                    {campaign.cihazlarHtml ? (
+                      <div dangerouslySetInnerHTML={{ __html: styleTable(campaign.cihazlarHtml) }} />
+                    ) : (
+                      <>
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <div className="p-2 bg-gray-50 flex justify-center">
+                              <img src="/modem.png" alt="Modem" className="h-40 object-contain" />
+                            </div>
+                            <div className="p-4">
+                              <h3 className="text-lg font-semibold text-gray-800">Wi-Fi 6 Modem</h3>
+                              <p className="text-gray-600 text-sm mt-1 mb-3">
+                                Yüksek hız ve geniş kapsama alanı için ideal
+                              </p>
+                              <div className="flex items-center justify-between">
+                                <span className="text-blue-600 font-bold">
+                                  {campaign.modem1Fiyat || "60 TL/ay"}
+                                </span>
+                                <span className="text-xs text-gray-500">Kiralama</span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <div className="p-2 bg-gray-50 flex justify-center">
+                              <img src="/modem-premium.png" alt="Premium Modem" className="h-40 object-contain" />
+                            </div>
+                            <div className="p-4">
+                              <h3 className="text-lg font-semibold text-gray-800">Premium Modem</h3>
+                              <p className="text-gray-600 text-sm mt-1 mb-3">
+                                Mesh teknolojisi ile kesintisiz internet deneyimi
+                              </p>
+                              <div className="flex items-center justify-between">
+                                <span className="text-blue-600 font-bold">
+                                  {campaign.modem2Fiyat || "90 TL/ay"}
+                                </span>
+                                <span className="text-xs text-gray-500">Kiralama</span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <div className="p-2 bg-gray-50 flex justify-center">
+                              <img src="/tv-box.png" alt="TV Box" className="h-40 object-contain" />
+                            </div>
+                            <div className="p-4">
+                              <h3 className="text-lg font-semibold text-gray-800">TV Box</h3>
+                              <p className="text-gray-600 text-sm mt-1 mb-3">
+                                HD TV yayınları için set üstü kutu
+                              </p>
+                              <div className="flex items-center justify-between">
+                                <span className="text-blue-600 font-bold">
+                                  {campaign.tvBoxFiyat || "40 TL/ay"}
+                                </span>
+                                <span className="text-xs text-gray-500">Kiralama</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-6 bg-blue-50 p-5 rounded-lg">
+                          <h3 className="text-lg font-semibold text-gray-800 mb-2">Cihaz Avantajları</h3>
+                          <ul className="space-y-2 text-sm text-gray-700">
+                            <li className="flex items-start">
+                              <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                              </svg>
+                              <span>Kiralanan cihazlar için teknik destek ücretsizdir.</span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                              </svg>
+                              <span>Arıza durumunda yenisi ile değişim yapılır.</span>
+                            </li>
+                            <li className="flex items-start">
+                              <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                              </svg>
+                              <span>Teknolojik cihazlar ile daha stabil ve kesintisiz hizmet.</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          
-          {/* Başvuru Formu */}
+
+          {/* Başvuru Formu - Sticky şekilde ayarlandı */}
           <div id="basvuru-formu" className="md:col-span-1">
-            <div className="bg-white rounded-xl shadow-md overflow-hidden sticky top-24">
-              <div className="bg-blue-600 text-white p-6">
-                <h2 className="text-xl font-bold">Hemen Başvurun</h2>
-                <p className="mt-2 text-blue-100 text-sm">
+            <div className="bg-white rounded-xl shadow-md overflow-hidden sticky top-20">
+              <div className="bg-blue-600 text-white p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-bold">Hemen Başvurun</h2>
+                <p className="mt-2 text-blue-100 text-xs sm:text-sm">
                   Formu doldurun, müşteri temsilcimiz sizinle iletişime geçsin
                 </p>
               </div>
-              
-              <div className="p-6">
+
+              <div className="p-4 sm:p-6">
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       required
                     />
                   </div>
-                  
+
                   <div className="mb-4">
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Telefon Numarası</label>
+                    <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Telefon Numarası</label>
                     <input
                       type="tel"
                       id="phone"
@@ -338,44 +804,11 @@ const CampaignDetail = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="0555 123 4567"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                       required
                     />
                   </div>
-                  
-                  <div className="mb-4">
-                    <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-1">İl</label>
-                    <select
-                      id="city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      required
-                    >
-                      <option value="">Seçiniz</option>
-                      <option value="ankara">Ankara</option>
-                      <option value="istanbul">İstanbul</option>
-                      <option value="izmir">İzmir</option>
-                      <option value="bursa">Bursa</option>
-                      <option value="antalya">Antalya</option>
-                      {/* Diğer iller */}
-                    </select>
-                  </div>
-                  
-                  <div className="mb-6">
-                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">Adres</label>
-                    <textarea
-                      id="address"
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      rows="3"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      required
-                    ></textarea>
-                  </div>
-                  
+
                   <div className="mb-6">
                     <div className="flex items-start">
                       <input
@@ -392,7 +825,7 @@ const CampaignDetail = () => {
                       </label>
                     </div>
                   </div>
-                  
+
                   <button
                     type="submit"
                     className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
@@ -400,10 +833,10 @@ const CampaignDetail = () => {
                     Başvuruyu Tamamla
                   </button>
                 </form>
-                
+
                 <div className="mt-6 text-center">
-                  <p className="text-sm text-gray-500 mb-3">Hemen Arayın</p>
-                  <a href="tel:08505325000" className="text-xl font-bold text-blue-600 hover:underline">
+                  <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">Hemen Arayın</p>
+                  <a href="tel:08505325000" className="text-lg sm:text-xl font-bold text-blue-600 hover:underline">
                     0850 532 50 00
                   </a>
                 </div>
@@ -411,7 +844,7 @@ const CampaignDetail = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Kampanya Koşulları */}
         <div className="bg-gray-100 rounded-lg p-6 mt-6">
           <h3 className="text-lg font-medium text-gray-800 mb-3 flex items-center">

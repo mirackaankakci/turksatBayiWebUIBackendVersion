@@ -3,16 +3,17 @@ import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight } from '
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import CampaignCards from '../components/HomePageComponents/CampaignCards';
 import { CampaignData } from '../helpers/CampaingData';
+import serit from "../assets/serit.png";
 
 const Kampanyalar = () => {
   // URL parametrelerini almak için useParams kullanıyoruz
   const { kategori } = useParams();
   const navigate = useNavigate();
-  
+
   // URL'deki kategori parametresine göre başlangıç filtresi belirliyoruz
   const getInitialFilter = () => {
     if (!kategori) return 'all';
-    
+
     switch (kategori.toLowerCase()) {
       case 'kablonet':
         return 'internet';
@@ -50,7 +51,7 @@ const Kampanyalar = () => {
       default:
         urlPath = '/kampanyalar';
     }
-    
+
     // Sadece kategori değiştiğinde URL'yi güncelle
     if (
       (kategori === 'kablonet' && activeFilter !== 'internet') ||
@@ -75,18 +76,18 @@ const Kampanyalar = () => {
   const filteredKampanyalar = kampanyalar.filter(kampanya => {
     // Kategori filtresi
     const categoryMatch = activeFilter === 'all' || kampanya.category === activeFilter;
-    
+
     // Arama filtresi
-    const searchMatch = 
-      kampanya.kampanyaAdi.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const searchMatch =
+      kampanya.kampanyaAdi.toLowerCase().includes(searchQuery.toLowerCase()) ||
       kampanya.aciklama.toLowerCase().includes(searchQuery.toLowerCase());
-    
+
     return categoryMatch && searchMatch;
   });
 
   // Kategori ikonlarını belirleme
   const getCategoryIcon = (category) => {
-    switch(category) {
+    switch (category) {
       case 'internet':
         return <FaWifi />;
       case 'tv':
@@ -103,17 +104,23 @@ const Kampanyalar = () => {
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
       {/* Hero Banner */}
-      <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            {activeFilter === 'all' ? 'Tüm Kampanyalar' : 
-             activeFilter === 'internet' ? 'Kablonet Kampanyaları' :
-             activeFilter === 'tv' ? 'Kablo TV Kampanyaları' :
-             activeFilter === 'phone' ? 'Kabloses Kampanyaları' : 
-             'Mevcut Müşteri Kampanyaları'}
+      <div className="relative mx-auto w-full h-[280px] pt-[70px] items-center sm:h-[350px] md:h-[300px] lg:h-[300px]  bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
+        <img
+          src={serit}
+          alt="Serit"
+          className="absolute -bottom-1 left-0 w-full h-auto pointer-events-none select-none"
+          style={{ zIndex: 0 }}
+        />
+        <div className="container mx-auto max-w-6xl items-center text-center ">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            {activeFilter === 'all' ? 'Tüm Kampanyalar' :
+              activeFilter === 'internet' ? 'Kablonet Kampanyaları' :
+                activeFilter === 'tv' ? 'Kablo TV Kampanyaları' :
+                  activeFilter === 'phone' ? 'Kabloses Kampanyaları' :
+                    'Mevcut Müşteri Kampanyaları'}
           </h1>
-          <p className="text-xl text-blue-100 max-w-2xl">
-            Size özel hazırlanmış internet, TV ve telefon kampanyalarımızı keşfedin. 
+          <p className="text-xl text-blue-100 max-w-full">
+            Size özel hazırlanmış internet, TV ve telefon kampanyalarımızı keşfedin.
             Birbirinden avantajlı fırsatları kaçırmayın!
           </p>
         </div>
@@ -126,46 +133,42 @@ const Kampanyalar = () => {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => handleFilterChange('all')}
-                className={`px-4 py-2 rounded-md transition ${
-                  activeFilter === 'all' 
-                    ? 'bg-blue-600 text-white' 
+                className={`px-4 py-2 rounded-md transition ${activeFilter === 'all'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                  }`}
               >
                 Tüm Kampanyalar
               </button>
               <button
                 onClick={() => handleFilterChange('internet')}
-                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${
-                  activeFilter === 'internet' 
-                    ? 'bg-blue-600 text-white' 
+                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'internet'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                  }`}
               >
                 <FaWifi /> Kablonet
               </button>
               <button
                 onClick={() => handleFilterChange('tv')}
-                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${
-                  activeFilter === 'tv' 
-                    ? 'bg-blue-600 text-white' 
+                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'tv'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                  }`}
               >
                 <FaTv /> Kablo TV
               </button>
               <button
                 onClick={() => handleFilterChange('mevcutmusteri')}
-                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${
-                  activeFilter === 'mevcutmusteri' 
-                    ? 'bg-blue-600 text-white' 
+                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'mevcutmusteri'
+                    ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                  }`}
               >
                 <FaVideoSlash /> Mevcut Musteri
               </button>
             </div>
-            
+
             <div className="relative w-full md:w-64">
               <input
                 type="text"
@@ -178,27 +181,27 @@ const Kampanyalar = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Kampanyalar - CampaignCards kullanarak - Boşluk eklendi */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-32 mb-12 pt-20">
           {filteredKampanyalar.map((kampanya, index) => (
             <div key={index} className="relative">
-              <CampaignCards 
+              <CampaignCards
                 campaign={kampanya}
                 index={index} // Index prop'unu ekliyoruz
               />
             </div>
           ))}
         </div>
-        
+
         {filteredKampanyalar.length === 0 && (
           <div className="text-center py-12 bg-white rounded-lg shadow">
             <h3 className="text-xl font-bold text-gray-800 mb-2">Sonuç Bulunamadı</h3>
             <p className="text-gray-600">
               Arama kriterlerinize uygun kampanya bulunamadı. Lütfen filtrelerinizi değiştirin veya tüm kampanyaları görüntüleyin.
             </p>
-            <button 
-              onClick={() => {handleFilterChange('all'); setSearchQuery('');}}
+            <button
+              onClick={() => { handleFilterChange('all'); setSearchQuery(''); }}
               className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
             >
               Tüm Kampanyaları Göster
@@ -206,12 +209,12 @@ const Kampanyalar = () => {
           </div>
         )}
       </div>
-      
+
       {/* SSS */}
       <div className="bg-gray-100 py-12">
         <div className="container mx-auto max-w-4xl px-4">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Sık Sorulan Sorular</h2>
-          
+
           <div className="space-y-4">
             <div className="bg-white shadow-md rounded-lg p-6">
               <h3 className="text-lg font-bold text-gray-800 mb-2">Kampanyalardan nasıl yararlanabilirim?</h3>
@@ -219,14 +222,14 @@ const Kampanyalar = () => {
                 Kampanyalarımızdan yararlanmak için web sitemizden başvuru yapabilir, 0850 XXX XX XX numaralı müşteri hizmetlerimizi arayabilir veya size en yakın bayimizi ziyaret edebilirsiniz.
               </p>
             </div>
-            
+
             <div className="bg-white shadow-md rounded-lg p-6">
               <h3 className="text-lg font-bold text-gray-800 mb-2">Kampanyalar hangi bölgelerde geçerli?</h3>
               <p className="text-gray-600">
                 Kampanyalarımız altyapımızın bulunduğu tüm il ve ilçelerde geçerlidir. Adresinizde altyapı kontrolü yapmak için "Hemen Başvur" butonunu kullanabilirsiniz.
               </p>
             </div>
-            
+
             <div className="bg-white shadow-md rounded-lg p-6">
               <h3 className="text-lg font-bold text-gray-800 mb-2">Taahhüt süreleri nedir?</h3>
               <p className="text-gray-600">
@@ -234,7 +237,7 @@ const Kampanyalar = () => {
               </p>
             </div>
           </div>
-          
+
           <div className="text-center mt-8">
             <Link to="/sss" className="text-blue-600 font-medium hover:text-blue-800 transition inline-flex items-center">
               Tüm Soruları Görüntüle <FaArrowRight className="ml-1" />
@@ -242,7 +245,7 @@ const Kampanyalar = () => {
           </div>
         </div>
       </div>
-      
+
       {/* CTA Bölümü */}
       <div className="bg-blue-700 text-white py-12">
         <div className="container mx-auto max-w-5xl px-4 text-center">
@@ -250,8 +253,8 @@ const Kampanyalar = () => {
           <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
             Adresinize özel kampanyalarımızı öğrenmek için başvuru formunu doldurun, müşteri temsilcimiz en kısa sürede size ulaşsın.
           </p>
-          <Link 
-            to="/hemen-basvur" 
+          <Link
+            to="/hemen-basvur"
             className="bg-white text-blue-700 px-8 py-3 rounded-md font-bold text-lg hover:bg-blue-50 transition shadow-lg inline-flex items-center"
           >
             Hemen Başvur <FaArrowRight className="ml-2" />
