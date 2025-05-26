@@ -39,7 +39,7 @@ export default function ResponsiveMenu() {
           </div>
 
           <a
-            href="#"
+            href="/hemenbasvur"
             className="animated-button hover:scale-105 transition-all"
           >
             <span></span>
@@ -62,7 +62,10 @@ export default function ResponsiveMenu() {
           } z-50`} // <-- z-50 ekle
           style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
         >
-          <NavLink className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
+          {/* Mobil Menu - Kampanyalar linki */}
+          <NavLink 
+            to="/kampanyalar" 
+            className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
             KAMPANYALAR
           </NavLink>
           <NavLink
@@ -166,19 +169,9 @@ export default function ResponsiveMenu() {
             </ul>
           )}
 
-          <a
-            href="#"
-            className="animated-button hover:scale-105 transition-all"
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Başvur
-          </a>
-
-          <a
-            href="#"
+          {/* Mobil Menu - Kampanyalar butonu */}
+          <NavLink
+            to="/kampanyalar"
             className="animated-button hover:scale-105 transition-all"
           >
             <span></span>
@@ -186,7 +179,7 @@ export default function ResponsiveMenu() {
             <span></span>
             <span></span>
             Kampanyalar
-          </a>
+          </NavLink>
         </div>
       </div>
 
@@ -195,7 +188,7 @@ export default function ResponsiveMenu() {
           !isMenuOpen ? "opacity-100" : "opacity-0"
         } hidden xl:flex`}
       >
-        <NavLink className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
+        <NavLink to="/kampanyalar" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
           KAMPANYALAR
         </NavLink>
         <NavLink className="relative group list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">

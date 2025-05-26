@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
-import aileboyu from "../../assets/aileboyu.png"
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import aileboyu from "../../assets/aileboyu.png";
 
 function CampaignCards({ campaign }){
   // Aktif taahhüt süresini takip etmek için state ekleyelim
   const [activeTerm, setActiveTerm] = useState('12'); // Varsayılan olarak 12 ay seçili
 
+  // Kampanya kategori adını URL formatına dönüştür
+  const getCategorySlug = () => {
+    switch(campaign.category) {
+      case 'internet':
+        return 'kablonet';
+      case 'tv':
+        return 'kablotv';
+      case 'phone':
+        return 'kabloses';
+      case 'combo':
+        return 'kombo';
+      default:
+        return 'kampanya';
+    }
+  };
+
   return (
-    <div className="relative max-w-xs mx-auto w-full">
+    <div className="relative w-[320px] mx-auto">
       {/* Taşan resim */}
       <div className="absolute -top-[90px] left-1/2 transform -translate-x-1/2 z-10">
         <img
@@ -18,20 +35,20 @@ function CampaignCards({ campaign }){
 
       {/* Kart içeriği */}
       <div className="bg-[#2F3D8D] rounded-2xl overflow-hidden shadow-xl pt-24 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 h-[580px]">
-        {/* Popüler badge */}
-        <div className="absolute top-4 right-4">
-          <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-            Popüler
-          </span>
-        </div>
+        {/* Popüler badge - Koşullu olarak gösteriyoruz */}
+        {campaign.popular === "true" && (
+          <div className="absolute top-4 right-4">
+            <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Popüler
+            </span>
+          </div>
+        )}
 
-        {/* İçerik bölümü */}
         <div className="px-6 pt-2 pb-4 text-white text-center h-[250px] flex flex-col">
           <h3 className="text-xl font-semibold mb-3">
             {campaign.kampanyaAdi}
           </h3>
           
-          {/* Özellikler kısmı */}
           <div className="overflow-y-auto flex-grow mb-2">
             <ul className="space-y-2 text-sm">
               {campaign.ozellikler.map((ozellik, index) => (
@@ -56,7 +73,6 @@ function CampaignCards({ campaign }){
           <p className="text-sm text-gray-300 mt-auto">{campaign.aciklama}</p>
         </div>
 
-        {/* Term buttons - Aktif butonu vurgulayacak şekilde düzenledik */}
         <div className="flex justify-center gap-4 bg-[#2F3D8D] py-3 border-t border-blue-700/30">
           <button 
             className={`font-medium px-5 py-1.5 rounded-full shadow-md transition-colors duration-200 
@@ -78,23 +94,24 @@ function CampaignCards({ campaign }){
           </button>
         </div>
 
-        {/* Price - Aktif termin fiyatını gösteriyoruz */}
         <div className="bg-[#0F1A5A] text-white text-center py-5 px-4">
           <div className="flex justify-center items-baseline">
-            {/* Seçilen taahhüt süresine göre fiyatı göster */}
             <span className="text-3xl font-bold">
               {activeTerm === '12' ? campaign.taahut12Fiyat : campaign.taahut24Fiyat}
             </span>
             <span className="text-sm ml-1 text-gray-300">/ay</span>
           </div>
           <div className="text-sm text-gray-400 mt-1 mb-3">
-            {/* Diğer taahhüt süresinin bilgisini göster */}
             {activeTerm === '12' 
               ? `24 Ay Taahhüt: ${campaign.taahut24Fiyat}/ay` 
               : `12 Ay Taahhüt: ${campaign.taahut12Fiyat}/ay`}
           </div>
           
-          <button className="w-[80%] mx-auto bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium rounded-lg py-2.5 px-6 text-base shadow-lg transform transition-all duration-200 hover:scale-105 hover:-translate-y-1 flex items-center justify-center">
+          {/* Artık index yerine campaign.id kullanıyoruz */}
+          <Link
+            to={`/kampanyalar/${getCategorySlug()}/${campaign.id}`}
+            className="w-[80%] mx-auto bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium rounded-lg py-2.5 px-6 text-base shadow-lg transform transition-all duration-200 hover:scale-105 hover:-translate-y-1 flex items-center justify-center"
+          >
             <svg 
               className="w-5 h-5 mr-2" 
               fill="none" 
@@ -109,12 +126,12 @@ function CampaignCards({ campaign }){
                 d="M13 10V3L4 14h7v7l9-11h-7z"
               />
             </svg>
-            Hemen Başvur
-          </button>
+            Detayları Gör
+          </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default CampaignCards
+export default CampaignCards;

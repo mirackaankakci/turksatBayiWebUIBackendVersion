@@ -4,18 +4,23 @@ import ustserit from "../assets/ustserit.png";
 import aileboyu from "../assets/aileboyu.png";
 import arrow from "../assets/right-arrow.png";
 import star from "../assets/star.png";
-import Campaigns from "../components/HomePageComponents/Campainings";
+import Campainings from "../components/HomePageComponents/Campainings";
 import AltYapiSorgulama from "../components/HomePageComponents/AltYapiSorgulama";
 import MovieBanner from "../components/HomePageComponents/movieBanner";
 import PropertiesDiv from "../components/propertiesDiv";
 import KablonetAdvantage from "../components/HomePageComponents/KablonetAdvantage";
+import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight  } from 'react-icons/fa';
 
 function HomePage() {
+  // Seçilen kategoriyi tutacak state değişkeni
+  const [selectedCategory, setSelectedCategory] = useState("internet"); // Varsayılan olarak internet kategorisini seçelim
+
+  // Navigasyon öğelerini ve kategori eşleştirmelerini tanımlayalım
   const navItems = [
-    { name: "Kablonet", href: "#", current: true },
-    { name: "Kablo TV", href: "#", current: false },
-    { name: "Kabloses", href: "#", current: false },
-    { name: "Mevcut Müşteri", href: "#", current: false },
+    { name: "Kablonet", href: "#", category: "internet", icon: <FaWifi className="inline-block mr-1" /> },
+    { name: "Kablo TV", href: "#", category: "tv", icon: <FaTv className="inline-block mr-1" /> },
+    { name: "Kabloses", href: "#", category: "phone", icon: <FaPhoneAlt className="inline-block mr-1" /> },
+    { name: "Mevcut Muşteri", href: "#", category: "mevcutmusteri", icon: <FaVideoSlash className="inline-block mr-1" /> },
   ];
   const [formData, setFormData] = useState({
     name: "",
@@ -33,6 +38,11 @@ function HomePage() {
     e.preventDefault();
     // Form gönderme işlemi
     console.log("Form gönderildi:", formData);
+  };
+
+  // Kategori seçimi için işlev
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
   };
 
   return (
@@ -192,18 +202,24 @@ function HomePage() {
             </p>
           </div>
 
-          {/* Navigation */}
+          {/* Navigation - Kategori seçimi için onClick ekledik */}
           <nav className="w-full sm:w-auto">
             <ul className="flex flex-row flex-wrap justify-center sm:justify-end gap-y-2 sm:gap-y-0 gap-x-4 sm:gap-x-5 md:gap-x-6 lg:gap-x-8">
               {navItems.map((item) => (
                 <li key={item.name}>
                   <a
                     href={item.href}
-                    className={`text-sm sm:text-base lg:text-lg font-medium block px-3 py-1.5 transition-colors duration-200 ${item.current
-                      ? "text-[#2F3F8E] border-b-2 border-[#3499D2]"
-                      : "text-gray-500 hover:text-[#2F3F8E] hover:border-b border-gray-300"
-                      }`}
+                    onClick={(e) => {
+                      e.preventDefault(); // Sayfanın yenilenmesini önle
+                      handleCategorySelect(item.category);
+                    }}
+                    className={`text-sm sm:text-base lg:text-lg font-medium block px-3 py-1.5 transition-colors duration-200 ${
+                      selectedCategory === item.category
+                        ? "text-[#2F3F8E] border-b-2 border-[#3499D2]"
+                        : "text-gray-500 hover:text-[#2F3F8E] hover:border-b border-gray-300"
+                    }`}
                   >
+                    {item.icon}
                     {item.name}
                   </a>
                 </li>
@@ -229,8 +245,8 @@ function HomePage() {
             style={{ zIndex: 0 }}
           />
 
-          {/* Campaign cards container */}
-          <Campaigns />
+          {/* Campaign cards container - Seçilen kategoriye göre filtreleme yapıyoruz */}
+          <Campainings category={selectedCategory} />
         </div>
       </div>
 
