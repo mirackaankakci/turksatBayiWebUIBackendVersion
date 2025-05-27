@@ -3,12 +3,18 @@ import { Menu as MenuIcon, X as CloseIcon, Bell } from "lucide-react";
 import logo from "/src/assets/logo.png";
 import telephone from "/src/assets/phone.gif";
 import "/src/index.css";
-import "./ResponsiveMenu.css"; // Tailwind direktiflerini içeren dosya
+import "./ResponsiveMenu.css"; 
 import { NavLink } from "react-router-dom";
 
 export default function ResponsiveMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
+  
+  // Herhangi bir linke tıklandığında menüyü kapatan yeni fonksiyon
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+    setActiveMenu(null);
+  };
 
   return (
     <nav className="fixed top-0 left-0 w-full h-[100px] bg-gradient-to-r z-50">
@@ -65,17 +71,22 @@ export default function ResponsiveMenu() {
           {/* Mobil Menu - Kampanyalar linki */}
           <NavLink
             to="/kampanyalar"
+            onClick={handleLinkClick}
             className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
             KAMPANYALAR
           </NavLink>
+          
           <NavLink
-            onClick={() =>
-              setActiveMenu(activeMenu === "kablonet" ? null : "kablonet")
-            }
+            onClick={() => {
+              setActiveMenu(activeMenu === "kablonet" ? null : "kablonet");
+              // Eğer zaten açıksa ve tekrar tıklanırsa kapatacak, 
+              // ama başka sayfaya yönlendirmeyecek
+            }}
+            to={"/kampanyalar/kablonet"}
             className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer flex justify-between items-center"
-          to={"/kampanyalar/kablonet"}>
+          >
             KABLONET
-            <span className="text-sky-400  hover:text-white">
+            <span className="text-sky-400 hover:text-white">
               {activeMenu === "kablonet" ? "▲" : "▼"}
             </span>
           </NavLink>
@@ -83,25 +94,22 @@ export default function ResponsiveMenu() {
           {activeMenu === "kablonet" && (
             <ul className="flex flex-col ml-4">
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/tarifeler"}>Tarifeler</NavLink>
+                <NavLink to={"/tarifeler"} onClick={handleLinkClick}>Tarifeler</NavLink>
               </li>
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/cihazlar"}>Modemler</NavLink>
-              </li>
-              <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Paketler</NavLink>
+                <NavLink to={"/cihazlar"} onClick={handleLinkClick}>Modemler</NavLink>
               </li>
             </ul>
           )}
 
           <NavLink
-            onClick={() =>
-              setActiveMenu(activeMenu === "televizyon" ? null : "televizyon")
-            }
+            onClick={() => {
+              setActiveMenu(activeMenu === "televizyon" ? null : "televizyon");
+            }}
             className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer flex justify-between items-center"
           >
             KABLO TV
-            <span className="text-sky-400  hover:text-white">
+            <span className="text-sky-400 hover:text-white">
               {activeMenu === "televizyon" ? "▲" : "▼"}
             </span>
           </NavLink>
@@ -109,13 +117,13 @@ export default function ResponsiveMenu() {
           {activeMenu === "televizyon" && (
             <ul className="flex flex-col ml-4">
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Paketler</NavLink>
+                <NavLink to={"/"} onClick={handleLinkClick}>Paketler</NavLink>
               </li>
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Cihazlar</NavLink>
+                <NavLink to={"/"} onClick={handleLinkClick}>Cihazlar</NavLink>
               </li>
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Frekans Listesi</NavLink>
+                <NavLink to={"/"} onClick={handleLinkClick}>Frekans Listesi</NavLink>
               </li>
             </ul>
           )}
@@ -174,6 +182,7 @@ export default function ResponsiveMenu() {
           {/* Mobil Menu - Kampanyalar butonu */}
           <NavLink
             to="/kampanyalar"
+            onClick={handleLinkClick}
             className="animated-button hover:scale-105 transition-all"
           >
             <span></span>
