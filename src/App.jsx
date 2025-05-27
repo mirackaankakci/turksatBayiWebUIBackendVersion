@@ -11,6 +11,7 @@ import HemenBasvur from './Pages/HemenBasvur'
 import Kampanyalar from './Pages/Kampanyalar'
 import CampaignDetail from './components/CampaignDetail'
 import NetTariffs from './Pages/NetTariffs'
+import NetDevices from './Pages/netDevices'
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <div className="bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
+      <div className="bg-gradient-to-b from-[#838383] to-[#3399D2]">
     <ResponsiveMenu />
     </div>
     <div className="pt-[100px] " >
@@ -29,6 +30,7 @@ function App() {
       <Route path="/kampanyalar/:kategori" element={<Kampanyalar />} />
       <Route path="/kampanyalar/:kategori/:kampanyaId" element={<CampaignDetail />} />
       <Route path="/tarifeler" element={<NetTariffs/>} />
+      <Route path="/cihazlar" element={<NetDevices/>} />
       <Route path="/donate" element={<div>Donate</div>} />
     </Routes>
     </div>

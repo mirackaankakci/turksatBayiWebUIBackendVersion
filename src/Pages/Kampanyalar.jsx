@@ -102,16 +102,16 @@ const Kampanyalar = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
+    <div className="relative min-h-screen bg-gray-50 ">
       {/* Hero Banner */}
-      <div className="relative mx-auto w-full h-[280px] pt-[70px] items-center sm:h-[350px] md:h-[300px] lg:h-[300px]  bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
+      <div className="relative mx-auto w-full h-[300px] pt-[70px] items-center sm:h-[350px] md:h-[400px] lg:h-[400px]  bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img
           src={serit}
           alt="Serit"
           className="absolute -bottom-1 left-0 w-full h-auto pointer-events-none select-none"
           style={{ zIndex: 0 }}
         />
-        <div className="container mx-auto max-w-6xl items-center text-center ">
+        <div className="container mx-auto max-w-6xl items-center text-center mt-[70px]">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             {activeFilter === 'all' ? 'Tüm Kampanyalar' :
               activeFilter === 'internet' ? 'Kablonet Kampanyaları' :
