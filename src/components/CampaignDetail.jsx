@@ -8,7 +8,7 @@ import { styleTable } from '../utils/htmlUtils';
 const CampaignDetail = () => {
   const { kampanyaId } = useParams();
   const navigate = useNavigate();
-  const [selectedTerm, setSelectedTerm] = useState('24');
+  const [selectedTerm, setSelectedTerm] = useState('12'); // '24' yerine '12' olarak değiştiriyoruz
   const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('ucretlendirme');
@@ -66,6 +66,24 @@ const CampaignDetail = () => {
       setLoading(false);
     }, 500);
   }, [kampanyaId, navigate]);
+
+  //  useEffect ile kampanya yüklendiğinde 12 ay taahhüt kontrolü yapın
+  useEffect(() => {
+    if (campaign) {
+      // Eğer 12 ay taahhüt varsa onu seç
+      if (campaign.taahut12Fiyat) {
+        setSelectedTerm('12');
+      } 
+      // Yoksa ve 24 ay taahhüt varsa 24 ayı seç
+      else if (campaign.taahut24Fiyat) {
+        setSelectedTerm('24');
+      }
+      // Her ikisi de yoksa boş bırak
+      else {
+        setSelectedTerm('');
+      }
+    }
+  }, [campaign]);
 
   // Kategori ikonunu belirle
   const getCategoryIcon = (category) => {
@@ -148,7 +166,7 @@ const CampaignDetail = () => {
                 className="max-h-48 drop-shadow-xl object-contain"
               />
             </div>
-            
+
             <div className="order-last md:order-first">
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 {getCategoryIcon(campaign.category)}
@@ -172,42 +190,69 @@ const CampaignDetail = () => {
                   <h2 className="text-lg sm:text-xl font-semibold">Taahhüt Seçenekleri</h2>
                 </div>
 
+                {/* Taahhüt butonları - sadece ilgili fiyatlar varsa göster */}
                 <div className="flex justify-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                  <button
-                    onClick={() => setSelectedTerm('12')}
-                    className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
-                      selectedTerm === '12'
-                        ? 'bg-white text-blue-700'
-                        : 'bg-blue-800/50 hover:bg-blue-800'
-                    }`}
-                  >
-                    12 Ay
-                  </button>
-                  <button
-                    onClick={() => setSelectedTerm('24')}
-                    className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
-                      selectedTerm === '24'
-                        ? 'bg-white text-blue-700'
-                        : 'bg-blue-800/50 hover:bg-blue-800'
-                    }`}
-                  >
-                    24 Ay
-                  </button>
+                  {campaign.taahut12Fiyat && (
+                    <button
+                      onClick={() => setSelectedTerm('12')}
+                      className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
+                        selectedTerm === '12'
+                          ? 'bg-white text-blue-700'
+                          : 'bg-blue-800/50 hover:bg-blue-800'
+                      }`}
+                    >
+                      12 Ay
+                    </button>
+                  )}
+                  {campaign.taahut24Fiyat && (
+                    <button
+                      onClick={() => setSelectedTerm('24')}
+                      className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
+                        selectedTerm === '24'
+                          ? 'bg-white text-blue-700'
+                          : 'bg-blue-800/50 hover:bg-blue-800'
+                      }`}
+                    >
+                      24 Ay
+                    </button>
+                  )}
+                  {!campaign.taahut12Fiyat && !campaign.taahut24Fiyat && (
+                    <div className="text-white text-sm">Taahhüt bilgileri bulunmamaktadır.</div>
+                  )}
                 </div>
 
+                {/* Aktif fiyat gösterimi */}
                 <div className="flex items-baseline">
                   <span className="text-3xl sm:text-4xl font-bold mr-1 text-white">
-                    {selectedTerm === '12' ? campaign.taahut12Fiyat : campaign.taahut24Fiyat}
+                    {selectedTerm === '12' ? campaign.taahut12Fiyat : campaign.taahut24Fiyat || "İletişime Geçin"}
                   </span>
-                  <span className="text-blue-100">/ay</span>
+                  {(campaign.taahut12Fiyat || campaign.taahut24Fiyat) && (
+                    <span className="text-blue-100">/ay</span>
+                  )}
                 </div>
 
-                <div className="text-xs sm:text-sm text-blue-200 mt-2">
-                  {selectedTerm === '12'
-                    ? `24 Ay taahhüt seçeneği: ${campaign.taahut24Fiyat}/ay`
-                    : `12 Ay taahhüt seçeneği: ${campaign.taahut12Fiyat}/ay`
-                  }
-                </div>
+                {/* Alternatif taahhüt bilgisi - Her iki seçenek varsa göster */}
+                {campaign.taahut12Fiyat && campaign.taahut24Fiyat && (
+                  <div className="text-xs sm:text-sm text-blue-200 mt-2">
+                    {selectedTerm === '12'
+                      ? `24 Ay taahhüt seçeneği: ${campaign.taahut24Fiyat}/ay`
+                      : `12 Ay taahhüt seçeneği: ${campaign.taahut12Fiyat}/ay`
+                    }
+                  </div>
+                )}
+                
+                {/* Tek seçenek varsa bilgilendirme */}
+                {(campaign.taahut12Fiyat && !campaign.taahut24Fiyat) && (
+                  <div className="text-xs sm:text-sm text-blue-200 mt-2">
+                    Sadece 12 Ay taahhütlü seçenek mevcuttur.
+                  </div>
+                )}
+                
+                {(!campaign.taahut12Fiyat && campaign.taahut24Fiyat) && (
+                  <div className="text-xs sm:text-sm text-blue-200 mt-2">
+                    Sadece 24 Ay taahhütlü seçenek mevcuttur.
+                  </div>
+                )}
               </div>
 
               <button
@@ -241,44 +286,40 @@ const CampaignDetail = () => {
               <div className="flex flex-wrap">
                 <button
                   onClick={() => setActiveTab('ucretlendirme')}
-                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
-                    activeTab === 'ucretlendirme'
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${activeTab === 'ucretlendirme'
                       ? 'bg-blue-600 text-white'
                       : 'text-gray-600 hover:text-blue-600'
-                  }`}
+                    }`}
                 >
                   <FaMoneyBillWave className="inline-block mr-2 mb-1" />
                   Ücretlendirme
                 </button>
                 <button
                   onClick={() => setActiveTab('detaylar')}
-                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
-                    activeTab === 'detaylar'
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${activeTab === 'detaylar'
                       ? 'bg-blue-600 text-white'
                       : 'text-gray-600 hover:text-blue-600'
-                  }`}
+                    }`}
                 >
                   <FaListAlt className="inline-block mr-2 mb-1" />
                   Detaylar
                 </button>
                 <button
                   onClick={() => setActiveTab('iletisim')}
-                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
-                    activeTab === 'iletisim'
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${activeTab === 'iletisim'
                       ? 'bg-blue-600 text-white'
                       : 'text-gray-600 hover:text-blue-600'
-                  }`}
+                    }`}
                 >
                   <FaPhoneVolume className="inline-block mr-2 mb-1" />
                   İletişim
                 </button>
                 <button
                   onClick={() => setActiveTab('cihazlar')}
-                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${
-                    activeTab === 'cihazlar'
+                  className={`px-4 py-3 font-medium text-sm sm:text-base transition-colors ${activeTab === 'cihazlar'
                       ? 'bg-blue-600 text-white'
                       : 'text-gray-600 hover:text-blue-600'
-                  }`}
+                    }`}
                 >
                   <FaLaptop className="inline-block mr-2 mb-1" />
                   Cihazlar
@@ -295,159 +336,15 @@ const CampaignDetail = () => {
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
                       Kampanya Detayları
                     </h2>
-                    
+
                     <div className="overflow-x-auto mb-6">
                       {campaign.ucretlendirme ? (
-                        <div dangerouslySetInnerHTML={{ __html: styleTable(campaign.ucretlendirme) }} />
+                        <div dangerouslySetInnerHTML={{ __html: campaign.ucretlendirme }} />
                       ) : (
-                        <table className="w-full border-collapse">
-                          <thead>
-                            <tr>
-                              <th className="p-3 bg-gray-500 text-white text-center font-semibold border border-gray-300">TARİFE</th>
-                              <th className="p-3 bg-gray-500 text-white text-center font-semibold border border-gray-300">CİHAZ KİRALAMA</th>
-                              <th className="p-3 bg-gray-500 text-white text-center font-semibold border border-gray-300">HERŞEY DAHİL</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {campaign.tarifePaketleri ? (
-                              campaign.tarifePaketleri.map((paket, index) => (
-                                <tr key={index} className={index % 2 === 0 ? "bg-blue-100" : "bg-gray-100"}>
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      <p className="font-medium text-gray-800">{paket.paketAdi || "KabloTV Temel Paket"}</p>
-                                      <p className="text-sm mt-2">{paket.hizDetay || "16 Mbps veya 50 Mbps Sınırsız Kablonet"}</p>
-                                      
-                                      {paket.ilkDonemFiyat && (
-                                        <p className="mt-2">
-                                          İlk {paket.ilkDonemSure || "3"} ay <span className="font-bold">{paket.ilkDonemFiyat}</span>
-                                        </p>
-                                      )}
-                                      
-                                      {paket.sonrakiDonemFiyat && (
-                                        <p className="mt-1">
-                                          Sonraki {paket.sonrakiDonemSure || "9"} ay <span className="font-bold">{paket.sonrakiDonemFiyat}</span>
-                                        </p>
-                                      )}
-                                      
-                                      {paket.bolgeNotu && (
-                                        <p className="text-xs mt-3 text-gray-600">({paket.bolgeNotu})</p>
-                                      )}
-                                    </div>
-                                  </td>
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      {paket.cihazDetaylari && paket.cihazDetaylari.map((cihaz, i) => (
-                                        <p key={i} className={i > 0 ? "mt-2" : ""}>
-                                          {cihaz.ad} <span className="font-bold">{cihaz.fiyat}</span>
-                                        </p>
-                                      )) || (
-                                        <>
-                                          <p>Modem <span className="font-bold">{paket.modemFiyat || "60 TL/Ay"}</span></p>
-                                          {paket.tvBoxFiyat && (
-                                            <p className="mt-2">
-                                              HD Kutu/Conax /TV Box <span className="font-bold">{paket.tvBoxFiyat}</span>
-                                            </p>
-                                          )}
-                                        </>
-                                      )}
-                                    </div>
-                                  </td>
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      {paket.herSeyDahilDetaylari && paket.herSeyDahilDetaylari.map((hsd, i) => (
-                                        <p key={i} className={i > 0 ? "mt-2" : ""}>
-                                          {hsd.ad} <span className="font-bold">{hsd.fiyat}</span>
-                                        </p>
-                                      )) || (
-                                        <>
-                                          <p>
-                                            İlk {paket.ilkDonemSure || "3"} ay <span className="font-bold">{paket.herSeyDahilIlkDonemFiyat || "444 TL/Ay"}</span>
-                                          </p>
-                                          <p className="mt-2">
-                                            Sonraki {paket.sonrakiDonemSure || "9"} ay <span className="font-bold">{paket.herSeyDahilSonrakiDonemFiyat || "489 TL/Ay"}</span>
-                                          </p>
-                                        </>
-                                      )}
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))
-                            ) : (
-                              <>
-                                <tr className="bg-blue-100">
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      <p className="font-medium text-gray-800">KabloTV Temel Paket</p>
-                                      <p className="text-sm mt-2">16 Mbps veya 50 Mbps Sınırsız Kablonet</p>
-                                      <p className="mt-2">
-                                        İlk 3 ay <span className="font-bold">349 TL/Ay</span>
-                                      </p>
-                                      <p className="mt-1">
-                                        Sonraki 9 ay <span className="font-bold">439 TL/Ay</span>
-                                      </p>
-                                      <p className="text-xs mt-3 text-gray-600">(Sadece Türksat Altyapı Bölgesinde)</p>
-                                    </div>
-                                  </td>
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      <p>Modem <span className="font-bold">60 TL/Ay</span></p>
-                                      <p className="mt-2">
-                                        HD Kutu/Conax /TV Box <span className="font-bold">35 TL/Ay</span>
-                                      </p>
-                                    </div>
-                                  </td>
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      <p>
-                                        İlk 3 ay <span className="font-bold">444 TL/Ay</span>
-                                      </p>
-                                      <p className="mt-2">
-                                        Sonraki 9 ay <span className="font-bold">489 TL/Ay</span>
-                                      </p>
-                                    </div>
-                                  </td>
-                                </tr>
-                                
-                                <tr className="bg-gray-100">
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      <p className="font-medium text-gray-800">TV Her Yerde Temel Paket</p>
-                                      <p className="text-sm mt-2">16 Mbps veya 50 Mbps Sınırsız Kablonet</p>
-                                      <p className="mt-2">
-                                        İlk 3 ay <span className="font-bold">349 TL/Ay</span>
-                                      </p>
-                                      <p className="mt-1">
-                                        Sonraki 9 ay <span className="font-bold">439 TL/Ay</span>
-                                      </p>
-                                      <p className="text-xs mt-3 text-gray-600">(Türksat ve Türk Telekom Altyapı Bölgesinde)</p>
-                                    </div>
-                                  </td>
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      <p>Modem <span className="font-bold">60 TL/Ay</span></p>
-                                      <p className="mt-2">
-                                        Türksat TV Box <span className="font-bold">35 TL/Ay</span>
-                                      </p>
-                                    </div>
-                                  </td>
-                                  <td className="p-4 border border-gray-300">
-                                    <div className="text-center">
-                                      <p>
-                                        İlk 3 ay <span className="font-bold">444 TL/Ay</span>
-                                      </p>
-                                      <p className="mt-2">
-                                        Sonraki 9 ay <span className="font-bold">534 TL/Ay</span>
-                                      </p>
-                                    </div>
-                                  </td>
-                                </tr>
-                              </>
-                            )}
-                          </tbody>
-                        </table>
+                        <div className="text-gray-600"></div>
                       )}
                     </div>
-                    
+
                     <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">Kampanya Notları</h3>
                       <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
@@ -487,7 +384,7 @@ const CampaignDetail = () => {
                         </ul>
 
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">Kampanya Koşulları</h2>
-                        
+
                         <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
                           <ul className="space-y-2 text-sm text-gray-700">
                             {campaign.kampanyaKosullari ? (
@@ -499,42 +396,7 @@ const CampaignDetail = () => {
                               ))
                             ) : (
                               <>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Kampanyada; teknik imkanlar doğrultusunda Docsis, GPON, xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>xDSL ve FTTx altyapılarında Akıllı Sınırsız Kablonet Tarifeleri bulunmamaktadır.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Kampanya kapsamında 12 ay veya 24 Ay taahhüt istenecektir.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Kampanya kapsamında, <span className="text-blue-600 font-medium">Türksat Kablonet</span> aktivasyon ücreti alınmayacaktır.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Taahhüt süresi boyunca 12 Ay taahhüt için; 16 Mbps kadar Sınırsız Kablonet 455,00 TL/Ay, 24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır.</span>
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-gray-500 font-bold mr-2">•</span>
-                                  <span>Taahüt süresi boyunca 24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır</span>
-                                </li>
+
                               </>
                             )}
                           </ul>
@@ -556,7 +418,7 @@ const CampaignDetail = () => {
 
                           {campaign.detayAciklama && <p className="mb-4">{campaign.detayAciklama}</p>}
                         </div>
-                        
+
                         {/* SSS */}
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mt-8 mb-6">Sıkça Sorulan Sorular</h2>
 
@@ -609,54 +471,37 @@ const CampaignDetail = () => {
                 {activeTab === 'iletisim' && (
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">Bize Ulaşın</h2>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      <div className="bg-blue-50 p-5 rounded-lg">
+
+                    <div className="grid md:grid-cols-1 gap-6 mb-8 items-center">
+                      <div className="bg-blue-50 p-5 rounded-lg w-full">
                         <h3 className="text-lg font-semibold text-gray-800 mb-3">Müşteri Hizmetleri</h3>
                         <div className="space-y-2">
                           <p className="flex items-center text-gray-700">
                             <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                             </svg>
-                            0850 532 50 00
+                            0850 806 60 00
                           </p>
                           <p className="flex items-center text-gray-700">
                             <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                              <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
                             </svg>
-                            musterihizmetleri@turksat.com.tr
+                            Türksat Abone Merkezleri
+                          </p>
+                          <p className="flex items-center text-gray-700">
+                            <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 01-1 1v1h-3v-1H8v1H5v-1a1 1 0 01-1-1V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd"></path>
+                            </svg>
+                            Türksat İl Müdürlükleri
                           </p>
                         </div>
                         <p className="mt-4 text-sm text-gray-600">
                           7 gün 24 saat hizmetinizdeyiz.
                         </p>
                       </div>
-                      
-                      <div className="bg-blue-50 p-5 rounded-lg">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-3">Teknik Destek</h3>
-                        <div className="space-y-2">
-                          <p className="flex items-center text-gray-700">
-                            <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
-                            </svg>
-                            0850 532 50 00
-                          </p>
-                          <p className="flex items-center text-gray-700">
-                            <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                            </svg>
-                            teknikdestek@turksat.com.tr
-                          </p>
-                        </div>
-                        <p className="mt-4 text-sm text-gray-600">
-                          Teknik sorunlarınız için 7/24 destek alabilirsiniz.
-                        </p>
-                      </div>
                     </div>
-                    
-                    <div className="bg-gray-50 p-5 rounded-lg">
+
+                    {/*<div className="bg-gray-50 p-5 rounded-lg">
                       <h3 className="text-lg font-semibold text-gray-800 mb-3">En Yakın Bayi</h3>
                       <p className="text-gray-700 mb-4">
                         Size en yakın Türksat Bayi'yi bulmak için adresinizi girin veya haritadan seçin.
@@ -668,7 +513,7 @@ const CampaignDetail = () => {
                         </svg>
                         Bayi Bul
                       </button>
-                    </div>
+                    </div>*/}
                   </div>
                 )}
 
@@ -678,9 +523,9 @@ const CampaignDetail = () => {
                     <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-6">
                       Cihaz Seçenekleri
                     </h2>
-                    
+
                     {campaign.cihazlarHtml ? (
-                      <div dangerouslySetInnerHTML={{ __html: styleTable(campaign.cihazlarHtml) }} />
+                      <div dangerouslySetInnerHTML={{ __html: campaign.cihazlarHtml }} />
                     ) : (
                       <>
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -701,7 +546,7 @@ const CampaignDetail = () => {
                               </div>
                             </div>
                           </div>
-                          
+
                           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                             <div className="p-2 bg-gray-50 flex justify-center">
                               <img src="/modem-premium.png" alt="Premium Modem" className="h-40 object-contain" />
@@ -719,7 +564,7 @@ const CampaignDetail = () => {
                               </div>
                             </div>
                           </div>
-                          
+
                           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                             <div className="p-2 bg-gray-50 flex justify-center">
                               <img src="/tv-box.png" alt="TV Box" className="h-40 object-contain" />
@@ -738,7 +583,7 @@ const CampaignDetail = () => {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="mt-6 bg-blue-50 p-5 rounded-lg">
                           <h3 className="text-lg font-semibold text-gray-800 mb-2">Cihaz Avantajları</h3>
                           <ul className="space-y-2 text-sm text-gray-700">
@@ -837,7 +682,7 @@ const CampaignDetail = () => {
                 <div className="mt-6 text-center">
                   <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">Hemen Arayın</p>
                   <a href="tel:08505325000" className="text-lg sm:text-xl font-bold text-blue-600 hover:underline">
-                    0850 532 50 00
+                    0850 806 60 00
                   </a>
                 </div>
               </div>
@@ -846,7 +691,7 @@ const CampaignDetail = () => {
         </div>
 
         {/* Kampanya Koşulları */}
-        <div className="bg-gray-100 rounded-lg p-6 mt-6">
+        {/*<div className="bg-gray-100 rounded-lg p-6 mt-6">
           <h3 className="text-lg font-medium text-gray-800 mb-3 flex items-center">
             <FaRegFileAlt className="mr-2 text-gray-600" />
             Kampanya Koşulları
@@ -859,7 +704,7 @@ const CampaignDetail = () => {
               Kampanya fiyatları {selectedTerm} aylık taahhüt süresi boyunca geçerli olup, taahhüt bitiminde güncel tarife fiyatları uygulanacaktır. Kampanyadan faydalanmak için altyapının bulunması ve hizmetin teknik olarak verilebilmesi gerekmektedir.
             </p>
           </div>
-        </div>
+        </div>*/}
       </div>
     </div>
   );

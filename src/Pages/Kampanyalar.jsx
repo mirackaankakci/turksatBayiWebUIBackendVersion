@@ -141,11 +141,12 @@ const Kampanyalar = () => {
                 Tüm Kampanyalar
               </button>
               <button
-                onClick={() => handleFilterChange('internet')}
-                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'internet'
+                onClick={() => handleFilterChange('kablonet')} // 'internet' yerine 'kablonet'
+                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${
+                  activeFilter === 'kablonet' // 'internet' yerine 'kablonet'
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                  }`}
+                }`}
               >
                 <FaWifi /> Kablonet
               </button>

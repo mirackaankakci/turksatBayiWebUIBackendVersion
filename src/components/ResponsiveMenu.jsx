@@ -3,13 +3,13 @@ import { Menu as MenuIcon, X as CloseIcon, Bell } from "lucide-react";
 import logo from "/src/assets/logo.png";
 import telephone from "/src/assets/phone.gif";
 import "/src/index.css";
-import "./ResponsiveMenu.css"; 
+import "./ResponsiveMenu.css";
 import { NavLink } from "react-router-dom";
 
 export default function ResponsiveMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
-  
+
   // Herhangi bir linke tıklandığında menüyü kapatan yeni fonksiyon
   const handleLinkClick = () => {
     setIsMenuOpen(false);
@@ -63,9 +63,8 @@ export default function ResponsiveMenu() {
 
         {/*Mobil Menu */}
         <div
-          className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col gap-6 font-semibold text-lg transform transition-transform z-50 ${
-            isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
+          className={`absolute xl:hidden top-24 left-0 w-full bg-white flex flex-col gap-6 font-semibold text-lg transform transition-transform z-50 ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            }`}
           style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
         >
           {/* Mobil Menu - Kampanyalar linki */}
@@ -75,7 +74,7 @@ export default function ResponsiveMenu() {
             className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
             KAMPANYALAR
           </NavLink>
-          
+
           <NavLink
             onClick={() => {
               setActiveMenu(activeMenu === "kablonet" ? null : "kablonet");
@@ -201,10 +200,10 @@ export default function ResponsiveMenu() {
         <NavLink to="/kampanyalar" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
           KAMPANYALAR
         </NavLink>
-        
+
         {/* KABLONET dropdown menüsü */}
         <div className="relative group list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
-         <NavLink  to={"/kampanyalar/kablonet"}>KABLONET</NavLink> 
+          <NavLink to={"/kampanyalar/kablonet"}>KABLONET</NavLink>
           <ul className="absolute left-0 w-[170px] mt-5 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
             <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
               <NavLink to={"/tarifeler"}>Tarifeler</NavLink>

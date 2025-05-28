@@ -14,16 +14,19 @@ import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight  } from 
 
 function HomePage() {
   const navigate = useNavigate();
-  // Seçilen kategoriyi tutacak state değişkeni
-  const [selectedCategory, setSelectedCategory] = useState("internet"); // Varsayılan olarak internet kategorisini seçelim
+  // Seçilen kategoriyi tutacak state değişkeni - kablonet olarak değiştirildi
+  const [selectedCategory, setSelectedCategory] = useState("kablonet"); // internet yerine kablonet
 
-  // Navigasyon öğelerini ve kategori eşleştirmelerini tanımlayalım
+  // Navigasyon öğelerini ve kategori eşleştirmelerini güncelleyelim
   const navItems = [
-    { name: "Kablonet", href: "#", category: "internet", icon: <FaWifi className="inline-block mr-1" /> },
+    // Tüm kampanyalar seçeneği eklendi
+    { name: "Tüm Kampanyalar", href: "#", category: "all", icon: <FaSearch className="inline-block mr-1" /> },
+    { name: "Kablonet", href: "#", category: "kablonet", icon: <FaWifi className="inline-block mr-1" /> }, // internet yerine kablonet
     { name: "Kablo TV", href: "#", category: "tv", icon: <FaTv className="inline-block mr-1" /> },
     { name: "Kabloses", href: "#", category: "phone", icon: <FaPhoneAlt className="inline-block mr-1" /> },
     { name: "Mevcut Muşteri", href: "#", category: "mevcutmusteri", icon: <FaVideoSlash className="inline-block mr-1" /> },
   ];
+  
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
