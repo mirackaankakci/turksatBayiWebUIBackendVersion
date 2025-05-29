@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaLinkedin } from 'react
 import ustserit from "../assets/ustserit.png";
 import footerlogo from "../assets/footerlogo.svg";
 
-const Footer = () => {
+const  Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-[#2F3D8D] to-[#3399D2] text-white mt-[200px]">
       <div className="relative mx-auto w-full px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
@@ -67,7 +67,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4 border-b border-white/30 pb-2">Destek</h3>
               <ul className="space-y-2">
-                {['Sıkça Sorulan Sorular', 'Online İşlemler', 'Arıza Bildirimi', 'Altyapı Sorgulama', 'İletişim'].map((item) => (
+                {['Sıkça Sorulan Sorular', 'Online İşlemler', 'Fesih İşlemleri', 'Altyapı Sorgulama', 'İletişim'].map((item) => (
                   <li key={item}>
                     <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
                       {item}
@@ -104,7 +104,7 @@ const Footer = () => {
                 &copy; {new Date().getFullYear()} Türksat Kablonet. Tüm hakları saklıdır.
               </div>
               <div className="flex space-x-4">
-                <Link to="/gizlilik-politikasi" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">
+                <Link to="/gizliliksozlesmesi" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">
                   Gizlilik Politikası
                 </Link>
                 <Link to="/kullanim-kosullari" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">

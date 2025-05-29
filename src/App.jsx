@@ -14,6 +14,9 @@ import NetTariffs from './Pages/NetTariffs'
 import NetDevices from './Pages/netDevices'
 import KabloTvDevices from './Pages/KabloTvDevices'
 import TvPackets from './Pages/tvPacket'
+import PrivacyPolicy from './Pages/PrivacyPolicy'
+import FesihIslemleri from './Pages/fesih'
+import Sss from './Pages/Sss'
 
 function App() {
   return (
@@ -33,6 +36,9 @@ function App() {
           <Route path="/donate" element={<div>Donate</div>} />
           <Route path="/kablotv/cihazlar" element={<KabloTvDevices/>} />
           <Route path="/kablotv/paketler" element={<TvPackets />} />
+          <Route path="/gizliliksozlesmesi" element={<PrivacyPolicy />} />
+          <Route path="/fesih-i̇şlemleri" element={<FesihIslemleri />} />
+          <Route path="/sss" element={<Sss />} />
         </Routes>
       </div>
       <Footer />
