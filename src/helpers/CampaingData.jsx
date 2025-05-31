@@ -2720,7 +2720,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     ],
     aciklama: "",
     imgsrc: "/src/assets/campaignsImg/kabloses_kamp.webp",
-    category: "ses",
+    category: "phone",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
      <thead>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'; // Axios import ediyoruz
 import serit from "../assets/serit.png";
 import ustserit from "../assets/ustserit.png";
 import aileboyu from "../assets/aileboyu.png";
@@ -10,7 +11,8 @@ import AltYapiSorgulama from "../components/HomePageComponents/AltYapiSorgulama"
 import MovieBanner from "../components/HomePageComponents/movieBanner";
 import PropertiesDiv from "../components/propertiesDiv";
 import KablonetAdvantage from "../components/HomePageComponents/KablonetAdvantage";
-import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight  } from 'react-icons/fa';
+import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -31,6 +33,13 @@ function HomePage() {
     name: "",
     phone: "",
   });
+  
+  // Form gönderim durumu için state'ler
+  const [loading, setLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({
+    status: null, // 'success', 'error', null
+    message: '',
+  });
 
   const handleChange = (e) => {
     setFormData({
@@ -39,10 +48,140 @@ function HomePage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  // WordPress'ten alınan API entegrasyonu
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form gönderme işlemi
-    console.log("Form gönderildi:", formData);
+    
+    // Form doğrulama
+    if (!formData.name || !formData.phone) {
+      setSubmitStatus({
+        status: 'error',
+        message: 'Lütfen adınızı ve telefon numaranızı giriniz.'
+      });
+      return;
+    }
+    
+    // Telefon numarası düzenleme ve doğrulama
+    let cleanPhone = formData.phone.replace(/\s+/g, ''); // Boşlukları kaldır
+    cleanPhone = cleanPhone.replace(/[+]/g, ''); // + işaretini kaldır
+    
+    // Başında 0 yoksa ve 90 ile başlıyorsa düzeltme yap
+    if (cleanPhone.substring(0, 1) !== '0' && cleanPhone.substring(0, 2) === '90') {
+      // 90'ı 0 ile değiştir
+      cleanPhone = '0' + cleanPhone.substring(2);
+    } else if (cleanPhone.substring(0, 1) !== '0') {
+      // Başında 0 yoksa başına 0 ekle
+      cleanPhone = '0' + cleanPhone;
+    }
+    
+    // Telefon numarası format kontrolü
+    if (!/^\d{10,11}$/.test(cleanPhone.replace(/^0/, ''))) {
+      setSubmitStatus({
+        status: 'error',
+        message: 'Geçerli bir telefon numarası giriniz. (10 veya 11 haneli)'
+      });
+      return;
+    }
+
+    setLoading(true);
+    setSubmitStatus({ status: null, message: '' });
+
+    // Hata yakalama ve yanıt işleme kısmını güncelleyelim
+    try {
+      // Vite proxy için API endpoint güncellemesi
+      const apiUrl = "/api/service/1.0/add/";
+      const apiKey = "c1d1b885397a6e5ab26e77343201ea89";
+      
+      // API'ye gönderilecek veriyi düzenliyoruz - WordPress'teki formatla uyumlu
+      const requestBody = new URLSearchParams();
+      requestBody.append("apikey", apiKey);
+      requestBody.append("phone1", cleanPhone);
+      requestBody.append("did", "8508066000");
+      requestBody.append("symbolid", "8");
+      requestBody.append("projectid", "5");
+      requestBody.append("firstname", formData.name);
+      requestBody.append("column14", "Anasayfa Form");
+      requestBody.append("address", "FORM");
+      requestBody.append("ca", "1");
+      
+      console.log("API isteği gönderiliyor:", Object.fromEntries(requestBody));
+      
+      const response = await axios.post(apiUrl, requestBody, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+      
+      console.log("API yanıtı:", response.data);
+      
+      // API yanıtını daha ayrıntılı analiz edelim
+      if (response.data) {
+        // Tüm olası başarı senaryolarını kontrol edelim
+        if (
+          response.data.result === "success" || 
+          response.data.status === "success" || 
+          response.data.success === true ||
+          response.status === 200
+        ) {
+          setSubmitStatus({
+            status: 'success',
+            message: 'Başvurunuz başarıyla alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.'
+          });
+          
+          setFormData({ name: '', phone: '' });
+          
+          if (typeof toast === 'function') {
+            toast.success('Başvurunuz başarıyla gönderildi!');
+          }
+        } else {
+          // API bir hata mesajı döndüyse onu gösterelim
+          const apiErrorMessage = 
+            response.data.message || 
+            response.data.errormessage || 
+            response.data.error || 
+            'Beklenmeyen bir yanıt alındı';
+          
+          console.warn("API başarısız yanıt:", response.data);
+          
+          setSubmitStatus({
+            status: 'error',
+            message: `API yanıtı: ${apiErrorMessage}`
+          });
+        }
+      } else {
+        throw new Error('API yanıtı boş veya geçersiz');
+      }
+    } catch (error) {
+      console.error('Başvuru gönderiminde hata:', error);
+      
+      // API'den dönen hata yanıtlarını daha ayrıntılı işleyelim
+      let errorMessage = 'Başvuru işlemi sırasında bir hata oluştu.';
+      
+      if (error.response) {
+        // Sunucu yanıt verdi ama başarısız durum kodu döndü
+        console.error('Hata detayı:', error.response.data);
+        errorMessage = error.response.data.message || error.response.data.errormessage || errorMessage;
+      } else if (error.request) {
+        // İstek yapıldı ama yanıt alınamadı
+        console.error('Yanıt alınamadı:', error.request);
+        errorMessage = 'Sunucudan yanıt alınamadı. Lütfen internet bağlantınızı kontrol edin.';
+      } else {
+        // İstek yapılırken başka bir hata oluştu
+        console.error('İstek hatası:', error.message);
+        errorMessage = error.message;
+      }
+      
+      setSubmitStatus({
+        status: 'error',
+        message: errorMessage
+      });
+      
+      if (typeof toast === 'function') {
+        toast.error('Başvuru gönderilirken bir hata oluştu');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   // Kategori seçimi için işlev
@@ -136,7 +275,7 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Form bölümü */}
+      {/* Form bölümü - HemenBasvur sayfasındaki API ile entegre edildi */}
       <form
         onSubmit={handleSubmit}
         className="flex w-full justify-center -mt-[35px] sm:-mt-[65px] lg:-mt-[90px] xl:-mt-[110px] items-center py-3 px-3 sm:px-5 md:px-6 lg:px-8 xl:px-32 drop-shadow-md"
@@ -158,8 +297,9 @@ function HomePage() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Adınız"
+                  placeholder="Adınız Soyadınız"
                   className="w-full h-[36px] sm:h-[38px] md:h-[42px] lg:h-[48px] px-4 sm:px-4 text-sm sm:text-sm md:text-base lg:text-lg border-0 focus:outline-none"
+                  disabled={loading}
                 />
                 <div className="hidden sm:block absolute right-0 top-[10%] h-[80%] w-[1px] bg-gray-300"></div>
               </div>
@@ -171,19 +311,34 @@ function HomePage() {
                   onChange={handleChange}
                   placeholder="Telefon Numaranız"
                   className="w-full h-[36px] sm:h-[38px] md:h-[42px] lg:h-[48px] px-4 sm:px-4 text-sm sm:text-sm md:text-base lg:text-lg border-0 focus:outline-none"
+                  disabled={loading}
                 />
               </div>
             </div>
+            
+            {/* Form durum mesajları */}
+            {submitStatus.status && (
+              <div className={`mt-2 text-sm ${submitStatus.status === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+                {submitStatus.message}
+              </div>
+            )}
           </div>
 
-          {/* Sağ div - Yuvarlak */}
+          {/* Sağ div - Yuvarlak (Gönder butonu) */}
           <button
             type="submit"
-            className="relative sm:-mr-14 md:-mr-18 lg:-mr-22 xl:-mr-26 w-[60px] sm:w-[75px] md:w-[95px] lg:w-[120px] xl:w-[150px] h-[60px] sm:h-[75px] md:h-[95px] lg:h-[120px] xl:h-[150px] bg-[#2F3F8E]  rounded-full flex items-center justify-center shadow-lg hover:bg-[#1f2d6e] transition-colors cursor-pointer"
+            disabled={loading}
+            className={`relative sm:-mr-14 md:-mr-18 lg:-mr-22 xl:-mr-26 w-[60px] sm:w-[75px] md:w-[95px] lg:w-[120px] xl:w-[150px] h-[60px] sm:h-[75px] md:h-[95px] lg:h-[120px] xl:h-[150px] ${
+              loading ? 'bg-gray-500' : 'bg-[#2F3F8E] hover:bg-[#1f2d6e]'
+            } rounded-full flex items-center justify-center shadow-lg transition-colors cursor-pointer`}
           >
-            <span className="text-white font-bold text-[13px] sm:text-sm md:text-base lg:text-xl xl:text-2xl">
-              Gönder
-            </span>
+            {loading ? (
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+            ) : (
+              <span className="text-white font-bold text-[13px] sm:text-sm md:text-base lg:text-xl xl:text-2xl">
+                Gönder
+              </span>
+            )}
           </button>
         </div>
       </form>

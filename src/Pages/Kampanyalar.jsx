@@ -141,9 +141,9 @@ const Kampanyalar = () => {
                 Tüm Kampanyalar
               </button>
               <button
-                onClick={() => handleFilterChange('kablonet')} // 'internet' yerine 'kablonet'
+                onClick={() => handleFilterChange('internet')}
                 className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${
-                  activeFilter === 'kablonet' // 'internet' yerine 'kablonet'
+                  activeFilter === 'internet'
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
                 }`}
@@ -160,13 +160,22 @@ const Kampanyalar = () => {
                 <FaTv /> Kablo TV
               </button>
               <button
+                onClick={() => handleFilterChange('phone')}
+                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'phone'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                  }`}
+              >
+                <FaPhoneAlt /> Kabloses
+              </button>
+              <button
                 onClick={() => handleFilterChange('mevcutmusteri')}
                 className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'mevcutmusteri'
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
                   }`}
               >
-                <FaVideoSlash /> Mevcut Musteri
+                <FaVideoSlash /> Mevcut Müşteri
               </button>
             </div>
 
@@ -203,7 +212,7 @@ const Kampanyalar = () => {
             </p>
             <button
               onClick={() => { handleFilterChange('all'); setSearchQuery(''); }}
-              className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+              className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-[#2F3D8D] transition"
             >
               Tüm Kampanyaları Göster
             </button>
@@ -240,7 +249,7 @@ const Kampanyalar = () => {
           </div>
 
           <div className="text-center mt-8">
-            <Link to="/sss" className="text-blue-600 font-medium hover:text-blue-800 transition inline-flex items-center">
+            <Link to="/sıkça-sorulan-sorular" className="text-blue-600 font-medium hover:text-blue-800 transition inline-flex items-center">
               Tüm Soruları Görüntüle <FaArrowRight className="ml-1" />
             </Link>
           </div>
@@ -248,15 +257,15 @@ const Kampanyalar = () => {
       </div>
 
       {/* CTA Bölümü */}
-      <div className="bg-blue-700 text-white py-12">
+      <div className="bg-gradient-to-b from-[#2F3D8D] to-[#3399D2] py-12">
         <div className="container mx-auto max-w-5xl px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Hemen Başvurun, Size Uygun Kampanyayı Bulalım</h2>
+          <h2 className="text-3xl font-bold mb-4  text-blue-100">Hemen Başvurun, Size Uygun Kampanyayı Bulalım</h2>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto mb-8">
             Adresinize özel kampanyalarımızı öğrenmek için başvuru formunu doldurun, müşteri temsilcimiz en kısa sürede size ulaşsın.
           </p>
           <Link
             to="/hemen-basvur"
-            className="bg-white text-blue-700 px-8 py-3 rounded-md font-bold text-lg hover:bg-blue-50 transition shadow-lg inline-flex items-center"
+            className="bg-white text-[#2F3D8D] px-8 py-3 rounded-md font-bold text-lg hover:bg-blue-50 transition shadow-lg inline-flex items-center"
           >
             Hemen Başvur <FaArrowRight className="ml-2" />
           </Link>

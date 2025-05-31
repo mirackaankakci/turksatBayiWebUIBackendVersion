@@ -4,6 +4,7 @@ import { CampaignData } from '../helpers/CampaingData';
 import serit from "../assets/serit.png";
 import { FaWifi, FaTv, FaPhoneAlt, FaCheckCircle, FaInfoCircle, FaArrowRight, FaRegFileAlt, FaMoneyBillWave, FaListAlt, FaPhoneVolume, FaLaptop } from 'react-icons/fa';
 import { styleTable } from '../utils/htmlUtils';
+import axios from "axios";
 
 const CampaignDetail = () => {
   const { kampanyaId } = useParams();
@@ -14,37 +15,149 @@ const CampaignDetail = () => {
   const [activeTab, setActiveTab] = useState('ucretlendirme');
 
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    address: '',
-    city: '',
-    agreement: false
+    name: "",
+    phone: "",
+    agreement: false,
+    kampanyaId: campaign?.id || ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
 
-  // Form değişikliklerini izle
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    });
+  // Telefon numarası formatlayıcı fonksiyon
+  const formatPhoneNumber = (phone) => {
+    // Boşluk ve özel karakterleri temizle
+    let formattedPhone = phone.replace(/\s+/g, "");
+    formattedPhone = formattedPhone.replace(/[^\d+]/g, "");
+
+    // + işaretini kaldır
+    formattedPhone = formattedPhone.replace(/\+/g, "");
+
+    // 90 ile başlıyorsa ve 0 yoksa düzelt
+    if (formattedPhone.startsWith("90") && formattedPhone.length > 2) {
+      formattedPhone = "0" + formattedPhone.substring(2);
+    }
+    // Başında 0 yoksa ekle
+    else if (!formattedPhone.startsWith("0") && formattedPhone.length > 0) {
+      formattedPhone = "0" + formattedPhone;
+    }
+
+    // Maksimum 11 karakter (0 dahil)
+    if (formattedPhone.length > 11) {
+      formattedPhone = formattedPhone.substring(0, 11);
+    }
+
+    return formattedPhone;
   };
 
-  // Form gönderme işlemi
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Form verilerini API'ye gönderme işlemi burada yapılabilir
-    console.log('Form gönderildi:', formData);
-    alert('Başvurunuz alındı! Kısa sürede sizinle iletişime geçeceğiz.');
+  // Telefon numarası doğrulama
+  const validatePhoneNumber = (phone) => {
+    // Türkiye telefon formatı kontrolü: 05XX XXX XXXX
+    const turkishPhoneRegex = /^0[5][0-9]{9}$/;
 
-    // Formu temizle
-    setFormData({
-      name: '',
-      phone: '',
-      address: '',
-      city: '',
-      agreement: false
-    });
+    if (!phone) {
+      return "Telefon numarası gerekli";
+    } else if (!turkishPhoneRegex.test(phone)) {
+      return "Geçerli bir cep telefonu numarası girin (05XX XXX XXXX)";
+    }
+
+    return "";
+  };
+
+  // Form değişikliklerini yönetme
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    
+    if (name === "phone") {
+      const formattedPhone = formatPhoneNumber(value);
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: formattedPhone
+      }));
+      
+      // Telefon doğrulama hatasını temizle
+      if (phoneError) {
+        setPhoneError("");
+      }
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: type === 'checkbox' ? checked : value
+      }));
+    }
+  };
+
+  // Form gönderimi
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Form doğrulama
+    if (!formData.name) {
+      alert("Lütfen adınızı ve soyadınızı girin.");
+      return;
+    }
+
+    // Telefon numarası doğrulama
+    const phoneError = validatePhoneNumber(formData.phone);
+    if (phoneError) {
+      setPhoneError(phoneError);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // API'ye gönderilecek verileri hazırla
+      const phone = encodeURIComponent(formData.phone);
+      const firstname = encodeURIComponent(formData.name);
+      const column14 = encodeURIComponent(formData.kampanyaId || campaign?.id || "");
+      const address = "FORM";
+
+      // API URL'sini proxy yoluyla çağırma
+      const apiUrl = "/api/service/1.0/add/";
+      const apiKey = "c1d1b885397a6e5ab26e77343201ea89"; // API anahtarı
+
+      // Axios ile API isteği - URL encode edilmiş parametre biçimi
+      const params = new URLSearchParams();
+      params.append('apikey', apiKey);
+      params.append('phone1', phone);
+      params.append('did', '8508066000');
+      params.append('symbolid', '8');
+      params.append('projectid', '5');
+      params.append('firstname', firstname);
+      params.append('column14', column14);
+      params.append('address', address);
+      params.append('ca', '1');
+
+      const response = await axios.post(apiUrl, params, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      });
+
+      console.log("API Yanıtı:", response.data);
+
+      // Başarılı işlem
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+
+      // Formu temizle
+      setFormData({
+        name: "",
+        phone: "",
+        agreement: false,
+        kampanyaId: formData.kampanyaId // kampanyaId'yi koru
+      });
+
+      // 3 saniye sonra başarı mesajını kaldır
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 3000);
+    } catch (error) {
+      console.error("API Hatası:", error);
+      setIsSubmitting(false);
+      alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+    }
   };
 
   // Kampanya verilerini yükle
@@ -649,12 +762,15 @@ const CampaignDetail = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="0555 123 4567"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                      className={`w-full px-3 py-2 border ${phoneError ? 'border-red-500' : 'border-gray-300'} rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm`}
                       required
                     />
+                    {phoneError && (
+                      <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+                    )}
                   </div>
 
-                  <div className="mb-6">
+                  {/*<div className="mb-6">
                     <div className="flex items-start">
                       <input
                         type="checkbox"
@@ -669,13 +785,18 @@ const CampaignDetail = () => {
                         <a href="/kvkk" className="text-blue-600 hover:underline" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, anladım ve kabul ediyorum.
                       </label>
                     </div>
-                  </div>
+                  </div>*/}
 
                   <button
                     type="submit"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition-colors"
+                    disabled={isSubmitting}
+                    className={`w-full ${
+                      isSubmitting
+                        ? "bg-gray-400 cursor-not-allowed"
+                        : "bg-green-500 hover:bg-green-600"
+                    } text-white font-medium py-2 px-4 rounded-md transition-colors`}
                   >
-                    Başvuruyu Tamamla
+                    {isSubmitting ? "Gönderiliyor..." : "Başvuruyu Tamamla"}
                   </button>
                 </form>
 

@@ -83,15 +83,15 @@ const  Footer = () => {
               <ul className="space-y-2">
                 <li className="text-sm text-gray-200">
                   <span className="block font-medium mb-1">Adres:</span>
-                  Konya Yolu, Gölbaşı, Ankara, Türkiye
+                  Fatih Sultan Mehmet Cad, Kavacık, Şht. Teğmen Ali Yılmaz Sk. No:14, Kat:3, 34810 Beykoz/İstanbul
                 </li>
                 <li className="text-sm text-gray-200">
                   <span className="block font-medium mb-1">Müşteri Hizmetleri:</span>
-                  <a href="tel:08505322222" className="hover:underline">0850 532 2222</a>
+                  <a href="tel:08508066000" className="hover:underline">0850 806 60 00</a>
                 </li>
                 <li className="text-sm text-gray-200">
                   <span className="block font-medium mb-1">E-posta:</span>
-                  <a href="mailto:info@turksat.com.tr" className="hover:underline">info@turksat.com.tr</a>
+                  <a href="mailto:info@turksat.com.tr" className="hover:underline">info@kablointernet.com.tr</a>
                 </li>
               </ul>
             </div>

@@ -3,6 +3,7 @@ import './index.css'
 import logo from './assets/logo.png'
 import ResponsiveMenu from './components/ResponsiveMenu'
 import CampaignBanner from "./components/CampaignBanner"
+import ScrollToTop from './components/ScrollToTop';
 
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
@@ -17,10 +18,15 @@ import TvPackets from './Pages/tvPacket'
 import PrivacyPolicy from './Pages/PrivacyPolicy'
 import FesihIslemleri from './Pages/fesih'
 import Sss from './Pages/Sss'
+import TvFrekans from './Pages/TvFrekans'
+import Services from './Pages/Services'
+import Contact from './Pages/contact'
+import InfrastructureInquiry from './Pages/InfrastructureInquiry'
 
 function App() {
   return (
     <div>
+      <ScrollToTop />
       <div className="bg-gradient-to-b from-[#838383] to-[#3399D2]">
         <ResponsiveMenu />
       </div>
@@ -38,7 +44,12 @@ function App() {
           <Route path="/kablotv/paketler" element={<TvPackets />} />
           <Route path="/gizliliksozlesmesi" element={<PrivacyPolicy />} />
           <Route path="/fesih-i̇şlemleri" element={<FesihIslemleri />} />
-          <Route path="/sss" element={<Sss />} />
+          <Route path="/kablotv/frekans-listesi" element={<TvFrekans />} />
+          <Route path="/servisler" element={<Services />} />
+          <Route path="/servisler/:serviceId" element={<Services />} />
+          <Route path="/sıkça-sorulan-sorular" element={<Sss />} />
+          <Route path="/i̇letişim" element={<Contact />} />
+          <Route path="/altyapisorgulama" element={<InfrastructureInquiry />} />
         </Routes>
       </div>
       <Footer />

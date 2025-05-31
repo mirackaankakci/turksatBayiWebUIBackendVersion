@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaSearch } from 'react-icons/fa';
+import serit from "../assets/serit.png"; // Banner alt kısmındaki şerit resmi
 
 const Sss = () => {
   const [aktivKategori, setAktivKategori] = useState('tumu');
@@ -48,7 +49,7 @@ const Sss = () => {
     "id": 7,
     "kategori": "kablotv_genel",
     "soru": "KabloTV ile ilgili yaşadığım sorunları nasıl çözebilirim?",
-    "cevap": "0850 804 4444 nolu çağrı merkezimizi günün her saati arayarak sorununuzu iletebilirsiniz. Servis taleplerinize en geç 5 saat içerisinde cevap verilecektir."
+    "cevap": "0850 806 60 00 nolu çağrı merkezimizi günün her saati arayarak sorununuzu iletebilirsiniz. Servis taleplerinize en geç 5 saat içerisinde cevap verilecektir."
   },
   {
     "id": 8,
@@ -72,13 +73,13 @@ const Sss = () => {
     "id": 11,
     "kategori": "kablotv_genel",
     "soru": "Smart kartım arızalanırsa ne yapmalıyım?",
-    "cevap": "Smart kartın arızalanması durumunda teknik servisimiz tarafından değiştirilir. Smart kart, kullanıcı hatasından dolayı arızalanmış veya hasar görmüşse kart ücreti kullanıcıya yansıtılır. Arıza bildirimi için 0850 804 4444 numaralı destek hattımızı arayabilirsiniz."
+    "cevap": "Smart kartın arızalanması durumunda teknik servisimiz tarafından değiştirilir. Smart kart, kullanıcı hatasından dolayı arızalanmış veya hasar görmüşse kart ücreti kullanıcıya yansıtılır. Arıza bildirimi için 0850 806 60 00 numaralı destek hattımızı arayabilirsiniz."
   },
   {
     "id": 12,
     "kategori": "kablotv_genel",
     "soru": "KabloTV'ye nasıl abone olabilirim?",
-    "cevap": "0850 804 4444 numaralı çağrı merkezinden, Online İşlemler sayfamızdan ve Türksat abone merkezlerinden abone olabilirsiniz."
+    "cevap": "0850 806 60 00  numaralı çağrı merkezinden, Online İşlemler sayfamızdan ve Türksat abone merkezlerinden abone olabilirsiniz."
   },
   {
     "id": 13,
@@ -114,7 +115,7 @@ const Sss = () => {
     "id": 18,
     "kategori": "i̇nternet_genel",
     "soru": "Kablonet ile ilgili yaşadığım sorunları nasıl çözebilirim?",
-    "cevap": "0850 804 4444 nolu çağrı merkezimizi günün her saati arayarak sorununuzu iletebilirsiniz. Servis taleplerinize en geç 5 saat içerisinde ve herhangi bir ücret talep edilmeden cevap verilecektir."
+    "cevap": "0850 806 60 00 nolu çağrı merkezimizi günün her saati arayarak sorununuzu iletebilirsiniz. Servis taleplerinize en geç 5 saat içerisinde ve herhangi bir ücret talep edilmeden cevap verilecektir."
   },
   {
     "id": 19,
@@ -156,7 +157,7 @@ const Sss = () => {
     "id": 25,
     "kategori": "ses_genel",
     "soru": "Kabloses hizmetine nasıl abone olabilirim?",
-    "cevap": "0850 804 4444 numaralı çağrı merkezinden ve Türksat abone merkezlerinden abone olabilirsiniz."
+    "cevap": "0850 806 60 00 numaralı çağrı merkezinden ve Türksat abone merkezlerinden abone olabilirsiniz."
   },
   {
     "id": 26,
@@ -240,7 +241,7 @@ const Sss = () => {
     "id": 39,
     "kategori": "kablotv_genel",
     "soru": "Paket ekleme işlemi yapabilir miyim?",
-    "cevap": "Evet, paket ekleme işlemini 0850 804 4444 numaralı çağrı merkezimizi arayarak, Online İşlemler üzerinden veya Türksat İl Müdürlükleri/Türksat Abone Ofislerine başvurarak gerçekleştirebilirsiniz."
+    "cevap": "Evet, paket ekleme işlemini 0850 806 60 00 numaralı çağrı merkezimizi arayarak, Online İşlemler üzerinden veya Türksat İl Müdürlükleri/Türksat Abone Ofislerine başvurarak gerçekleştirebilirsiniz."
   },
   {
     "id": 40,
@@ -294,7 +295,7 @@ const Sss = () => {
     "id": 48,
     "kategori": "kablotv_genel",
     "soru": "KabloTV abonesiyim. Sinema paketlerine nasıl abone olabilirim?",
-    "cevap": "Sinema paketlerine abone olmak için 0850 804 4444 numaralı çağrı merkezimizi arayabilir, Türksat abone merkezlerinden veya Online İşlemler üzerinden dilediğiniz paketi ekleyebilirsiniz."
+    "cevap": "Sinema paketlerine abone olmak için 0850 806 60 00 numaralı çağrı merkezimizi arayabilir, Türksat abone merkezlerinden veya Online İşlemler üzerinden dilediğiniz paketi ekleyebilirsiniz."
   },
   {
     "id": 49,
@@ -354,7 +355,7 @@ const Sss = () => {
     "id": 58,
     "kategori": "kablotv_genel",
     "soru": "Türksat'tan aldığım TV Kutusu arızalanırsa ne yapmalıyım?",
-    "cevap": "0850 804 4444 numaralı çağrı merkezimizi arayarak arıza kaydı bırakmalısınız. İlgili ekipler cihazınızı sizden teslim alacak ve gerekli işlemleri yapacaktır."
+    "cevap": "0850 806 60 00 numaralı çağrı merkezimizi arayarak arıza kaydı bırakmalısınız. İlgili ekipler cihazınızı sizden teslim alacak ve gerekli işlemleri yapacaktır."
   },
   {
     "id": 59,
@@ -372,7 +373,7 @@ const Sss = () => {
     "id": 61,
     "kategori": "kablotv_genel",
     "soru": "i-Kutu'yu nasıl temin edebilirim?",
-    "cevap": "0850 804 4444 numaralı çağrı merkezimizi arayarak, İl Müdürlüklerimizi veya abone merkezlerimizi ziyaret ederek cihaz siparişinde bulunabilirsiniz."
+    "cevap": "0850 806 60 00 numaralı çağrı merkezimizi arayarak, İl Müdürlüklerimizi veya abone merkezlerimizi ziyaret ederek cihaz siparişinde bulunabilirsiniz."
   },
   {
     "id": 62,
@@ -477,85 +478,101 @@ const Sss = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:py-16">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-blue-800 mb-4">Sıkça Sorulan Sorular</h1>
-        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-          Türksat Kablo hizmetleri hakkında merak ettiğiniz soruların cevaplarını burada bulabilirsiniz.
-        </p>
-        
+    <div className="min-h-screen bg-gray-50">
+      {/* Banner Eklendi - Diğer sayfalardaki gibi */}
+      <div className="relative mx-auto w-full h-[300px] pt-[70px] items-center sm:h-[350px] md:h-[400px] lg:h-[400px] bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
+        <img
+          src={serit}
+          alt="Serit"
+          className="absolute -bottom-1 left-0 w-full h-auto pointer-events-none select-none"
+          style={{ zIndex: 0 }}
+        />
+        <div className="container mx-auto max-w-6xl items-center text-center mt-[70px]">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Sıkça Sorulan Sorular
+          </h1>
+          <p className="text-xl text-blue-100 max-w-full">
+            Türksat Kablo hizmetleri hakkında merak ettiğiniz tüm soruların cevapları burada.
+          </p>
+        </div>
+      </div>
+
+      {/* Ana İçerik Bölümü */}
+      <div className="max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:py-16 relative z-10 -mt-8">
         {/* Arama kutusu */}
-        <div className="relative max-w-xl mx-auto mt-8">
-          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <FaSearch className="text-gray-400" />
-          </div>
-          <input
-            type="text"
-            placeholder="Soru veya cevap ara..."
-            value={aramaMetni}
-            onChange={(e) => setAramaMetni(e.target.value)}
-            className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-          />
-        </div>
-      </div>
-      
-      {/* Kategori seçici - yatay kaydırılabilir */}
-      <div className="mb-10 overflow-x-auto pb-2 scrollbar-hide">
-        <div className="flex gap-2 justify-start min-w-max px-1">
-          {kategoriler.map((kategori) => (
-            <button
-              key={kategori.id}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                aktivKategori === kategori.id 
-                  ? 'bg-blue-700 text-white shadow-md' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-              onClick={() => kategoriDegistir(kategori.id)}
-            >
-              {kategori.isim}
-            </button>
-          ))}
-        </div>
-      </div>
-      
-      {/* SSS listesi */}
-      <div className="space-y-4">
-        {filtrelenenSSS.length > 0 ? (
-          filtrelenenSSS.map((item) => (
-            <div 
-              key={item.id} 
-              className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden"
-            >
-              <div 
-                className="px-6 py-4 flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors duration-200"
-                onClick={() => soruTikla(item.id)}
-              >
-                <h3 className="text-lg font-medium text-gray-800">{item.soru}</h3>
-                <div className="text-blue-700 flex-shrink-0 ml-4">
-                  {acikSoru === item.id ? <FaChevronUp /> : <FaChevronDown />}
-                </div>
-              </div>
-              {acikSoru === item.id && (
-                <div className="px-6 py-4 border-t border-gray-100 bg-gray-50">
-                  <p className="text-gray-600 leading-relaxed whitespace-pre-line">{item.cevap}</p>
-                </div>
-              )}
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="relative max-w-xl mx-auto">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <FaSearch className="text-gray-400" />
             </div>
-          ))
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">Aramanızla eşleşen soru bulunamadı.</p>
+            <input
+              type="text"
+              placeholder="Soru veya cevap ara..."
+              value={aramaMetni}
+              onChange={(e) => setAramaMetni(e.target.value)}
+              className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+            />
           </div>
-        )}
-      </div>
-      
-      {/* Alt bilgilendirme ve iletişim bölümü */}
-      <div className="mt-16 bg-blue-50 rounded-xl p-8 text-center">
-        <h2 className="text-2xl font-bold text-blue-800 mb-2">Sorularınız hala yanıtlanmadı mı?</h2>
-        <p className="text-gray-600 mb-6">Müşteri hizmetlerimizle iletişime geçebilirsiniz.</p>
-        <button className="bg-blue-700 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-800 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md">
-          0850 804 4444
-        </button>
+        </div>
+        
+        {/* Kategori seçici - yatay kaydırılabilir */}
+        <div className="mb-10 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex gap-2 justify-start min-w-max px-1">
+            {kategoriler.map((kategori) => (
+              <button
+                key={kategori.id}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap ${
+                  aktivKategori === kategori.id 
+                    ? 'bg-blue-700 text-white shadow-md' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+                onClick={() => kategoriDegistir(kategori.id)}
+              >
+                {kategori.isim}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        {/* SSS listesi */}
+        <div className="space-y-4">
+          {filtrelenenSSS.length > 0 ? (
+            filtrelenenSSS.map((item) => (
+              <div 
+                key={item.id} 
+                className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden"
+              >
+                <div 
+                  className="px-6 py-4 flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors duration-200"
+                  onClick={() => soruTikla(item.id)}
+                >
+                  <h3 className="text-lg font-medium text-gray-800">{item.soru}</h3>
+                  <div className="text-blue-700 flex-shrink-0 ml-4">
+                    {acikSoru === item.id ? <FaChevronUp /> : <FaChevronDown />}
+                  </div>
+                </div>
+                {acikSoru === item.id && (
+                  <div className="px-6 py-4 border-t border-gray-100 bg-gray-50">
+                    <p className="text-gray-600 leading-relaxed whitespace-pre-line">{item.cevap}</p>
+                  </div>
+                )}
+              </div>
+            ))
+          ) : (
+            <div className="text-center py-12 bg-white rounded-lg shadow-sm">
+              <p className="text-gray-500 text-lg">Aramanızla eşleşen soru bulunamadı.</p>
+            </div>
+          )}
+        </div>
+        
+        {/* Alt bilgilendirme ve iletişim bölümü */}
+        <div className="mt-16 bg-blue-50 rounded-xl p-8 text-center">
+          <h2 className="text-2xl font-bold text-blue-800 mb-2">Sorularınız hala yanıtlanmadı mı?</h2>
+          <p className="text-gray-600 mb-6">Müşteri hizmetlerimizle iletişime geçebilirsiniz.</p>
+          <button className="bg-blue-700 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-800 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md">
+            0850 806 60 00
+          </button>
+        </div>
       </div>
     </div>
   );

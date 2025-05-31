@@ -1,0 +1,1514 @@
+[
+  {
+    "No": "1",
+    "Kanal": "Kablo Info",
+    "Tip": "HD",
+    "Dijital Frekans": "530 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "2",
+    "Kanal": "Sinema TV",
+    "Tip": "HD",
+    "Dijital Frekans": "466 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "3",
+    "Kanal": "Sinema 2",
+    "Tip": "HD",
+    "Dijital Frekans": "466 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "4",
+    "Kanal": "Sinema Aksiyon",
+    "Tip": "HD",
+    "Dijital Frekans": "530 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "5",
+    "Kanal": "Sinema Aksiyon 2",
+    "Tip": "HD",
+    "Dijital Frekans": "354 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "6",
+    "Kanal": "Sinema Yerli",
+    "Tip": "HD",
+    "Dijital Frekans": "354 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "7",
+    "Kanal": "Sinema Yerli 2",
+    "Tip": "HD",
+    "Dijital Frekans": "354 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "8",
+    "Kanal": "Sinema Aile",
+    "Tip": "HD",
+    "Dijital Frekans": "466 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "9",
+    "Kanal": "Sinema Aile 2",
+    "Tip": "HD",
+    "Dijital Frekans": "354 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "10",
+    "Kanal": "Sinema 1001",
+    "Tip": "HD",
+    "Dijital Frekans": "410 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "11",
+    "Kanal": "Sinema 1002",
+    "Tip": "HD",
+    "Dijital Frekans": "354 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "12",
+    "Kanal": "Sinema Komedi",
+    "Tip": "HD",
+    "Dijital Frekans": "530 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "13",
+    "Kanal": "Sinema Komedi 2",
+    "Tip": "HD",
+    "Dijital Frekans": "354 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "22",
+    "Kanal": "TRT 1",
+    "Tip": "HD",
+    "Dijital Frekans": "418 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "23",
+    "Kanal": "Atv",
+    "Tip": "HD",
+    "Dijital Frekans": "426 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "24",
+    "Kanal": "Show",
+    "Tip": "HD",
+    "Dijital Frekans": "362 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "25",
+    "Kanal": "Kanal D",
+    "Tip": "HD",
+    "Dijital Frekans": "362 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "26",
+    "Kanal": "Star",
+    "Tip": "HD",
+    "Dijital Frekans": "346 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "27",
+    "Kanal": "Kanal 7",
+    "Tip": "HD",
+    "Dijital Frekans": "386 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "28",
+    "Kanal": "FOX",
+    "Tip": "HD",
+    "Dijital Frekans": "442 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "29",
+    "Kanal": "TV 8",
+    "Tip": "HD",
+    "Dijital Frekans": "410 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "30",
+    "Kanal": "Beyaz TV",
+    "Tip": "HD",
+    "Dijital Frekans": "386 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "31",
+    "Kanal": "a2",
+    "Tip": "HD",
+    "Dijital Frekans": "362 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "32",
+    "Kanal": "Teve 2",
+    "Tip": "HD",
+    "Dijital Frekans": "418 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "33",
+    "Kanal": "360",
+    "Tip": "HD",
+    "Dijital Frekans": "378 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "34",
+    "Kanal": "TLC",
+    "Tip": "HD",
+    "Dijital Frekans": "370 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "35",
+    "Kanal": "DMAX",
+    "Tip": "HD",
+    "Dijital Frekans": "346 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "36",
+    "Kanal": "Kon TV",
+    "Tip": "SD",
+    "Dijital Frekans": "482 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "37",
+    "Kanal": "tv 100",
+    "Tip": "HD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "38",
+    "Kanal": "UVI Jewellery",
+    "Tip": "SD",
+    "Dijital Frekans": "514 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "39",
+    "Kanal": "Ulusal Kanal",
+    "Tip": "SD",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "40",
+    "Kanal": "Tivi 6",
+    "Tip": "HD",
+    "Dijital Frekans": "474 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "41",
+    "Kanal": "TV 8,5",
+    "Tip": "HD",
+    "Dijital Frekans": "466 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "42",
+    "Kanal": "BEA",
+    "Tip": "SD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "43",
+    "Kanal": "Kanal B",
+    "Tip": "SD",
+    "Dijital Frekans": "418 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "44",
+    "Kanal": "Genç TV",
+    "Tip": "SD",
+    "Dijital Frekans": "362 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "45",
+    "Kanal": "Vav TV",
+    "Tip": "HD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "46",
+    "Kanal": "Üniversite TV",
+    "Tip": "HD",
+    "Dijital Frekans": "514 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "47",
+    "Kanal": "TMB",
+    "Tip": "HD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "48",
+    "Kanal": "TV 4",
+    "Tip": "HD",
+    "Dijital Frekans": "298 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "49",
+    "Kanal": "Bengü Türk TV",
+    "Tip": "HD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "50",
+    "Kanal": "TRT 2",
+    "Tip": "HD",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "51",
+    "Kanal": "Tarih Tv",
+    "Tip": "HD",
+    "Dijital Frekans": "458 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "55",
+    "Kanal": "TRT Haber",
+    "Tip": "HD",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "56",
+    "Kanal": "A Haber",
+    "Tip": "HD",
+    "Dijital Frekans": "426 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "57",
+    "Kanal": "NTV",
+    "Tip": "HD",
+    "Dijital Frekans": "394 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "58",
+    "Kanal": "CNN Türk",
+    "Tip": "HD",
+    "Dijital Frekans": "394 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "59",
+    "Kanal": "24",
+    "Tip": "HD",
+    "Dijital Frekans": "378 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "60",
+    "Kanal": "TGRT Haber",
+    "Tip": "HD",
+    "Dijital Frekans": "426 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "61",
+    "Kanal": "HABERTÜRK TV",
+    "Tip": "HD",
+    "Dijital Frekans": "346 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "62",
+    "Kanal": "Bloomberg HT",
+    "Tip": "HD",
+    "Dijital Frekans": "346 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "63",
+    "Kanal": "Ülke TV",
+    "Tip": "HD",
+    "Dijital Frekans": "386 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "64",
+    "Kanal": "Tvnet",
+    "Tip": "HD",
+    "Dijital Frekans": "386 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "65",
+    "Kanal": "Akit",
+    "Tip": "HD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "66",
+    "Kanal": "Brt 1",
+    "Tip": "HD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "67",
+    "Kanal": "TRT Türk",
+    "Tip": "HD",
+    "Dijital Frekans": "530 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "68",
+    "Kanal": "TRT Avaz",
+    "Tip": "HD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "69",
+    "Kanal": "TRT 3 Spor - TBMM TV",
+    "Tip": "SD",
+    "Dijital Frekans": "-",
+    "Analog Frekans": "S06"
+  },
+  {
+    "No": "69",
+    "Kanal": "TRT3 Spor - TBMM TV",
+    "Tip": "HD",
+    "Dijital Frekans": "530 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "70",
+    "Kanal": "TRT Kurdî",
+    "Tip": "HD",
+    "Dijital Frekans": "482 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "71",
+    "Kanal": "Haber Global",
+    "Tip": "HD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "72",
+    "Kanal": "BBN Türk",
+    "Tip": "HD",
+    "Dijital Frekans": "498 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "73",
+    "Kanal": "KRT TV",
+    "Tip": "HD",
+    "Dijital Frekans": "298 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "74",
+    "Kanal": "Halk TV",
+    "Tip": "HD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "75",
+    "Kanal": "TH Türk Haber",
+    "Tip": "HD",
+    "Dijital Frekans": "362 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "76",
+    "Kanal": "SZC",
+    "Tip": "HD",
+    "Dijital Frekans": "378 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "77",
+    "Kanal": "a Para",
+    "Tip": "HD",
+    "Dijital Frekans": "426 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "78",
+    "Kanal": "Ekotürk",
+    "Tip": "HD",
+    "Dijital Frekans": "410 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "79",
+    "Kanal": "MEK",
+    "Tip": "SD",
+    "Dijital Frekans": "474 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "80",
+    "Kanal": "TV 5",
+    "Tip": "SD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "88",
+    "Kanal": "TRT World",
+    "Tip": "HD",
+    "Dijital Frekans": "346 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "89",
+    "Kanal": "A News",
+    "Tip": "HD",
+    "Dijital Frekans": "466 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "91",
+    "Kanal": "BBC World News",
+    "Tip": "SD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "92",
+    "Kanal": "Bloomberg",
+    "Tip": "SD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "95",
+    "Kanal": "Al Jazeera (Arapça)",
+    "Tip": "SD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "96",
+    "Kanal": "Al Jazeera (İngilizce)",
+    "Tip": "HD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "97",
+    "Kanal": "Alaraby News",
+    "Tip": "HD",
+    "Dijital Frekans": "466 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "99",
+    "Kanal": "TRT Arabi",
+    "Tip": "HD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "102",
+    "Kanal": "Dw Tv (İngilizce)",
+    "Tip": "HD",
+    "Dijital Frekans": "482 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "103",
+    "Kanal": "Dw Tv (Almanca)",
+    "Tip": "SD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "105",
+    "Kanal": "France 24 (İngilizce)",
+    "Tip": "HD",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "106",
+    "Kanal": "France 24 (Fransızca)",
+    "Tip": "HD",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "108",
+    "Kanal": "CGTN",
+    "Tip": "HD",
+    "Dijital Frekans": "458 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "109",
+    "Kanal": "Russia 24",
+    "Tip": "SD",
+    "Dijital Frekans": "346 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "111",
+    "Kanal": "TRT Belgesel",
+    "Tip": "HD",
+    "Dijital Frekans": "370 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "112",
+    "Kanal": "National Geographic",
+    "Tip": "HD",
+    "Dijital Frekans": "330 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "113",
+    "Kanal": "National Geographic Wild",
+    "Tip": "HD",
+    "Dijital Frekans": "330 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "114",
+    "Kanal": "Viasat Nature",
+    "Tip": "HD",
+    "Dijital Frekans": "394 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "115",
+    "Kanal": "Discovery Channel",
+    "Tip": "HD",
+    "Dijital Frekans": "442 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "116",
+    "Kanal": "Discovery Science",
+    "Tip": "HD",
+    "Dijital Frekans": "378 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "117",
+    "Kanal": "ID",
+    "Tip": "HD",
+    "Dijital Frekans": "418 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "118",
+    "Kanal": "History",
+    "Tip": "HD",
+    "Dijital Frekans": "298 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "119",
+    "Kanal": "Viasat History",
+    "Tip": "HD",
+    "Dijital Frekans": "394 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "122",
+    "Kanal": "DocuBOX",
+    "Tip": "HD",
+    "Dijital Frekans": "338 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "123",
+    "Kanal": "BBC Earth",
+    "Tip": "HD",
+    "Dijital Frekans": "298 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "130",
+    "Kanal": "Viasat Explore",
+    "Tip": "HD",
+    "Dijital Frekans": "394 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "132",
+    "Kanal": "Rtg Int",
+    "Tip": "SD",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "133",
+    "Kanal": "CGTN Documentary",
+    "Tip": "HD",
+    "Dijital Frekans": "410 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "140",
+    "Kanal": "Az TV",
+    "Tip": "HD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "141",
+    "Kanal": "Türkmeneli TV",
+    "Tip": "HD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "142",
+    "Kanal": "BBC Entertainment",
+    "Tip": "SD",
+    "Dijital Frekans": "402 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "143",
+    "Kanal": "Tv 5 Monde Europe",
+    "Tip": "HD",
+    "Dijital Frekans": "482 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "144",
+    "Kanal": "Cctv 4",
+    "Tip": "HD",
+    "Dijital Frekans": "458 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "145",
+    "Kanal": "Saudi TV",
+    "Tip": "HD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "147",
+    "Kanal": "Hayat Plus",
+    "Tip": "SD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "148",
+    "Kanal": "Planeta RTR",
+    "Tip": "SD",
+    "Dijital Frekans": "346 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "149",
+    "Kanal": "Kbs World",
+    "Tip": "HD",
+    "Dijital Frekans": "482 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "150",
+    "Kanal": "Nhk World",
+    "Tip": "HD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "151",
+    "Kanal": "Arirang",
+    "Tip": "SD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "152",
+    "Kanal": "Freedom",
+    "Tip": "SD",
+    "Dijital Frekans": "402 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "222",
+    "Kanal": "TRT Spor",
+    "Tip": "HD",
+    "Dijital Frekans": "370 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "223",
+    "Kanal": "beIN SPORTS HABER",
+    "Tip": "HD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "224",
+    "Kanal": "A Spor",
+    "Tip": "HD",
+    "Dijital Frekans": "370 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "225",
+    "Kanal": "Eurosport 1",
+    "Tip": "HD",
+    "Dijital Frekans": "458 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "226",
+    "Kanal": "Eurosport 2",
+    "Tip": "HD",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "228",
+    "Kanal": "Trace Sport Stars",
+    "Tip": "HD",
+    "Dijital Frekans": "402 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "230",
+    "Kanal": "FightBOX",
+    "Tip": "HD",
+    "Dijital Frekans": "338 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "231",
+    "Kanal": "FAST & FUNBOX",
+    "Tip": "HD",
+    "Dijital Frekans": "338 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "240",
+    "Kanal": "S Sport",
+    "Tip": "HD",
+    "Dijital Frekans": "474 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "241",
+    "Kanal": "S Sport2",
+    "Tip": "HD",
+    "Dijital Frekans": "306 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "242",
+    "Kanal": "NBA TV",
+    "Tip": "HD",
+    "Dijital Frekans": "306 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "243",
+    "Kanal": "EDGEsport",
+    "Tip": "HD",
+    "Dijital Frekans": "306 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "244",
+    "Kanal": "TRT Spor Yıldız",
+    "Tip": "HD",
+    "Dijital Frekans": "402 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "246",
+    "Kanal": "FB TV",
+    "Tip": "SD",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "333",
+    "Kanal": "FX",
+    "Tip": "HD",
+    "Dijital Frekans": "330 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "335",
+    "Kanal": "BBC First",
+    "Tip": "HD",
+    "Dijital Frekans": "298 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "336",
+    "Kanal": "FilmBOX TURKEY",
+    "Tip": "HD",
+    "Dijital Frekans": "402 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "337",
+    "Kanal": "Filmbox Extra",
+    "Tip": "HD",
+    "Dijital Frekans": "338 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "344",
+    "Kanal": "FilmBOX Arthouse",
+    "Tip": "SD",
+    "Dijital Frekans": "338 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "355",
+    "Kanal": "24 Kitchen",
+    "Tip": "HD",
+    "Dijital Frekans": "330 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "356",
+    "Kanal": "MyZEN TV",
+    "Tip": "HD",
+    "Dijital Frekans": "378 Mhz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "366",
+    "Kanal": "FunBOX",
+    "Tip": "4K",
+    "Dijital Frekans": "338 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "367",
+    "Kanal": "Gametoon",
+    "Tip": "HD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "444",
+    "Kanal": "TRT Çocuk",
+    "Tip": "HD",
+    "Dijital Frekans": "442 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "445",
+    "Kanal": "Minika Çocuk",
+    "Tip": "SD",
+    "Dijital Frekans": "410 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "446",
+    "Kanal": "Minika Go",
+    "Tip": "SD",
+    "Dijital Frekans": "426 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "455",
+    "Kanal": "BabyTV",
+    "Tip": "SD",
+    "Dijital Frekans": "410 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "456",
+    "Kanal": "Disney Junior",
+    "Tip": "HD",
+    "Dijital Frekans": "330 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "457",
+    "Kanal": "Cartoon Network",
+    "Tip": "SD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "459",
+    "Kanal": "Duck TV",
+    "Tip": "SD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "460",
+    "Kanal": "English Club TV",
+    "Tip": "HD",
+    "Dijital Frekans": "418 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "461",
+    "Kanal": "Da Vinci",
+    "Tip": "HD",
+    "Dijital Frekans": "402 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "465",
+    "Kanal": "TRT EBA TV İLKOKUL",
+    "Tip": "HD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "466",
+    "Kanal": "TRT EBA TV ORTAOKUL",
+    "Tip": "HD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "467",
+    "Kanal": "TRT EBA TV LİSE",
+    "Tip": "HD",
+    "Dijital Frekans": "466 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "555",
+    "Kanal": "Diyanet TV",
+    "Tip": "HD",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "556",
+    "Kanal": "Al Quran Al Kareem",
+    "Tip": "HD",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "557",
+    "Kanal": "Al Sunnah Al Nabawiya",
+    "Tip": "HD",
+    "Dijital Frekans": "410 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "666",
+    "Kanal": "TRT Müzik",
+    "Tip": "SD",
+    "Dijital Frekans": "-",
+    "Analog Frekans": "S03"
+  },
+  {
+    "No": "666",
+    "Kanal": "TRT Müzik",
+    "Tip": "HD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "667",
+    "Kanal": "Dream Türk",
+    "Tip": "HD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "673",
+    "Kanal": "360 TuneBOX",
+    "Tip": "SD",
+    "Dijital Frekans": "338 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "674",
+    "Kanal": "Trace Urban",
+    "Tip": "HD",
+    "Dijital Frekans": "402 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Kanal V (Antalya)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Line TV (Bursa)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "458 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Kent Deha (Denizli)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Etv (Edirne)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "426 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Kanal 26 (Eskişehir)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "426 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Bizimev TV (İstanbul)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "ETV (İzmir - Manisa)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Kanal 38 (Kayseri)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Tv 41 (Kocaeli)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "394 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Kanal 33 (Mersin)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Trakya Türk (Tekirdağ)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "888",
+    "Kanal": "Elmas67 (Zonguldak)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "889",
+    "Kanal": "As TV (Bursa)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "889",
+    "Kanal": "Es TV (Eskişehir)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "889",
+    "Kanal": "Kay TV (Kayseri)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "889",
+    "Kanal": "Sun TV (Mersin)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "889",
+    "Kanal": "Kanal Z (Zonguldak)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "458 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "890",
+    "Kanal": "TVON6 (Bursa)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "891",
+    "Kanal": "TV1 (Kayseri)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "892",
+    "Kanal": "OlayTürk (Kayseri)",
+    "Tip": "Yerel",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "900",
+    "Kanal": "TRT 1",
+    "Tip": "SD",
+    "Dijital Frekans": "530 MHz 256 QAM",
+    "Analog Frekans": "S04"
+  },
+  {
+    "No": "901",
+    "Kanal": "Show",
+    "Tip": "SD",
+    "Dijital Frekans": "338 MHz 256 QAM",
+    "Analog Frekans": "S08"
+  },
+  {
+    "No": "902",
+    "Kanal": "Atv",
+    "Tip": "SD",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": "S07"
+  },
+  {
+    "No": "903",
+    "Kanal": "Kanal 7",
+    "Tip": "SD",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": "S13"
+  },
+  {
+    "No": "904",
+    "Kanal": "Brt 3",
+    "Tip": "SD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "905",
+    "Kanal": "Star",
+    "Tip": "SD",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": "S10"
+  },
+  {
+    "No": "907",
+    "Kanal": "TV 8",
+    "Tip": "SD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": "C12"
+  },
+  {
+    "No": "908",
+    "Kanal": "Kanal D",
+    "Tip": "SD",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": "S09"
+  },
+  {
+    "No": "909",
+    "Kanal": "FOX",
+    "Tip": "SD",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": "S11"
+  },
+  {
+    "No": "910",
+    "Kanal": "Haber Global",
+    "Tip": "SD",
+    "Dijital Frekans": "514 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "911",
+    "Kanal": "TRT Spor",
+    "Tip": "SD",
+    "Dijital Frekans": "418 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "912",
+    "Kanal": "A Spor",
+    "Tip": "SD",
+    "Dijital Frekans": "442 MHz 256 QAM",
+    "Analog Frekans": "S16"
+  },
+  {
+    "No": "913",
+    "Kanal": "TGRT Haber",
+    "Tip": "SD",
+    "Dijital Frekans": "482 MHz 256 QAM",
+    "Analog Frekans": "S12"
+  },
+  {
+    "No": "914",
+    "Kanal": "TRT Çocuk",
+    "Tip": "SD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": "C06"
+  },
+  {
+    "No": "915",
+    "Kanal": "TRT Belgesel",
+    "Tip": "SD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "916",
+    "Kanal": "National Geographic",
+    "Tip": "SD",
+    "Dijital Frekans": "474 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "917",
+    "Kanal": "National Geographic Wild",
+    "Tip": "SD",
+    "Dijital Frekans": "410 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "918",
+    "Kanal": "TRT Haber",
+    "Tip": "SD",
+    "Dijital Frekans": "530 MHz 256 QAM",
+    "Analog Frekans": "S05"
+  },
+  {
+    "No": "919",
+    "Kanal": "A Haber",
+    "Tip": "SD",
+    "Dijital Frekans": "426 MHz 256 QAM",
+    "Analog Frekans": "S15"
+  },
+  {
+    "No": "920",
+    "Kanal": "NTV",
+    "Tip": "SD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": "S17"
+  },
+  {
+    "No": "921",
+    "Kanal": "CNN Türk",
+    "Tip": "SD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": "C11"
+  },
+  {
+    "No": "922",
+    "Kanal": "HABERTÜRK TV",
+    "Tip": "SD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": "C07"
+  },
+  {
+    "No": "923",
+    "Kanal": "Ülke TV",
+    "Tip": "SD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": "C08"
+  },
+  {
+    "No": "925",
+    "Kanal": "Bloomberg HT",
+    "Tip": "SD",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": "C10"
+  },
+  {
+    "No": "926",
+    "Kanal": "TLC",
+    "Tip": "SD",
+    "Dijital Frekans": "482 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "928",
+    "Kanal": "a2",
+    "Tip": "SD",
+    "Dijital Frekans": "362 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "929",
+    "Kanal": "360",
+    "Tip": "SD",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": "S14"
+  },
+  {
+    "No": "930",
+    "Kanal": "24",
+    "Tip": "SD",
+    "Dijital Frekans": "506 MHz 256 QAM",
+    "Analog Frekans": "C05"
+  },
+  {
+    "No": "931",
+    "Kanal": "DMAX",
+    "Tip": "SD",
+    "Dijital Frekans": "490 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "932",
+    "Kanal": "TRT EBA TV İLKOKUL",
+    "Tip": "SD",
+    "Dijital Frekans": "458 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "933",
+    "Kanal": "TRT EBA TV ORTAOKUL",
+    "Tip": "SD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "934",
+    "Kanal": "TRT EBA TV LİSE",
+    "Tip": "SD",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1000",
+    "Kanal": "TRT FM",
+    "Tip": "Radyo",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1001",
+    "Kanal": "TRT World",
+    "Tip": "Radyo",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1002",
+    "Kanal": "TRT Radyo 1",
+    "Tip": "Radyo",
+    "Dijital Frekans": "450 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1003",
+    "Kanal": "TRT Radyo 3",
+    "Tip": "Radyo",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1005",
+    "Kanal": "TRT Nağme",
+    "Tip": "Radyo",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1006",
+    "Kanal": "TRT Türkü",
+    "Tip": "Radyo",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1007",
+    "Kanal": "Polis Radyosu",
+    "Tip": "Radyo",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1008",
+    "Kanal": "Kral Pop",
+    "Tip": "Radyo",
+    "Dijital Frekans": "434 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1009",
+    "Kanal": "Kral FM",
+    "Tip": "Radyo",
+    "Dijital Frekans": "522 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1010",
+    "Kanal": "Power FM",
+    "Tip": "Radyo",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  },
+  {
+    "No": "1011",
+    "Kanal": "Power Türk FM",
+    "Tip": "Radyo",
+    "Dijital Frekans": "498 MHz 256 QAM",
+    "Analog Frekans": " "
+  }
+]

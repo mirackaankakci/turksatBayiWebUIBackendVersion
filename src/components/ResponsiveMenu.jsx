@@ -55,11 +55,29 @@ export default function ResponsiveMenu() {
             Başvur
           </a>
         </div>
-        <i
-          className="bx bx-menu xl:hidden block text-5xl cursor-pointer text-sky-400"
-          id="menu-icon"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        ></i>
+        
+        {/* Mobil görünümde menü butonu ve başvur butonu yan yana */}
+        <div className="xl:hidden flex items-center gap-3">
+          {/* Hemen Başvur Butonu - Mobil (hazır olan animated-button sınıfını kullanarak) */}
+          <a
+            href="/hemenbasvur"
+            className="animated-button hover:scale-105 transition-all"
+            style={{ padding: '10px 7px', fontSize: '14px' }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Başvur
+          </a>
+          
+          {/* Menü butonu */}
+          <i
+            className="bx bx-menu text-4xl cursor-pointer text-sky-400"
+            id="menu-icon"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          ></i>
+        </div>
 
         {/*Mobil Menu */}
         <div
@@ -96,7 +114,7 @@ export default function ResponsiveMenu() {
                 <NavLink to={"/tarifeler"} onClick={handleLinkClick}>Tarifeler</NavLink>
               </li>
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/cihazlar"} onClick={handleLinkClick}>Modemler</NavLink>
+                <NavLink to={"/cihazlar"} onClick={handleLinkClick}>Cihazlar</NavLink>
               </li>
             </ul>
           )}
@@ -116,13 +134,14 @@ export default function ResponsiveMenu() {
           {activeMenu === "televizyon" && (
             <ul className="flex flex-col ml-4">
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"} onClick={handleLinkClick}>Paketler</NavLink>
+                <NavLink to={"/kablotv/paketler"} onClick={handleLinkClick}>Paketler</NavLink>
+                
               </li>
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"} onClick={handleLinkClick}>Cihazlar</NavLink>
+                <NavLink to={"/kablotv/cihazlar"} onClick={handleLinkClick}>Cihazlar</NavLink>
               </li>
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"} onClick={handleLinkClick}>Frekans Listesi</NavLink>
+                <NavLink to={"/kablotv/frekans-listesi"} onClick={handleLinkClick}>Frekans Listesi</NavLink>
               </li>
             </ul>
           )}
@@ -135,7 +154,7 @@ export default function ResponsiveMenu() {
             }
             className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer flex justify-between items-center"
           >
-            DİĞER HİZMETLER
+            KABLO SES
             <span className="text-sky-400  hover:text-white">
               {activeMenu === "diger hizmetler" ? "▲" : "▼"}
             </span>
@@ -144,39 +163,25 @@ export default function ResponsiveMenu() {
           {activeMenu === "diger hizmetler" && (
             <ul className="flex flex-col ml-4">
               <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Kablo Ses</NavLink>
+                <NavLink to={"/"}>Tarifeler</NavLink>
               </li>
-              <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Kablo Bulut</NavLink>
-              </li>
-              <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Türksat Siber</NavLink>
-              </li>
-              <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>Eğitim Paketleri</NavLink>
-              </li>
+
             </ul>
           )}
 
           <NavLink
-            onClick={() =>
-              setActiveMenu(activeMenu === "destek" ? null : "destek")
-            }
-            className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer flex justify-between items-center"
-          >
-            DESTEK
-            <span className="text-sky-400  hover:text-white">
-              {activeMenu === "destek" ? "▲" : "▼"}
-            </span>
+            to="/servisler"
+            onClick={handleLinkClick}
+            className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
+            SERVİSLER
           </NavLink>
 
-          {activeMenu === "destek" && (
-            <ul className="flex flex-col ml-4">
-              <li className="p-3 hover:bg-sky-100 cursor-pointer">
-                <NavLink to={"/"}>S.S.S</NavLink>
-              </li>
-            </ul>
-          )}
+          <NavLink
+            to="/i̇letişim"
+            onClick={handleLinkClick}
+            className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
+            İLETİŞİM 
+          </NavLink>
 
           {/* Mobil Menu - Kampanyalar butonu */}
           <NavLink
@@ -188,7 +193,7 @@ export default function ResponsiveMenu() {
             <span></span>
             <span></span>
             <span></span>
-            Kampanyalar
+             <a href="tel:08508066000" className="hover:underline">0850 806 60 00</a>
           </NavLink>
         </div>
       </div>
@@ -198,12 +203,12 @@ export default function ResponsiveMenu() {
           } hidden xl:flex`}
       >
         <NavLink to="/kampanyalar" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
-          KAMPANYALAR
+          Kampanyalar
         </NavLink>
 
         {/* KABLONET dropdown menüsü */}
         <div className="relative group list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
-          <NavLink to={"/kampanyalar/kablonet"}>KABLONET</NavLink>
+          <NavLink to={"/kampanyalar"}>Kablonet</NavLink>
           <ul className="absolute left-0 w-[170px] mt-5 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
             <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
               <NavLink to={"/tarifeler"}>Tarifeler</NavLink>
@@ -216,39 +221,43 @@ export default function ResponsiveMenu() {
 
         {/* TELEVİZYON dropdown menüsü */}
         <div className="relative group list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
-          TELEVİZYON
+            <NavLink to={"/kampanyalar/kablotv"}>Kablo TV</NavLink>
           <ul className="absolute left-0 w-[170px] mt-5 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
             <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
-              <NavLink to={"/tarifeler"}>Paketler</NavLink>
+              <NavLink to={"/kablotv/paketler"}>Paketler</NavLink>
             </li>
             <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
-              <NavLink to={"/"}>Servisler</NavLink>
+              <NavLink to={"/kablotv/cihazlar"}>Cihazlar</NavLink>
+            </li>
+            <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
+              <NavLink to={"/kablotv/frekans-listesi"}>Frekans Listesi</NavLink>
             </li>
           </ul>
         </div>
 
         {/* DİĞER HİZMETLER menüsü */}
         <div className="relative group list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
-          DİĞER HİZMETLER
+          Kablo Ses
           <ul className="absolute left-0 w-[170px] mt-5 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
             <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
-              <NavLink to={"/"}>Kablo Ses</NavLink>
+              <NavLink to={"/"}>Tarifeler</NavLink>
             </li>
             <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
-              <NavLink to={"/"}>Kablo Bulut</NavLink>
+              <NavLink to={"/"}>Özellikler</NavLink>
             </li>
           </ul>
         </div>
 
-        {/* DESTEK menüsü */}
-        <div className="relative group list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
-          DESTEK
-          <ul className="absolute left-0 w-[170px] mt-5 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
-            <li className="p-3 hover:bg-sky-200 cursor-pointer hover:rounded-xl">
-              <NavLink to={"/"}>S.S.S</NavLink>
-            </li>
-          </ul>
-        </div>
+      
+
+
+
+        <NavLink to="/servisler" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
+          Servisler
+        </NavLink>
+        <NavLink to="/i̇letişim" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
+          İletişim
+        </NavLink>
       </div>
     </nav>
   );

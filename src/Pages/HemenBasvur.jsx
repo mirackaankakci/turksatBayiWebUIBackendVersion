@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   FaUserAlt,
   FaPhoneAlt,
@@ -6,52 +6,165 @@ import {
   FaRocket,
   FaArrowRight,
 } from "react-icons/fa";
-
+import axios from "axios"; // axios ekleyin (npm install axios)
 import serit from "../assets/serit.png";
 
 const HemenBasvur = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
+    kampanyaId: "", // URL'den kampanya ID'si alınabilir
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
+
+  // Telefon numarasını formatla
+  const formatPhoneNumber = (phone) => {
+    // Boşluk ve özel karakterleri temizle
+    let formattedPhone = phone.replace(/\s+/g, "");
+    formattedPhone = formattedPhone.replace(/[^\d+]/g, "");
+
+    // + işaretini kaldır
+    formattedPhone = formattedPhone.replace(/\+/g, "");
+
+    // 90 ile başlıyorsa ve 0 yoksa düzelt
+    if (formattedPhone.startsWith("90") && formattedPhone.length > 2) {
+      formattedPhone = "0" + formattedPhone.substring(2);
+    }
+    // Başında 0 yoksa ekle
+    else if (!formattedPhone.startsWith("0") && formattedPhone.length > 0) {
+      formattedPhone = "0" + formattedPhone;
+    }
+
+    // Maksimum 11 karakter (0 dahil)
+    if (formattedPhone.length > 11) {
+      formattedPhone = formattedPhone.substring(0, 11);
+    }
+
+    return formattedPhone;
+  };
+
+  const validatePhoneNumber = (phone) => {
+    // Türkiye telefon formatı kontrolü: 05XX XXX XXXX
+    const turkishPhoneRegex = /^0[5][0-9]{9}$/;
+
+    if (!phone) {
+      return "Telefon numarası gerekli";
+    } else if (!turkishPhoneRegex.test(phone)) {
+      return "Geçerli bir cep telefonu numarası girin (05XX XXX XXXX)";
+    }
+
+    return "";
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+
+    if (name === "phoneNumber") {
+      const formattedPhone = formatPhoneNumber(value);
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: formattedPhone,
+      }));
+
+      // Telefon doğrulama hatasını temizle (anlık doğrulama yapma)
+      if (phoneError) {
+        setPhoneError("");
+      }
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  // URL'den kampanya ID'sini al
+  useEffect(() => {
+    // URL'den kampanya ID'sini alabilirsiniz
+    const params = new URLSearchParams(window.location.search);
+    const kampanyaId = params.get("kampanyaId") || "";
+
+    setFormData((prevState) => ({
+      ...prevState,
+      kampanyaId,
+    }));
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.fullName || !formData.phoneNumber) {
-      alert("Lütfen tüm alanları doldurunuz.");
+    // Form doğrulama
+    if (!formData.fullName) {
+      alert("Lütfen adınızı ve soyadınızı girin.");
+      return;
+    }
+
+    // Telefon numarası doğrulama
+    const phoneError = validatePhoneNumber(formData.phoneNumber);
+    if (phoneError) {
+      setPhoneError(phoneError);
       return;
     }
 
     setIsSubmitting(true);
 
-    // API çağrısı simülasyonu
-    setTimeout(() => {
+    try {
+      // API'ye gönderilecek verileri hazırla
+      const phone = encodeURIComponent(formData.phoneNumber);
+      const firstname = encodeURIComponent(formData.fullName);
+      const column14 = encodeURIComponent(formData.kampanyaId || "");
+      const address = "FORM";
+
+      // API URL'sini proxy yoluyla çağırma
+      const apiUrl = "/api/service/1.0/add/";
+      const apiKey = "c1d1b885397a6e5ab26e77343201ea89"; // API anahtarı
+
+      // Axios ile API isteği
+      const response = await axios.post(
+        apiUrl,
+        {
+          apikey: apiKey,
+          phone1: phone,
+          did: "8508066000",
+          symbolid: "8",
+          projectid: "5",
+          firstname: firstname,
+          column14: column14,
+          address: address,
+          ca: "1",
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+
+      console.log("API Yanıtı:", response.data);
+
+      // Başarılı işlem
       setIsSubmitting(false);
       setSubmitSuccess(true);
 
-      // Form başarıyla gönderildikten sonra formu sıfırla
+      // Formu temizle
       setFormData({
         fullName: "",
         phoneNumber: "",
+        kampanyaId: formData.kampanyaId, // kampanyaId'yi koru
       });
 
-      // Başarı mesajını 3 saniye sonra kaldır
+      // 3 saniye sonra başarı mesajını kaldır
       setTimeout(() => {
         setSubmitSuccess(false);
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      console.error("API Hatası:", error);
+      setIsSubmitting(false);
+      alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+    }
   };
 
   return (
@@ -107,11 +220,16 @@ const HemenBasvur = () => {
               <input
                 type="tel"
                 name="phoneNumber"
-                placeholder="Telefon Numaranız"
+                placeholder="Telefon Numaranız (05XX XXX XXXX)"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className="w-full pl-10 pr-4 py-4 rounded-lg bg-gray-50 border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-300 focus:outline-none text-gray-700"
+                className={`w-full pl-10 pr-4 py-4 rounded-lg bg-gray-50 border ${
+                  phoneError ? "border-red-500" : "border-gray-300"
+                } focus:border-blue-500 focus:ring-2 focus:ring-blue-300 focus:outline-none text-gray-700`}
               />
+              {phoneError && (
+                <p className="text-red-500 text-xs mt-1">{phoneError}</p>
+              )}
             </div>
 
             <button
@@ -163,8 +281,7 @@ const HemenBasvur = () => {
           <div className="text-center text-sm text-gray-500 mt-4">
             <p>
               Müşteri temsilcimiz, sizi gün içerisinde{" "}
-              <span className="font-medium">09:00 - 23:00</span> saatleri
-              arasında <span className="font-medium">0850 802 22 22</span>{" "}
+            <span className="font-medium">0850 806 60 00</span>{" "}
               numaralı hattımızdan arayarak güncel kampanyalar ve altyapınızla
               ilgili bilgilendirme yapacaktır.
             </p>
