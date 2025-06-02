@@ -16,19 +16,20 @@ import { toast } from 'react-toastify';
 
 function HomePage() {
   const navigate = useNavigate();
-  // Seçilen kategoriyi tutacak state değişkeni - kablonet olarak değiştirildi
-  const [selectedCategory, setSelectedCategory] = useState("kablonet"); // internet yerine kablonet
+  // Seçilen kategoriyi tutacak state değişkeni - "all" olarak değiştirildi
+  const [selectedCategory, setSelectedCategory] = useState("all"); // "kablonet" yerine "all"
 
   // Navigasyon öğelerini ve kategori eşleştirmelerini güncelleyelim
   const navItems = [
     // Tüm kampanyalar seçeneği eklendi
     { name: "Tüm Kampanyalar", href: "#", category: "all", icon: <FaSearch className="inline-block mr-1" /> },
-    { name: "Kablonet", href: "#", category: "kablonet", icon: <FaWifi className="inline-block mr-1" /> }, // internet yerine kablonet
+    { name: "Kablonet", href: "#", category: "internet", icon: <FaWifi className="inline-block mr-1" /> }, // internet yerine kablonet
     { name: "Kablo TV", href: "#", category: "tv", icon: <FaTv className="inline-block mr-1" /> },
     { name: "Kabloses", href: "#", category: "phone", icon: <FaPhoneAlt className="inline-block mr-1" /> },
     { name: "Mevcut Muşteri", href: "#", category: "mevcutmusteri", icon: <FaVideoSlash className="inline-block mr-1" /> },
   ];
   
+  // Form verisi için state
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -42,43 +43,79 @@ function HomePage() {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    
+    // Telefon numarası formatını düzenle
+    if (name === "phone") {
+      // Boşluk ve özel karakterleri temizle, sadece rakam bırak
+      let formattedValue = value.replace(/[^\d]/g, "");
+      
+      // 0 ile başlamıyorsa başına 0 ekle (11 haneden az ise)
+      if (formattedValue.length > 0 && !formattedValue.startsWith("0") && formattedValue.length < 11) {
+        formattedValue = "0" + formattedValue;
+      }
+      
+      // Maksimum 11 hane
+      if (formattedValue.length > 11) {
+        formattedValue = formattedValue.substring(0, 11);
+      }
+      
+      // Görsel formatlama (5xx xxx xx xx)
+      if (formattedValue.length >= 4) {
+        formattedValue = formattedValue.replace(/(\d{4})(\d{0,3})(\d{0,2})(\d{0,2})/, 
+          (match, p1, p2, p3, p4) => {
+            let formatted = p1;
+            if (p2) formatted += " " + p2;
+            if (p3) formatted += " " + p3;
+            if (p4) formatted += " " + p4;
+            return formatted;
+          });
+      }
+      
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: formattedValue,
+      }));
+      
+      // Hata mesajını temizle
+      if (submitStatus.status === 'error') {
+        setSubmitStatus({ status: null, message: '' });
+      }
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
-  // WordPress'ten alınan API entegrasyonu
+  // Form gönderimi - HemenBasvur sayfası ile aynı yapı
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Form doğrulama
-    if (!formData.name || !formData.phone) {
+    if (!formData.name.trim()) {
       setSubmitStatus({
         status: 'error',
-        message: 'Lütfen adınızı ve telefon numaranızı giriniz.'
+        message: 'Lütfen adınızı ve soyadınızı girin.'
       });
       return;
     }
-    
-    // Telefon numarası düzenleme ve doğrulama
-    let cleanPhone = formData.phone.replace(/\s+/g, ''); // Boşlukları kaldır
-    cleanPhone = cleanPhone.replace(/[+]/g, ''); // + işaretini kaldır
-    
-    // Başında 0 yoksa ve 90 ile başlıyorsa düzeltme yap
-    if (cleanPhone.substring(0, 1) !== '0' && cleanPhone.substring(0, 2) === '90') {
-      // 90'ı 0 ile değiştir
-      cleanPhone = '0' + cleanPhone.substring(2);
-    } else if (cleanPhone.substring(0, 1) !== '0') {
-      // Başında 0 yoksa başına 0 ekle
-      cleanPhone = '0' + cleanPhone;
-    }
-    
-    // Telefon numarası format kontrolü
-    if (!/^\d{10,11}$/.test(cleanPhone.replace(/^0/, ''))) {
+
+    if (!formData.phone.trim()) {
       setSubmitStatus({
         status: 'error',
-        message: 'Geçerli bir telefon numarası giriniz. (10 veya 11 haneli)'
+        message: 'Lütfen telefon numaranızı girin.'
+      });
+      return;
+    }
+
+    // Telefon numarası doğrulama (HemenBasvur'daki validatePhoneNumber fonksiyonu)
+    const phoneError = validatePhoneNumber(formData.phone);
+    if (phoneError) {
+      setSubmitStatus({
+        status: 'error',
+        message: phoneError
       });
       return;
     }
@@ -86,89 +123,55 @@ function HomePage() {
     setLoading(true);
     setSubmitStatus({ status: null, message: '' });
 
-    // Hata yakalama ve yanıt işleme kısmını güncelleyelim
     try {
-      // Vite proxy için API endpoint güncellemesi
-      const apiUrl = "/api/service/1.0/add/";
-      const apiKey = "c1d1b885397a6e5ab26e77343201ea89";
-      
-      // API'ye gönderilecek veriyi düzenliyoruz - WordPress'teki formatla uyumlu
-      const requestBody = new URLSearchParams();
-      requestBody.append("apikey", apiKey);
-      requestBody.append("phone1", cleanPhone);
-      requestBody.append("did", "8508066000");
-      requestBody.append("symbolid", "8");
-      requestBody.append("projectid", "5");
-      requestBody.append("firstname", formData.name);
-      requestBody.append("column14", "Anasayfa Form");
-      requestBody.append("address", "FORM");
-      requestBody.append("ca", "1");
-      
-      console.log("API isteği gönderiliyor:", Object.fromEntries(requestBody));
-      
-      const response = await axios.post(apiUrl, requestBody, {
+      // HemenBasvur sayfasındaki ile aynı API çağrısı
+      const response = await axios.post('/kaydet.php', {
+        adsoyad: formData.name.trim(),
+        telefon: formData.phone.trim(),
+        kampanyaId: 'Anasayfa Form'
+      }, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+          'Content-Type': 'application/json'
+        },
+        timeout: 30000 // 30 saniye timeout
       });
-      
-      console.log("API yanıtı:", response.data);
-      
-      // API yanıtını daha ayrıntılı analiz edelim
-      if (response.data) {
-        // Tüm olası başarı senaryolarını kontrol edelim
-        if (
-          response.data.result === "success" || 
-          response.data.status === "success" || 
-          response.data.success === true ||
-          response.status === 200
-        ) {
-          setSubmitStatus({
-            status: 'success',
-            message: 'Başvurunuz başarıyla alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.'
-          });
-          
-          setFormData({ name: '', phone: '' });
-          
-          if (typeof toast === 'function') {
-            toast.success('Başvurunuz başarıyla gönderildi!');
-          }
-        } else {
-          // API bir hata mesajı döndüyse onu gösterelim
-          const apiErrorMessage = 
-            response.data.message || 
-            response.data.errormessage || 
-            response.data.error || 
-            'Beklenmeyen bir yanıt alındı';
-          
-          console.warn("API başarısız yanıt:", response.data);
-          
-          setSubmitStatus({
-            status: 'error',
-            message: `API yanıtı: ${apiErrorMessage}`
-          });
+
+      console.log("API Yanıtı:", response.data);
+
+      if (response.data && response.data.success === true) {
+        setSubmitStatus({
+          status: 'success',
+          message: 'Başvurunuz başarıyla alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.'
+        });
+        
+        // Formu temizle
+        setFormData({ name: '', phone: '' });
+        
+        // Toast mesajı (eğer varsa)
+        if (typeof toast === 'function') {
+          toast.success('Başvurunuz başarıyla gönderildi!');
         }
+
+        // 5 saniye sonra başarı mesajını kaldır
+        setTimeout(() => {
+          setSubmitStatus({ status: null, message: '' });
+        }, 5000);
+
       } else {
-        throw new Error('API yanıtı boş veya geçersiz');
+        throw new Error(response.data?.error || 'İşlem başarısız');
       }
+
     } catch (error) {
-      console.error('Başvuru gönderiminde hata:', error);
+      console.error("API Hatası:", error);
       
-      // API'den dönen hata yanıtlarını daha ayrıntılı işleyelim
-      let errorMessage = 'Başvuru işlemi sırasında bir hata oluştu.';
+      let errorMessage = 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
       
-      if (error.response) {
-        // Sunucu yanıt verdi ama başarısız durum kodu döndü
-        console.error('Hata detayı:', error.response.data);
-        errorMessage = error.response.data.message || error.response.data.errormessage || errorMessage;
-      } else if (error.request) {
-        // İstek yapıldı ama yanıt alınamadı
-        console.error('Yanıt alınamadı:', error.request);
-        errorMessage = 'Sunucudan yanıt alınamadı. Lütfen internet bağlantınızı kontrol edin.';
-      } else {
-        // İstek yapılırken başka bir hata oluştu
-        console.error('İstek hatası:', error.message);
-        errorMessage = error.message;
+      if (error.response?.data?.error) {
+        errorMessage = error.response.data.error;
+      } else if (error.code === 'ECONNABORTED') {
+        errorMessage = 'İşlem zaman aşımına uğradı. Lütfen tekrar deneyin.';
+      } else if (error.response?.status === 400) {
+        errorMessage = 'Form bilgileri hatalı. Lütfen kontrol edin.';
       }
       
       setSubmitStatus({
@@ -316,9 +319,13 @@ function HomePage() {
               </div>
             </div>
             
-            {/* Form durum mesajları */}
+            {/* Form durum mesajları - Görünümü iyileştirme */}
             {submitStatus.status && (
-              <div className={`mt-2 text-sm ${submitStatus.status === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+              <div className={`mt-2 p-2 rounded text-sm text-center ${
+                submitStatus.status === 'success' 
+                  ? 'bg-green-50 text-green-700 border border-green-200' 
+                  : 'bg-red-50 text-red-700 border border-red-200'
+              }`}>
                 {submitStatus.message}
               </div>
             )}
@@ -466,5 +473,28 @@ function HomePage() {
     </div>
   );
 }
+
+// Telefon numarası doğrulama fonksiyonu (HemenBasvur'dan)
+const validatePhoneNumber = (phone) => {
+  if (!phone) {
+    return "Telefon numarası gereklidir.";
+  }
+
+  // Sadece rakam ve + işaretine izin ver
+  const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
+  
+  if (!/^[\d+]+$/.test(cleanPhone)) {
+    return "Telefon numarası sadece rakam içermelidir.";
+  }
+
+  // Türk telefon numarası formatları için kontrol
+  const phonePattern = /^(\+90|90|0)?\s?[1-9][0-9]{2}\s?[0-9]{3}\s?[0-9]{2}\s?[0-9]{2}$/;
+  
+  if (!phonePattern.test(cleanPhone)) {
+    return "Geçerli bir telefon numarası girin. (Örn: 0532 123 45 67)";
+  }
+
+  return "";
+};
 
 export default HomePage;

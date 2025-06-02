@@ -6,8 +6,10 @@ import { FaWifi, FaTv, FaPhoneAlt, FaCheckCircle, FaInfoCircle, FaArrowRight, Fa
 import { styleTable } from '../utils/htmlUtils';
 import axios from "axios";
 
+
 const CampaignDetail = () => {
-  const { kampanyaId } = useParams();
+  // kampanyaId yerine kampanyaSlug kullanın
+  const { kampanyaSlug } = useParams();
   const navigate = useNavigate();
   const [selectedTerm, setSelectedTerm] = useState('12'); // '24' yerine '12' olarak değiştiriyoruz
   const [campaign, setCampaign] = useState(null);
@@ -18,7 +20,7 @@ const CampaignDetail = () => {
     name: "",
     phone: "",
     agreement: false,
-    kampanyaId: campaign?.id || ""
+    kampanyaId: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -92,7 +94,7 @@ const CampaignDetail = () => {
     e.preventDefault();
 
     // Form doğrulama
-    if (!formData.name) {
+    if (!formData.name.trim()) {
       alert("Lütfen adınızı ve soyadınızı girin.");
       return;
     }
@@ -105,58 +107,57 @@ const CampaignDetail = () => {
     }
 
     setIsSubmitting(true);
+    setPhoneError("");
 
     try {
-      // API'ye gönderilecek verileri hazırla
-      const phone = encodeURIComponent(formData.phone);
-      const firstname = encodeURIComponent(formData.name);
-      const column14 = encodeURIComponent(formData.kampanyaId || campaign?.id || "");
-      const address = "FORM";
-
-      // API URL'sini proxy yoluyla çağırma
-      const apiUrl = "/api/service/1.0/add/";
-      const apiKey = "c1d1b885397a6e5ab26e77343201ea89"; // API anahtarı
-
-      // Axios ile API isteği - URL encode edilmiş parametre biçimi
-      const params = new URLSearchParams();
-      params.append('apikey', apiKey);
-      params.append('phone1', phone);
-      params.append('did', '8508066000');
-      params.append('symbolid', '8');
-      params.append('projectid', '5');
-      params.append('firstname', firstname);
-      params.append('column14', column14);
-      params.append('address', address);
-      params.append('ca', '1');
-
-      const response = await axios.post(apiUrl, params, {
+      // PHP dosyasına gönderilecek veriler (HemenBasvur ile aynı format)
+      const response = await axios.post('/kaydet.php', {
+        adsoyad: formData.name.trim(),
+        telefon: formData.phone.trim(),
+        kampanyaId: campaign?.id || formData.kampanyaId || 'Campaign Detail Form'
+      }, {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+          'Content-Type': 'application/json'
+        },
+        timeout: 30000 // 30 saniye timeout
       });
 
       console.log("API Yanıtı:", response.data);
 
-      // Başarılı işlem
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
+      if (response.data && response.data.success === true) {
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
 
-      // Formu temizle
-      setFormData({
-        name: "",
-        phone: "",
-        agreement: false,
-        kampanyaId: formData.kampanyaId // kampanyaId'yi koru
-      });
+        // Formu temizle
+        setFormData({
+          name: "",
+          phone: "",
+          agreement: false,
+          kampanyaId: campaign?.id || ""
+        });
 
-      // 3 saniye sonra başarı mesajını kaldır
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 3000);
+        // 5 saniye sonra başarı mesajını kaldır
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+
+      } else {
+        throw new Error(response.data?.error || 'İşlem başarısız');
+      }
+
     } catch (error) {
       console.error("API Hatası:", error);
       setIsSubmitting(false);
-      alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+      
+      let errorMessage = 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+      
+      if (error.response?.data?.error) {
+        errorMessage = error.response.data.error;
+      } else if (error.code === 'ECONNABORTED') {
+        errorMessage = 'İşlem zaman aşımına uğradı. Lütfen tekrar deneyin.';
+      }
+      
+      alert(errorMessage);
     }
   };
 
@@ -166,8 +167,8 @@ const CampaignDetail = () => {
     setLoading(true);
 
     setTimeout(() => {
-      // URL'den gelen ID'ye göre kampanya bul (gerçek uygulamada bu bir API çağrısı olurdu)
-      const foundCampaign = CampaignData.find(camp => camp.id.toString() === kampanyaId);
+      // ID yerine slug ile kampanyayı bulun
+      const foundCampaign = CampaignData.find(camp => camp.slug === kampanyaSlug);
 
       if (foundCampaign) {
         setCampaign(foundCampaign);
@@ -178,7 +179,7 @@ const CampaignDetail = () => {
 
       setLoading(false);
     }, 500);
-  }, [kampanyaId, navigate]);
+  }, [kampanyaSlug, navigate]);
 
   //  useEffect ile kampanya yüklendiğinde 12 ay taahhüt kontrolü yapın
   useEffect(() => {
@@ -195,6 +196,16 @@ const CampaignDetail = () => {
       else {
         setSelectedTerm('');
       }
+    }
+  }, [campaign]);
+
+  // Campaign yüklendiğinde kampanyaId'yi güncelle
+  useEffect(() => {
+    if (campaign) {
+      setFormData(prevState => ({
+        ...prevState,
+        kampanyaId: campaign.id
+      }));
     }
   }, [campaign]);
 
@@ -246,7 +257,7 @@ const CampaignDetail = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-16">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Banner */}
       <div className="relative mx-auto w-full px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-24 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2] text-white">
         <img
@@ -357,13 +368,13 @@ const CampaignDetail = () => {
                 {/* Tek seçenek varsa bilgilendirme */}
                 {(campaign.taahut12Fiyat && !campaign.taahut24Fiyat) && (
                   <div className="text-xs sm:text-sm text-blue-200 mt-2">
-                    Sadece 12 Ay taahhütlü seçenek mevcuttur.
+                    Sadece 12 Ay taahütlü seçenek mevcuttur.
                   </div>
                 )}
                 
                 {(!campaign.taahut12Fiyat && campaign.taahut24Fiyat) && (
                   <div className="text-xs sm:text-sm text-blue-200 mt-2">
-                    Sadece 24 Ay taahhütlü seçenek mevcuttur.
+                    Sadece 24 Ay taahütlü seçenek mevcuttur.
                   </div>
                 )}
               </div>
@@ -593,7 +604,7 @@ const CampaignDetail = () => {
                             <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                               <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                             </svg>
-                            0850 806 60 00
+                            <a href="tel:08508066000">0850 806 60 00</a>
                           </p>
                           <p className="flex items-center text-gray-700">
                             <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
@@ -702,20 +713,20 @@ const CampaignDetail = () => {
                           <ul className="space-y-2 text-sm text-gray-700">
                             <li className="flex items-start">
                               <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                              </svg>
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                </svg>
                               <span>Kiralanan cihazlar için teknik destek ücretsizdir.</span>
                             </li>
                             <li className="flex items-start">
                               <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                              </svg>
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                </svg>
                               <span>Arıza durumunda yenisi ile değişim yapılır.</span>
                             </li>
                             <li className="flex items-start">
                               <svg className="w-5 h-5 mr-2 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
-                              </svg>
+                                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                                </svg>
                               <span>Teknolojik cihazlar ile daha stabil ve kesintisiz hizmet.</span>
                             </li>
                           </ul>
@@ -739,6 +750,36 @@ const CampaignDetail = () => {
               </div>
 
               <div className="p-4 sm:p-6">
+                {/* Başarı Mesajı */}
+                {submitSuccess && (
+                  <div className="mb-4 p-4 bg-green-50 border-l-4 border-green-500 text-green-700 rounded">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <svg
+                          className="h-5 w-5 text-green-600"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <div className="ml-3">
+                        <p className="font-medium">
+                          Başvurunuz başarıyla alınmıştır!
+                        </p>
+                        <p className="text-sm mt-1">
+                          En kısa sürede sizinle iletişime geçeceğiz.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Ad Soyad</label>
@@ -770,23 +811,6 @@ const CampaignDetail = () => {
                     )}
                   </div>
 
-                  {/*<div className="mb-6">
-                    <div className="flex items-start">
-                      <input
-                        type="checkbox"
-                        id="agreement"
-                        name="agreement"
-                        checked={formData.agreement}
-                        onChange={handleChange}
-                        className="mt-1 mr-2"
-                        required
-                      />
-                      <label htmlFor="agreement" className="text-xs text-gray-600">
-                        <a href="/kvkk" className="text-blue-600 hover:underline" target="_blank">KVKK Aydınlatma Metni</a>'ni okudum, anladım ve kabul ediyorum.
-                      </label>
-                    </div>
-                  </div>*/}
-
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -802,7 +826,7 @@ const CampaignDetail = () => {
 
                 <div className="mt-6 text-center">
                   <p className="text-xs sm:text-sm text-gray-500 mb-2 sm:mb-3">Hemen Arayın</p>
-                  <a href="tel:08505325000" className="text-lg sm:text-xl font-bold text-blue-600 hover:underline">
+                  <a href="tel:08508066000" className="text-lg sm:text-xl font-bold text-blue-600 hover:underline">
                     0850 806 60 00
                   </a>
                 </div>

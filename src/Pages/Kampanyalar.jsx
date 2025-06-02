@@ -128,7 +128,7 @@ const Kampanyalar = () => {
 
       {/* Filtreler ve Arama */}
       <div className="container mx-auto max-w-6xl px-4 py-8">
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8 -mt-16 relative z-10">
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8 -mt-5 sm:-mt-16 relative z-10">
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="flex flex-wrap gap-2">
               <button
@@ -264,7 +264,7 @@ const Kampanyalar = () => {
             Adresinize özel kampanyalarımızı öğrenmek için başvuru formunu doldurun, müşteri temsilcimiz en kısa sürede size ulaşsın.
           </p>
           <Link
-            to="/hemen-basvur"
+            to="/hemenbasvur"
             className="bg-white text-[#2F3D8D] px-8 py-3 rounded-md font-bold text-lg hover:bg-blue-50 transition shadow-lg inline-flex items-center"
           >
             Hemen Başvur <FaArrowRight className="ml-2" />

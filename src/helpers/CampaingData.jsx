@@ -1,7 +1,9 @@
 export const CampaignData = [
   {
     id: 1,
+    slug: "dordu-bir-arada-kampanyasi",
     kampanyaAdi: "Dördü Bir Arada Kampanyası",
+    
     taahut12Fiyat: "495,00 TL",
     taahut24Fiyat: "395,00 TL",
     ozellikler: [
@@ -12,7 +14,7 @@ export const CampaignData = [
     ],
     aciklama: "4 ürünü bir arada cazip fiyatla alın!",
     imgsrc: "/assets/campaignsImg/DorduBirAradaKamp.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
   <thead>
@@ -385,6 +387,7 @@ export const CampaignData = [
 
   {
     id: 2,
+    slug: "aramiza-hosgeldin-kampanyasi",
     kampanyaAdi: "Aramıza Hoşgeldin Kampanyası",
     taahut12Fiyat: "309,00 TL",
     taahut24Fiyat: "",
@@ -394,7 +397,7 @@ export const CampaignData = [
     ],
     aciklama: "12 ay taahhüt karşılığında, ilk 3 ay 309 TL, son 9 ay 409 TL’dir.!",
     imgsrc: "/assets/campaignsImg/aramiza.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
   <thead>
@@ -598,6 +601,7 @@ export const CampaignData = [
 
   {
     id: 3,
+    slug: "aile-boyu-fiber-kampanyasi",
     kampanyaAdi: "Aile Boyu Fiber Kampanyası",
     taahut12Fiyat: "99,00 TL",
     taahut24Fiyat: "",
@@ -609,7 +613,7 @@ export const CampaignData = [
     ],
     aciklama: "",
     imgsrc: "/assets/campaignsImg/aileboyufiber.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
    <thead>
@@ -805,6 +809,7 @@ export const CampaignData = [
 
   {
     id: 4,
+    slug: "her-eve-kablonet-kampanyasi",
     kampanyaAdi: "Her Eve Kablonet Kampanyası",
     taahut12Fiyat: "455,00 TL",
     taahut24Fiyat: "355,00 TL",
@@ -816,9 +821,9 @@ export const CampaignData = [
     ],
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 355 TL, son 12 ay 455 TL’dir.",
     imgsrc: "/assets/campaignsImg/herevekablonetkampanyasi.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
-    ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+    ucretlendirme: `<table style="width: 70%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
    <thead>
     <tr style="background-color: #336aad; color: white;">
       <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
@@ -850,7 +855,7 @@ export const CampaignData = [
 </table>
 
 
-<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+<table style="width: 50%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
 
   <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -1060,6 +1065,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
   {
     id: 5,
+    slug: "hepsi-bir-arada-kampanyasi",
     kampanyaAdi: "Hepsi Bir Arada Kampanyası",
     taahut12Fiyat: "600,00 TL",
     taahut24Fiyat: "500,00 TL",
@@ -1073,7 +1079,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     ],
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 500 TL, son 12 ay 600 TL’dir.",
     imgsrc: "/assets/campaignsImg/hepsi-bir-arada-kampanyasi.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
     <thead>
@@ -1432,6 +1438,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
   {
     id: 6,
+    slug: "taahhutsuz-fiber-net-kampanyasi",
     kampanyaAdi: "Taahhütsüz Fiber Net Kampanyası",
     taahut12Fiyat: "",
     taahut24Fiyat: "449,00 TL",
@@ -1443,7 +1450,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     ],
     aciklama: "Taahhütsüz Sınırsız İnternet.",
     imgsrc: "/assets/campaignsImg/taahhutsuz_kablonet.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
     <thead>
@@ -1670,6 +1677,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
   {
     id: 7,
+    slug: "muhtesem-ikili-kampanyasi",
     kampanyaAdi: "Muhteşem İkili Kampanyası",
     taahut12Fiyat: "",
     taahut24Fiyat: "349,00 TL",
@@ -1680,7 +1688,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     ],
     aciklama: "12 ay taahhütlü olup, ilk 3 ay 349 TL, son 9 ay 439 TL’dir.",
     imgsrc: "/assets/campaignsImg/muhtesem_1.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
     <thead>
@@ -1927,6 +1935,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
   {
     id: 8,
+    slug: "sinema-keyfi-kampanyasi",
     kampanyaAdi: "Sinema Keyfi Kampanyası",
     taahut12Fiyat: "45,00 TL",
     taahut24Fiyat: "40,00 TL",
@@ -2052,6 +2061,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     {
     id: 9,
+    slug: "denemesi-bedava-s-sport-kampanyasi",
     kampanyaAdi: "Denemesi Bedava S Sport Kampanyası",
     taahut12Fiyat: "69,00 TL",
     taahut24Fiyat: "",
@@ -2147,6 +2157,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
   {
     id: 10,
+    slug: "doyasiya-belgesel-kampanyasi",
     kampanyaAdi: "Doyasıya Belgesel Kampanyası",
     taahut12Fiyat: "29,00 TL",
     taahut24Fiyat: "",
@@ -2228,6 +2239,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
    {
     id: 11,
+    slug: "aile-boyu-tv-kampanyasi",
     kampanyaAdi: "Aile Boyu Tv Kampanyası",
     taahut12Fiyat: "119,00 TL",
     taahut24Fiyat: "",
@@ -2362,6 +2374,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
      {
     id: 12,
+    slug: "denemesi-bedava-tv-her-yerde",
     kampanyaAdi: "Denemesi Bedava Tv Her Yerde",
     taahut12Fiyat: "49,00 TL",
     taahut24Fiyat: "",
@@ -2493,6 +2506,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
      {
     id: 13,
+    slug: "mevcut-müsteriye-ozel-her-eve-kablonet",
     kampanyaAdi: "Mevcut Müşteriye Özel Her Eve Kablonet",
     taahut12Fiyat: "330,00 TL",
     taahut24Fiyat: "339,00 TL",
@@ -2710,6 +2724,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
        {
     id: 14,
+    slug: "doyasıya-muhabbet-kampanyası",
     kampanyaAdi: "Doyasıya Muhabbet Kampanyası",
     taahut12Fiyat: "10,00 TL",
     taahut24Fiyat: "9,00 TL",
@@ -2803,6 +2818,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
        {
     id: 15,
+    slug: "mevcut-musteriye-ozel-hepsi-bir-arada",
     kampanyaAdi: "Mevcut Müşteriye Özel Hepsi Bir Arada",
     taahut12Fiyat: "475,00 TL",
     taahut24Fiyat: "449,00 TL",
@@ -3105,6 +3121,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
          {
     id: 16,
+    slug: "mevcut-musteriye-ozel-dordu-bir-arada-kampanyasi",
     kampanyaAdi: "Mevcut Müşteriye Özel Dördü Bir Arada",
     taahut12Fiyat: "370,00 TL",
     taahut24Fiyat: "349,00 TL",
@@ -3393,6 +3410,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
    {
     id: 17,
+    slug: "turksat-isim-kolay-kampanyasi",
     kampanyaAdi: "Türksat İle İşim Kolay Kampanyası",
     taahut12Fiyat: "405,00 TL",
     taahut24Fiyat: "",
@@ -3404,7 +3422,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     ],
     aciklama: "",
     imgsrc: "/assets/campaignsImg/isim_kolay_1.webp",
-    category: "kablonet",
+    category: "internet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
          <thead>

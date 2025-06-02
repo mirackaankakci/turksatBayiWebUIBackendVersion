@@ -12,7 +12,7 @@ import HemenBasvur from './Pages/HemenBasvur'
 import Kampanyalar from './Pages/Kampanyalar'
 import CampaignDetail from './components/CampaignDetail'
 import NetTariffs from './Pages/NetTariffs'
-import NetDevices from './Pages/NetDevices'
+import NetDevices from './Pages/netDevices'
 import KabloTvDevices from './Pages/KabloTvDevices'
 import TvPackets from './Pages/tvPacket'
 import PrivacyPolicy from './Pages/PrivacyPolicy'
@@ -36,7 +36,7 @@ function App() {
           <Route path="/hemenbasvur" element={<HemenBasvur />} />
           <Route path="/kampanyalar" element={<Kampanyalar />} />
           <Route path="/kampanyalar/:kategori" element={<Kampanyalar />} />
-          <Route path="/kampanyalar/:kategori/:kampanyaId" element={<CampaignDetail />} />
+          <Route path="/kampanyalar/:kategori/:kampanyaSlug" element={<CampaignDetail />} />
           <Route path="/tarifeler" element={<NetTariffs/>} />
           <Route path="/cihazlar" element={<NetDevices/>} />
           <Route path="/donate" element={<div>Donate</div>} />
@@ -49,7 +49,7 @@ function App() {
           <Route path="/servisler/:serviceId" element={<Services />} />
           <Route path="/sıkça-sorulan-sorular" element={<Sss />} />
           <Route path="/i̇letişim" element={<Contact />} />
-          <Route path="/altyapisorgulama" element={<InfrastructureInquiry />} />
+          <Route path="/altyapı-sorgulama" element={<InfrastructureInquiry />} />
         </Routes>
       </div>
       <Footer />

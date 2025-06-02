@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import serit from "/assets/serit.png";
 import modemBannerLogo from "/assets/modems/cloud-network.png";
+import { NavLink } from "react-router-dom";
 
 const NetDevices = () => {
     const [selectedDevice, setSelectedDevice] = useState(null);
@@ -215,7 +216,7 @@ const NetDevices = () => {
                                             ))}
 
                                             <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded transition-colors">
-                                                Hemen Başvur
+                                                <NavLink to={"/hemenbasvur"}>Hemen Başvur</NavLink> 
                                             </button>
                                         </div>
                                     </div>

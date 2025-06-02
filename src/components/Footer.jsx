@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaLinkedin } from 'react
 import ustserit from "/assets/ustserit.png";
 import footerlogo from "/assets/footerlogo.svg";
 
-const  Footer = () => {
+const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-[#2F3D8D] to-[#3399D2] text-white mt-[200px]">
       <div className="relative mx-auto w-full px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
@@ -15,16 +15,16 @@ const  Footer = () => {
           className="absolute -top-1 left-0 w-full h-auto pointer-events-none select-none"
           style={{ zIndex: 0 }}
         />
-        
+
         {/* İçeriği sınırlayarak ortaya doğru sığdırıyoruz */}
         <div className="max-w-6xl mx-auto relative z-10">
           {/* Ana Footer Bölümü */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Logo ve Hakkında */}
             <div className="space-y-3">
-              <img 
-                src={footerlogo} 
-                alt="Türksat Kablonet" 
+              <img
+                src={footerlogo}
+                alt="Türksat Kablonet"
                 className="h-12 mb-4"
               />
               <p className="text-sm text-gray-200">
@@ -53,13 +53,31 @@ const  Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4 border-b border-white/30 pb-2">Hızlı Linkler</h3>
               <ul className="space-y-2">
-                {['Kampanyalar', 'İnternet Paketleri', 'TV Paketleri', 'Combo Paketler', 'Kurumsal Çözümler'].map((item) => (
-                  <li key={item}>
-                    <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
+                <li>
+                  <Link to="/kampanyalar" className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
+                    Kampanyalar
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/kampanyalar/kablonet" className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
+                    İnternet Paketleri
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/kampanyalar/kablotv" className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
+                    TV Paketleri
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/kampanyalar/kabloses" className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
+                    Ses Paketleri
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/kampanyalar/mevcutmusteri" className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
+                    Mevcut Müşteri Paketleri
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -67,7 +85,7 @@ const  Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4 border-b border-white/30 pb-2">Destek</h3>
               <ul className="space-y-2">
-                {['Sıkça Sorulan Sorular', 'Online İşlemler', 'Fesih İşlemleri', 'Altyapı Sorgulama', 'İletişim'].map((item) => (
+                {['Sıkça Sorulan Sorular', 'Fesih İşlemleri', 'Altyapı Sorgulama', 'İletişim'].map((item) => (
                   <li key={item}>
                     <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
                       {item}

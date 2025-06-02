@@ -22,7 +22,6 @@ function CampaignCards({ campaign }){
   const getCategorySlug = () => {
     switch(campaign.category) {
       case 'internet':
-      case 'kablonet':
         return 'kablonet';
       case 'tv':
         return 'kablotv';
@@ -167,7 +166,7 @@ function CampaignCards({ campaign }){
           
           {/* Detay butonu */}
           <Link
-            to={`/kampanyalar/${getCategorySlug()}/${campaign.id}`}
+            to={`/kampanyalar/${getCategorySlug()}/${campaign.slug}`}
             className="w-[80%] mx-auto bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium rounded-lg py-2.5 px-6 text-base shadow-lg transform transition-all duration-200 hover:scale-105 hover:-translate-y-1 flex items-center justify-center"
           >
             <svg 

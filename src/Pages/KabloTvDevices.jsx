@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import serit from "/assets/serit.png";
 import modemBannerLogo from "/assets/modems/cloud-network.png";
+import { NavLink } from "react-router-dom";
 
 const KabloTvDevices = () => {
   const [selectedDevice, setSelectedDevice] = useState(null);
@@ -25,7 +26,7 @@ const KabloTvDevices = () => {
       name: "Türksat TV Box",
       modelName: "EchoLife EG8247W", // Tablo başlığı için ayrı bir alan ekledim
       type: "Fiber Modem",
-      image: "../src/assets/tvdevices/tv_box.webp",
+      image: "/assets/tvdevices/tv_box.webp",
       shortDescription:
         "Türksat TV Box bir Android TV cihazıdır. Abonesi olduğunuz pakete ait kanalları ve içerikleri, internetin olduğu her yerde izleyebilmenin keyfi bir başka.",
       detailedDescription: `Seç izle
@@ -50,7 +51,7 @@ const KabloTvDevices = () => {
       name: "i-Kutu ZTE (İnteraktif HD Kutu)",
       modelName: "EchoLife EG8247W", // Tablo başlığı için ayrı bir alan ekledim
       type: "Fiber Modem",
-      image: "../src/assets/tvdevices/i-kutu-kiralama_1.webp",
+      image: "/assets/tvdevices/i-kutu-kiralama_1.webp",
       shortDescription: "Kablo TV keyfinizi maksimuma çıkarın",
       detailedDescription: `• KabloWebTV ile Televizyon Deneyiminizi Yeniden Keşfedin!
         • Seç İzle: Paketiniz kapsamındaki KabloWebTV film arşivine dilediğiniz zaman ulaşın, favori filmlerinizi ve dizilerinizi keyifle izleyin.
@@ -71,7 +72,7 @@ const KabloTvDevices = () => {
       name: "i-Kutu Çocuk Kumandası",
       modelName: "EchoLife EG8247W", // Tablo başlığı için ayrı bir alan ekledim
       type: "Fiber Modem",
-      image: "../src/assets/tvdevices/cocukkumanda.webp",
+      image: "/assets/tvdevices/cocukkumanda.webp",
       shortDescription: "i-Kutu kullanımınızı kolaylaştıracak kumandalar",
       detailedDescription: `• Alternatif kumandalar sadece i-kutu ile çalışmaktadır.
             • ”Çocuk Kumandası” ile sadece çocuklar için hazırlanmış kanalların ve içeriklerin izlenmesini sağlayacak ve çocuklarınız TV izlerken daha güvende hissedeceksiniz.
@@ -192,7 +193,7 @@ const KabloTvDevices = () => {
                       ))}
 
                       <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded transition-colors">
-                        Hemen Başvur
+                        <NavLink to={"/hemenbasvur"}>Hemen Başvur</NavLink> 
                       </button>
                     </div>
                   </div>

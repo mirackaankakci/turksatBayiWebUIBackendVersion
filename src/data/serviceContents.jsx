@@ -12,15 +12,15 @@ export const serviceContents = {
       'Statik IP adreslerine devamlı sabit kalan IP denmektedir.',
       'Bu durum kısaca IP atanabilen herhangi bir cihazın sürekli aynı IP adresini kullanması anlamına gelmektedir.',
       'Her müşterimiz aynı adreste yalnızca 1 adet statik IP alabilir.',
-      'Statik IP hizmetinden aylık 75,00 TL karşılığında yararlanabilirsiniz.',
-      'Fiyatlara %18 KDV ve %10 ÖİV dahildir.'
+      'Statik IP hizmetinden aylık 110,00 TL karşılığında yararlanabilirsiniz.',
+      'Fiyatlara %20 KDV ve %10 ÖİV dahildir.'
     ],
     tables: [
       {
         title: 'Statik IP Fiyatları',
         headers: ['HİZMET', 'SATIŞ FİYATI (TL/AY)'],
         rows: [
-          ['STATİK IP', '75,00 TL']
+          ['STATİK IP', '110,00 TL']
         ]
       }
     ]

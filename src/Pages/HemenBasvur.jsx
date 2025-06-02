@@ -113,21 +113,22 @@ const HemenBasvur = () => {
     setPhoneError("");
 
     try {
-      // PHP dosyanızın beklediği alan adlarını kullan
-      const response = await axios.post('/api-proxy.php', {
-        adsoyad: formData.fullName.trim(), // PHP'de beklenen alan adı
-        telefon: formData.phoneNumber.trim(), // PHP'de beklenen alan adı
-        kampanyaId: formData.kampanyaId || 'Hemen Başvur Form' // Ek bilgi (isteğe bağlı)
+      const response = await axios.post('/kaydet.php', {
+        adsoyad: formData.fullName.trim(),
+        telefon: formData.phoneNumber.trim(),
+        kampanyaId: formData.kampanyaId || 'Hemen Başvur Form'
       }, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        timeout: 30000 // 30 saniye timeout
+        timeout: 60000, // 60 saniye
+        withCredentials: false
       });
 
       console.log("API Yanıtı:", response.data);
 
-      if (response.data.success) {
+      if (response.data && response.data.success === true) {
         setIsSubmitting(false);
         setSubmitSuccess(true);
 
@@ -143,16 +144,8 @@ const HemenBasvur = () => {
           setSubmitSuccess(false);
         }, 5000);
 
-        // Google Analytics event (varsa)
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'form_submit', {
-            event_category: 'engagement',
-            event_label: 'hemen_basvur_form'
-          });
-        }
-
       } else {
-        throw new Error(response.data.error || 'API işlemi başarısız');
+        throw new Error(response.data?.error || 'İşlem başarısız');
       }
 
     } catch (error) {
@@ -161,21 +154,12 @@ const HemenBasvur = () => {
       
       let errorMessage = 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
       
-      if (error.response) {
-        // Server yanıt verdi ama hata kodu döndü
-        if (error.response.data?.error) {
-          errorMessage = error.response.data.error;
-        } else if (error.response.status === 500) {
-          errorMessage = 'Sunucu hatası. Lütfen müşteri hizmetlerimizi arayın: 0850 480 85 32';
-        } else if (error.response.status === 400) {
-          errorMessage = 'Form bilgileri eksik veya hatalı. Lütfen kontrol edin.';
-        }
-      } else if (error.request) {
-        // İstek gönderildi ama yanıt alınamadı
-        errorMessage = 'Bağlantı hatası. İnternet bağlantınızı kontrol edin.';
+      if (error.response?.data?.error) {
+        errorMessage = error.response.data.error;
       } else if (error.code === 'ECONNABORTED') {
-        // Timeout hatası
         errorMessage = 'İşlem zaman aşımına uğradı. Lütfen tekrar deneyin.';
+      } else if (error.response?.status === 400) {
+        errorMessage = 'Form bilgileri hatalı. Lütfen kontrol edin.';
       }
       
       alert(errorMessage);
@@ -288,7 +272,7 @@ const HemenBasvur = () => {
                     Başvurunuz başarıyla alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.
                   </p>
                   <p className="text-sm mt-1">
-                    Müşteri temsilcimiz <span className="font-medium">0850 480 85 32</span> numaralı hattımızdan sizi arayacaktır.
+                    Müşteri temsilcimiz <span className="font-medium"><a href="tel:08508066000">0850 806 60 00</a></span> numaralı hattımızdan sizi arayacaktır.
                   </p>
                 </div>
               </div>
@@ -298,7 +282,7 @@ const HemenBasvur = () => {
           <div className="text-center text-sm text-gray-500 mt-4">
             <p>
               Müşteri temsilcimiz, sizi gün içerisinde{" "}
-            <span className="font-medium">0850 806 60 00</span>{" "}
+            <span className="font-medium"><a href="tel:08508066000">0850 806 60 00</a></span>{" "}
               numaralı hattımızdan arayarak güncel kampanyalar ve altyapınızla
               ilgili bilgilendirme yapacaktır.
             </p>
