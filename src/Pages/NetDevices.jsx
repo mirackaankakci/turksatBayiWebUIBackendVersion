@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import serit from "../assets/serit.png";
-import modemBannerLogo from "../assets/modems/cloud-network.png";
+import serit from "/assets/serit.png";
+import modemBannerLogo from "/assets/modems/cloud-network.png";
 
 const NetDevices = () => {
     const [selectedDevice, setSelectedDevice] = useState(null);
@@ -25,7 +25,7 @@ const NetDevices = () => {
             name: "Huawei - EG8247W Modem",
             modelName: "EchoLife EG8247W", // Tablo başlığı için ayrı bir alan ekledim
             type: "Fiber Modem",
-            image: '../src/assets/modems/modem1.webp',
+            image: '/assets/modems/modem1.webp',
             shortDescription: "G-Pon teknolojisi ile hizmet verilen adreslerde kullanılabilir.",
             detailedDescription: "Bu modem Türksat GPON altyapısında daireye kadar fiber olan bağlantılarda kullanılabilir. Docsis fiber altyapısında kullanılamaz. Ezhome EG8247W ONT Ezhome EG8247W Optik Ağ Terminal (ONT), Huawei'in FTTH gününüzde kullanılan üst düzey bir ağ geçididir. Ev ve SOHO kullanıcıları için GPON teknolojisi yoluyla ultra-geniş bant erişimi sağlayan EG8247W, dört GE bağlantı noktası, iki POTS bağlantısı noktası, bir USB bağlantı noktası, bir CATV bağlantı noktası ve bir 2.4G Wi-Fi 5 bağlantısı noktasına sunar. VoIP, internet ve HD video servislerinde mükemmel deneyimi güvence altına olmak için yüksek performanslı temin yönetellerine sahiptir.",
             specifications: [
@@ -48,7 +48,7 @@ const NetDevices = () => {
             name: "ZTE ZXHN - F6600 GPON Modem",
             modelName: "Parameter", // Tablo başlığı için ayrı bir alan ekledim
             type: "Fiber Modem",
-            image: '../src/assets/modems/ZXHN.webp',
+            image: '/assets/modems/ZXHN.webp',
             shortDescription: "G-Pon teknolojisi ile hizmet verilen adreslerde kullanılabilir.",
             detailedDescription: "ZXHN F6600, Wi-Fi 6'yı destekler ve dört GE LAN bağlantı noktası ve iki telefon bağlantı noktasıyla birlikte gelir. MU-MIMO ve OFDMA teknolojileri, Wi-Fi ağının verimliliğini önemli ölçüde artırır. Mükemmel Wi-Fi performansı, kullanıcıların web'de daha iyi gezinmesine, video izlemesine ve çevrimiçi oyunlar oynamasına olanak tanır.",
             specifications: [
@@ -71,7 +71,7 @@ const NetDevices = () => {
             name: "H&D NE1611C Modem",
             modelName: "Parameter", // Tablo başlığı için ayrı bir alan ekledim
             type: "Fiber Modem",
-            image: '../src/assets/modems/ne1611c.webp',
+            image: '/assets/modems/ne1611c.webp',
             shortDescription: "Yeni nesil Docsis fiber altyapı destekli koaksiyel modem",
             detailedDescription: "NE1611, DOCSIS 3.0 kablolu modem, yönlendirici, ses ve kablosuz AP'yi tek bir cihazda birleştiren yüksek performanslı bir kablolu internet ağ geçididir.NE1611 gigabit ağ arabirimi sağlar. 2.4G ve 5G frekanslarında kablosuz ağı destekler.Kablosuz iletim hızı 1600Mbps'ye kadar ulaşabilir. İşletmeler ve aileler için daha iyi çevrimiçi deneyim için yeni nesil Wi-Fi6 ürünleri olarak zengin yazılım özelliklerini destekler. ",
             specifications: [
@@ -94,7 +94,7 @@ const NetDevices = () => {
             name: "Netmaster Infinity 401 Modem",
             modelName: "Parameter", // Tablo başlığı için ayrı bir alan ekledim
             type: "Fiber Modem",
-            image: '../src/assets/modems/infinity401.webp',
+            image: '/assets/modems/infinity401.webp',
             shortDescription: "Docsis 3.0 fiber altyapı destekli koaksiyel modem",
             detailedDescription: "Infinity401, DOCSIS 3.0 kanal birleştirme (channel bonding) fonksiyonlarını sunan üstün bir üründür ve bunun yanında tüm mevcut DOCSIS 3.0/2.0/1.1/1.0 head-end araçları ve Çoklu Hizmet Operatör (Multiple Service Operator/MSO) ağları ile geriye dönük olarak uyumludur. Türksat Kablonet/Kabloses şebekesi uyumlu VoIP hizmeti (NCS) desteği de sağlayan Infinity401, 2 portlu ağ anahtarı ve IEEE 802.11n ve 802.11AC kablosuz fonksiyonları ile yerleşik ağ geçidi olarak da kullanılabilir.",
             specifications: [
@@ -110,7 +110,7 @@ const NetDevices = () => {
             name: "Zyxel - VMG3625-T50B Modem",
             modelName: "Parameter", // Tablo başlığı için ayrı bir alan ekledim
             type: "Fiber Modem",
-            image: '../src/assets/modems/wmg3625-t50b.webp',
+            image: '/assets/modems/wmg3625-t50b.webp',
             shortDescription: "VDSL teknolojisi ile hizmet verilen adreslerde kullanılabilir.",
             detailedDescription: "Zyxel VMG3625-T50B, üçlü-oyun hizmetleri için dünya çapında pazar gereksinimlerini karşılamak üzere yüksek hızlı İnternet erişimi sağlar. Zahmetli kabloları hafifleten dahili 2x2 802.11ac WLAN işlevine sahip bu model, mükemmel WiFi kullanıcı deneyimi için olağanüstü bir kapsama alanı sunar. Dahası, kullanıcı odaklı tasarımı ile güçlü ve pratik işlevler sunarken her müşterinin kendi stilinden bir parça bulabilmesine izin verir.",
             specifications: [

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.css'
-import logo from './assets/logo.png'
+import logo from '/assets/logo.png'
 import ResponsiveMenu from './components/ResponsiveMenu'
 import CampaignBanner from "./components/CampaignBanner"
 import ScrollToTop from './components/ScrollToTop';
@@ -12,7 +12,7 @@ import HemenBasvur from './Pages/HemenBasvur'
 import Kampanyalar from './Pages/Kampanyalar'
 import CampaignDetail from './components/CampaignDetail'
 import NetTariffs from './Pages/NetTariffs'
-import NetDevices from './Pages/netDevices'
+import NetDevices from './Pages/NetDevices'
 import KabloTvDevices from './Pages/KabloTvDevices'
 import TvPackets from './Pages/tvPacket'
 import PrivacyPolicy from './Pages/PrivacyPolicy'

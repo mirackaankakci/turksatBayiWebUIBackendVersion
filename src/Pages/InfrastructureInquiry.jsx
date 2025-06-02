@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaMapMarkerAlt, FaCheckCircle, FaTimesCircle, FaSearch, FaTools, FaTimes } from "react-icons/fa";
-import serit from "../assets/serit.png";
+import serit from "/assets/serit.png";
 
 const InfrastructureInquiry = () => {
   const [step, setStep] = useState(1);

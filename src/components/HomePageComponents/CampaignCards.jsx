@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import aileboyu from "../../assets/aileboyu.png";
+import aileboyu from "/assets/aileboyu.png";
 
 function CampaignCards({ campaign }){
   // Varsayılan olarak mevcut olan taahhüt süresini seçelim

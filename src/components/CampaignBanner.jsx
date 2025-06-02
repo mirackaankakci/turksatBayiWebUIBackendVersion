@@ -1,7 +1,7 @@
 // src/components/CampaignBanner.jsx
 import React from 'react';
 import './CampaignBanner.css';
-import kabloTvImg from '../assets/kablonet.png';
+import kabloTvImg from '/assets/kablonet.png';
 
 
 

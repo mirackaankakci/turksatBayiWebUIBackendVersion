@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaInfoCircle, FaPhoneAlt, FaFax, FaMapMarkedAlt, FaFileAlt, FaCheckCircle, FaQuestionCircle } from 'react-icons/fa';
-import serit from '../assets/serit.png';
+import serit from '/assets/serit.png';
 
 const FesihIslemleri = () => {
   const [activeTab, setActiveTab] = useState('information');

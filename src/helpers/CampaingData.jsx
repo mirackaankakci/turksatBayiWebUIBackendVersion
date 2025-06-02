@@ -11,7 +11,7 @@ export const CampaignData = [
       "25 Mbps'ye kadar Sınırsız Kablonet Fiber İnternet",
     ],
     aciklama: "4 ürünü bir arada cazip fiyatla alın!",
-    imgsrc: "/src/assets/campaignsImg/DorduBirAradaKamp.webp",
+    imgsrc: "/assets/campaignsImg/DorduBirAradaKamp.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -393,7 +393,7 @@ export const CampaignData = [
 
     ],
     aciklama: "12 ay taahhüt karşılığında, ilk 3 ay 309 TL, son 9 ay 409 TL’dir.!",
-    imgsrc: "/src/assets/campaignsImg/aramiza.webp",
+    imgsrc: "/assets/campaignsImg/aramiza.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -608,7 +608,7 @@ export const CampaignData = [
 
     ],
     aciklama: "",
-    imgsrc: "/src/assets/campaignsImg/aileboyufiber.webp",
+    imgsrc: "/assets/campaignsImg/aileboyufiber.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -815,7 +815,7 @@ export const CampaignData = [
 
     ],
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 355 TL, son 12 ay 455 TL’dir.",
-    imgsrc: "/src/assets/campaignsImg/herevekablonetkampanyasi.webp",
+    imgsrc: "/assets/campaignsImg/herevekablonetkampanyasi.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -1072,7 +1072,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 500 TL, son 12 ay 600 TL’dir.",
-    imgsrc: "/src/assets/campaignsImg/hepsi-bir-arada-kampanyasi.webp",
+    imgsrc: "/assets/campaignsImg/hepsi-bir-arada-kampanyasi.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -1442,7 +1442,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "Taahhütsüz Sınırsız İnternet.",
-    imgsrc: "/src/assets/campaignsImg/taahhutsuz_kablonet.webp",
+    imgsrc: "/assets/campaignsImg/taahhutsuz_kablonet.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -1679,7 +1679,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "12 ay taahhütlü olup, ilk 3 ay 349 TL, son 9 ay 439 TL’dir.",
-    imgsrc: "/src/assets/campaignsImg/muhtesem_1.webp",
+    imgsrc: "/assets/campaignsImg/muhtesem_1.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -1937,7 +1937,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "",
-    imgsrc: "/src/assets/campaignsImg/sinemakeyfikampanyasi2.webp",
+    imgsrc: "/assets/campaignsImg/sinemakeyfikampanyasi2.webp",
     category: "tv",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -2061,7 +2061,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "12 Ay taahhüt karşılığında ilk ay ÜCRETSİZ kalan 11 ay 69 TL.",
-    imgsrc: "/src/assets/campaignsImg/denemesi-bedava-ssport-kampanyasi.webp",
+    imgsrc: "/assets/campaignsImg/denemesi-bedava-ssport-kampanyasi.webp",
     category: "tv",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -2157,7 +2157,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "",
-    imgsrc: "/src/assets/campaignsImg/hd.webp",
+    imgsrc: "/assets/campaignsImg/hd.webp",
     category: "tv",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -2238,7 +2238,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "",
-    imgsrc: "/src/assets/campaignsImg/aile-boyu-tv-kampanyasi.webp",
+    imgsrc: "/assets/campaignsImg/aile-boyu-tv-kampanyasi.webp",
     category: "tv",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -2372,7 +2372,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "2 ay taahhütlü olup, ilk 1 ay Ücretsiz, son 11 ay 49 TL’dir.",
-    imgsrc: "/src/assets/campaignsImg/heryerde.webp",
+    imgsrc: "/assets/campaignsImg/heryerde.webp",
     category: "tv",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -2503,7 +2503,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "",
-    imgsrc: "/src/assets/campaignsImg/her-eve-kablonet-kampanyasi.webp",
+    imgsrc: "/assets/campaignsImg/her-eve-kablonet-kampanyasi.webp",
     category: "mevcutmusteri",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -2719,7 +2719,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "",
-    imgsrc: "/src/assets/campaignsImg/kabloses_kamp.webp",
+    imgsrc: "/assets/campaignsImg/kabloses_kamp.webp",
     category: "phone",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -2815,7 +2815,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 449 TL, son 12 ay 549 TL’dir.",
-    imgsrc: "/src/assets/campaignsImg/hepsi-bir-arada-kampanyasi_7.webp",
+    imgsrc: "/assets/campaignsImg/hepsi-bir-arada-kampanyasi_7.webp",
     category: "mevcutmusteri",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -3116,7 +3116,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 349 TL, son 12 ay 449 TL’dir.",
-    imgsrc: "/src/assets/campaignsImg/Dordu-Bir-Arada-Kamp.webp",
+    imgsrc: "/assets/campaignsImg/Dordu-Bir-Arada-Kamp.webp",
     category: "mevcutmusteri",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
@@ -3403,7 +3403,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
     ],
     aciklama: "",
-    imgsrc: "/src/assets/campaignsImg/isim_kolay_1.webp",
+    imgsrc: "/assets/campaignsImg/isim_kolay_1.webp",
     category: "kablonet",
     popular: "true",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">

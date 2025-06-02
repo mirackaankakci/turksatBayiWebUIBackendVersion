@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaUser, FaCommentAlt } from 'react-icons/fa';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import serit from "../assets/serit.png";
+import serit from "/assets/serit.png";
 
 const Contact = () => {
   // Form durumu için state değişkenleri

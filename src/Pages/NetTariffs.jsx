@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import serit from "../assets/serit.png";
+import serit from "/assets/serit.png";
 
 const NetTariffs = () => {
     const [selectedCategory, setSelectedCategory] = useState('akilli');

@@ -17,7 +17,7 @@ import {
   FaChevronDown
 } from 'react-icons/fa';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import serit from "../assets/serit.png"; // Import serit image
+import serit from "/assets/serit.png"; // Import serit image
 
 // Ayrı dosyalardaki servis içeriklerini ve soru-cevapları import et
 import { serviceContents } from "../data/serviceContents";

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Axios import ediyoruz
-import serit from "../assets/serit.png";
-import ustserit from "../assets/ustserit.png";
-import aileboyu from "../assets/aileboyu.png";
-import arrow from "../assets/right-arrow.png";
-import star from "../assets/star.png";
+import serit from "/assets/serit.png";
+import ustserit from "/assets/ustserit.png";
+import aileboyu from "/assets/aileboyu.png";
+import arrow from "/assets/right-arrow.png";
+import star from "/assets/star.png";
 import Campainings from "../components/HomePageComponents/Campainings";
 import AltYapiSorgulama from "../components/HomePageComponents/AltYapiSorgulama";
 import MovieBanner from "../components/HomePageComponents/movieBanner";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Menu as MenuIcon, X as CloseIcon, Bell } from "lucide-react";
-import logo from "/src/assets/logo.png";
-import telephone from "/src/assets/phone.gif";
+import logo from "/assets/logo.png";
+import telephone from "/assets/phone.gif";
 import "/src/index.css";
 import "./ResponsiveMenu.css";
 import { NavLink } from "react-router-dom";

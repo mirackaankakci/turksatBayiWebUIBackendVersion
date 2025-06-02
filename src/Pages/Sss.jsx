@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp, FaSearch } from 'react-icons/fa';
-import serit from "../assets/serit.png"; // Banner alt kısmındaki şerit resmi
+import serit from "/assets/serit.png"; // Banner alt kısmındaki şerit resmi
 
 const Sss = () => {
   const [aktivKategori, setAktivKategori] = useState('tumu');

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCheckCircle, FaInfoCircle, FaChevronDown, FaChevronRight, FaTv, FaFilm, FaRunning, FaGlobe } from 'react-icons/fa';
-import serit from '../assets/serit.png';
-import modemBannerLogo from '../assets/database.png';
+import serit from '/assets/serit.png';
+import modemBannerLogo from '/assets/database.png';
 
 const TvPackets = () => {
   const [activeCategory, setActiveCategory] = useState('all');

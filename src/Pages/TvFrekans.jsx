@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaSearch, FaTv } from 'react-icons/fa';
 import frekansListesi from '../helpers/kablotv_frekans_listesi_full.json';
-import serit from "../assets/serit.png"; // Import serit image
+import serit from "/assets/serit.png"; // Import serit image
 
 const TvFrekans = () => {
   const [kanallar, setKanallar] = useState([]);

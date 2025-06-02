@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { CampaignData } from '../helpers/CampaingData';
-import serit from "../assets/serit.png";
+import serit from "/assets/serit.png";
 import { FaWifi, FaTv, FaPhoneAlt, FaCheckCircle, FaInfoCircle, FaArrowRight, FaRegFileAlt, FaMoneyBillWave, FaListAlt, FaPhoneVolume, FaLaptop } from 'react-icons/fa';
 import { styleTable } from '../utils/htmlUtils';
 import axios from "axios";

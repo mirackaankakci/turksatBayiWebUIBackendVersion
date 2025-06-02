@@ -3,7 +3,7 @@ import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight } from '
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import CampaignCards from '../components/HomePageComponents/CampaignCards';
 import { CampaignData } from '../helpers/CampaingData';
-import serit from "../assets/serit.png";
+import serit from "/assets/serit.png";
 
 const Kampanyalar = () => {
   // URL parametrelerini almak için useParams kullanıyoruz

@@ -7,7 +7,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import axios from "axios"; // axios ekleyin (npm install axios)
-import serit from "../assets/serit.png";
+import serit from "/assets/serit.png";
 
 const HemenBasvur = () => {
   const [formData, setFormData] = useState({
@@ -97,7 +97,7 @@ const HemenBasvur = () => {
     e.preventDefault();
 
     // Form doğrulama
-    if (!formData.fullName) {
+    if (!formData.fullName.trim()) {
       alert("Lütfen adınızı ve soyadınızı girin.");
       return;
     }
@@ -110,60 +110,75 @@ const HemenBasvur = () => {
     }
 
     setIsSubmitting(true);
+    setPhoneError("");
 
     try {
-      // API'ye gönderilecek verileri hazırla
-      const phone = encodeURIComponent(formData.phoneNumber);
-      const firstname = encodeURIComponent(formData.fullName);
-      const column14 = encodeURIComponent(formData.kampanyaId || "");
-      const address = "FORM";
-
-      // API URL'sini proxy yoluyla çağırma
-      const apiUrl = "/api/service/1.0/add/";
-      const apiKey = "c1d1b885397a6e5ab26e77343201ea89"; // API anahtarı
-
-      // Axios ile API isteği
-      const response = await axios.post(
-        apiUrl,
-        {
-          apikey: apiKey,
-          phone1: phone,
-          did: "8508066000",
-          symbolid: "8",
-          projectid: "5",
-          firstname: firstname,
-          column14: column14,
-          address: address,
-          ca: "1",
+      // PHP dosyanızın beklediği alan adlarını kullan
+      const response = await axios.post('/api-proxy.php', {
+        adsoyad: formData.fullName.trim(), // PHP'de beklenen alan adı
+        telefon: formData.phoneNumber.trim(), // PHP'de beklenen alan adı
+        kampanyaId: formData.kampanyaId || 'Hemen Başvur Form' // Ek bilgi (isteğe bağlı)
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
         },
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        }
-      );
+        timeout: 30000 // 30 saniye timeout
+      });
 
       console.log("API Yanıtı:", response.data);
 
-      // Başarılı işlem
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
+      if (response.data.success) {
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
 
-      // Formu temizle
-      setFormData({
-        fullName: "",
-        phoneNumber: "",
-        kampanyaId: formData.kampanyaId, // kampanyaId'yi koru
-      });
+        // Formu temizle
+        setFormData({
+          fullName: "",
+          phoneNumber: "",
+          kampanyaId: formData.kampanyaId,
+        });
 
-      // 3 saniye sonra başarı mesajını kaldır
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 3000);
+        // 5 saniye sonra başarı mesajını kaldır
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+
+        // Google Analytics event (varsa)
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'form_submit', {
+            event_category: 'engagement',
+            event_label: 'hemen_basvur_form'
+          });
+        }
+
+      } else {
+        throw new Error(response.data.error || 'API işlemi başarısız');
+      }
+
     } catch (error) {
       console.error("API Hatası:", error);
       setIsSubmitting(false);
-      alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+      
+      let errorMessage = 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+      
+      if (error.response) {
+        // Server yanıt verdi ama hata kodu döndü
+        if (error.response.data?.error) {
+          errorMessage = error.response.data.error;
+        } else if (error.response.status === 500) {
+          errorMessage = 'Sunucu hatası. Lütfen müşteri hizmetlerimizi arayın: 0850 480 85 32';
+        } else if (error.response.status === 400) {
+          errorMessage = 'Form bilgileri eksik veya hatalı. Lütfen kontrol edin.';
+        }
+      } else if (error.request) {
+        // İstek gönderildi ama yanıt alınamadı
+        errorMessage = 'Bağlantı hatası. İnternet bağlantınızı kontrol edin.';
+      } else if (error.code === 'ECONNABORTED') {
+        // Timeout hatası
+        errorMessage = 'İşlem zaman aşımına uğradı. Lütfen tekrar deneyin.';
+      }
+      
+      alert(errorMessage);
     }
   };
 
@@ -270,8 +285,10 @@ const HemenBasvur = () => {
                 </div>
                 <div className="ml-3">
                   <p className="font-medium">
-                    Başvurunuz alındı. En kısa sürede sizinle iletişime
-                    geçeceğiz.
+                    Başvurunuz başarıyla alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.
+                  </p>
+                  <p className="text-sm mt-1">
+                    Müşteri temsilcimiz <span className="font-medium">0850 480 85 32</span> numaralı hattımızdan sizi arayacaktır.
                   </p>
                 </div>
               </div>

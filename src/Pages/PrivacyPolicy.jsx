@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShieldAlt, FaUserLock, FaDatabase, FaCookieBite, FaRegEnvelope, FaChevronRight, FaAngleUp, FaFileContract } from 'react-icons/fa';
-import serit from '../assets/serit.png';
+import serit from '/assets/serit.png';
 
 const PrivacyPolicy = () => {
   const [activeSection, setActiveSection] = useState('introduction');

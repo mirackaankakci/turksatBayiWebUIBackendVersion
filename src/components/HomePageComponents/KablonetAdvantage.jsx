@@ -1,11 +1,11 @@
 import React from "react";
 // İkonları import edin (örnek dosya yolları)
-import fiberIcon from "../../assets/fiber-internet.png";
-import tvIcon from "../../assets/tv-icon.png";
-import serviceIcon from "../../assets/support-icon.png";
-import speedIcon from "../../assets/speed-icon.png";
-import routerIcon from "../../assets/router-icon.png";
-import mailIcon from "../../assets/mail-icon.png";
+import fiberIcon from "/assets/fiber-internet.png";
+import tvIcon from "/assets/tv-icon.png";
+import serviceIcon from "/assets/support-icon.png";
+import speedIcon from "/assets/speed-icon.png";
+import routerIcon from "/assets/router-icon.png";
+import mailIcon from "/assets/mail-icon.png";
 
 const KablonetAdvantage = () => {
   const advantages = [

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import serit from "../assets/serit.png";
-import modemBannerLogo from "../assets/modems/cloud-network.png";
+import serit from "/assets/serit.png";
+import modemBannerLogo from "/assets/modems/cloud-network.png";
 
 const KabloTvDevices = () => {
   const [selectedDevice, setSelectedDevice] = useState(null);
