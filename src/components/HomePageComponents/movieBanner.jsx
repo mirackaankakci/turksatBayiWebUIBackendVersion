@@ -132,7 +132,8 @@ const MovieBanner = () => {
           {/* Navigation */}
         </div>
       
-      <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg sm:rounded-xl shadow-2xl  my-2 sm:my-8">
+      <div className="relative w-full h-[280px] sm:h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-lg sm:rounded-xl shadow-2xl ++
+      + my-2 sm:my-8">
         {/* Ana Banner */}
         <div 
           className="absolute inset-0 transition-all duration-1000 ease-in-out"

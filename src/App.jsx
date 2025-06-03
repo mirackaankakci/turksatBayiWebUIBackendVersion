@@ -22,6 +22,7 @@ import TvFrekans from './Pages/TvFrekans'
 import Services from './Pages/Services'
 import Contact from './Pages/contact'
 import InfrastructureInquiry from './Pages/InfrastructureInquiry'
+import KabloSesTariff from './Pages/KabloSesTariff'
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           <Route path="/sıkça-sorulan-sorular" element={<Sss />} />
           <Route path="/i̇letişim" element={<Contact />} />
           <Route path="/altyapı-sorgulama" element={<InfrastructureInquiry />} />
+          <Route path="/kablotv/tarifeler" element={<KabloSesTariff />} />
         </Routes>
       </div>
       <Footer />
