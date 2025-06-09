@@ -13,6 +13,7 @@ import PropertiesDiv from "../components/propertiesDiv";
 import KablonetAdvantage from "../components/HomePageComponents/KablonetAdvantage";
 import { FaWifi, FaVideoSlash, FaPhoneAlt, FaTv, FaSearch, FaArrowRight } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 function HomePage() {
   const navigate = useNavigate();
@@ -144,6 +145,16 @@ function HomePage() {
           message: 'Başvurunuz başarıyla alınmıştır! En kısa sürede sizinle iletişime geçeceğiz.'
         });
         
+        // GTM'e dönüşüm olayını gönder
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'formgonderildi',
+          formType: 'hemenbasvur',
+          kampanyaId: formData.kampanyaId || 'Hemen Başvur Form'
+        });
+        
+        console.log("GTM Event gönderildi: formgonderildi (Anasayfa Form)");
+        
         // Formu temizle
         setFormData({ name: '', phone: '' });
         
@@ -156,7 +167,6 @@ function HomePage() {
         setTimeout(() => {
           setSubmitStatus({ status: null, message: '' });
         }, 5000);
-
       } else {
         throw new Error(response.data?.error || 'İşlem başarısız');
       }
@@ -194,6 +204,10 @@ function HomePage() {
 
   return (
     <div className="items-center w-full overflow-hidden">
+            <Helmet>
+        <title>Türksat Kablonet ® Resmi Yetkili Web Sitesi | Fiber İnternet, Kablo TV</title>
+        <meta name="description" content="Türksat Kablonet resmi web sitesi. Fiber internet, kablo TV ve telefon hizmetleri. En uygun kampanyalar ve tarifeler." />
+      </Helmet>
       {/* Üst bölüm - Banner kısmı */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] md:h-[500px] lg:h-[700px] px-5 py-5 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img

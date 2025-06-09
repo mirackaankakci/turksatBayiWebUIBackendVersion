@@ -23,10 +23,13 @@ import Services from './Pages/Services'
 import Contact from './Pages/contact'
 import InfrastructureInquiry from './Pages/InfrastructureInquiry'
 import KabloSesTariff from './Pages/KabloSesTariff'
+import MovieDetail from './Pages/movieDetail'
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
     <div>
+      <HelmetProvider>
       <ScrollToTop />
       <div className="bg-gradient-to-b from-[#838383] to-[#3399D2]">
         <ResponsiveMenu />
@@ -40,7 +43,6 @@ function App() {
           <Route path="/kampanyalar/:kategori/:kampanyaSlug" element={<CampaignDetail />} />
           <Route path="/tarifeler" element={<NetTariffs/>} />
           <Route path="/cihazlar" element={<NetDevices/>} />
-          <Route path="/donate" element={<div>Donate</div>} />
           <Route path="/kablotv/cihazlar" element={<KabloTvDevices/>} />
           <Route path="/kablotv/paketler" element={<TvPackets />} />
           <Route path="/gizliliksozlesmesi" element={<PrivacyPolicy />} />
@@ -48,14 +50,18 @@ function App() {
           <Route path="/kablotv/frekans-listesi" element={<TvFrekans />} />
           <Route path="/servisler" element={<Services />} />
           <Route path="/servisler/:serviceId" element={<Services />} />
-          <Route path="/sıkça-sorulan-sorular" element={<Sss />} />
+          <Route path="/sika-sorulan-sorular" element={<Sss />} />
           <Route path="/i̇letişim" element={<Contact />} />
-          <Route path="/altyapı-sorgulama" element={<InfrastructureInquiry />} />
+          <Route path="/altyapi-sorgulama" element={<InfrastructureInquiry />} />
           <Route path="/kablotv/tarifeler" element={<KabloSesTariff />} />
+
+          <Route path="/filmler/:id" element={<MovieDetail />} /> {/* Film detay sayfası */}
         </Routes>
       </div>
       <Footer />
+      </HelmetProvider>
     </div>
+    
   )
 }
 

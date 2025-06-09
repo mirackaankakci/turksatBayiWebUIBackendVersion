@@ -569,9 +569,9 @@ const Sss = () => {
         <div className="mt-16 bg-blue-50 rounded-xl p-8 text-center">
           <h2 className="text-2xl font-bold text-blue-800 mb-2">Sorularınız hala yanıtlanmadı mı?</h2>
           <p className="text-gray-600 mb-6">Müşteri hizmetlerimizle iletişime geçebilirsiniz.</p>
-          <button className="bg-blue-700 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-800 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md">
+          <a href="tel:08508066000" className="bg-blue-700 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-800 transition-colors duration-300 transform hover:-translate-y-0.5 shadow-md">
             0850 806 60 00
-          </button>
+          </a>
         </div>
       </div>
     </div>

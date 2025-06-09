@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import serit from "/assets/serit.png";
 import modemBannerLogo from "/assets/modems/cloud-network.png";
 import { NavLink } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 
 const KabloTvDevices = () => {
   const [selectedDevice, setSelectedDevice] = useState(null);
@@ -95,6 +96,10 @@ const KabloTvDevices = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+            <Helmet>
+        <title>Kablo TV Cihaz Çeşitleri | HD Set-Top Box ve i-Kutu</title>
+        <meta name="description" content="Türksat Kablo TV cihazları. TV Box, i-Kutu, HD Set-Top Box çeşitleri. Kiralama ve satın alma seçenekleri." />
+      </Helmet>
       {/* Hero Banner */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[400px] px-5 py-5 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img

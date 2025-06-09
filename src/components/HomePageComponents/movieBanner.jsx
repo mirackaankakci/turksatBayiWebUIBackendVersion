@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const MovieBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const navigate = useNavigate();
 
   // Manuel ikonlar
   const ChevronLeftIcon = ({ className }) => (
@@ -43,45 +45,143 @@ const MovieBanner = () => {
 
   // Film verileri
   const movies = [
-    {
-      id: 1,
-      title: "Dune: Part Two",
-      subtitle: "Çöllerin Efendisi",
-      description: "Paul Atreides, Lady Jessica ve Fremen savaşçılarla birlikte, babasının intikamını almak ve sevdiklerini kurtarmak için efsanevi bir yolculuğa devam ediyor.",
-      genre: "Bilim Kurgu • Dram",
-      rating: 8.8,
-      duration: "166 dk",
-      year: "2024",
-      background: "linear-gradient(135deg, #2e4482 0%, #4169e1 100%)",
-      poster: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&h=450&fit=crop",
-      tags: ["IMAX", "4K", "Dolby Atmos"]
-    },
-    {
-      id: 2,
-      title: "Oppenheimer",
-      subtitle: "Dünyanın Kaderini Değiştiren Adam",
-      description: "J. Robert Oppenheimer'ın atom bombasının geliştirilmesindeki rolünü ve bu sürecin onun üzerindeki psikolojik etkisini anlatan epik biyografi.",
-      genre: "Biyografi • Dram",
-      rating: 9.2,
-      duration: "180 dk",
-      year: "2023",
-      background: "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)",
-      poster: "https://images.unsplash.com/photo-1489599735188-3c9b1baa4d8c?w=300&h=450&fit=crop",
-      tags: ["70mm", "Premium", "Oscar Adayı"]
-    },
-    {
-      id: 3,
-      title: "Spider-Man: Across",
-      subtitle: "Örümcek Evrenler",
-      description: "Miles Morales, çoklu evrenler arasında yolculuk ederek farklı Spider-Man'lerle tanışır ve büyük bir tehditle karşı karşıya kalır.",
-      genre: "Animasyon • Aksiyon",
-      rating: 9.0,
-      duration: "140 dk",
-      year: "2023",
-      background: "linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%)",
-      poster: "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=300&h=450&fit=crop",
-      tags: ["3D", "Animasyon", "Marvel"]
-    }
+   {
+    "id": 1,
+    "title": "Transformers: Canavarların Yükselişi",
+    "subtitle": "Transformers: Rise of the Beasts",
+    "description": "1994 yılında geçen filmde, eski bir asker olan Noah ve eser araştırmacısı Elena, Otobotlar ve Maximal'larla birlikte, evreni yok etmeye kararlı Unicron'un elçisi Scourge ve Terrorcon'lara karşı dünyayı korumak için mücadele eder.",
+    "genre": "Bilim Kurgu • Aksiyon • Macera",
+    "rating": 6.5,
+    "duration": "127 dk",
+    "year": "2023",
+    "background": "linear-gradient(135deg, #2e4482 0%, #4169e1 100%)",
+    "poster": "/assets/moviePoster/transformers-7-canavarlarin-yukselisi-izle-1-14180.webp",
+    "backdropUrl": "",
+    "tags": ["IMAX", "4K", "Dolby Atmos"],
+    "genres": ["Bilim Kurgu", "Aksiyon", "Macera"],
+    "releaseDate": "9 Haziran 2023",
+    "director": "Steven Caple Jr.",
+    "writers": ["Joby Harold", "Darnell Metayer", "Josh Peters", "Erich Hoeber", "Jon Hoeber"],
+    "cast": [
+      {
+        "name": "Anthony Ramos",
+        "character": "Noah Diaz",
+        "image": ""
+      },
+      {
+        "name": "Dominique Fishback",
+        "character": "Elena Wallace",
+        "image": ""
+      },
+      {
+        "name": "Ron Perlman",
+        "character": "Optimus Primal (ses)",
+        "image": ""
+      },
+      {
+        "name": "Peter Dinklage",
+        "character": "Scourge (ses)",
+        "image": ""
+      },
+      {
+        "name": "Michelle Yeoh",
+        "character": "Airazor (ses)",
+        "image": ""
+      },
+      {
+        "name": "Pete Davidson",
+        "character": "Mirage (ses)",
+        "image": ""
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/embed/itnqEauWQZM"
+  },
+
+   {
+    "id": 2,
+    "title": "Süleyman'ın Hikayesi",
+    "subtitle": "L'histoire de Souleymane",
+    "description": "Süleyman’ın Hikayesi, Paris'te yiyecek teslimatı yapan sığınmacı Souleymane'nin hikayesini konu ediyor. Paris’te sığınmacı olan Souleymane, yemek dağıtmak için Paris sokaklarında pedal çevirir. Yasal ikamet hakkı elde etmek amacıyla yapılacak görüşmeye hazırlanmak için sadece iki gün vardır. Souleymane, hayatı için bu çok önemli görüşmeye zamanında hazırlanabilecek midir?",
+    "genre": "Dram",
+    "rating": 7.6,
+    "duration": "93 dk",
+    "year": "2024",
+    "background": "linear-gradient(135deg, #2e4482 0%, #4169e1 100%)",
+    "poster": "/assets/moviePoster/64d6ba8251aa2858484119177e6ae60e.webp",
+    "backdropUrl": "",
+    "tags": ["Festival", "Fransız Sineması", "Göçmenlik"],
+    "genres": ["Dram"],
+    "releaseDate": "27 Aralık 2024",
+    "director": "Boris Lojkine",
+    "writers": ["Boris Lojkine", "Delphine Agut"],
+    "cast": [
+      {
+        "name": "Abou Sangaré",
+        "character": "Souleymane",
+        "image": ""
+      },
+      {
+        "name": "Nina Meurisse",
+        "character": "OFPRA Yetkilisi",
+        "image": ""
+      },
+      {
+        "name": "Alpha Oumar Sow",
+        "character": "Barry",
+        "image": ""
+      },
+      {
+        "name": "Emmanuel Yovanie",
+        "character": "Emmanuel",
+        "image": ""
+      },
+      {
+        "name": "Younoussa Diallo",
+        "character": "Khalil",
+        "image": ""
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/embed/F5kKfJqcLLg"
+  },
+
+  
+  {
+    "id": 3,
+    "title": "Kayara",
+    "subtitle": "Kayara: La Guerrera del Imperio Inca",
+    "description": "Genç ve cesur bir İnka kızı olan Kayara, yalnızca erkeklerin kabul edildiği Chasqui haberciler grubuna katılma hayali kurar. Geleneksel normlara meydan okuyarak, İnka İmparatorluğu'nun resmi habercisi olma yolunda zorlu bir maceraya atılır.",
+    "genre": "Animasyon • Macera • Aile",
+    "rating": 7.5,
+    "duration": "90 dk",
+    "year": "2025",
+    "background": "linear-gradient(135deg, #2e4482 0%, #4169e1 100%)",
+    "poster": "/assets/moviePoster/0ff0d21fc60e3454134e85d31802b968.webp",
+    "backdropUrl": "",
+    "tags": ["İnka Kültürü", "Kadın Gücü", "Aile Filmi"],
+    "genres": ["Animasyon", "Macera", "Aile"],
+    "releaseDate": "24 Ocak 2025",
+    "director": "César Zelada",
+    "writers": ["César Zelada", "Brian Cleveland", "Jason Cleveland"],
+    "cast": [
+      {
+        "name": "Naomi Serrano",
+        "character": "Kayara (ses)",
+        "image": ""
+      },
+      {
+        "name": "Nate Begle",
+        "character": "Martin (ses)",
+        "image": ""
+      },
+      {
+        "name": "Charles Gonzales",
+        "character": "Paullu (ses)",
+        "image": ""
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/embed/_biCIM1AmwA"
+  }
+
   ];
 
   // Otomatik kaydırma
@@ -111,6 +211,25 @@ const MovieBanner = () => {
     setCurrentSlide(index);
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 8000);
+  };
+
+  // Film detay sayfasına yönlendirme fonksiyonu
+  const handleViewDetails = () => {
+    // Mevcut filmin verilerini alıp detay sayfasına yönlendirme
+    navigate(`/filmler/${movies[currentSlide].id}`, { 
+      state: { movieData: movies[currentSlide] }
+    });
+  };
+
+  // Fragman açma fonksiyonu
+  const handleWatchTrailer = () => {
+    // Mevcut filmin fragmanını izleme işlevi
+    navigate(`/filmler/${movies[currentSlide].id}`, { 
+      state: { 
+        movieData: movies[currentSlide],
+        openTrailer: true 
+      }
+    });
   };
 
   const currentMovie = movies[currentSlide];
@@ -200,12 +319,18 @@ const MovieBanner = () => {
 
                   {/* Butonlar */}
                   <div className="flex flex-col xs:flex-row gap-1.5 sm:gap-2 md:gap-3">
-                    <button className="flex items-center justify-center space-x-1.5 sm:space-x-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-md sm:rounded-lg font-semibold transition-all duration-300 shadow-lg text-xs sm:text-sm">
+                    <button 
+                      onClick={handleWatchTrailer}
+                      className="flex items-center justify-center space-x-1.5 sm:space-x-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-md sm:rounded-lg font-semibold transition-all duration-300 shadow-lg text-xs sm:text-sm"
+                    >
                       <PlayIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                       <span>Fragman</span>
                     </button>
                     
-                    <button className="flex items-center justify-center bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-md sm:rounded-lg font-semibold transition-all duration-300 border border-white/30 text-xs sm:text-sm">
+                    <button 
+                      onClick={handleViewDetails}
+                      className="flex items-center justify-center bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-md sm:rounded-lg font-semibold transition-all duration-300 border border-white/30 text-xs sm:text-sm"
+                    >
                       <span>Detay</span>
                     </button>
                   </div>

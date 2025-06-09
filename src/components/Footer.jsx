@@ -85,7 +85,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4 border-b border-white/30 pb-2">Destek</h3>
               <ul className="space-y-2">
-                {['Sıkça Sorulan Sorular', 'Fesih İşlemleri', 'Altyapı Sorgulama', 'İletişim'].map((item) => (
+                {['Sikca Sorulan Sorular', 'Fesih İşlemleri', 'Altyapı Sorgulama', 'İletişim'].map((item) => (
                   <li key={item}>
                     <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
                       {item}
@@ -125,10 +125,10 @@ const Footer = () => {
                 <Link to="/gizliliksozlesmesi" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">
                   Gizlilik Politikası
                 </Link>
-                <Link to="/kullanim-kosullari" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">
+                <Link to="/gizliliksozlesmesi" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">
                   Kullanım Koşulları
                 </Link>
-                <Link to="/cerez-politikasi" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">
+                <Link to="/gizliliksozlesmesi" className="text-xs text-gray-300 hover:text-white hover:underline transition-colors">
                   Çerez Politikası
                 </Link>
               </div>

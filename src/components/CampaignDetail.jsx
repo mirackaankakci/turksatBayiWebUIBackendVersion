@@ -128,6 +128,17 @@ const CampaignDetail = () => {
         setIsSubmitting(false);
         setSubmitSuccess(true);
 
+        // GTM'e dönüşüm olayını gönder
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'formgonderildi',
+          formType: 'kampanyaDetay',
+          kampanyaId: campaign?.id || formData.kampanyaId || 'Campaign Detail Form',
+          kampanyaAdi: campaign?.kampanyaAdi || ''
+        });
+        
+        console.log("GTM Event gönderildi: formgonderildi (Kampanya Detay)");
+
         // Formu temizle
         setFormData({
           name: "",

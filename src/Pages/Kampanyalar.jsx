@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import CampaignCards from '../components/HomePageComponents/CampaignCards';
 import { CampaignData } from '../helpers/CampaingData';
 import serit from "/assets/serit.png";
+import { Helmet } from 'react-helmet-async';
 
 const Kampanyalar = () => {
   // URL parametrelerini almak için useParams kullanıyoruz
@@ -103,6 +104,10 @@ const Kampanyalar = () => {
 
   return (
     <div className="relative min-h-screen bg-gray-50 ">
+            <Helmet>
+        <title>Türksat Kablonet Kampanyaları </title>
+        <meta name="description" content="Türksat Kablonet kampanyaları. Fiber internet, kablo TV ve telefon hizmetlerinde özel indirimler ve avantajlı paketler." />
+      </Helmet>
       {/* Hero Banner */}
       <div className="relative mx-auto w-full h-[300px] pt-[70px] items-center sm:h-[350px] md:h-[400px] lg:h-[400px]  bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img

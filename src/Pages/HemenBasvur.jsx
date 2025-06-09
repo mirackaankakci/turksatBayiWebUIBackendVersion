@@ -132,6 +132,16 @@ const HemenBasvur = () => {
         setIsSubmitting(false);
         setSubmitSuccess(true);
 
+        // GTM'e dönüşüm olayını gönder
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'formgonderildi',
+          formType: 'hemenbasvur',
+          kampanyaId: formData.kampanyaId || 'Hemen Başvur Form'
+        });
+        
+        console.log("GTM Event gönderildi: formGonderildi");
+
         // Formu temizle
         setFormData({
           fullName: "",
@@ -282,7 +292,7 @@ const HemenBasvur = () => {
           <div className="text-center text-sm text-gray-500 mt-4">
             <p>
               Müşteri temsilcimiz, sizi gün içerisinde{" "}
-            <span className="font-medium"><a href="tel:08508066000">0850 806 60 00</a></span>{" "}
+            <span className="font-medium text-[17px] text-blue-600"><a href="tel:08508066000">0850 806 60 00</a></span>{" "}
               numaralı hattımızdan arayarak güncel kampanyalar ve altyapınızla
               ilgili bilgilendirme yapacaktır.
             </p>
