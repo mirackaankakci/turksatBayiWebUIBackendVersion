@@ -1,13 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCheckCircle, FaInfoCircle, FaChevronDown, FaChevronRight, FaTv, FaFilm, FaRunning, FaGlobe } from 'react-icons/fa';
 import serit from '/assets/serit.png';
 import modemBannerLogo from '/assets/database.png';
+import { Helmet } from 'react-helmet-async';
 
 const TvPackets = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [expandedPacket, setExpandedPacket] = useState(null);
 
+  // Sayfa başlığını güncellemek için useEffect ekleyelim
+  useEffect(() => {
+    let pageTitle = '';
+    
+    switch(activeCategory) {
+      case 'all':
+        pageTitle = 'Türksat Kablo TV Paketleri';
+        break;
+      case 'temel':
+        pageTitle = 'Türksat Temel TV Paketleri';
+        break;
+      case 'tarifeler':
+        pageTitle = 'Türksat TV Tarifeleri';
+        break;
+      case 'sinema':
+        pageTitle = 'Türksat Sinema Paketleri';
+        break;
+      case 'ekpaket':
+        pageTitle = 'Türksat TV Ek Paketleri';
+        break;
+      default:
+        pageTitle = 'Türksat Kablo TV Paketleri';
+    }
+    
+    // Doğrudan document.title'ı güncelleyelim
+    document.title = pageTitle;
+  }, [activeCategory]);
+  
   // Bir paket detayını genişlet/daralt
   const togglePacketDetails = (packetId) => {
     setExpandedPacket(expandedPacket === packetId ? null : packetId);
@@ -167,6 +196,29 @@ Kablonet + Kablo TV kampanyalarıyla Altın Sinema Paketine çok daha uygun fiya
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Helmet ekleyelim */}
+      <Helmet>
+        <title>
+          {activeCategory === 'all' ? 'Türksat Kablo TV Paketleri' :
+           activeCategory === 'temel' ? 'Türksat Temel TV Paketleri' :
+           activeCategory === 'tarifeler' ? 'Türksat TV Tarifeleri' :
+           activeCategory === 'sinema' ? 'Türksat Sinema Paketleri' :
+           activeCategory === 'ekpaket' ? 'Türksat TV Ek Paketleri' : 
+           'Türksat Kablo TV Paketleri'}
+        </title>
+        <meta 
+          name="description" 
+          content={
+            activeCategory === 'all' ? 'Türksat Kablo TV paketleri ile ihtiyacınıza uygun televizyon deneyimini keşfedin.' :
+            activeCategory === 'temel' ? 'Türksat temel TV paketleri ile ekonomik fiyatlarla televizyon keyfi.' :
+            activeCategory === 'tarifeler' ? 'Türksat TV tarifeleri ile bütçenize uygun seçenekler.' :
+            activeCategory === 'sinema' ? 'Türksat sinema paketleri ile evinizde sinema keyfi yaşayın.' :
+            activeCategory === 'ekpaket' ? 'Türksat ek TV paketleri ile televizyon deneyiminizi özelleştirin.' :
+            'Türksat Kablo TV paketleri ile ihtiyacınıza uygun televizyon deneyimini keşfedin.'
+          }
+        />
+      </Helmet>
+      
       {/* Daha Sade Banner */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[400px] px-5 py-5 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img

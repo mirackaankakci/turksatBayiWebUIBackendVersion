@@ -3,6 +3,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaUser, FaCommentAlt }
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import serit from "/assets/serit.png";
+import { Helmet } from 'react-helmet';
 
 const Contact = () => {
   // Form durumu için state değişkenleri
@@ -134,6 +135,10 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+            <Helmet>
+        <title>İletişim - Türksat Kablonet</title>
+        <meta name="description" content="Türksat Kablo TV HD kanal frekans listesi" />
+      </Helmet>
       {/* Banner */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] md:h-[400px] bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async'; // react-helmet-async'e güncelleyelim
 import { 
   FaShieldAlt, 
   FaNetworkWired, 
@@ -35,7 +35,7 @@ const Services = () => {
   const services = [
     { id: 'statikIp', title: 'Statik IP', icon: <FaNetworkWired /> },
     { id: 'dogumGunu', title: 'Doğum Günü', icon: <FaBirthdayCake /> },
-    { id: 'guvenliInternet', title: 'Güvenli İnternet', icon: <FaShieldAlt /> }, // URL uyumluluğu için türkçe karakter kullanmadım
+    { id: 'guvenliInternet', title: 'Güvenli İnternet', icon: <FaShieldAlt /> },
     { id: 'kabloBulut', title: 'Kablo Bulut', icon: <FaCloud /> },
     { id: 'kotaPaketi', title: 'Kota Paketi', icon: <FaBox /> },
     { id: 'nitroYukle', title: 'Nitro Yükle', icon: <FaArrowUp /> },
@@ -60,6 +60,20 @@ const Services = () => {
       navigate('/servisler');
     }
   }, [serviceId, location.pathname, navigate, services]);
+
+  // Sayfa başlığını ve meta verilerini dinamik olarak değiştirmek için useEffect ekleyelim
+  useEffect(() => {
+    if (selectedService) {
+      const serviceContent = serviceContents[selectedService];
+      if (serviceContent) {
+        // Doğrudan document.title'ı güncelleyelim
+        document.title = `${serviceContent.title} - Türksat Kablonet Servisleri`;
+      } else {
+        // Servis içeriği yoksa varsayılan başlık
+        document.title = "Türksat Kablonet Servisler ve Ek Hizmetler";
+      }
+    }
+  }, [selectedService]);
 
   // Servis seçildiğinde URL'i güncelle
   const handleServiceSelect = (serviceId) => {
@@ -87,17 +101,37 @@ const Services = () => {
     }
   };
 
+  // Seçilen servisin verilerine göre meta açıklaması ve anahtar kelimeler oluştur
+  const getMetaDescription = () => {
+    if (selectedService && serviceContents[selectedService]?.description) {
+      return serviceContents[selectedService].description;
+    }
+    return "Türksat Kablonet ek servisler, kampanyalar ve hizmetler. Statik IP, Güvenli İnternet, Kablo Bulut ve diğer tüm servisler için detaylı bilgiler.";
+  };
+
+  const getMetaKeywords = () => {
+    if (selectedService && serviceContents[selectedService]) {
+      const service = services.find(s => s.id === selectedService);
+      return `türksat ${service?.title.toLowerCase()}, kablonet ${service?.title.toLowerCase()}, ${selectedService}, türksat servisler, kablonet ek hizmetler`;
+    }
+    return "türksat servisler, kablonet, statik ip, güvenli internet, kablo bulut, kota paketi, nitro yükle, ek hizmetler";
+  };
+
   return (
     <>
       <Helmet>
         <title>
           {selectedService && serviceContents[selectedService] 
-            ? `${serviceContents[selectedService].title} - Türksat Servisler` 
-            : "Türksat Servisler"}
+            ? `${serviceContents[selectedService].title} - Türksat Kablonet Servisleri` 
+            : "Türksat Kablonet Servisler ve Ek Hizmetler"}
         </title>
         <meta 
           name="description" 
-          content={selectedService && serviceContents[selectedService]?.description || "Türksat Kablonet servisler ve kampanyalar"}
+          content={getMetaDescription()}
+        />
+        <meta 
+          name="keywords"
+          content={getMetaKeywords()}
         />
       </Helmet>
 

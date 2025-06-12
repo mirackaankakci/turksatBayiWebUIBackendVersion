@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaInfoCircle, FaPhoneAlt, FaFax, FaMapMarkedAlt, FaFileAlt, FaCheckCircle, FaQuestionCircle } from 'react-icons/fa';
 import serit from '/assets/serit.png';
 
@@ -6,6 +7,46 @@ const FesihIslemleri = () => {
   const [activeTab, setActiveTab] = useState('information');
   const [selectedCity, setSelectedCity] = useState(null);
   const [showFaqItem, setShowFaqItem] = useState(null);
+
+  // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+  useEffect(() => {
+    let pageTitle = 'Abonelik Fesih İşlemleri | Türksat Kablonet';
+    let metaDescription = 'Türksat Kablonet ve KabloTV abonelik fesih işlemleri hakkında bilgiler. Fesih dilekçesi nasıl hazırlanır, gerekli belgeler ve prosedürler.';
+    
+    // Aktif taba göre başlığı değiştirelim
+    switch(activeTab) {
+      case 'information':
+        pageTitle = 'Abonelik Fesih Bilgilendirmesi | Türksat Kablonet';
+        metaDescription = 'Türksat Kablonet ve KabloTV abonelik fesih işlemleri hakkında bilgilendirme. Fesih dilekçesi hazırlama ve gerekli belgeler.';
+        break;
+      case 'locations':
+        pageTitle = 'Türksat İl Müdürlükleri | Abonelik Fesih İşlemleri';
+        metaDescription = 'Abonelik fesih işlemleri için Türksat İl Müdürlükleri iletişim bilgileri. Fesih başvurularında kullanılacak adres ve faks numaraları.';
+        break;
+      case 'procedure':
+        pageTitle = 'Fesih İşlemi Prosedürü | Türksat Kablonet';
+        metaDescription = 'Türksat Kablonet abonelik fesih prosedürü adım adım anlatım. Fesih işlemlerinde izlenecek yollar, süreç ve önemli notlar.';
+        break;
+      case 'faq':
+        pageTitle = 'Fesih İşlemleri Sıkça Sorulan Sorular | Türksat Kablonet';
+        metaDescription = 'Türksat Kablonet abonelik fesih işlemleri hakkında sıkça sorulan sorular ve cevapları. Fesih sonrası işlemler ve bilinmesi gerekenler.';
+        break;
+      default:
+        pageTitle = 'Abonelik Fesih İşlemleri | Türksat Kablonet';
+    }
+    
+    // Şehir seçiliyse başlığı değiştirelim
+    if (activeTab === 'locations' && selectedCity) {
+      const cityOffice = cityOffices.find(office => office.id === selectedCity);
+      if (cityOffice) {
+        pageTitle = `${cityOffice.city} Türksat İl Müdürlüğü | Abonelik Fesih İşlemleri`;
+        metaDescription = `${cityOffice.city} Türksat İl Müdürlüğü iletişim bilgileri, adres ve faks numaraları. ${cityOffice.city} için abonelik fesih başvuruları hakkında bilgiler.`;
+      }
+    }
+    
+    // Doğrudan document.title'ı güncelleyelim
+    document.title = pageTitle;
+  }, [activeTab, selectedCity]);
 
   // Fesih işlemleri için il müdürlükleri ve iletişim bilgileri
   const cityOffices = [
@@ -123,8 +164,75 @@ const FesihIslemleri = () => {
     }
   };
 
+  // Meta açıklama ve anahtar kelimeler için yardımcı fonksiyonlar
+  const getMetaDescription = () => {
+    switch(activeTab) {
+      case 'information':
+        return 'Türksat Kablonet ve KabloTV abonelik fesih işlemleri hakkında bilgilendirme. Fesih dilekçesi hazırlama ve gerekli belgeler.';
+      case 'locations':
+        if (selectedCity) {
+          const cityOffice = cityOffices.find(office => office.id === selectedCity);
+          if (cityOffice) {
+            return `${cityOffice.city} Türksat İl Müdürlüğü iletişim bilgileri, adres ve faks numaraları. ${cityOffice.city} için abonelik fesih başvuruları hakkında bilgiler.`;
+          }
+        }
+        return 'Abonelik fesih işlemleri için Türksat İl Müdürlükleri iletişim bilgileri. Fesih başvurularında kullanılacak adres ve faks numaraları.';
+      case 'procedure':
+        return 'Türksat Kablonet abonelik fesih prosedürü adım adım anlatım. Fesih işlemlerinde izlenecek yollar, süreç ve önemli notlar.';
+      case 'faq':
+        return 'Türksat Kablonet abonelik fesih işlemleri hakkında sıkça sorulan sorular ve cevapları. Fesih sonrası işlemler ve bilinmesi gerekenler.';
+      default:
+        return 'Türksat Kablonet ve KabloTV abonelik fesih işlemleri hakkında bilgiler. Fesih dilekçesi nasıl hazırlanır, gerekli belgeler ve prosedürler.';
+    }
+  };
+
+  const getMetaKeywords = () => {
+    const baseKeywords = 'türksat fesih, kablonet iptal, abonelik fesih, abonelik iptali';
+    
+    switch(activeTab) {
+      case 'information':
+        return `${baseKeywords}, fesih dilekçesi, gerekli belgeler, kablonet iptal işlemi`;
+      case 'locations':
+        if (selectedCity) {
+          const cityOffice = cityOffices.find(office => office.id === selectedCity);
+          if (cityOffice) {
+            return `${baseKeywords}, ${cityOffice.city.toLowerCase()} türksat, ${cityOffice.city.toLowerCase()} il müdürlüğü, fesih adresi`;
+          }
+        }
+        return `${baseKeywords}, türksat il müdürlükleri, fesih başvuru adresleri, il müdürlüğü iletişim`;
+      case 'procedure':
+        return `${baseKeywords}, fesih prosedürü, abonelik iptal adımları, iptal süreci, cayma bedeli`;
+      case 'faq':
+        return `${baseKeywords}, fesih sıkça sorulan sorular, fesih sonrası, cihaz iadesi, taahhüt iptal`;
+      default:
+        return baseKeywords;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>
+          {activeTab === 'information' ? 'Abonelik Fesih Bilgilendirmesi | Türksat Kablonet' :
+           activeTab === 'locations' ? (
+             selectedCity ? 
+             `${cityOffices.find(office => office.id === selectedCity)?.city} Türksat İl Müdürlüğü | Abonelik Fesih İşlemleri` :
+             'Türksat İl Müdürlükleri | Abonelik Fesih İşlemleri'
+           ) :
+           activeTab === 'procedure' ? 'Fesih İşlemi Prosedürü | Türksat Kablonet' :
+           activeTab === 'faq' ? 'Fesih İşlemleri Sıkça Sorulan Sorular | Türksat Kablonet' :
+           'Abonelik Fesih İşlemleri | Türksat Kablonet'}
+        </title>
+        <meta 
+          name="description" 
+          content={getMetaDescription()} 
+        />
+        <meta 
+          name="keywords" 
+          content={getMetaKeywords()} 
+        />
+      </Helmet>
+
       {/* Banner */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] lg:h-[400px] px-5 py-5 sm:px-6 sm:py-12 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img
@@ -136,10 +244,18 @@ const FesihIslemleri = () => {
         <div className="flex justify-center items-center h-full relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-white max-w-3xl text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 md:mb-4">
-              Abonelik Fesih İşlemleri
+              {activeTab === 'information' ? 'Abonelik Fesih Bilgilendirmesi' :
+               activeTab === 'locations' ? 'İl Müdürlükleri İletişim Bilgileri' :
+               activeTab === 'procedure' ? 'Abonelik Fesih Prosedürü' :
+               activeTab === 'faq' ? 'Fesih İşlemleri Hakkında SSS' :
+               'Abonelik Fesih İşlemleri'}
             </h1>
             <p className="text-[16px] sm:text-[18px] md:text-[20px] text-blue-100">
-              Hızlı ve kolay şekilde abonelik fesih işlemlerinizi gerçekleştirin
+              {activeTab === 'information' ? 'Türksat Kablonet ve KabloTV aboneliklerinizi nasıl feshedebileceğiniz hakkında bilgiler' :
+               activeTab === 'locations' ? 'Fesih işlemleri için başvurabileceğiniz il müdürlükleri ve iletişim bilgileri' :
+               activeTab === 'procedure' ? 'Fesih işlemlerinin adım adım nasıl yapılacağı ve dikkat edilmesi gerekenler' :
+               activeTab === 'faq' ? 'Fesih işlemleri hakkında en çok merak edilen sorular ve yanıtları' :
+               'Hızlı ve kolay şekilde abonelik fesih işlemlerinizi gerçekleştirin'}
             </p>
           </div>
         </div>

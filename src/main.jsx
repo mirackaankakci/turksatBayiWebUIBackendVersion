@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import "./index.css";  
 import { BrowserRouter } from 'react-router-dom'
+import { sendToAnalytics } from './analytics';
 
 
 createRoot(document.getElementById('root')).render(
@@ -14,3 +15,6 @@ createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+// Web vitals değerlerini analitik sistemine gönder
+

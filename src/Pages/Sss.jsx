@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { FaChevronDown, FaChevronUp, FaSearch } from 'react-icons/fa';
 import serit from "/assets/serit.png"; // Banner alt kısmındaki şerit resmi
 
@@ -7,6 +8,36 @@ const Sss = () => {
   const [aramaMetni, setAramaMetni] = useState('');
   const [acikSoru, setAcikSoru] = useState(null);
   
+  // Kategorileri gruplandırma ve görsel isimlendirme için kategori eşleştirme
+  const kategoriIsimleri = {
+    'tumu': 'Tümü',
+    'kablotv_genel': 'Kablo TV',
+    'i̇nternet_genel': 'İnternet',
+    'ses_genel': 'Telefon Hizmetleri'
+  };
+
+  // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+  useEffect(() => {
+    let pageTitle = 'Sıkça Sorulan Sorular | Türksat Kablonet';
+    let metaDescription = 'Türksat Kablonet ve KabloTV hakkında sıkça sorulan sorular ve yanıtları. TV, internet ve telefon hizmetleri ile ilgili merak edilen konular.';
+    
+    // Arama yapılıyorsa başlığı değiştirelim
+    if (aramaMetni) {
+      pageTitle = `${aramaMetni} - Sıkça Sorulan Sorular | Türksat Kablonet`;
+      metaDescription = `Türksat Kablonet "${aramaMetni}" ile ilgili sıkça sorulan sorular ve detaylı bilgiler.`;
+    }
+    
+    // Kategori seçiliyse başlığı değiştirelim
+    if (aktivKategori && aktivKategori !== 'tumu') {
+      const kategoriAdi = kategoriIsimleri[aktivKategori] || aktivKategori;
+      pageTitle = `${kategoriAdi} Hakkında Sıkça Sorulan Sorular | Türksat Kablonet`;
+      metaDescription = `Türksat Kablonet ${kategoriAdi} hizmetleri hakkında sıkça sorulan sorular ve detaylı yanıtlar. Merak ettiğiniz tüm konular burada.`;
+    }
+    
+    // Doğrudan document.title'ı güncelleyelim
+    document.title = pageTitle;
+  }, [aramaMetni, aktivKategori]);
+
   // Örnek SSS verileri - gerçek verilerinizi burada kullanabilirsiniz
   const sssVerileri = [
      {
@@ -437,14 +468,6 @@ const Sss = () => {
   }
   ];
 
-  // Kategorileri gruplandırma ve görsel isimlendirme için kategori eşleştirme
-  const kategoriIsimleri = {
-    'tumu': 'Tümü',
-    'kablotv_genel': 'Kablo TV',
-    'i̇nternet_genel': 'İnternet',
-    'ses_genel': 'Telefon Hizmetleri'
-  };
-
   // Benzersiz kategorileri oluştur
   const benzersizKategoriler = ['tumu', ...new Set(sssVerileri.map(item => item.kategori))];
   
@@ -476,9 +499,63 @@ const Sss = () => {
     setAktivKategori(kategoriId);
     setAcikSoru(null); // Kategori değiştiğinde açık soruyu sıfırla
   };
+  
+  // Meta açıklama ve anahtar kelimeler için yardımcı fonksiyonlar
+  const getMetaDescription = () => {
+    if (aramaMetni) {
+      return `Türksat Kablonet "${aramaMetni}" ile ilgili sıkça sorulan sorular ve detaylı bilgiler.`;
+    }
+    
+    if (aktivKategori !== 'tumu') {
+      const kategoriAdi = kategoriIsimleri[aktivKategori] || aktivKategori;
+      return `Türksat Kablonet ${kategoriAdi} hizmetleri hakkında sıkça sorulan sorular ve detaylı yanıtlar. Merak ettiğiniz tüm konular burada.`;
+    }
+    
+    return 'Türksat Kablonet ve KabloTV hakkında sıkça sorulan sorular ve yanıtları. TV, internet ve telefon hizmetleri ile ilgili merak edilen konular.';
+  };
+  
+  const getMetaKeywords = () => {
+    if (aramaMetni) {
+      return `${aramaMetni}, sss, sıkça sorulan sorular, türksat, kablonet, kablotv, yardım`;
+    }
+    
+    if (aktivKategori !== 'tumu') {
+      const kategoriAdi = kategoriIsimleri[aktivKategori] || aktivKategori;
+      switch (aktivKategori) {
+        case 'kablotv_genel':
+          return 'kablo tv, türksat tv, dijital yayın, hd kanallar, tv kutusu, kablotv paketleri';
+        case 'i̇nternet_genel':
+          return 'kablonet internet, fiber internet, geniş bant, modem, türksat internet, hızlı internet';
+        case 'ses_genel':
+          return 'kabloses, sabit telefon, türksat telefon, numara taşıma, ses paketi, telefon tarifeleri';
+        default:
+          return `${kategoriAdi.toLowerCase()}, sss, türksat, kablonet, sorular, yardım`;
+      }
+    }
+    
+    return 'sss, sıkça sorulan sorular, türksat, kablonet, kablotv, kabloses, fiber internet, yardım merkezi';
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>
+          {aramaMetni
+            ? `${aramaMetni} - Sıkça Sorulan Sorular | Türksat Kablonet`
+            : aktivKategori !== 'tumu'
+              ? `${kategoriIsimleri[aktivKategori] || aktivKategori} Hakkında Sıkça Sorulan Sorular | Türksat Kablonet`
+              : 'Sıkça Sorulan Sorular | Türksat Kablonet'}
+        </title>
+        <meta 
+          name="description" 
+          content={getMetaDescription()} 
+        />
+        <meta 
+          name="keywords" 
+          content={getMetaKeywords()} 
+        />
+      </Helmet>
+
       {/* Banner Eklendi - Diğer sayfalardaki gibi */}
       <div className="relative mx-auto w-full h-[300px] pt-[70px] items-center sm:h-[350px] md:h-[400px] lg:h-[400px] bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img
@@ -489,10 +566,18 @@ const Sss = () => {
         />
         <div className="container mx-auto max-w-6xl items-center text-center mt-[70px]">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Sıkça Sorulan Sorular
+            {aramaMetni
+              ? `"${aramaMetni}" için Sonuçlar`
+              : aktivKategori !== 'tumu'
+                ? `${kategoriIsimleri[aktivKategori] || aktivKategori} Soruları`
+                : 'Sıkça Sorulan Sorular'}
           </h1>
           <p className="text-xl text-blue-100 max-w-full">
-            Türksat Kablo hizmetleri hakkında merak ettiğiniz tüm soruların cevapları burada.
+            {aramaMetni
+              ? `"${aramaMetni}" araması için ${filtrelenenSSS.length} sonuç bulundu`
+              : aktivKategori !== 'tumu'
+                ? `${kategoriIsimleri[aktivKategori] || aktivKategori} hakkında merak edilen tüm soruların cevapları`
+                : 'Türksat Kablo hizmetleri hakkında merak ettiğiniz tüm soruların cevapları burada.'}
           </p>
         </div>
       </div>

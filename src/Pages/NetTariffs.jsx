@@ -1,10 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import serit from "/assets/serit.png";
 
 const NetTariffs = () => {
     const [selectedCategory, setSelectedCategory] = useState('akilli');
     const [activeInfoSection, setActiveInfoSection] = useState('tarifelerNelerdir');
+
+    // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+    useEffect(() => {
+        let pageTitle = 'Kablonet İnternet Tarifeleri | Fiber İnternet Paketleri ve Fiyatları';
+        
+        // Seçilen kategoriye göre başlığı değiştirelim
+        switch(selectedCategory) {
+            case 'akilli':
+                pageTitle = 'Türksat Kablonet Akıllı Sınırsız İnternet Tarifeleri';
+                break;
+            case 'sinirsiz':
+                pageTitle = 'Türksat Kablonet Sınırsız İnternet Tarifeleri';
+                break;
+            case 'kotaliTarifeler':
+                pageTitle = 'Türksat Kablonet Kotalı İnternet Tarifeleri';
+                break;
+            case 'duranKotaliTarifeler':
+                pageTitle = 'Türksat Kablonet Duran Kotalı İnternet Tarifeleri';
+                break;
+            case 'dslTarifeler':
+                pageTitle = 'Türksat Kablonet DSL İnternet Tarifeleri';
+                break;
+            default:
+                pageTitle = 'Kablonet İnternet Tarifeleri | Fiber İnternet Paketleri ve Fiyatları';
+        }
+        
+        // Doğrudan document.title'ı güncelleyelim
+        document.title = pageTitle;
+    }, [selectedCategory]);
 
     const akilliSinirsizTariffs = [
         {
@@ -316,7 +345,6 @@ const NetTariffs = () => {
     ];
 
 
-
     const getCurrentTariffs = () => {
         switch (selectedCategory) {
             case 'akilli': return akilliSinirsizTariffs;
@@ -331,9 +359,38 @@ const NetTariffs = () => {
     return (
         <div className="bg-gray-50">
             <Helmet>
-                <title>Kablonet İnternet Tarifeleri | Fiber İnternet Paketleri ve Fiyatları</title>
-                <meta name="description" content="Türksat Kablonet fiber internet tarifeleri. Akıllı, sınırsız ve kotalı internet paketleri. Uygun fiyatlarla yüksek hızda internet." />
+                <title>
+                    {selectedCategory === 'akilli' ? 'Türksat Kablonet Akıllı Sınırsız İnternet Tarifeleri' :
+                     selectedCategory === 'sinirsiz' ? 'Türksat Kablonet Sınırsız İnternet Tarifeleri' :
+                     selectedCategory === 'kotaliTarifeler' ? 'Türksat Kablonet Kotalı İnternet Tarifeleri' :
+                     selectedCategory === 'duranKotaliTarifeler' ? 'Türksat Kablonet Duran Kotalı İnternet Tarifeleri' :
+                     selectedCategory === 'dslTarifeler' ? 'Türksat Kablonet DSL İnternet Tarifeleri' :
+                     'Kablonet İnternet Tarifeleri | Fiber İnternet Paketleri ve Fiyatları'}
+                </title>
+                <meta 
+                    name="description" 
+                    content={
+                        selectedCategory === 'akilli' ? 'Türksat Kablonet Akıllı Sınırsız internet tarifeleri. Gün içinde farklı saatlerde değişen hız seçenekleri ile ihtiyacınıza uygun fiber internet.' :
+                        selectedCategory === 'sinirsiz' ? 'Türksat Kablonet Sınırsız internet tarifeleri. 7/24 aynı hızda, kotasız ve kesintisiz fiber internet deneyimi.' :
+                        selectedCategory === 'kotaliTarifeler' ? 'Türksat Kablonet Kotalı internet tarifeleri. Belirli GB limiti ile ekonomik fiyatlara internet erişimi, ek kullanım ücretiyle devam edebilme.' :
+                        selectedCategory === 'duranKotaliTarifeler' ? 'Türksat Kablonet Duran Kotalı internet tarifeleri. Kota dolunca duran, ek GB satın alarak kullanıma devam edilebilen ekonomik paketler.' :
+                        selectedCategory === 'dslTarifeler' ? 'Türksat Kablonet DSL internet tarifeleri. Türk Telekom altyapısı üzerinden sunulan Kablonet internet hizmetleri.' :
+                        'Türksat Kablonet fiber internet tarifeleri. Akıllı, sınırsız ve kotalı internet paketleri. Uygun fiyatlarla yüksek hızda internet.'
+                    } 
+                />
+                <meta 
+                    name="keywords" 
+                    content={
+                        selectedCategory === 'akilli' ? 'akıllı sınırsız internet, değişken hız internet, kablonet akıllı tarifeler, türksat fiber internet' :
+                        selectedCategory === 'sinirsiz' ? 'sınırsız internet, kotasız internet, kablonet limitsiz internet, türksat fiber internet' :
+                        selectedCategory === 'kotaliTarifeler' ? 'kotalı internet, gb limitli internet, ekonomik internet, kablonet' :
+                        selectedCategory === 'duranKotaliTarifeler' ? 'duran kotalı internet, limitli internet, ekonomik internet tarifeleri, kablonet' :
+                        selectedCategory === 'dslTarifeler' ? 'dsl internet, kablonet dsl, türk telekom altyapısı, vdsl internet' :
+                        'kablonet, türksat, fiber internet, internet tarifeleri, uygun internet'
+                    } 
+                />
             </Helmet>
+            
             {/* Hero Banner - Daha modern ve çekici */}
             <div className="relative mx-auto w-full h-[250px] sm:h-[400px] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2] z-0">
@@ -349,10 +406,20 @@ const NetTariffs = () => {
                 />
                 <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
-                        İnternet Tarifeleri
+                        {selectedCategory === 'akilli' ? 'Akıllı Sınırsız Tarifeler' :
+                         selectedCategory === 'sinirsiz' ? 'Sınırsız İnternet Tarifeleri' :
+                         selectedCategory === 'kotaliTarifeler' ? 'Kotalı İnternet Tarifeleri' :
+                         selectedCategory === 'duranKotaliTarifeler' ? 'Duran Kotalı İnternet Tarifeleri' :
+                         selectedCategory === 'dslTarifeler' ? 'DSL İnternet Tarifeleri' :
+                         'İnternet Tarifeleri'}
                     </h1>
                     <p className="mt-4 max-w-2xl text-lg sm:text-xl text-white/80">
-                        Her ihtiyaca ve bütçeye uygun Türksat Kablolu Fiber İnternet seçenekleri
+                        {selectedCategory === 'akilli' ? 'Gün içinde değişen internet hızıyla, ihtiyacınıza göre performans sunan akıllı tarifeler' :
+                         selectedCategory === 'sinirsiz' ? 'Kesintisiz ve kotasız, sürekli aynı hızda internet deneyimi' :
+                         selectedCategory === 'kotaliTarifeler' ? 'Ekonomik fiyatlarla sunulan, kota aşımında ek ücretle devam eden tarifeler' :
+                         selectedCategory === 'duranKotaliTarifeler' ? 'Kota bitiminde duran, ek GB alarak kullanıma devam edilebilen paketler' :
+                         selectedCategory === 'dslTarifeler' ? 'Türk Telekom altyapısı üzerinden sunulan Kablonet internet hizmetleri' :
+                         'Her ihtiyaca ve bütçeye uygun Türksat Kablolu Fiber İnternet seçenekleri'}
                     </p>
                 </div>
             </div>
@@ -892,7 +959,7 @@ const NetTariffs = () => {
                                 <p data-start="187" data-end="512">Kablonet, kullanıcılarına y&uuml;ksek hızda, g&uuml;venilir ve kesintisiz internet hizmeti sunan T&uuml;rkiye&rsquo;nin &ouml;nde gelen internet servis sağlayıcılarından biridir. Farklı ihtiya&ccedil;lara uygun olarak hazırlanan Kablonet internet tarifeleri, hem limitsiz hem de kotalı se&ccedil;eneklerle sunularak her b&uuml;t&ccedil;eye ve kullanım alışkanlığına hitap eder.</p>
                                 <p data-start="514" data-end="837">Limitsiz Kablonet tarifeleri, kullanıcılarına g&uuml;n&uuml;n her saatinde hız d&uuml;ş&uuml;m&uuml; veya kota sınırlaması olmadan internet kullanma imk&acirc;nı sağlar. Kotalı tarifelerde ise belirli bir veri kullanım sınırı bulunur; kota dolduğunda ek &uuml;cretlendirme yapılabilir veya bağlantı durdurularak kullanıcıya ek kota satın alma fırsatı sunulur.</p>
                                 <p data-start="839" data-end="1229">Kablonet'in sunduğu fiber internet teknolojisi sayesinde kullanıcılar daha y&uuml;ksek hızlarla internete bağlanabilir, video izleme, online oyun oynama ve uzaktan &ccedil;alışma gibi y&uuml;ksek bant genişliği gerektiren işlemleri sorunsuzca ger&ccedil;ekleştirebilir. Fiber altyapısı &uuml;zerinden sunulan Kablonet internet tarifeleri, farklı hız se&ccedil;enekleriyle &ouml;zelleştirilebilir ve kullanıcıya &ouml;zel &ccedil;&ouml;z&uuml;mler sunar.</p>
-                                <p data-start="1231" data-end="1491">Kablonet, sadece internet bağlantısıyla değil, aynı zamanda televizyon ve telefon hizmetlerini de i&ccedil;eren avantajlı kampanyalarıyla dikkat &ccedil;eker. T&uuml;m iletişim ihtiya&ccedil;larını tek bir &ccedil;atı altında toplayan bu &ccedil;&ouml;z&uuml;mler, hem ekonomik hem de pratik bir se&ccedil;enek sunar.</p>
+                                <p data-start="1231" data-end="1491">Kablonet, sadece internet bağlantısıyla değil, aynı zamanda televizyon ve telefon hizmetlerini de i&ccedil;eren avantajlı kampanyalarıyla dikkat &ccedil;eker. T&uuml;m iletişim ihtiya&ccedil;larını tek bir &ccedil;atı altında toplayan bu &ccedil;&ouml;zümler, hem ekonomik hem de pratik bir se&ccedil;enek sunar.</p>
                                 <p data-start="1493" data-end="1678">Eğer siz de kesintisiz, hızlı ve uygun fiyatlı bir internet hizmeti arıyorsanız, Kablonet&rsquo;in size en uygun tarifesini hemen keşfedin. Kablonet ile internet artık daha &ouml;zg&uuml;r, daha g&uuml;&ccedil;l&uuml;!</p>
                                 {/* İçerik devam edebilir */}
                             </div>

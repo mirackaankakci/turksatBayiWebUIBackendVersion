@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Helmet } from 'react-helmet-async';
 import {
   FaUserAlt,
   FaPhoneAlt,
@@ -19,6 +20,8 @@ const HemenBasvur = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [phoneError, setPhoneError] = useState("");
+  const [pageTitle, setPageTitle] = useState("Türksat Kablonet Başvuru | Fiber İnternet ve KabloTV");
+  const [kampanyaAdi, setKampanyaAdi] = useState("");
 
   // Telefon numarasını formatla
   const formatPhoneNumber = (phone) => {
@@ -81,17 +84,44 @@ const HemenBasvur = () => {
     }
   };
 
-  // URL'den kampanya ID'sini al
+  // URL'den kampanya ID'sini al ve başlığı güncelle
   useEffect(() => {
     // URL'den kampanya ID'sini alabilirsiniz
     const params = new URLSearchParams(window.location.search);
     const kampanyaId = params.get("kampanyaId") || "";
+    const kampanya = params.get("kampanya") || "";
 
     setFormData((prevState) => ({
       ...prevState,
       kampanyaId,
     }));
-  }, []);
+
+    // Kampanya adını ayarla
+    if (kampanya) {
+      setKampanyaAdi(decodeURIComponent(kampanya));
+      setPageTitle(`${decodeURIComponent(kampanya)} | Türksat Kablonet Başvuru`);
+    }
+
+    // Form başarıyla gönderildiğinde başlığı güncelle
+    if (submitSuccess) {
+      setPageTitle("Başvurunuz Alındı | Türksat Kablonet İnternet ve KabloTV");
+      // 5 saniye sonra başlığı eski haline getir
+      const timer = setTimeout(() => {
+        if (kampanya) {
+          setPageTitle(`${decodeURIComponent(kampanya)} | Türksat Kablonet Başvuru`);
+        } else {
+          setPageTitle("Türksat Kablonet Başvuru | Fiber İnternet ve KabloTV");
+        }
+      }, 5000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [submitSuccess]);
+  
+  // Başlık değişikliğini takip et
+  useEffect(() => {
+    document.title = pageTitle;
+  }, [pageTitle]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -131,6 +161,9 @@ const HemenBasvur = () => {
       if (response.data && response.data.success === true) {
         setIsSubmitting(false);
         setSubmitSuccess(true);
+        
+        // Başarı durumunda başlığı güncelle
+        setPageTitle("Başvurunuz Alındı | Türksat Kablonet İnternet ve KabloTV");
 
         // GTM'e dönüşüm olayını gönder
         window.dataLayer = window.dataLayer || [];
@@ -176,8 +209,56 @@ const HemenBasvur = () => {
     }
   };
 
+  // Meta açıklama ve anahtar kelimeler için yardımcı fonksiyonlar
+  const getMetaDescription = () => {
+    if (submitSuccess) {
+      return "Başvurunuz başarıyla alındı! Müşteri temsilcimiz en kısa sürede sizinle iletişime geçecektir. Türksat Kablonet'in avantajlı kampanyalarından yararlanmak için teşekkür ederiz.";
+    }
+
+    if (kampanyaAdi) {
+      return `${kampanyaAdi} kampanyası için online başvuru formu. Türksat Kablonet'in yüksek hızlı fiber internet ve KabloTV hizmetlerine hızlı ve kolay başvuru yapın.`;
+    }
+
+    return "Türksat Kablonet fiber internet ve KabloTV hizmetleri için online başvuru formu. Yüksek hızlı internet ve zengin içerikli KabloTV paketleri için hemen başvurun.";
+  };
+
+  const getMetaKeywords = () => {
+    const baseKeywords = "türksat başvuru, kablonet başvuru, fiber internet başvuru, kablotv başvuru";
+    
+    if (kampanyaAdi) {
+      return `${kampanyaAdi}, ${baseKeywords}, ${kampanyaAdi.toLowerCase()} kampanya, türksat kampanya`;
+    }
+
+    return `${baseKeywords}, internet başvuru, türksat abone ol, kablonet hemen başvur, fiber internet`;
+  };
+
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta 
+          name="description" 
+          content={getMetaDescription()} 
+        />
+        <meta 
+          name="keywords" 
+          content={getMetaKeywords()} 
+        />
+        <meta 
+          property="og:title" 
+          content={pageTitle} 
+        />
+        <meta 
+          property="og:description" 
+          content={getMetaDescription()} 
+        />
+        <meta property="og:type" content="website" />
+        {/* Dönüşüm izleme için ek meta etiketleri */}
+        {submitSuccess && (
+          <meta name="robots" content="noindex, follow" />
+        )}
+      </Helmet>
+
       {/* Hero Section */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[400px] px-5 py-5 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img
@@ -188,11 +269,14 @@ const HemenBasvur = () => {
         />
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Hemen Başvurun
+            {kampanyaAdi ? `${kampanyaAdi} Başvuru` : 'Hemen Başvurun'}
           </h1>
           <p className="text-lg text-blue-100 max-w-3xl mx-auto">
-            Hızlı internet deneyimi için sadece bir adım uzaktasınız. Aşağıdaki
-            formu doldurarak başvurunuzu hemen başlatabilirsiniz.
+            {submitSuccess 
+              ? "Başvurunuz başarıyla alındı! Müşteri temsilcimiz sizi en kısa sürede arayacak."
+              : kampanyaAdi 
+                ? `${kampanyaAdi} kampanyasından yararlanmak için sadece bir adım uzaktasınız. Aşağıdaki formu doldurun, sizi arayalım.`
+                : "Hızlı internet deneyimi için sadece bir adım uzaktasınız. Aşağıdaki formu doldurarak başvurunuzu hemen başlatabilirsiniz."}
           </p>
         </div>
       </div>
@@ -201,12 +285,12 @@ const HemenBasvur = () => {
       <div className="max-w-4xl mx-auto px-4 -mt-10 relative z-10">
         <div className="bg-white rounded-lg shadow-xl p-6 md:p-8 -mt-[100px]">
           <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-            Bilgilerinizi Bırakın
+            {submitSuccess ? "Başvurunuz Alındı" : "Bilgilerinizi Bırakın"}
           </h2>
 
           <form
             onSubmit={handleSubmit}
-            className="space-y-4 md:space-y-0 md:flex md:gap-4 mb-6"
+            className={`space-y-4 md:space-y-0 md:flex md:gap-4 mb-6 ${submitSuccess ? 'hidden' : 'block'}`}
           >
             <div className="relative flex-1">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-600">
@@ -378,7 +462,7 @@ const HemenBasvur = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300 shadow-lg"
           >
-            Hemen Başvur
+            {submitSuccess ? "Yeni Başvuru" : "Hemen Başvur"}
           </button>
         </div>
       </div>

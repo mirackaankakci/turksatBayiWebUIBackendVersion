@@ -1,0 +1,6 @@
+# robots.txt dosyası - Türksat Kablonet Web Sitesi
+User-agent: *
+Allow: /
+
+# Sitemap bilgisi
+Sitemap: https://www.kablointernet.com.tr/sitemap.xml

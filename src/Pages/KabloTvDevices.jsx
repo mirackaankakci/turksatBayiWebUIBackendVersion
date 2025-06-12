@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import serit from "/assets/serit.png";
 import modemBannerLogo from "/assets/modems/cloud-network.png";
 import { NavLink } from "react-router-dom";
@@ -8,9 +8,38 @@ const KabloTvDevices = () => {
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTab, setSelectedTab] = useState(null);
-
   const [selectedCategory, setSelectedCategory] = useState("akilli");
   const [activeInfoSection, setActiveInfoSection] = useState("modemBilgileri");
+
+  // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+  useEffect(() => {
+    let pageTitle = 'Kablo TV Cihazları';
+    
+    // Arama yapılıyorsa başlığı değiştirelim
+    if (searchQuery) {
+      pageTitle = `${searchQuery} - Kablo TV Cihazları`;
+    }
+    
+    // Sekme seçiliyse başlığı değiştirelim
+    if (selectedTab) {
+      switch(selectedTab) {
+        case 'Set Top Box':
+          pageTitle = 'Kablo TV Set Top Box Cihazları';
+          break;
+        case 'i-Kutu':
+          pageTitle = 'Kablo TV i-Kutu Cihazları';
+          break;
+        case 'TV Box':
+          pageTitle = 'Kablo TV Box Cihazları';
+          break;
+        default:
+          pageTitle = 'Kablo TV Cihaz Çeşitleri';
+      }
+    }
+    
+    // Doğrudan document.title'ı güncelleyelim
+    document.title = pageTitle;
+  }, [searchQuery, selectedTab]);
 
   // Import görsellerini daha güvenli bir şekilde yükleme için
   const getModemImage = (imagePath) => {
@@ -96,10 +125,33 @@ const KabloTvDevices = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-            <Helmet>
-        <title>Kablo TV Cihaz Çeşitleri | HD Set-Top Box ve i-Kutu</title>
-        <meta name="description" content="Türksat Kablo TV cihazları. TV Box, i-Kutu, HD Set-Top Box çeşitleri. Kiralama ve satın alma seçenekleri." />
+      <Helmet>
+        <title>
+          {searchQuery 
+            ? `${searchQuery} - Kablo TV Cihazları` 
+            : selectedTab 
+              ? selectedTab === 'Set Top Box' 
+                ? 'Kablo TV Set Top Box Cihazları' 
+                : selectedTab === 'i-Kutu' 
+                  ? 'Kablo TV i-Kutu Cihazları' 
+                  : selectedTab === 'TV Box' 
+                    ? 'Kablo TV Box Cihazları' 
+                    : 'Kablo TV Cihaz Çeşitleri'
+              : 'Kablo TV Cihaz Çeşitleri | HD Set-Top Box ve i-Kutu'
+          }
+        </title>
+        <meta 
+          name="description" 
+          content={
+            searchQuery 
+              ? `Türksat ${searchQuery} Kablo TV cihazları. HD Set-Top Box ve i-Kutu çeşitleri. Kiralama ve satın alma seçenekleri.` 
+              : selectedTab 
+                ? `Türksat ${selectedTab} cihazları. Kiralama ve satın alma seçenekleriyle yüksek kaliteli Kablo TV deneyimi.`
+                : "Türksat Kablo TV cihazları. TV Box, i-Kutu, HD Set-Top Box çeşitleri. Kiralama ve satın alma seçenekleri."
+          } 
+        />
       </Helmet>
+      
       {/* Hero Banner */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[400px] px-5 py-5 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img

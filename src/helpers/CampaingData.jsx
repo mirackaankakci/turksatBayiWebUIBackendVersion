@@ -1,4 +1,943 @@
 export const CampaignData = [
+    {
+    id: 3,
+    slug: "aile-boyu-fiber-kampanyasi",
+    kampanyaAdi: "Aile Boyu Fiber Kampanyası",
+    taahut12Fiyat: "99,00 TL",
+    taahut24Fiyat: "",
+    ozellikler: [
+      "En Uygun Fiyata Sınırsız İnternet...",
+      "Analog KabloTV",
+      "50 Mbps'ye kadar Sınırsız Kablonet İnternet"
+
+    ],
+    aciklama: "",
+    imgsrc: "/assets/campaignsImg/aileboyufiber.webp",
+    category: "internet",
+    popular: "true",
+    ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+   <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ KİRALAMA</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HERŞEY DAHİL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        50 Mbps Sınırsız Kablonet<br>
+        İlk 3 Ay <strong>39 TL/Ay</strong><br>
+        Sonraki 12 Ay <strong>439 TL/Ay</strong>
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Modem<br>
+        <strong>60 TL/Ay</strong>
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        İlk 3 Ay <strong>99 TL/Ay</strong><br>
+        Sonraki 12 Ay <strong>499 TL/Ay</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+   <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Alınabilecek Hizmetler<br><small>(50 Mbps Sınırsız Kablonet)</small>
+      </th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        İlk 3 Ay<br><small>15 Ay Taahhütlü Kampanya Fiyatı</small>
+      </th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Sonraki 12 Ay<br><small>(TL/Ay)</small>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">16 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">25 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">35 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">50 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">75 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">489 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">539 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">589 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">200 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">639 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">500 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">739 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">1000 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">839 TL</td></tr>
+  </tbody>
+</table>
+
+
+`,
+    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihaz</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem (Docsis 3.0, ONT)</td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">60 TL/Ay</td>
+    </tr>
+  </tbody>
+</table>
+<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
+  <li>01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.</li>
+  <li>Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.</li>
+</ul>
+
+`,
+    detaylarHtml: `
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
+      <ul class="space-y-3 mb-6">
+        <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>En Uygun Fiyata Sınırsız İnternet...</span>
+        </li>
+                <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>Analog KabloTV</span>
+        </li>
+                <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>50 Mbps'ye kadar Sınırsız Kablonet İnternet</span>
+        </li>
+      </ul>
+
+
+
+
+<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+  <ul class="space-y-2">
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya Kodu: KKK20250505</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya 01.05.2025 - 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında 15 ay taahhüt istenecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyadan sadece yeni müşteriler faydalanacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında, Türksat Kablonet aktivasyon ücreti alınmayacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyada; teknik imkanlar doğrultusunda DOCSIS veya GPON (eve kadar fiber) altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhüt süresi boyunca 50 Mbps’ye kadar Sınırsız Kablonet (ilk 3 ay 39,00 TL sonraki 12 ay 439,00 TL)  olarak uygulanacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan modemler stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 60 TL/Ay bedelle modem, 35,00 TL/Ay bedelle HD kutu ya da Türksat TV Box kiralama hizmetlerinden faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda modem eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece izin verilen şebekelerde abone kendi cihazı ile kampanya dahil olabilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteri talep ettiği (tabloda belirtilen) Kablonet tarifelerinden başvurusunu yapabilecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteriler abone olduğu hizmet tarifesinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla tabloda abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. Docsis 3.0. standartlarına uygun ve/veya telefon hizmetini desteklemeyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 50 Mbps’e kadar Sınırsız tarifesi için (ilk 3 ay için 521 TL*ay, sonraki 12 ay için 121 TL*ay), alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Son 90 günde Kablonet hizmetini iptal eden aboneler ve aynı soyada sahip yakınları adına aynı adreste bu kampanyadan yararlanamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya girişi talep edilen adreste açık aboneliğin bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
+    </li>
+  </ul>
+</div>`
+  },
+
+
+    {
+    id: 2,
+    slug: "aramiza-hosgeldin-kampanyasi",
+    kampanyaAdi: "Aramıza Hoşgeldin Kampanyası",
+    taahut12Fiyat: "309,00 TL",
+    taahut24Fiyat: "",
+    ozellikler: [
+      "50 Mbps'ye kadar Sınırsız Kablonet Fiber"
+
+    ],
+    aciklama: "12 ay taahhüt karşılığında, ilk 3 ay 309 TL, son 9 ay 409 TL’dir.!",
+    imgsrc: "/assets/campaignsImg/aramiza.webp",
+    category: "internet",
+    popular: "true",
+    ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ KİRALAMA</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HERŞEY DAHİL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">50 Mbps Sınırsız Kablonet<br>İlk 3 Ay <strong>309 TL/Ay</strong><br>Sonraki 9 Ay <strong>409 TL/Ay</strong></td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem<br><strong>60 TL/Ay</strong></td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay <strong>369 TL/Ay</strong><br>Sonraki 9 Ay <strong>469 TL/Ay</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Alınabilecek Hizmetler</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Sonraki 9 Ay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">50 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
+    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">75 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">349 TL</td><td style="text-align:center; border:1px solid #d3dce6;">449 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">100 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">379 TL</td><td style="text-align:center; border:1px solid #d3dce6;">479 TL</td></tr>
+    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">50 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">389 TL</td><td style="text-align:center; border:1px solid #d3dce6;">489 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">100 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td><td style="text-align:center; border:1px solid #d3dce6;">509 TL</td></tr>
+    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">200 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">459 TL</td><td style="text-align:center; border:1px solid #d3dce6;">559 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">500 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">559 TL</td><td style="text-align:center; border:1px solid #d3dce6;">659 TL</td></tr>
+    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">1000 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">659 TL</td><td style="text-align:center; border:1px solid #d3dce6;">759 TL</td></tr>
+  </tbody>
+</table>
+<ul style="font-family: Arial, sans-serif; font-size: 17px; font-weight:bold; color: #333; margin-top: 16px; text-align: center;">
+  <li>Docsis-Gpon Şebekede ki Aramıza Hoşgeldin Kampanyası Tablosu.</li>
+</ul>
+
+
+
+<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Alınabilecek Hizmetler</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Sonraki 9 Ay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">16 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
+    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">24 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">35 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
+    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">50 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">75 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">349 TL</td><td style="text-align:center; border:1px solid #d3dce6;">449 TL</td></tr>
+    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">100 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">379 TL</td><td style="text-align:center; border:1px solid #d3dce6;">479 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">200 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">459 TL</td><td style="text-align:center; border:1px solid #d3dce6;">559 TL</td></tr>
+  </tbody>
+</table>
+<ul style="font-family: Arial, sans-serif; font-size: 17px; font-weight:bold; color: #333; margin-top: 16px; text-align: center;">
+  <li>Adsl-Ftth Şebekede ki Aramıza Hoşgeldin Kampanyası Tablosu.</li>
+</ul>
+
+
+`,
+    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihaz</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem (Docsis 3.0, ONT, VDSL, FTTH)</td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">60 TL/Ay</td>
+    </tr>
+  </tbody>
+</table>
+<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
+  <li>01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.</li>
+  <li>Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.</li>
+</ul>
+
+`,
+    detaylarHtml: `
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
+      <ul class="space-y-3 mb-6">
+        <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>50 Mbps'ye kadar Sınırsız Kablonet Fiber</span>
+        </li>
+      </ul>
+
+
+
+<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+  <ul class="space-y-2">
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya Kodu: KKK20241104</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında 12 ay taahhüt istenecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyadan sadece KabloTV aboneliği olmayan yeni müşteriler faydalanacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında, Kablonet aktivasyon ücreti alınmayacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında, Kabloses numara tahsis ücreti (20 TL) alınmayacaktır. Abonelerin ses hizmeti kurulumu talep etmeleri durumunda aktivasyon bedeli (120 TL) fatura edilecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyada; teknik imkanlar doğrultusunda DOCSIS, GPON (eve kadar fiber), xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir. Sadece Docsis ve GPON altyapısı bulunan adreslerde Analog KabloTV  aboneliği zorunludur, hizmet ve aktivasyon ücretsizdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhüt süresi boyunca (xDSL,FTTH aboneleri için) 16 Mbps Sınırsız Kablonet fiyatı ilk 3 ay 309,00 TL sonraki 9 ay 409,00 TL olarak uygulanacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhüt süresi boyunca 50 Mbps’ye kadar Sınırsız Kablonet (ilk 3 ay 299,00 TL sonraki 9 ay 399,00 TL), Kabloses Her Yöne 50 dk tarifesi fiyatı (10 TL/Ay) olmak üzere toplamda ilk 3 ay 309,00 TL/Ay sonraki 9 ay 409,00 TL/Ay olarak ıuygulanacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan modemler stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 40 TL/Ay bedelle modem, 10,00 TL/Ay bedelle HD kutu, 35 TL/Ay bedelle Türksat TV Box kiralama hizmetlerinden faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda modem eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece...</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteri talep ettiği (tabloda belirtilen) Kablonet tarifelerinden başvurusunu yapabilecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteriler abone olduğu hizmet tarifesinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla tabloda abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. Docsis 3.0. standartlarına uygun ve/veya telefon hizmetini desteklemeyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 50 Mbps’e kadar Sınırsız tarifesi için (ilk 3 ay için 261 TL*ay, sonraki 9 ay için 161 TL*ay), (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması ha...</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Son 90 günde Kablonet hizmetini iptal eden aboneler ve aynı soyada sahip yakınları adına aynı adreste bu kampanyadan yararlanamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya girişi talep edilen adreste açık aboneliğin bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
+    </li>
+  </ul>
+</div>`
+  },
+
+
+
+
+    {
+    id: 7,
+    slug: "muhtesem-ikili-kampanyasi",
+    kampanyaAdi: "Muhteşem İkili Kampanyası",
+    taahut12Fiyat: "",
+    taahut24Fiyat: "349,00 TL",
+    ozellikler: [
+      "50 Mbps Sınırsız Kablonet",
+      "KabloTV Temel Paket"
+
+    ],
+    aciklama: "12 ay taahhütlü olup, ilk 3 ay 349 TL, son 9 ay 439 TL’dir.",
+    imgsrc: "/assets/campaignsImg/muhtesem_1.webp",
+    category: "internet",
+    popular: "true",
+    ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+    <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ KİRALAMA</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HERŞEY DAHİL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        <strong>KabloTV Temel Paket</strong><br>
+        16 Mbps veya 50 Mbps Sınırsız Kablonet<br>
+        İlk 3 ay <strong>349 TL/Ay</strong><br>
+        Sonraki 9 ay <strong>439 TL/Ay</strong><br>
+        <em>(Sadece Türksat Altyapı Bölgesinde)</em>
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Modem <strong>60 TL/Ay</strong><br>
+        HD Kutu / Conax / TV Box <strong>35 TL/Ay</strong>
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        İlk 3 ay <strong>444 TL/Ay</strong><br>
+        Sonraki 9 ay <strong>489 TL/Ay</strong>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        <strong>TV Her Yerde Temel Paket</strong><br>
+        16 Mbps veya 50 Mbps Sınırsız Kablonet<br>
+        İlk 3 ay <strong>349 TL/Ay</strong><br>
+        Sonraki 9 ay <strong>439 TL/Ay</strong><br>
+        <em>(Türksat ve Türk Telekom Altyapı Bölgesinde)</em>
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Modem <strong>60 TL/Ay</strong><br>
+        Türksat TV Box <strong>35 TL/Ay</strong>
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        İlk 3 ay <strong>444 TL/Ay</strong><br>
+        Sonraki 9 ay <strong>534 TL/Ay</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+
+   <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Alınabilecek Hizmetler<br>
+        <small>(KabloTV Temel Paket veya TV Her Yerde Temel Paket + 25 Mbps Sınırsız Kablonet)</small>
+      </th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Sonraki 9 Ay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">16 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">24 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">25 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">35 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">50 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">75 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">409 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">479 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">100 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">429 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">499 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">200 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">519 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">589 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">50 Mbps / 20 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">449 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">519 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">100 Mbps / 20 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">469 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">539 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">200 Mbps / 30 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">519 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">589 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">500 Mbps / 75 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">619 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">689 TL</td></tr>
+    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">1000 Mbps / 125 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">719 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">789 TL</td></tr>
+    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">KabloTV Üst Paket<br><small>(kampanya fiyatına ek 10 TL)</small></td><td style="text-align:center; border: 1px solid #d3dce6;">90 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">90 TL</td></tr>
+  </tbody>
+</table>
+
+`,
+    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+    <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihazlar</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Detay</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;" rowspan="1">TV Cihazları</td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HD Kutu / Conax Modül / i-Kutu / Türksat TV Box</td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">35 TL/Ay</td>
+    </tr>
+    <tr>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;" rowspan="1">İnternet Cihazları</td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem</td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">60 TL/Ay</td>
+    </tr>
+  </tbody>
+</table>
+<p style="font-family: Arial, sans-serif; font-size: 14px; margin-top: 12px;">
+  01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.
+Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.
+</p>
+
+`,
+    detaylarHtml: `
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
+      <ul class="space-y-3 mb-6">
+        <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>50 Mbps Sınırsız Kablonet</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>KabloTV Temel Paket</span>
+        </li>
+      </ul>
+
+    
+
+<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+  <ul class="space-y-2">
+
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya Kodu: KKK20241109</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında 12 ay taahhüt istenecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında, Kablonet aktivasyon ve Kablo TV aktivasyon ücreti alınmayacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteriler kampanya tablosunda yer alan hizmet paket tarifeleriyle kampanyaya abone olabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyada; teknik imkanlar doğrultusunda Docsis, GPON(eve kadar fiber), xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhüt süresi boyunca KabloTV Temel Paket (80,00 TL) + 16 Mbps Sınırsız Kablonet (ilk 3 ay 269,00 TL sonraki 9 ay 359,00 TL) olmak üzere toplamda ilk 3 ay 349,00 TL/Ay, sonraki 9 ay 439,00 TL/Ay olarak uygulanacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında müşteriler; TV Üst Pakete kampanya fiyatına ek olarak 10 TL/Ay fiyatla abone olabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteriler abone olduğu hizmetler dışında ilave hizmet olarak taahhüt süresince 20 TL/Ay farkla Gümüş Sinema paketine, 40 TL/Ay farkla Altın Sinema paketine, 20 TL/Ay farkla Nat Geo Now paketine, 20 TL/Ay farkla CosmoGO paketine, 20 TL/Ay farkla Türksat Siber paketine ve 49 TL/Ay farkla S Spor Plus paketine abone olabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteriler dilerse kampanya kapsamında sunulan TV hizmeti olarak Kablo TV ya da TV Her Yerde Hizmetinden herhangi birini tercih edebileceklerdir. KabloTV hizmeti, sadece DOCSİS ve GPON altyapısının kullanıldığı şebekelerde verilebilmekte olup TV Her Yerde Hizmeti tüm şebekelerde sunulabilmektedir. Bilgi için Türksat Kablo web sitesini ziyaret edebilirsiniz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kablo TV Hizmeti HD Kutu/I-Kutu/Modül cihazlarıyla, TV Her Yerde Hizmeti ise Türksat TV Box cihazı ve akıllı cihazlarda TV Her Yerde aplikasyonu indirilerek sunulabilmektedir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan cihazlar stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 60 TL/Ay bedelle modem, 35,00 TL/Ay bedelle HD kutu, 35 TL/Ay bedelle Türksat TV Box kiralama hizmetlerinden faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda cihazlar eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece izin verilen şebekelerde abone kendi cihazı ile kampanya dahil olabilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>İlk ay TV Üst Paket şifresiz olarak kampanyaya giriş yapan tüm müşterilere sunulacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşterinin kampanyaya TV Üst Paket ile başvurması durumunda; Üst Paketin, ilk ay kampanyaya katılan tüm abonelere şifresiz sunulması nedeni ile taahhüt cayma bedeli hesabına dahil edilmeyecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşterinin kampanyaya TV Üst Paket ile başvuru yapması durumunda ilk ay KabloTV Üst Paket için ilave fatura çıkarılmayacak olup KabloTV Temel Paket faturası çıkarılacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteriler abone olduğu hizmet paket tarifelerinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla aşağıda belirtilen ve abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Tarifelerde oluşacak değişiklikler kampanya çıkış bedellerinin hesaplanmasında dikkate alınır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. DOCSIS 3.0. standartlarına uygun ve/veya telefon hizmetini destekleyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 16 Mbps Sınırsız tarifesi için (ilk 3 ay 231,00 TL*ay, sonraki 9 ay 141,00 TL*ay); (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL), (varsa) KabloTV aktivasyon ücreti (420 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Son 90 günde Kablonet hizmetini iptal eden aboneler ve aynı soyada sahip yakınları adına aynı adreste bu kampanyadan yararlanamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya girişi talep edilen adreste açık Analog KabloTV aboneliği bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
+    </li>
+  </ul>
+</div>
+
+
+`
+  },
+
+
+    {
+    id: 4,
+    slug: "her-eve-kablonet-kampanyasi",
+    kampanyaAdi: "Her Eve Kablonet Kampanyası",
+    taahut12Fiyat: "455,00 TL",
+    taahut24Fiyat: "355,00 TL",
+    ozellikler: [
+      "En Uygun Fiyata Sınırsız İnternet...",
+      "Analog KabloTV",
+      "16 Mbps'ye kadar Sınırsız Kablonet İnternet"
+
+    ],
+    aciklama: "24 ay taahhütlü olup, ilk 12 ay 355 TL, son 12 ay 455 TL’dir.",
+    imgsrc: "/assets/campaignsImg/herevekablonetkampanyasi.webp",
+    category: "internet",
+    popular: "true",
+    ucretlendirme: `<table style="width: 70%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+   <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        16 Mbps Sınırsız Kablonet<br>
+        12 Ay Taahhütle <strong>455,00 TL/Ay</strong><br>
+        24 Ay Taahhütle İlk 12 Ay <strong>355,00 TL/Ay</strong><br>
+        Sonraki 12 Ay <strong>455,00 TL/Ay</strong>
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Modem Kiralama<br>
+        <strong>60 TL/Ay</strong>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" style="padding: 12px; border: 1px solid #d3dce6; text-align: center; background-color: #f6faff;">
+        <strong>CİHAZ KİRALAMA İLE HERŞEY DAHİL</strong><br>
+        12 Ay Taahhütle <strong>515,00 TL/Ay</strong><br>
+        24 Ay Taahhütle İlk 12 Ay <strong>415,00 TL/Ay</strong><br>
+        Sonraki 12 Ay <strong>515,00 TL/Ay</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table style="width: 50%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+
+  <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Alınabilecek Hizmetler<br><small>(Varsa Analog KabloTV)</small>
+      </th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">12 Ay Taahhütlü<br>Fiyat (TL/Ay)</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">24 Ay Taahhütlü<br>İlk 12 Ay</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">24 Ay Taahhütlü<br>Sonraki 12 Ay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">16 Mbps Sınırsız</td><td style="text-align:center;">455,00</td><td style="text-align:center;">355,00</td><td style="text-align:center;">455,00</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">24 Mbps Sınırsız (sadece DSL)</td><td style="text-align:center;">470,00</td><td style="text-align:center;">370,00</td><td style="text-align:center;">470,00</td></tr>
+    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">25 Mbps Sınırsız</td><td style="text-align:center;">470,00</td><td style="text-align:center;">370,00</td><td style="text-align:center;">470,00</td></tr>
+    
+    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">35 Mbps Sınırsız</td><td style="text-align:center;">485,00</td><td style="text-align:center;">385,00</td><td style="text-align:center;">485,00</td></tr>
+
+    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">50 Mbps Sınırsız</td><td style="text-align:center;">500,00</td><td style="text-align:center;">400,00</td><td style="text-align:center;">500,00</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">75 Mbps Sınırsız</td><td style="text-align:center;">515,00</td><td style="text-align:center;">415,00</td><td style="text-align:center;">515,00</td></tr>
+    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps Sınırsız</td><td style="text-align:center;">530,00</td><td style="text-align:center;">430,00</td><td style="text-align:center;">530,00</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">50 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center;">545,00</td><td style="text-align:center;">445,00</td><td style="text-align:center;">545,00</td></tr>
+    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center;">560,00</td><td style="text-align:center;">460,00</td><td style="text-align:center;">560,00</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">200 Mbps Sınırsız</td><td style="text-align:center;">610,00</td><td style="text-align:center;">510,00</td><td style="text-align:center;">610,00</td></tr>
+    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">500 Mbps Sınırsız</td><td style="text-align:center;">710,00</td><td style="text-align:center;">610,00</td><td style="text-align:center;">710,00</td></tr>
+    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">1000 Mbps Sınırsız</td><td style="text-align:center;">810,00</td><td style="text-align:center;">710,00</td><td style="text-align:center;">810,00</td></tr>
+  </tbody>
+</table>
+<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
+  <li>Cihaz ücretleri dahil değildir.</li>
+  <li>Fiyatlara KDV ve ÖİV dahildir.</li>
+</ul>
+
+
+
+`,
+    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
+  <thead>
+    <tr style="background-color: #336aad; color: white;">
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihaz</th>
+      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #f6faff;">
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        Modem (Docsis 3.0, ONT, VDSL, FTTH)
+      </td>
+      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
+        60 TL/Ay
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
+  <li>01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.
+Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.</li>
+</ul>
+
+`,
+    detaylarHtml: `
+    <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
+      <ul class="space-y-3 mb-6">
+        <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>En Uygun Fiyata Sınırsız İnternet...</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>Analog KabloTV</span>
+        </li>
+        <li class="flex items-start">
+          <span class="text-green-500 mr-2">✓</span>
+          <span>16 Mbps'ye kadar Sınırsız Kablonet İnternet</span>
+        </li>
+      </ul>
+
+<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
+  <ul class="space-y-2">
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyada; teknik imkanlar doğrultusunda Docsis, GPON, xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>xDSL ve FTTx altyapılarında Akıllı Sınırsız Kablonet Tarifeleri bulunmamaktadır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında 12 ay veya 24 Ay taahhüt istenecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında, Türksat Kablonet aktivasyon ücreti alınmayacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhüt süresi boyunca 12 Ay taahhüt için; 16 Mbps kadar Sınırsız Kablonet 455,00 TL/Ay,  24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhüt süresi boyunca 24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteri talep ettiği (tabloda belirtilen) Kablonet tarifelerinden başvurusunu yapabilecektir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşterilerin tarife değiştirmeleri durumunda tarife tablosunda yer alan fiyatlar müşterilerimize yansıtılacaktır. Kablonet Tarifeleri dışındaki tarifelerde yapılacak tarife değişimleri, tarifeler arasındaki farkın hesaplanmasında dikkate alınacaktır. Tarife tablosunda belirtilen tarifeler dışında başka bir tarifeye geçiş yapılamayacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Müşteriler abone olduğu hizmet paket tarifelerinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla tabloda abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan modemler stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 40 TL/Ay olarak bu hizmetten faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda modem eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece izin verilen şebekelerde abone kendi cihazı ile kampanya dahil olabilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Tarifelerde indirime gidilmesi durumunda; yeni tarife fiyatı, kampanya fiyatının altında olmadığı sürece kampanya fiyatı uygulanır, sadece taahhüt cayma bedelinde indirim yapılır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden 12 Ay taahhütlü kampanyalarda, müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 16 Mbps’e kadar Sınırsız tarifesi için (12 ay için 45 TL*ay), (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden 24 Ay taahhütlü kampanyalarda,  taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 16 Mbps’e kadar Sınırsız tarifesi için (ilk 12 ay için 145 TL*ay, sonraki 12 ay için 45 TL*ay), (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. Docsis 3.0. standartlarına uygun ve/veya telefon hizmetini desteklemeyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>1000 Mbps hız için müşterilerin ayrıca sabit IP hizmetine abone olmaları gerekmektedir. Sabit IP hizmet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kablonet hizmeti ile ilgili bir kampanyadan faydalanan müşteriler bu kampanyadan aynı hizmet üzerinden faydalanamayacaklardır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>KabloTV  hizmeti ile ilgili bir kampanyadan faydalanan müşteriler bu kampanyadan aynı hizmet üzerinden faydalanamayacaklardır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya Kablonet altyapı imkânları ile sınırlı olacaktır.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Son 90 günde Analog KabloTV / Kablonet hizmetini iptal eden aboneler aynı adreste bu kampanyadan yararlanamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Son 90 günde Analog KabloTV / Kablonet aboneliğini iptal ettiren müşterilerin aynı soyada sahip yakınları adına aynı adrese bu kampanya girişi yapılamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanya girişi talep edilen adreste açık Analog KabloTV aboneliği bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz. Kampanya girişi yapıldıktan sonra taahhütlü nakil dışında adres değişikliği taahhüt süresi bitene kadar yapılamaz.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
+    </li>
+    <li class="flex items-start">
+      <span class="text-gray-500 font-bold mr-2">•</span>
+      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
+    </li>
+  </ul>
+</div>`
+  },
+
+
+
+
   {
     id: 1,
     slug: "dordu-bir-arada-kampanyasi",
@@ -15,7 +954,7 @@ export const CampaignData = [
     aciklama: "4 ürünü bir arada cazip fiyatla alın!",
     imgsrc: "/assets/campaignsImg/DorduBirAradaKamp.webp",
     category: "internet",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
   <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -385,679 +1324,11 @@ export const CampaignData = [
     </div>`
   },
 
-  {
-    id: 2,
-    slug: "aramiza-hosgeldin-kampanyasi",
-    kampanyaAdi: "Aramıza Hoşgeldin Kampanyası",
-    taahut12Fiyat: "309,00 TL",
-    taahut24Fiyat: "",
-    ozellikler: [
-      "50 Mbps'ye kadar Sınırsız Kablonet Fiber"
-
-    ],
-    aciklama: "12 ay taahhüt karşılığında, ilk 3 ay 309 TL, son 9 ay 409 TL’dir.!",
-    imgsrc: "/assets/campaignsImg/aramiza.webp",
-    category: "internet",
-    popular: "true",
-    ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-  <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ KİRALAMA</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HERŞEY DAHİL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">50 Mbps Sınırsız Kablonet<br>İlk 3 Ay <strong>309 TL/Ay</strong><br>Sonraki 9 Ay <strong>409 TL/Ay</strong></td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem<br><strong>60 TL/Ay</strong></td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay <strong>369 TL/Ay</strong><br>Sonraki 9 Ay <strong>469 TL/Ay</strong></td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-  <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Alınabilecek Hizmetler</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Sonraki 9 Ay</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">50 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
-    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">75 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">349 TL</td><td style="text-align:center; border:1px solid #d3dce6;">449 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">100 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">379 TL</td><td style="text-align:center; border:1px solid #d3dce6;">479 TL</td></tr>
-    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">50 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">389 TL</td><td style="text-align:center; border:1px solid #d3dce6;">489 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">100 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td><td style="text-align:center; border:1px solid #d3dce6;">509 TL</td></tr>
-    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">200 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">459 TL</td><td style="text-align:center; border:1px solid #d3dce6;">559 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">500 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">559 TL</td><td style="text-align:center; border:1px solid #d3dce6;">659 TL</td></tr>
-    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">1000 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">659 TL</td><td style="text-align:center; border:1px solid #d3dce6;">759 TL</td></tr>
-  </tbody>
-</table>
-<ul style="font-family: Arial, sans-serif; font-size: 17px; font-weight:bold; color: #333; margin-top: 16px; text-align: center;">
-  <li>Docsis-Gpon Şebekede ki Aramıza Hoşgeldin Kampanyası Tablosu.</li>
-</ul>
-
-
-
-<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-  <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Alınabilecek Hizmetler</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Sonraki 9 Ay</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">16 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
-    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">24 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">35 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
-    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">50 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">309 TL</td><td style="text-align:center; border:1px solid #d3dce6;">409 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">75 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">349 TL</td><td style="text-align:center; border:1px solid #d3dce6;">449 TL</td></tr>
-    <tr><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">100 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">379 TL</td><td style="text-align:center; border:1px solid #d3dce6;">479 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="padding:12px; border:1px solid #d3dce6; text-align:center;">200 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">459 TL</td><td style="text-align:center; border:1px solid #d3dce6;">559 TL</td></tr>
-  </tbody>
-</table>
-<ul style="font-family: Arial, sans-serif; font-size: 17px; font-weight:bold; color: #333; margin-top: 16px; text-align: center;">
-  <li>Adsl-Ftth Şebekede ki Aramıza Hoşgeldin Kampanyası Tablosu.</li>
-</ul>
-
-
-`,
-    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-  <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihaz</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem (Docsis 3.0, ONT, VDSL, FTTH)</td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">60 TL/Ay</td>
-    </tr>
-  </tbody>
-</table>
-<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
-  <li>01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.</li>
-  <li>Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.</li>
-</ul>
-
-`,
-    detaylarHtml: `
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
-      <ul class="space-y-3 mb-6">
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>50 Mbps'ye kadar Sınırsız Kablonet Fiber</span>
-        </li>
-      </ul>
-
-
-
-<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
-  <ul class="space-y-2">
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya Kodu: KKK20241104</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında 12 ay taahhüt istenecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyadan sadece KabloTV aboneliği olmayan yeni müşteriler faydalanacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında, Kablonet aktivasyon ücreti alınmayacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında, Kabloses numara tahsis ücreti (20 TL) alınmayacaktır. Abonelerin ses hizmeti kurulumu talep etmeleri durumunda aktivasyon bedeli (120 TL) fatura edilecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyada; teknik imkanlar doğrultusunda DOCSIS, GPON (eve kadar fiber), xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir. Sadece Docsis ve GPON altyapısı bulunan adreslerde Analog KabloTV  aboneliği zorunludur, hizmet ve aktivasyon ücretsizdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhüt süresi boyunca (xDSL,FTTH aboneleri için) 16 Mbps Sınırsız Kablonet fiyatı ilk 3 ay 309,00 TL sonraki 9 ay 409,00 TL olarak uygulanacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhüt süresi boyunca 50 Mbps’ye kadar Sınırsız Kablonet (ilk 3 ay 299,00 TL sonraki 9 ay 399,00 TL), Kabloses Her Yöne 50 dk tarifesi fiyatı (10 TL/Ay) olmak üzere toplamda ilk 3 ay 309,00 TL/Ay sonraki 9 ay 409,00 TL/Ay olarak ıuygulanacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan modemler stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 40 TL/Ay bedelle modem, 10,00 TL/Ay bedelle HD kutu, 35 TL/Ay bedelle Türksat TV Box kiralama hizmetlerinden faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda modem eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece...</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteri talep ettiği (tabloda belirtilen) Kablonet tarifelerinden başvurusunu yapabilecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteriler abone olduğu hizmet tarifesinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla tabloda abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. Docsis 3.0. standartlarına uygun ve/veya telefon hizmetini desteklemeyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 50 Mbps’e kadar Sınırsız tarifesi için (ilk 3 ay için 261 TL*ay, sonraki 9 ay için 161 TL*ay), (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması ha...</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Son 90 günde Kablonet hizmetini iptal eden aboneler ve aynı soyada sahip yakınları adına aynı adreste bu kampanyadan yararlanamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya girişi talep edilen adreste açık aboneliğin bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
-    </li>
-  </ul>
-</div>`
-  },
-
-  {
-    id: 3,
-    slug: "aile-boyu-fiber-kampanyasi",
-    kampanyaAdi: "Aile Boyu Fiber Kampanyası",
-    taahut12Fiyat: "99,00 TL",
-    taahut24Fiyat: "",
-    ozellikler: [
-      "En Uygun Fiyata Sınırsız İnternet...",
-      "Analog KabloTV",
-      "50 Mbps'ye kadar Sınırsız Kablonet İnternet"
-
-    ],
-    aciklama: "",
-    imgsrc: "/assets/campaignsImg/aileboyufiber.webp",
-    category: "internet",
-    popular: "true",
-    ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-   <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ KİRALAMA</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HERŞEY DAHİL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        50 Mbps Sınırsız Kablonet<br>
-        İlk 3 Ay <strong>39 TL/Ay</strong><br>
-        Sonraki 12 Ay <strong>439 TL/Ay</strong>
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Modem<br>
-        <strong>60 TL/Ay</strong>
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        İlk 3 Ay <strong>99 TL/Ay</strong><br>
-        Sonraki 12 Ay <strong>499 TL/Ay</strong>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-   <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Alınabilecek Hizmetler<br><small>(50 Mbps Sınırsız Kablonet)</small>
-      </th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        İlk 3 Ay<br><small>15 Ay Taahhütlü Kampanya Fiyatı</small>
-      </th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Sonraki 12 Ay<br><small>(TL/Ay)</small>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">16 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">25 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">35 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">50 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">439 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">75 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">489 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">539 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">589 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">200 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">639 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">500 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">739 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">1000 Mbps Sınırsız</td><td style="text-align:center; border:1px solid #d3dce6;">39 TL</td><td style="text-align:center; border:1px solid #d3dce6;">839 TL</td></tr>
-  </tbody>
-</table>
-
-
-`,
-    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-  <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihaz</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem (Docsis 3.0, ONT)</td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">60 TL/Ay</td>
-    </tr>
-  </tbody>
-</table>
-<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
-  <li>01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.</li>
-  <li>Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.</li>
-</ul>
-
-`,
-    detaylarHtml: `
-          <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
-      <ul class="space-y-3 mb-6">
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>En Uygun Fiyata Sınırsız İnternet...</span>
-        </li>
-                <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>Analog KabloTV</span>
-        </li>
-                <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>50 Mbps'ye kadar Sınırsız Kablonet İnternet</span>
-        </li>
-      </ul>
 
 
 
 
-<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
-  <ul class="space-y-2">
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya Kodu: KKK20250505</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya 01.05.2025 - 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında 15 ay taahhüt istenecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyadan sadece yeni müşteriler faydalanacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında, Türksat Kablonet aktivasyon ücreti alınmayacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyada; teknik imkanlar doğrultusunda DOCSIS veya GPON (eve kadar fiber) altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhüt süresi boyunca 50 Mbps’ye kadar Sınırsız Kablonet (ilk 3 ay 39,00 TL sonraki 12 ay 439,00 TL)  olarak uygulanacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan modemler stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 60 TL/Ay bedelle modem, 35,00 TL/Ay bedelle HD kutu ya da Türksat TV Box kiralama hizmetlerinden faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda modem eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece izin verilen şebekelerde abone kendi cihazı ile kampanya dahil olabilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteri talep ettiği (tabloda belirtilen) Kablonet tarifelerinden başvurusunu yapabilecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteriler abone olduğu hizmet tarifesinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla tabloda abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. Docsis 3.0. standartlarına uygun ve/veya telefon hizmetini desteklemeyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 50 Mbps’e kadar Sınırsız tarifesi için (ilk 3 ay için 521 TL*ay, sonraki 12 ay için 121 TL*ay), alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Son 90 günde Kablonet hizmetini iptal eden aboneler ve aynı soyada sahip yakınları adına aynı adreste bu kampanyadan yararlanamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya girişi talep edilen adreste açık aboneliğin bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
-    </li>
-  </ul>
-</div>`
-  },
 
-  {
-    id: 4,
-    slug: "her-eve-kablonet-kampanyasi",
-    kampanyaAdi: "Her Eve Kablonet Kampanyası",
-    taahut12Fiyat: "455,00 TL",
-    taahut24Fiyat: "355,00 TL",
-    ozellikler: [
-      "En Uygun Fiyata Sınırsız İnternet...",
-      "Analog KabloTV",
-      "16 Mbps'ye kadar Sınırsız Kablonet İnternet"
-
-    ],
-    aciklama: "24 ay taahhütlü olup, ilk 12 ay 355 TL, son 12 ay 455 TL’dir.",
-    imgsrc: "/assets/campaignsImg/herevekablonetkampanyasi.webp",
-    category: "internet",
-    popular: "true",
-    ucretlendirme: `<table style="width: 70%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-   <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        16 Mbps Sınırsız Kablonet<br>
-        12 Ay Taahhütle <strong>455,00 TL/Ay</strong><br>
-        24 Ay Taahhütle İlk 12 Ay <strong>355,00 TL/Ay</strong><br>
-        Sonraki 12 Ay <strong>455,00 TL/Ay</strong>
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Modem Kiralama<br>
-        <strong>60 TL/Ay</strong>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2" style="padding: 12px; border: 1px solid #d3dce6; text-align: center; background-color: #f6faff;">
-        <strong>CİHAZ KİRALAMA İLE HERŞEY DAHİL</strong><br>
-        12 Ay Taahhütle <strong>515,00 TL/Ay</strong><br>
-        24 Ay Taahhütle İlk 12 Ay <strong>415,00 TL/Ay</strong><br>
-        Sonraki 12 Ay <strong>515,00 TL/Ay</strong>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table style="width: 50%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-
-  <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Alınabilecek Hizmetler<br><small>(Varsa Analog KabloTV)</small>
-      </th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">12 Ay Taahhütlü<br>Fiyat (TL/Ay)</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">24 Ay Taahhütlü<br>İlk 12 Ay</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">24 Ay Taahhütlü<br>Sonraki 12 Ay</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">16 Mbps Sınırsız</td><td style="text-align:center;">455,00</td><td style="text-align:center;">355,00</td><td style="text-align:center;">455,00</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">24 Mbps Sınırsız (sadece DSL)</td><td style="text-align:center;">470,00</td><td style="text-align:center;">370,00</td><td style="text-align:center;">470,00</td></tr>
-    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">25 Mbps Sınırsız</td><td style="text-align:center;">470,00</td><td style="text-align:center;">370,00</td><td style="text-align:center;">470,00</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">50 Mbps Akıllı Sınırsız</td><td style="text-align:center;">470,00</td><td style="text-align:center;">370,00</td><td style="text-align:center;">470,00</td></tr>
-    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">35 Mbps Sınırsız</td><td style="text-align:center;">485,00</td><td style="text-align:center;">385,00</td><td style="text-align:center;">485,00</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps Akıllı Sınırsız</td><td style="text-align:center;">485,00</td><td style="text-align:center;">385,00</td><td style="text-align:center;">485,00</td></tr>
-    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">50 Mbps Sınırsız</td><td style="text-align:center;">500,00</td><td style="text-align:center;">400,00</td><td style="text-align:center;">500,00</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">75 Mbps Sınırsız</td><td style="text-align:center;">515,00</td><td style="text-align:center;">415,00</td><td style="text-align:center;">515,00</td></tr>
-    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps Sınırsız</td><td style="text-align:center;">530,00</td><td style="text-align:center;">430,00</td><td style="text-align:center;">530,00</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">50 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center;">545,00</td><td style="text-align:center;">445,00</td><td style="text-align:center;">545,00</td></tr>
-    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">100 Mbps / 20 Mbps Sınırsız</td><td style="text-align:center;">560,00</td><td style="text-align:center;">460,00</td><td style="text-align:center;">560,00</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">200 Mbps Sınırsız</td><td style="text-align:center;">610,00</td><td style="text-align:center;">510,00</td><td style="text-align:center;">610,00</td></tr>
-    <tr style="background-color:#f6faff;"><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">500 Mbps Sınırsız</td><td style="text-align:center;">710,00</td><td style="text-align:center;">610,00</td><td style="text-align:center;">710,00</td></tr>
-    <tr><td style="text-align:center; padding:12px; border:1px solid #d3dce6;">1000 Mbps Sınırsız</td><td style="text-align:center;">810,00</td><td style="text-align:center;">710,00</td><td style="text-align:center;">810,00</td></tr>
-  </tbody>
-</table>
-<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
-  <li>Cihaz ücretleri dahil değildir.</li>
-  <li>Fiyatlara KDV ve ÖİV dahildir.</li>
-</ul>
-
-
-
-`,
-    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-  <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihaz</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Modem (Docsis 3.0, ONT, VDSL, FTTH)
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        60 TL/Ay
-      </td>
-    </tr>
-  </tbody>
-</table>
-<ul style="font-family: Arial, sans-serif; font-size: 14px; color: #333; margin-top: 16px;">
-  <li>01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.
-Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.</li>
-</ul>
-
-`,
-    detaylarHtml: `
-    <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
-      <ul class="space-y-3 mb-6">
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>En Uygun Fiyata Sınırsız İnternet...</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>Analog KabloTV</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>16 Mbps'ye kadar Sınırsız Kablonet İnternet</span>
-        </li>
-      </ul>
-
-<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
-  <ul class="space-y-2">
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında müşteriler aşağıdaki tabloda belirtilen; Sınırsız Kablonet tarifelerinden birisine abone olabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyada; teknik imkanlar doğrultusunda Docsis, GPON, xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>xDSL ve FTTx altyapılarında Akıllı Sınırsız Kablonet Tarifeleri bulunmamaktadır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında 12 ay veya 24 Ay taahhüt istenecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında, Türksat Kablonet aktivasyon ücreti alınmayacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhüt süresi boyunca 12 Ay taahhüt için; 16 Mbps kadar Sınırsız Kablonet 455,00 TL/Ay,  24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhüt süresi boyunca 24 Ay taahhüt için; 16 Mbps Sınırsız Kablonet ilk ilk 12 ay 355 TL/Ay, ikinci 12 ay 455 TL/Ay olarak uygulanacaktır</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteri talep ettiği (tabloda belirtilen) Kablonet tarifelerinden başvurusunu yapabilecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşterilerin tarife değiştirmeleri durumunda tarife tablosunda yer alan fiyatlar müşterilerimize yansıtılacaktır. Kablonet Tarifeleri dışındaki tarifelerde yapılacak tarife değişimleri, tarifeler arasındaki farkın hesaplanmasında dikkate alınacaktır. Tarife tablosunda belirtilen tarifeler dışında başka bir tarifeye geçiş yapılamayacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteriler abone olduğu hizmet paket tarifelerinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla tabloda abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan modemler stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 40 TL/Ay olarak bu hizmetten faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda modem eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece izin verilen şebekelerde abone kendi cihazı ile kampanya dahil olabilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Tarifelerde indirime gidilmesi durumunda; yeni tarife fiyatı, kampanya fiyatının altında olmadığı sürece kampanya fiyatı uygulanır, sadece taahhüt cayma bedelinde indirim yapılır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden 12 Ay taahhütlü kampanyalarda, müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 16 Mbps’e kadar Sınırsız tarifesi için (12 ay için 45 TL*ay), (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden 24 Ay taahhütlü kampanyalarda,  taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 16 Mbps’e kadar Sınırsız tarifesi için (ilk 12 ay için 145 TL*ay, sonraki 12 ay için 45 TL*ay), (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. Docsis 3.0. standartlarına uygun ve/veya telefon hizmetini desteklemeyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>1000 Mbps hız için müşterilerin ayrıca sabit IP hizmetine abone olmaları gerekmektedir. Sabit IP hizmet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kablonet hizmeti ile ilgili bir kampanyadan faydalanan müşteriler bu kampanyadan aynı hizmet üzerinden faydalanamayacaklardır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>KabloTV  hizmeti ile ilgili bir kampanyadan faydalanan müşteriler bu kampanyadan aynı hizmet üzerinden faydalanamayacaklardır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya Kablonet altyapı imkânları ile sınırlı olacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Son 90 günde Analog KabloTV / Kablonet hizmetini iptal eden aboneler aynı adreste bu kampanyadan yararlanamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Son 90 günde Analog KabloTV / Kablonet aboneliğini iptal ettiren müşterilerin aynı soyada sahip yakınları adına aynı adrese bu kampanya girişi yapılamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya girişi talep edilen adreste açık Analog KabloTV aboneliği bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz. Kampanya girişi yapıldıktan sonra taahhütlü nakil dışında adres değişikliği taahhüt süresi bitene kadar yapılamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
-    </li>
-  </ul>
-</div>`
-  },
 
 
 
@@ -1080,7 +1351,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 500 TL, son 12 ay 600 TL’dir.",
     imgsrc: "/assets/campaignsImg/hepsi-bir-arada-kampanyasi.webp",
     category: "internet",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
     <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -1451,7 +1722,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "Taahhütsüz Sınırsız İnternet.",
     imgsrc: "/assets/campaignsImg/taahhutsuz_kablonet.webp",
     category: "internet",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
     <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -1675,262 +1946,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 
 
 
-  {
-    id: 7,
-    slug: "muhtesem-ikili-kampanyasi",
-    kampanyaAdi: "Muhteşem İkili Kampanyası",
-    taahut12Fiyat: "",
-    taahut24Fiyat: "349,00 TL",
-    ozellikler: [
-      "50 Mbps Sınırsız Kablonet",
-      "KabloTV Temel Paket"
 
-    ],
-    aciklama: "12 ay taahhütlü olup, ilk 3 ay 349 TL, son 9 ay 439 TL’dir.",
-    imgsrc: "/assets/campaignsImg/muhtesem_1.webp",
-    category: "internet",
-    popular: "true",
-    ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-    <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">TARİFE</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">CİHAZ KİRALAMA</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HERŞEY DAHİL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        <strong>KabloTV Temel Paket</strong><br>
-        16 Mbps veya 50 Mbps Sınırsız Kablonet<br>
-        İlk 3 ay <strong>349 TL/Ay</strong><br>
-        Sonraki 9 ay <strong>439 TL/Ay</strong><br>
-        <em>(Sadece Türksat Altyapı Bölgesinde)</em>
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Modem <strong>60 TL/Ay</strong><br>
-        HD Kutu / Conax / TV Box <strong>35 TL/Ay</strong>
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        İlk 3 ay <strong>444 TL/Ay</strong><br>
-        Sonraki 9 ay <strong>489 TL/Ay</strong>
-      </td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        <strong>TV Her Yerde Temel Paket</strong><br>
-        16 Mbps veya 50 Mbps Sınırsız Kablonet<br>
-        İlk 3 ay <strong>349 TL/Ay</strong><br>
-        Sonraki 9 ay <strong>439 TL/Ay</strong><br>
-        <em>(Türksat ve Türk Telekom Altyapı Bölgesinde)</em>
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Modem <strong>60 TL/Ay</strong><br>
-        Türksat TV Box <strong>35 TL/Ay</strong>
-      </td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        İlk 3 ay <strong>444 TL/Ay</strong><br>
-        Sonraki 9 ay <strong>534 TL/Ay</strong>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-
-   <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
-        Alınabilecek Hizmetler<br>
-        <small>(KabloTV Temel Paket veya TV Her Yerde Temel Paket + 25 Mbps Sınırsız Kablonet)</small>
-      </th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">İlk 3 Ay</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Sonraki 9 Ay</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">16 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">24 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">25 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">35 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">50 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">349 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">439 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">75 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">409 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">479 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">100 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">429 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">499 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">200 Mbps Sınırsız</td><td style="text-align:center; border: 1px solid #d3dce6;">519 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">589 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">50 Mbps / 20 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">449 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">519 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">100 Mbps / 20 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">469 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">539 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">200 Mbps / 30 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">519 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">589 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">500 Mbps / 75 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">619 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">689 TL</td></tr>
-    <tr style="background-color: #f6faff;"><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">1000 Mbps / 125 Mbps Sınırsız (Türksat Altyapısı)</td><td style="text-align:center; border: 1px solid #d3dce6;">719 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">789 TL</td></tr>
-    <tr><td style="text-align:center; padding:12px; border: 1px solid #d3dce6;">KabloTV Üst Paket<br><small>(kampanya fiyatına ek 10 TL)</small></td><td style="text-align:center; border: 1px solid #d3dce6;">90 TL</td><td style="text-align:center; border: 1px solid #d3dce6;">90 TL</td></tr>
-  </tbody>
-</table>
-
-`,
-    cihazlarHtml: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
-    <thead>
-    <tr style="background-color: #336aad; color: white;">
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Cihazlar</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Detay</th>
-      <th style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Kiralama</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="background-color: #f6faff;">
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;" rowspan="1">TV Cihazları</td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">HD Kutu / Conax Modül / i-Kutu / Türksat TV Box</td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">35 TL/Ay</td>
-    </tr>
-    <tr>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;" rowspan="1">İnternet Cihazları</td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">Modem</td>
-      <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">60 TL/Ay</td>
-    </tr>
-  </tbody>
-</table>
-<p style="font-family: Arial, sans-serif; font-size: 14px; margin-top: 12px;">
-  01.05.2025 - 31.12.2025 tarihleri arasında kampanya kapsamında cihaz fiyatları tabloda belirtilmiştir.
-Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumlarına ve teknik altyapı uyumluluk durumlarına göre müşterilerimize sunulmaktadır.
-</p>
-
-`,
-    detaylarHtml: `
-    <h3 class="text-xl font-semibold text-gray-800 mb-4">Kampanya Özellikleri</h3>
-      <ul class="space-y-3 mb-6">
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>50 Mbps Sınırsız Kablonet</span>
-        </li>
-        <li class="flex items-start">
-          <span class="text-green-500 mr-2">✓</span>
-          <span>KabloTV Temel Paket</span>
-        </li>
-      </ul>
-
-    
-
-<div class="bg-gray-50 border border-gray-200 rounded-lg p-5 mb-6">
-  <ul class="space-y-2">
-
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya Kodu: KKK20241109</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya 01.05.2025 – 31.12.2025 tarihleri arasında geçerli olacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında 12 ay taahhüt istenecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyadan bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında, Kablonet aktivasyon ve Kablo TV aktivasyon ücreti alınmayacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteriler kampanya tablosunda yer alan hizmet paket tarifeleriyle kampanyaya abone olabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyada; teknik imkanlar doğrultusunda Docsis, GPON(eve kadar fiber), xDSL ve FTTx altyapılarından biri ile hizmet verilebilmektedir. Hizmet sunulan şebekeye göre, hizmet tarifeleri farklılık gösterebilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhüt süresi boyunca KabloTV Temel Paket (80,00 TL) + 16 Mbps Sınırsız Kablonet (ilk 3 ay 269,00 TL sonraki 9 ay 359,00 TL) olmak üzere toplamda ilk 3 ay 349,00 TL/Ay, sonraki 9 ay 439,00 TL/Ay olarak uygulanacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında müşteriler; TV Üst Pakete kampanya fiyatına ek olarak 10 TL/Ay fiyatla abone olabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteriler abone olduğu hizmetler dışında ilave hizmet olarak taahhüt süresince 20 TL/Ay farkla Gümüş Sinema paketine, 40 TL/Ay farkla Altın Sinema paketine, 20 TL/Ay farkla Nat Geo Now paketine, 20 TL/Ay farkla CosmoGO paketine, 20 TL/Ay farkla Türksat Siber paketine ve 49 TL/Ay farkla S Spor Plus paketine abone olabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteriler dilerse kampanya kapsamında sunulan TV hizmeti olarak Kablo TV ya da TV Her Yerde Hizmetinden herhangi birini tercih edebileceklerdir. KabloTV hizmeti, sadece DOCSİS ve GPON altyapısının kullanıldığı şebekelerde verilebilmekte olup TV Her Yerde Hizmeti tüm şebekelerde sunulabilmektedir. Bilgi için Türksat Kablo web sitesini ziyaret edebilirsiniz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kablo TV Hizmeti HD Kutu/I-Kutu/Modül cihazlarıyla, TV Her Yerde Hizmeti ise Türksat TV Box cihazı ve akıllı cihazlarda TV Her Yerde aplikasyonu indirilerek sunulabilmektedir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında cihaz kiralama hizmeti talep eden müşterilere verilecek olan cihazlar stoklarla sınırlı olup Türksat A.Ş. mülkiyetindedir. Müşteriler vergiler dahil 60 TL/Ay bedelle modem, 35,00 TL/Ay bedelle HD kutu, 35 TL/Ay bedelle Türksat TV Box kiralama hizmetlerinden faydalanabilirler. Cihaz kiralama hizmetinin sonlandırılması durumunda cihazlar eksiksiz ve çalışır olarak Türksat A.Ş.’ye teslim edilmelidir. Hizmet verilen şebekeye göre Türksat cihazlarının kullanımı mecburi olabilecek olup, sadece izin verilen şebekelerde abone kendi cihazı ile kampanya dahil olabilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>İlk ay TV Üst Paket şifresiz olarak kampanyaya giriş yapan tüm müşterilere sunulacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşterinin kampanyaya TV Üst Paket ile başvurması durumunda; Üst Paketin, ilk ay kampanyaya katılan tüm abonelere şifresiz sunulması nedeni ile taahhüt cayma bedeli hesabına dahil edilmeyecektir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşterinin kampanyaya TV Üst Paket ile başvuru yapması durumunda ilk ay KabloTV Üst Paket için ilave fatura çıkarılmayacak olup KabloTV Temel Paket faturası çıkarılacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Müşteriler abone olduğu hizmet paket tarifelerinden (fiyat olarak geriye doğru) daha düşük bir tarifeye geçmemek koşuluyla aşağıda belirtilen ve abone oldukları şebekede verilebilen tarifeler arasında, istediği gibi değişiklik yapabilecektir. Müşteriler taahhüt süresi boyunca ilk abone oldukları tarifeye geçiş yapabileceklerdir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya kapsamında tabloda belirtilen hızlar teknik imkanlar doğrultusunda sunulabilen hızları ifade etmektedir. Müşterilere sunulan internet hizmeti kapsamında, hız seçeneklerinde Abone’nin alacağı hız garanti edilmemekte olup, Abone’nin hattının uygunluğu, santrale olan mesafe vb. kriterlere bağlı olarak paket içinde tanımlı, alabileceği en yüksek hızda hizmet verilecektir. DSL ve FTTH hizmetleri Türk Telekomünikasyon A.Ş. altyapısı üzerinden sunulmaktadır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Tarifelerde oluşacak değişiklikler kampanya çıkış bedellerinin hesaplanmasında dikkate alınır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Docsis altyapısında, 16 Mbps ve üzeri hızlar Docsis 3.0. standartlarına uygun olan modemler ile Kabloses hizmeti ise telefon hizmetini destekleyen modemler ile karşılanabilecektir. DOCSIS 3.0. standartlarına uygun ve/veya telefon hizmetini destekleyen modem kullanmayan müşterilerin tercih ettikleri hızda internet bağlantısı yapamamalarından ve/veya Kabloses hizmeti kullanamamalarından Türksat A.Ş. sorumlu değildir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>75 Mbps ve üzeri hızlar sadece 24 D/S kanal birleştirme, 8 U/S kanal birleştirme özelliklerine sahip modemlerle sunulabilmektedir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya süresi dolmadan aboneliğini iptal ettirmek isteyen müşterilerden taahhüt başlangıç tarihinden kampanya iptaline kadar geçen sürede alınmayan aylık Kablonet 16 Mbps Sınırsız tarifesi için (ilk 3 ay 231,00 TL*ay, sonraki 9 ay 141,00 TL*ay); (varsa) alınmayan Kablonet aktivasyon ücreti (840 TL), (varsa) KabloTV aktivasyon ücreti (420 TL) tahsil edilecektir. Ancak taahhüt kapsamında müşteriden tahsil edilecek olan bedellerin henüz tahakkuk etmemiş kısmının toplamı, kampanya kapsamında alınmayan ücretler toplamından düşük olması halinde müşteri lehine olan tutar tahsil edilir.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Taahhütnameden doğan damga vergisi (Binde 9,48) bir defaya mahsus müşterinin ilk faturasına yansıtılacaktır.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Türksat belirlenen süreden önce kampanyayı durdurma hakkını saklı tutar.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Son 90 günde Kablonet hizmetini iptal eden aboneler ve aynı soyada sahip yakınları adına aynı adreste bu kampanyadan yararlanamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanya girişi talep edilen adreste açık Analog KabloTV aboneliği bulunması halinde o adrese aynı soyada sahip başka bir müşteri adına kampanya girişi yapılamaz.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>Kampanyaya abone olan yeni bireysel müşteriler için faturalar yalnızca SMS yoluyla iletilecek olup ayrıca posta ile iletilmeyecektir. Talep eden müşterilerimiz kampanya aktif hale geldikten sonra çağrı merkezimizi arayarak veya Türksat abone merkezleri aracılığıyla fatura alma tercihlerini değiştirebilirler.</span>
-    </li>
-    <li class="flex items-start">
-      <span class="text-gray-500 font-bold mr-2">•</span>
-      <span>İnternet tarifeleriyle ilgili detaylı bilgi için tıklayınız.</span>
-    </li>
-  </ul>
-</div>
-
-
-`
-  },
 
 
   {
@@ -1948,7 +1964,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "",
     imgsrc: "/assets/campaignsImg/sinemakeyfikampanyasi2.webp",
     category: "tv",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
      <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -2073,7 +2089,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "12 Ay taahhüt karşılığında ilk ay ÜCRETSİZ kalan 11 ay 69 TL.",
     imgsrc: "/assets/campaignsImg/denemesi-bedava-ssport-kampanyasi.webp",
     category: "tv",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
     <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -2170,7 +2186,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "",
     imgsrc: "/assets/campaignsImg/hd.webp",
     category: "tv",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
      <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -2252,7 +2268,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "",
     imgsrc: "/assets/campaignsImg/aile-boyu-tv-kampanyasi.webp",
     category: "tv",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
      <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -2387,7 +2403,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "2 ay taahhütlü olup, ilk 1 ay Ücretsiz, son 11 ay 49 TL’dir.",
     imgsrc: "/assets/campaignsImg/heryerde.webp",
     category: "tv",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
      <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -2519,7 +2535,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "",
     imgsrc: "/assets/campaignsImg/her-eve-kablonet-kampanyasi.webp",
     category: "mevcutmusteri",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
      <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -2736,7 +2752,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "",
     imgsrc: "/assets/campaignsImg/kabloses_kamp.webp",
     category: "phone",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
      <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -2833,7 +2849,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 449 TL, son 12 ay 549 TL’dir.",
     imgsrc: "/assets/campaignsImg/hepsi-bir-arada-kampanyasi_7.webp",
     category: "mevcutmusteri",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
        <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -3135,7 +3151,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "24 ay taahhütlü olup, ilk 12 ay 349 TL, son 12 ay 449 TL’dir.",
     imgsrc: "/assets/campaignsImg/Dordu-Bir-Arada-Kamp.webp",
     category: "mevcutmusteri",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
         <thead>
     <tr style="background-color: #336aad; color: white;">
@@ -3365,7 +3381,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
 <li>Kampanya kapsamında 12 ay taahhüt istenecektir.</li>
 <li>Bu kampanyadan sadece en az 11 aydır Analog KabloTV hizmetini kesintisiz kullanan müşteriler faydalanabilecektir.</li>
 <li>Kampanyadan otel motel müşterileri faydalanamaz, bireysel tarifede olan müşteriler resmi kurum ve kuruluşlar faydalanabilir.</li>
-<li>Kampanya kapsamında müşteriler tabloda belirtilen; Sınırsız / Akıllı Sınırsız tarifelerinden birisine, KabloTV Temel Paket tarifesine, Gümüş Sinema paketine ve KabloBulut paket tarifelerinden birine aynı anda abone olabileceklerdir.</li>
+<li>Kampanya kapsamında müşteriler tabloda belirtilen; Sınırsız tarifelerinden birisine, KabloTV Temel Paket tarifesine, Gümüş Sinema paketine ve KabloBulut paket tarifelerinden birine aynı anda abone olabileceklerdir.</li>
 <li>Kampanya kapsamında, Kablonet ve Kablo TV aktivasyon ücretleri alınmayacaktır.</li>
 <li>Kampanya kapsamında müşteriler başlangıç olarak; KabloTV Temel Paket + Gümüş sinema paketi + 25 Mbps'ye kadar Sınırsız Kablonet ve Kablobulut 25 GB tarifesine abone olacaklardır.</li>
 <li>Taahhüt süresi boyunca ( 12 Aylık Sözleşme) Analog KabloTV + KabloTV Temel (80,00 TL) + 25 Mbps’ye kadar Sınırsız Kablonet (12 ay 230,00 TL), Gümüş sinema paketi (55,00TL), Kablo Bulut 25 GB paketi (5,00TL) olmak üzere toplamda 12 ay 370,00 TL/Ay olarak uygulanacaktır.</li>
@@ -3423,7 +3439,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     aciklama: "",
     imgsrc: "/assets/campaignsImg/isim_kolay_1.webp",
     category: "internet",
-    popular: "true",
+    popular: "false",
     ucretlendirme: `<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-top: 30px; border: 1px solid #336aad; border-radius: 12px; overflow: hidden;">
          <thead>
     <tr style="background-color: #336aad; color: white;">

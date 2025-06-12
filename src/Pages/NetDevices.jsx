@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import serit from "/assets/serit.png";
 import modemBannerLogo from "/assets/modems/cloud-network.png";
 import { NavLink } from "react-router-dom";
@@ -8,9 +8,38 @@ const NetDevices = () => {
     const [selectedDevice, setSelectedDevice] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedTab, setSelectedTab] = useState(null);
-
     const [selectedCategory, setSelectedCategory] = useState('akilli');
     const [activeInfoSection, setActiveInfoSection] = useState('modemBilgileri');
+
+    // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+    useEffect(() => {
+        let pageTitle = 'Kablonet Modem Çeşitleri';
+        let metaDescription = 'Türksat Kablonet modem çeşitleri. Fiber ve DOCSIS teknolojili modemler, kiralama ve satın alma seçenekleri.';
+        
+        // Arama yapılıyorsa başlığı değiştirelim
+        if (searchQuery) {
+            pageTitle = `${searchQuery} - Kablonet Modem Modelleri | Türksat Cihazları`;
+            metaDescription = `Türksat Kablonet ${searchQuery} modem modelleri ve teknik özellikleri. Uygun fiyatlarla kiralama ve satın alma seçenekleri.`;
+        }
+        
+        // Cihaz seçiliyse başlığı değiştirelim
+        if (selectedDevice) {
+            const device = modemler.find(m => m.id === selectedDevice);
+            if (device) {
+                pageTitle = `${device.name} | Türksat Kablonet`;
+                metaDescription = `${device.name} teknik özellikleri ve fiyatları. ${device.shortDescription} Türksat Kablonet ürün detayları.`;
+            }
+        }
+        
+        // Tab seçiliyse başlığı değiştirelim
+        if (selectedTab) {
+            pageTitle = `Türksat ${selectedTab} Modemleri | Kablonet Cihazları`;
+            metaDescription = `Türksat Kablonet ${selectedTab} modemler ve teknik özellikleri. En uygun fiyat ve modeller Türksat Kablonet'te.`;
+        }
+        
+        // Doğrudan document.title'ı güncelleyelim
+        document.title = pageTitle;
+    }, [searchQuery, selectedDevice, selectedTab]);
 
     // Import görsellerini daha güvenli bir şekilde yükleme için
     const getModemImage = (imagePath) => {
@@ -131,15 +160,47 @@ const NetDevices = () => {
     const filteredModems = modemler.filter(modem =>
         modem.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         modem.type.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        modem.description.toLowerCase().includes(searchQuery.toLowerCase())
+        (modem.detailedDescription && modem.detailedDescription.toLowerCase().includes(searchQuery.toLowerCase()))
     );
 
     return (
         <div className="min-h-screen bg-gray-50">
-                  <Helmet>
-        <title>Kablonet Modem Çeşitleri | Fiber ve DOCSIS Modemler</title>
-        <meta name="description" content="Türksat Kablonet modem çeşitleri. Fiber ve DOCSIS teknolojili modemler, kiralama ve satın alma seçenekleri." />
-      </Helmet>
+            <Helmet>
+                <title>
+                    {selectedDevice ? 
+                     modemler.find(m => m.id === selectedDevice)?.name + ' | Türksat Kablonet' : 
+                     searchQuery ?
+                     `${searchQuery} - Kablonet Modem Modelleri | Türksat Cihazları` :
+                     selectedTab ?
+                     `Türksat ${selectedTab} Modemleri | Kablonet Cihazları` :
+                     'Kablonet Modem Çeşitleri'}
+                </title>
+                <meta 
+                    name="description" 
+                    content={
+                        selectedDevice ? 
+                        `${modemler.find(m => m.id === selectedDevice)?.name} teknik özellikleri ve fiyatları. ${modemler.find(m => m.id === selectedDevice)?.shortDescription} Türksat Kablonet ürün detayları.` : 
+                        searchQuery ?
+                        `Türksat Kablonet ${searchQuery} modem modelleri ve teknik özellikleri. Uygun fiyatlarla kiralama ve satın alma seçenekleri.` :
+                        selectedTab ?
+                        `Türksat Kablonet ${selectedTab} modemler ve teknik özellikleri. En uygun fiyat ve modeller Türksat Kablonet'te.` :
+                        'Türksat Kablonet modem çeşitleri. Fiber ve DOCSIS teknolojili modemler, kiralama ve satın alma seçenekleri.'
+                    } 
+                />
+                <meta 
+                    name="keywords" 
+                    content={
+                        selectedDevice ? 
+                        `${modemler.find(m => m.id === selectedDevice)?.name}, kablonet modem, türksat modem, fiber modem, ${modemler.find(m => m.id === selectedDevice)?.type}` : 
+                        searchQuery ?
+                        `${searchQuery} modem, kablonet ${searchQuery}, türksat modem, fiber modem` :
+                        selectedTab ?
+                        `${selectedTab} modem, kablonet ${selectedTab}, türksat modem, fiber teknolojileri` :
+                        'kablonet modem, türksat modem, fiber modem, docsis modem, kablonet cihazlar'
+                    } 
+                />
+            </Helmet>
+
             {/* Hero Banner */}
             <div className="relative mx-auto w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[400px] px-5 py-5 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
                 <img
@@ -150,8 +211,24 @@ const NetDevices = () => {
                 />
                 <div className='flex justify-between items-center h-full relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
                     <div className="text-white max-w-xl">
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 md:mb-4">Kablonet Fiber Modemler</h1>
-                        <p className="text-[16px] sm:text-[18px] md:text-[20px] text-blue-100">Türksat Kablonet Fiber Altyapısına Uygun Fiber Modemler</p>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 md:mb-4">
+                            {selectedDevice ? 
+                             modemler.find(m => m.id === selectedDevice)?.name : 
+                             searchQuery ?
+                             `${searchQuery} Modem Modelleri` :
+                             selectedTab ?
+                             `${selectedTab} Modemler` :
+                             'Kablonet Fiber Modemler'}
+                        </h1>
+                        <p className="text-[16px] sm:text-[18px] md:text-[20px] text-blue-100">
+                            {selectedDevice ? 
+                             modemler.find(m => m.id === selectedDevice)?.shortDescription : 
+                             searchQuery ?
+                             `Türksat Kablonet ${searchQuery} modem modelleri ve özellikleri` :
+                             selectedTab ?
+                             `Türksat ${selectedTab} Modemler ve Teknik Özellikleri` :
+                             'Türksat Kablonet Fiber Altyapısına Uygun Fiber Modemler'}
+                        </p>
                     </div>
                     
                     <div className="ml-4">
@@ -162,7 +239,6 @@ const NetDevices = () => {
                         />
                     </div>
                 </div>
-
             </div>
 
 

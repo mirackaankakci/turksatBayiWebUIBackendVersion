@@ -20,7 +20,7 @@ import FesihIslemleri from './Pages/fesih'
 import Sss from './Pages/Sss'
 import TvFrekans from './Pages/TvFrekans'
 import Services from './Pages/Services'
-import Contact from './Pages/contact'
+import Contact from './Pages/Contact'
 import InfrastructureInquiry from './Pages/InfrastructureInquiry'
 import KabloSesTariff from './Pages/KabloSesTariff'
 import MovieDetail from './Pages/movieDetail'
@@ -50,8 +50,8 @@ function App() {
           <Route path="/kablotv/frekans-listesi" element={<TvFrekans />} />
           <Route path="/servisler" element={<Services />} />
           <Route path="/servisler/:serviceId" element={<Services />} />
-          <Route path="/sika-sorulan-sorular" element={<Sss />} />
-          <Route path="/i̇letişim" element={<Contact />} />
+          <Route path="/sikca-sorulan-sorular" element={<Sss />} />
+          <Route path="/i̇letisim" element={<Contact />} />
           <Route path="/altyapi-sorgulama" element={<InfrastructureInquiry />} />
           <Route path="/kablotv/tarifeler" element={<KabloSesTariff />} />
 
@@ -66,3 +66,5 @@ function App() {
 }
 
 export default App
+
+// index.html veya App.jsx'te

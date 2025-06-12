@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async'; // react-helmet-async kullanmanızı öneririm
 import { FaSearch, FaTv } from 'react-icons/fa';
 import frekansListesi from '../helpers/kablotv_frekans_listesi_full.json';
 import serit from "/assets/serit.png"; // Import serit image
@@ -9,6 +9,21 @@ const TvFrekans = () => {
   const [filteredKanallar, setFilteredKanallar] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+  
+  // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+  useEffect(() => {
+    let pageTitle = 'KabloTV HD Kanallar Frekans Listesi - Türksat Kablonet';
+    let pageDescription = 'Türksat Kablo TV HD kanal frekans listesi';
+    
+    // Arama yapılıyorsa başlık ve açıklamayı güncelle
+    if (searchTerm) {
+      pageTitle = `${searchTerm} - KabloTV Kanal Frekans Bilgisi | Türksat Kablonet`;
+      pageDescription = `Türksat Kablo TV ${searchTerm} kanalının frekans bilgileri ve teknik özellikleri. HD/SD frekans değerleri.`;
+    }
+    
+    // Doğrudan document.title'ı güncelleyelim
+    document.title = pageTitle;
+  }, [searchTerm]);
   
   // Frekans verilerini JSON dosyasından yükle - sadece HD kanalları
   useEffect(() => {
@@ -56,8 +71,26 @@ const TvFrekans = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>KabloTV HD Kanallar Frekans Listesi - Türksat Kablonet</title>
-        <meta name="description" content="Türksat Kablo TV HD kanal frekans listesi" />
+        <title>
+          {searchTerm 
+            ? `${searchTerm} - KabloTV Kanal Frekans Bilgisi | Türksat Kablonet` 
+            : 'KabloTV HD Kanallar Frekans Listesi - Türksat Kablonet'}
+        </title>
+        <meta 
+          name="description" 
+          content={
+            searchTerm 
+              ? `Türksat Kablo TV ${searchTerm} kanalının frekans bilgileri ve teknik özellikleri. HD/SD frekans değerleri.`
+              : 'Türksat Kablo TV HD kanal frekans listesi. Tüm HD kanallara ait dijital ve analog frekans bilgileri.'}
+        />
+        <meta 
+          name="keywords" 
+          content={
+            searchTerm 
+              ? `${searchTerm} frekans, kablo tv ${searchTerm}, türksat ${searchTerm}, hd kanal frekansları, kablonet frekans listesi`
+              : 'kablo tv frekans listesi, hd kanal frekansları, türksat kablo tv, kablonet hd kanallar, dijital yayın frekansları'
+          } 
+        />
       </Helmet>
 
       {/* Standart Banner Section - Diğer sayfalarda kullanılan banner */}
@@ -70,10 +103,12 @@ const TvFrekans = () => {
         />
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            KabloTV HD Kanallar Listesi
+            {searchTerm ? `"${searchTerm}" Kanal Frekansları` : 'KabloTV HD Kanallar Listesi'}
           </h1>
           <p className="text-lg text-blue-100 max-w-3xl mx-auto">
-            Türksat Kablo TV'de yayın yapan tüm HD kanalların frekans bilgilerine buradan ulaşabilirsiniz.
+            {searchTerm 
+              ? `Türksat Kablo TV'de "${searchTerm}" içeren kanalların frekans bilgilerine buradan ulaşabilirsiniz.` 
+              : 'Türksat Kablo TV\'de yayın yapan tüm HD kanalların frekans bilgilerine buradan ulaşabilirsiniz.'}
           </p>
           
           <div className="bg-white rounded-lg flex items-center p-2 shadow-md max-w-2xl mx-auto mt-8">

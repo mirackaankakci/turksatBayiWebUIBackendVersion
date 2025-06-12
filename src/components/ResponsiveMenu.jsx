@@ -178,7 +178,7 @@ export default function ResponsiveMenu() {
             </NavLink>
 
             <NavLink
-              to="/i̇letişim"
+              to="/i̇letisim"
               onClick={handleLinkClick}
               className="list-none w-[170px] p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
               İLETİŞİM 
@@ -246,7 +246,7 @@ export default function ResponsiveMenu() {
           <NavLink to="/servisler" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
             Servisler
           </NavLink>
-          <NavLink to="/i̇letişim" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
+          <NavLink to="/i̇letisim" className="list-none w-[170px] text-center p-4 hover:bg-sky-400 hover:text-white hover:rounded-xl transition-all cursor-pointer">
             İletişim
           </NavLink>
         </div>

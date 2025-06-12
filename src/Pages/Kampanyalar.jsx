@@ -102,11 +102,54 @@ const Kampanyalar = () => {
     }
   };
 
+  // Add this new useEffect to update the document title when activeFilter changes
+  useEffect(() => {
+    let pageTitle = '';
+    
+    switch(activeFilter) {
+      case 'all':
+        pageTitle = 'Türksat Kablonet Kampanyaları';
+        break;
+      case 'internet':
+        pageTitle = 'Türksat Kablonet İnternet Kampanyaları';
+        break;
+      case 'tv':
+        pageTitle = 'Türksat Kablo TV Kampanyaları';
+        break;
+      case 'phone':
+        pageTitle = 'Türksat Kabloses Telefon Kampanyaları';
+        break;
+      case 'mevcutmusteri':
+        pageTitle = 'Türksat Mevcut Müşteri Kampanyaları';
+        break;
+      default:
+        pageTitle = 'Türksat Kablonet Kampanyaları';
+    }
+    
+    // Directly update document title
+    document.title = pageTitle;
+  }, [activeFilter]);
+
   return (
     <div className="relative min-h-screen bg-gray-50 ">
-            <Helmet>
-        <title>Türksat Kablonet Kampanyaları </title>
-        <meta name="description" content="Türksat Kablonet kampanyaları. Fiber internet, kablo TV ve telefon hizmetlerinde özel indirimler ve avantajlı paketler." />
+      <Helmet>
+        <title>
+          {activeFilter === 'all' ? 'Türksat Kablonet Kampanyaları' :
+            activeFilter === 'internet' ? 'Türksat Kablonet İnternet Kampanyaları' :
+              activeFilter === 'tv' ? 'Türksat Kablo TV Kampanyaları' :
+                activeFilter === 'phone' ? 'Türksat Kabloses Telefon Kampanyaları' :
+                  'Türksat Mevcut Müşteri Kampanyaları'}
+        </title>
+        <meta
+          name="description"
+          content={
+            activeFilter === 'all' ? 'Türksat Kablonet kampanyaları. Fiber internet, kablo TV ve telefon hizmetlerinde özel indirimler ve avantajlı paketler.' :
+              activeFilter === 'internet' ? 'Türksat Kablonet internet kampanyaları. Hızlı fiber internet paketlerinde cazip fiyatlar ve özel fırsatlar.' :
+                activeFilter === 'tv' ? 'Türksat Kablo TV kampanyaları. HD ve 4K kalitesinde TV yayınları, film ve dizi paketlerinde özel indirimler.' :
+                  activeFilter === 'phone' ? 'Türksat Kabloses telefon kampanyaları. Uygun fiyatlı sabit telefon hizmetleri ve tarifeler.' :
+                    'Türksat mevcut müşterilere özel kampanyalar. Güncel yükseltme fırsatları ve sadakat indirimleri.'
+          }
+        />
       </Helmet>
       {/* Hero Banner */}
       <div className="relative mx-auto w-full h-[300px] pt-[70px] items-center sm:h-[350px] md:h-[400px] lg:h-[400px]  bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
@@ -139,27 +182,26 @@ const Kampanyalar = () => {
               <button
                 onClick={() => handleFilterChange('all')}
                 className={`px-4 py-2 rounded-md transition ${activeFilter === 'all'
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
                   }`}
               >
                 Tüm Kampanyalar
               </button>
               <button
                 onClick={() => handleFilterChange('internet')}
-                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${
-                  activeFilter === 'internet'
+                className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'internet'
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-                }`}
+                  }`}
               >
                 <FaWifi /> Kablonet
               </button>
               <button
                 onClick={() => handleFilterChange('tv')}
                 className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'tv'
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
                   }`}
               >
                 <FaTv /> Kablo TV
@@ -167,8 +209,8 @@ const Kampanyalar = () => {
               <button
                 onClick={() => handleFilterChange('phone')}
                 className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'phone'
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
                   }`}
               >
                 <FaPhoneAlt /> Kabloses
@@ -176,8 +218,8 @@ const Kampanyalar = () => {
               <button
                 onClick={() => handleFilterChange('mevcutmusteri')}
                 className={`px-4 py-2 rounded-md transition flex items-center gap-2 ${activeFilter === 'mevcutmusteri'
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
                   }`}
               >
                 <FaVideoSlash /> Mevcut Müşteri

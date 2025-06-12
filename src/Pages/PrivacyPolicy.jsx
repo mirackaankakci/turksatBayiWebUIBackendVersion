@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaShieldAlt, FaUserLock, FaDatabase, FaCookieBite, FaRegEnvelope, FaChevronRight, FaAngleUp, FaFileContract } from 'react-icons/fa';
 import serit from '/assets/serit.png';
+import { Helmet } from 'react-helmet-async';
 
 const PrivacyPolicy = () => {
   const [activeSection, setActiveSection] = useState('introduction');
@@ -20,6 +21,53 @@ const PrivacyPolicy = () => {
     changes: useRef(null),
     contact: useRef(null)
   };
+
+  // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+  useEffect(() => {
+    let pageTitle = 'Gizlilik Politikası | Türksat Kablonet';
+    let metaDescription = 'Türksat Kablonet gizlilik politikası ve kişisel verilerin işlenmesine dair aydınlatma metni.';
+    
+    // Aktif bölüme göre başlığı değiştirelim
+    switch(activeSection) {
+      case 'introduction':
+        pageTitle = 'Gizlilik Politikası | Türksat Kablonet';
+        metaDescription = 'Türksat Kablonet müşteri hizmetleri gizlilik politikası ve kişisel verilerin korunması hakkında aydınlatma metni.';
+        break;
+      case 'dataCollection':
+        pageTitle = 'İşlenen Kişisel Veriler | Türksat Gizlilik Politikası';
+        metaDescription = 'Türksat Kablonet tarafından işlenen kişisel veriler ve veri kategorileri hakkında detaylı bilgiler.';
+        break;
+      case 'dataUsage':
+        pageTitle = 'Kişisel Verilerin İşlenme Amaçları | Türksat Gizlilik';
+        metaDescription = 'Türksat Kablonet tarafından kişisel verilerinizin hangi amaçlarla işlendiği ve yasal dayanakları hakkında bilgiler.';
+        break;
+      case 'thirdParties':
+        pageTitle = 'Kişisel Verilerin Aktarımı | Türksat Veri Güvenliği';
+        metaDescription = 'Türksat Kablonet tarafından toplanan kişisel verilerin hangi durumlarda üçüncü taraflarla paylaşıldığı hakkında bilgiler.';
+        break;
+      case 'dataSecurity':
+        pageTitle = 'Kişisel Veri Toplama Yöntemleri | Türksat KVKK Politikası';
+        metaDescription = 'Türksat Kablonet tarafından kişisel verilerin toplanma yöntemleri ve hukuki dayanakları hakkında bilgilendirme.';
+        break;
+      case 'userRights':
+        pageTitle = 'KVKK Kapsamındaki Haklarınız | Türksat Kablonet';
+        metaDescription = 'Kişisel Verilerin Korunması Kanunu kapsamında Türksat Kablonet müşterilerinin sahip olduğu haklar ve başvuru yöntemleri.';
+        break;
+      case 'dataProcessingConsent':
+        pageTitle = 'Veri İşleme İzni | Türksat Kişisel Veri İşleme';
+        metaDescription = 'Türksat Kablonet hizmetlerinde kişisel verilerin işlenmesine dair izin ve rıza beyanı hakkında bilgilendirme.';
+        break;
+      case 'contact':
+        pageTitle = 'Veri Sorumlusu İletişim Bilgileri | Türksat KVKK';
+        metaDescription = 'Türksat Kablonet veri sorumlusu iletişim bilgileri ve KVKK kapsamındaki haklarınızla ilgili başvuru yöntemleri.';
+        break;
+      default:
+        pageTitle = 'Gizlilik Politikası | Türksat Kablonet';
+    }
+    
+    // Doğrudan document.title'ı güncelleyelim
+    document.title = pageTitle;
+  }, [activeSection]);
 
   // Sayfa içi navigasyon için section değiştirme
   const navigateToSection = (sectionId) => {
@@ -64,8 +112,93 @@ const PrivacyPolicy = () => {
     });
   };
 
+  // Meta açıklama ve anahtar kelimeler için yardımcı fonksiyonlar
+  const getMetaDescription = () => {
+    switch(activeSection) {
+      case 'introduction':
+        return 'Türksat Kablonet müşteri hizmetleri gizlilik politikası ve kişisel verilerin korunması hakkında aydınlatma metni.';
+      case 'dataCollection':
+        return 'Türksat Kablonet tarafından işlenen kişisel veriler ve veri kategorileri hakkında detaylı bilgiler.';
+      case 'dataUsage':
+        return 'Türksat Kablonet tarafından kişisel verilerinizin hangi amaçlarla işlendiği ve yasal dayanakları hakkında bilgiler.';
+      case 'thirdParties':
+        return 'Türksat Kablonet tarafından toplanan kişisel verilerin hangi durumlarda üçüncü taraflarla paylaşıldığı hakkında bilgiler.';
+      case 'dataSecurity':
+        return 'Türksat Kablonet tarafından kişisel verilerin toplanma yöntemleri ve hukuki dayanakları hakkında bilgilendirme.';
+      case 'userRights':
+        return 'Kişisel Verilerin Korunması Kanunu kapsamında Türksat Kablonet müşterilerinin sahip olduğu haklar ve başvuru yöntemleri.';
+      case 'dataProcessingConsent':
+        return 'Türksat Kablonet hizmetlerinde kişisel verilerin işlenmesine dair izin ve rıza beyanı hakkında bilgilendirme.';
+      case 'contact':
+        return 'Türksat Kablonet veri sorumlusu iletişim bilgileri ve KVKK kapsamındaki haklarınızla ilgili başvuru yöntemleri.';
+      default:
+        return 'Türksat Kablonet gizlilik politikası ve kişisel verilerin işlenmesine dair aydınlatma metni.';
+    }
+  };
+
+  const getMetaKeywords = () => {
+    const baseKeywords = 'gizlilik politikası, türksat, kablonet, kvkk, kişisel veri';
+    
+    switch(activeSection) {
+      case 'introduction':
+        return `${baseKeywords}, aydınlatma metni, veri sorumlusu, veri koruma`;
+      case 'dataCollection':
+        return `${baseKeywords}, işlenen veriler, kimlik bilgileri, iletişim bilgileri`;
+      case 'dataUsage':
+        return `${baseKeywords}, veri işleme amaçları, veri işleme ilkeleri`;
+      case 'thirdParties':
+        return `${baseKeywords}, veri aktarımı, üçüncü taraflar, veri paylaşımı`;
+      case 'dataSecurity':
+        return `${baseKeywords}, veri toplama yöntemi, hukuki sebepler, veri güvenliği`;
+      case 'userRights':
+        return `${baseKeywords}, veri sahibi hakları, başvuru hakkı, silme talebi`;
+      case 'dataProcessingConsent':
+        return `${baseKeywords}, açık rıza, veri işleme izni, onay`;
+      case 'contact':
+        return `${baseKeywords}, veri sorumlusu iletişim, başvuru yöntemi`;
+      default:
+        return baseKeywords;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>
+          {activeSection === 'introduction' ? 'Gizlilik Politikası | Türksat Kablonet' :
+           activeSection === 'dataCollection' ? 'İşlenen Kişisel Veriler | Türksat Gizlilik Politikası' :
+           activeSection === 'dataUsage' ? 'Kişisel Verilerin İşlenme Amaçları | Türksat Gizlilik' :
+           activeSection === 'thirdParties' ? 'Kişisel Verilerin Aktarımı | Türksat Veri Güvenliği' :
+           activeSection === 'dataSecurity' ? 'Kişisel Veri Toplama Yöntemleri | Türksat KVKK Politikası' :
+           activeSection === 'userRights' ? 'KVKK Kapsamındaki Haklarınız | Türksat Kablonet' :
+           activeSection === 'dataProcessingConsent' ? 'Veri İşleme İzni | Türksat Kişisel Veri İşleme' :
+           activeSection === 'contact' ? 'Veri Sorumlusu İletişim Bilgileri | Türksat KVKK' :
+           'Gizlilik Politikası | Türksat Kablonet'}
+        </title>
+        <meta 
+          name="description" 
+          content={getMetaDescription()} 
+        />
+        <meta 
+          name="keywords" 
+          content={getMetaKeywords()} 
+        />
+        <meta 
+          property="og:title" 
+          content={activeSection === 'introduction' ? 'Gizlilik Politikası | Türksat Kablonet' :
+                   activeSection === 'dataCollection' ? 'İşlenen Kişisel Veriler | Türksat' :
+                   activeSection === 'dataUsage' ? 'Kişisel Verilerin İşlenme Amaçları' :
+                   activeSection === 'userRights' ? 'KVKK Kapsamındaki Haklarınız' :
+                   'Gizlilik Politikası | Türksat Kablonet'} 
+        />
+        <meta 
+          property="og:description" 
+          content={getMetaDescription()} 
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+      </Helmet>
+
       {/* Banner Bölümü */}
       <div className="relative mx-auto w-full h-[280px] sm:h-[350px] lg:h-[400px] px-5 py-5 sm:px-6 sm:py-12 lg:px-8 lg:py-32 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         <img
@@ -77,10 +210,26 @@ const PrivacyPolicy = () => {
         <div className="flex justify-center items-center h-full relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-white max-w-3xl text-center">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 md:mb-4">
-              Gizlilik Politikası
+              {activeSection === 'introduction' ? 'Gizlilik Politikası' :
+               activeSection === 'dataCollection' ? 'İşlenen Kişisel Verileriniz' :
+               activeSection === 'dataUsage' ? 'Verilerin İşlenme Amaçları' :
+               activeSection === 'thirdParties' ? 'Kişisel Verilerin Aktarımı' :
+               activeSection === 'dataSecurity' ? 'Veri Toplama Yöntemleri' :
+               activeSection === 'userRights' ? 'KVKK Kapsamında Haklarınız' :
+               activeSection === 'dataProcessingConsent' ? 'Veri İşleme İzni' :
+               activeSection === 'contact' ? 'İletişim Bilgileri' :
+               'Gizlilik Politikası'}
             </h1>
             <p className="text-[16px] sm:text-[18px] md:text-[20px] text-blue-100">
-              Kişisel verilerinizin korunmasına önem veriyoruz
+              {activeSection === 'introduction' ? 'Kişisel verilerinizin korunmasına önem veriyoruz' :
+               activeSection === 'dataCollection' ? 'Hangi bilgilerinizi işliyoruz?' :
+               activeSection === 'dataUsage' ? 'Verilerinizi nasıl ve neden kullanıyoruz?' :
+               activeSection === 'thirdParties' ? 'Verilerinizi kimlere aktarabiliyoruz?' :
+               activeSection === 'dataSecurity' ? 'Verilerinizi nasıl topluyoruz?' :
+               activeSection === 'userRights' ? 'Kişisel verileriniz üzerindeki haklarınız' :
+               activeSection === 'dataProcessingConsent' ? 'Verilerinizin işlenmesi için izin talebi' :
+               activeSection === 'contact' ? 'Veri sorumlusuna nasıl ulaşırsınız?' :
+               'Kişisel verilerinizin korunmasına önem veriyoruz'}
             </p>
           </div>
         </div>

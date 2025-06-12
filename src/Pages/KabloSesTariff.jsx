@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import serit from "/assets/serit.png";
 import { Helmet } from 'react-helmet-async';
 
@@ -6,6 +6,37 @@ const KabloSesTariff = () => {
     // Sayfa açıldığında "tarifeler" kategorisinin seçili olması için başlangıç değerini değiştirdim
     const [selectedCategory, setSelectedCategory] = useState('tarifeler');
     const [activeInfoSection, setActiveInfoSection] = useState('tarifelerNelerdir');
+
+    // Sayfa başlığını dinamik olarak değiştirmek için useEffect ekleyelim
+    useEffect(() => {
+        let pageTitle = 'Kabloses Telefon Tarifeleri | Sabit Telefon Paketleri - Türksat';
+        let metaDescription = 'Türksat Kabloses sabit telefon tarifeleri. Her yöne dakika paketleri ve özel servis numaraları.';
+        
+        // Seçilen kategoriye göre başlığı değiştirelim
+        switch(selectedCategory) {
+            case 'tarifeler':
+                pageTitle = 'Kabloses Telefon Tarifeleri | Sabit Telefon Paketleri - Türksat';
+                metaDescription = 'Türksat Kabloses sabit telefon tarifeleri. Her yöne dakika paketleri ve uygun fiyatlı telefon hizmetleri.';
+                break;
+            case 'aramaYonu':
+                pageTitle = 'Kabloses Arama Yönü Ücretleri | Türksat Telefon Tarifeleri';
+                metaDescription = 'Türksat Kabloses arama yönlerine göre ücretlendirme detayları. Şehir içi, şehirlerarası ve GSM arama ücretleri.';
+                break;
+            case 'ucretliOzelServisler':
+                pageTitle = 'Kabloses Ücretli Özel Servis Numaraları | Türksat';
+                metaDescription = 'Türksat Kabloses ücretli özel servis numaraları listesi. Bilinmeyen numaralar ve özel servis hatları fiyatlandırması.';
+                break;
+            case 'ucretsizServisNo':
+                pageTitle = 'Kabloses Ücretsiz Acil Servis Numaraları | Türksat';
+                metaDescription = 'Türksat Kabloses üzerinden ücretsiz aranabilen acil servis numaraları. Polis, jandarma, itfaiye ve acil yardım numaraları.';
+                break;
+            default:
+                pageTitle = 'Kabloses Telefon Tarifeleri | Sabit Telefon Paketleri - Türksat';
+        }
+        
+        // Doğrudan document.title'ı güncelleyelim
+        document.title = pageTitle;
+    }, [selectedCategory]);
 
     const tarifeler = [
         {
@@ -617,10 +648,36 @@ const KabloSesTariff = () => {
 
     return (
         <div className="bg-gray-50">
-     <Helmet>
-        <title>Kabloses Telefon Tarifeleri | Sabit Telefon Paketleri - Türksat</title>
-        <meta name="description" content="Türksat Kabloses sabit telefon tarifeleri. Her yöne dakika paketleri ve özel servis numaraları." />
-      </Helmet>
+            <Helmet>
+                <title>
+                    {selectedCategory === 'tarifeler' ? 'Kabloses Telefon Tarifeleri | Sabit Telefon Paketleri - Türksat' :
+                     selectedCategory === 'aramaYonu' ? 'Kabloses Arama Yönü Ücretleri | Türksat Telefon Tarifeleri' :
+                     selectedCategory === 'ucretliOzelServisler' ? 'Kabloses Ücretli Özel Servis Numaraları | Türksat' :
+                     selectedCategory === 'ucretsizServisNo' ? 'Kabloses Ücretsiz Acil Servis Numaraları | Türksat' :
+                     'Kabloses Telefon Tarifeleri | Sabit Telefon Paketleri - Türksat'}
+                </title>
+                <meta 
+                    name="description" 
+                    content={
+                        selectedCategory === 'tarifeler' ? 'Türksat Kabloses sabit telefon tarifeleri. Her yöne dakika paketleri ve uygun fiyatlı telefon hizmetleri.' :
+                        selectedCategory === 'aramaYonu' ? 'Türksat Kabloses arama yönlerine göre ücretlendirme detayları. Şehir içi, şehirlerarası ve GSM arama ücretleri.' :
+                        selectedCategory === 'ucretliOzelServisler' ? 'Türksat Kabloses ücretli özel servis numaraları listesi. Bilinmeyen numaralar ve özel servis hatları fiyatlandırması.' :
+                        selectedCategory === 'ucretsizServisNo' ? 'Türksat Kabloses üzerinden ücretsiz aranabilen acil servis numaraları. Polis, jandarma, itfaiye ve acil yardım numaraları.' :
+                        'Türksat Kabloses sabit telefon tarifeleri. Her yöne dakika paketleri ve özel servis numaraları.'
+                    } 
+                />
+                <meta 
+                    name="keywords" 
+                    content={
+                        selectedCategory === 'tarifeler' ? 'kabloses tarifeleri, sabit telefon paketleri, türksat telefon, her yöne dakika' :
+                        selectedCategory === 'aramaYonu' ? 'kabloses arama ücretleri, sabit telefon aramaları, yurtiçi gsm ücretleri, şehirlerarası arama' :
+                        selectedCategory === 'ucretliOzelServisler' ? 'kabloses özel servisler, ücretli telefon numaraları, türksat servis numaraları' :
+                        selectedCategory === 'ucretsizServisNo' ? 'ücretsiz acil numaralar, kabloses acil servisler, türksat ücretsiz aramalar, acil yardım hatları' :
+                        'kabloses, türksat telefon, sabit telefon tarifeleri, dakika paketleri, özel servis numaraları'
+                    } 
+                />
+            </Helmet>
+            
             {/* Hero Banner - Daha modern ve çekici */}
             <div className="relative mx-auto w-full h-[250px] sm:h-[400px] overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2] z-0">
@@ -636,10 +693,18 @@ const KabloSesTariff = () => {
                 />
                 <div className="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center px-4 sm:px-6 lg:px-8">
                     <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight">
-                        Kabloses Tarifeleri
+                        {selectedCategory === 'tarifeler' ? 'Kabloses Tarifeleri' :
+                         selectedCategory === 'aramaYonu' ? 'Arama Yönü Ücretleri' :
+                         selectedCategory === 'ucretliOzelServisler' ? 'Ücretli Özel Servis Numaraları' :
+                         selectedCategory === 'ucretsizServisNo' ? 'Ücretsiz Acil Servis Numaraları' :
+                         'Kabloses Tarifeleri'}
                     </h1>
                     <p className="mt-4 max-w-2xl text-lg sm:text-xl text-white/80">
-                        Şimdi Sabit Telefonunuzu Kablonet Altyapısına Taşıyın Fırsatları Yakalayın
+                        {selectedCategory === 'tarifeler' ? 'Şimdi Sabit Telefonunuzu Kablonet Altyapısına Taşıyın Fırsatları Yakalayın' :
+                         selectedCategory === 'aramaYonu' ? 'Farklı Yönlere Yapılan Aramaların Dakika Ücretleri' :
+                         selectedCategory === 'ucretliOzelServisler' ? 'Özel Servis ve Bilgi Hatları Ücretlendirmeleri' :
+                         selectedCategory === 'ucretsizServisNo' ? 'Acil Durumlarda Ücretsiz Arayabileceğiniz Özel Servis Numaraları' :
+                         'Şimdi Sabit Telefonunuzu Kablonet Altyapısına Taşıyın Fırsatları Yakalayın'}
                     </p>
                 </div>
             </div>

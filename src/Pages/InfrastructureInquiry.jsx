@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaMapMarkerAlt, FaCheckCircle, FaTimesCircle, FaSearch, FaTools, FaTimes } from "react-icons/fa";
 import serit from "/assets/serit.png";
+import { Helmet } from 'react-helmet-async';
 
 const InfrastructureInquiry = () => {
   const [step, setStep] = useState(1);
@@ -12,18 +13,55 @@ const InfrastructureInquiry = () => {
   const [result, setResult] = useState(null);
   const [showMaintenancePopup, setShowMaintenancePopup] = useState(false);
   
-  // Sayfa yüklendikten 5 saniye sonra pop-up'ı otomatik açan useEffect
+  // Sayfa başlığını ve meta bilgilerini dinamik olarak ayarla
+  useEffect(() => {
+    let pageTitle = 'Türksat Kablonet Altyapı Sorgulama | Bölgenizde Hizmet Var mı?';
+    let metaDescription = 'Türksat Kablonet fiber internet ve KabloTV altyapısının adresinizde kullanılabilir olup olmadığını öğrenin. Hızlı adres sorgulama.';
+    
+    // Adım 2: Yükleme ekranı
+    if (step === 2) {
+      pageTitle = 'Adres Sorgulanıyor | Türksat Kablonet Altyapı Sorgulama';
+      metaDescription = 'Adresinizde Türksat Kablonet hizmetinin kullanılabilir olup olmadığı sorgulanıyor. Lütfen bekleyin.';
+    }
+    
+    // Adım 3: Sonuçlar
+    if (step === 3 && result) {
+      if (result.hasService) {
+        pageTitle = 'Tebrikler! Adresinizde Türksat Kablonet Hizmeti Kullanılabilir';
+        metaDescription = `${result.address} adresinde ${result.maxSpeed} Mbps'e kadar hızlarda Türksat Kablonet hizmetinden yararlanabilirsiniz.`;
+      } else {
+        pageTitle = 'Üzgünüz | Türksat Kablonet Hizmeti Henüz Adresinizde Kullanılamıyor';
+        metaDescription = `${result.address} adresinde şu anda Türksat Kablonet hizmeti bulunmamaktadır. Altyapı çalışmalarımızı takip edin.`;
+      }
+    }
+    
+    // Konum bilgilerine göre başlık güncelleme
+    if (city && district) {
+      pageTitle = `${city} ${district} Türksat Kablonet Altyapı Sorgulama`;
+      metaDescription = `${city} ${district} bölgesinde Türksat Kablonet fiber internet ve KabloTV altyapısının kullanılabilirliğini sorgulayın.`;
+      
+      if (neighborhood) {
+        pageTitle = `${city} ${district} ${neighborhood} Türksat Kablonet Altyapı Sorgulama`;
+        metaDescription = `${city} ${district} ${neighborhood} bölgesinde Türksat Kablonet altyapısının kullanılabilir olup olmadığını öğrenin.`;
+      }
+    }
+    
+    // Doğrudan document.title'ı güncelleyelim
+    document.title = pageTitle;
+  }, [step, result, city, district, neighborhood]);
+  
+  // Sayfa yüklendikten 1 saniye sonra pop-up'ı otomatik açan useEffect
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMaintenancePopup(true);
-    }, 1000); // 5000 milisaniye (5 saniye)
+    }, 1000); // 1000 milisaniye (1 saniye)
     
     // Component unmount edildiğinde timer'ı temizle
     return () => clearTimeout(timer);
   }, []); // Boş dependency array ile sadece bir kere çalışmasını sağlıyoruz
   
   // İller listesi - gerçek API'den alınabilir
-  const cities = [];
+  const cities = ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya"];
   
   // Seçilen şehre göre ilçeleri getiren fonksiyon - gerçek API ile değiştirilebilir
   const getDistricts = (selectedCity) => {
@@ -96,8 +134,81 @@ const InfrastructureInquiry = () => {
     setShowMaintenancePopup(false);
   };
 
+  // Meta açıklama ve anahtar kelimeler için yardımcı fonksiyonlar
+  const getMetaDescription = () => {
+    if (step === 3 && result) {
+      if (result.hasService) {
+        return `${result.address} adresinde ${result.maxSpeed} Mbps'e kadar hızlarda Türksat Kablonet hizmetinden yararlanabilirsiniz.`;
+      } else {
+        return `${result.address} adresinde şu anda Türksat Kablonet hizmeti bulunmamaktadır. Altyapı çalışmalarımızı takip edin.`;
+      }
+    }
+    
+    if (city && district) {
+      let desc = `${city} ${district} bölgesinde Türksat Kablonet fiber internet ve KabloTV altyapısının kullanılabilirliğini sorgulayın.`;
+      if (neighborhood) {
+        desc = `${city} ${district} ${neighborhood} bölgesinde Türksat Kablonet altyapısının kullanılabilir olup olmadığını öğrenin.`;
+      }
+      return desc;
+    }
+    
+    return 'Türksat Kablonet fiber internet ve KabloTV altyapısının adresinizde kullanılabilir olup olmadığını öğrenin. Hızlı adres sorgulama.';
+  };
+  
+  const getMetaKeywords = () => {
+    let keywords = 'türksat altyapı sorgulama, kablonet altyapı, fiber internet sorgulama, kablo tv altyapı';
+    
+    if (city) {
+      keywords += `, ${city.toLowerCase()} türksat, ${city.toLowerCase()} kablonet`;
+      if (district) {
+        keywords += `, ${district.toLowerCase()} internet altyapısı, ${city.toLowerCase()} ${district.toLowerCase()} kablonet`;
+      }
+    }
+    
+    if (step === 3 && result) {
+      keywords += result.hasService ? ', fiber internet başvuru, kablonet abonelik' : ', türksat altyapı genişletme, kablonet talep';
+    }
+    
+    return keywords;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>
+          {step === 3 && result
+            ? result.hasService
+              ? 'Tebrikler! Adresinizde Türksat Kablonet Hizmeti Kullanılabilir'
+              : 'Üzgünüz | Türksat Kablonet Hizmeti Henüz Adresinizde Kullanılamıyor'
+            : city && district
+              ? neighborhood
+                ? `${city} ${district} ${neighborhood} Türksat Kablonet Altyapı Sorgulama`
+                : `${city} ${district} Türksat Kablonet Altyapı Sorgulama`
+              : 'Türksat Kablonet Altyapı Sorgulama | Bölgenizde Hizmet Var mı?'
+          }
+        </title>
+        <meta 
+          name="description" 
+          content={getMetaDescription()} 
+        />
+        <meta 
+          name="keywords" 
+          content={getMetaKeywords()} 
+        />
+        <meta 
+          property="og:title" 
+          content={step === 3 && result 
+            ? (result.hasService ? 'Adresinizde Türksat Kablonet Hizmeti Var!' : 'Türksat Kablonet Hizmeti Henüz Bölgenizde Yok') 
+            : 'Türksat Kablonet Altyapı Sorgulama'} 
+        />
+        <meta 
+          property="og:description" 
+          content={getMetaDescription()} 
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary" />
+      </Helmet>
+
       {/* Bakım Modu Popup */}
       {showMaintenancePopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -151,10 +262,20 @@ const InfrastructureInquiry = () => {
         />
         <div className="container mx-auto h-full flex flex-col justify-center items-center text-center px-4">
           <h1 className="text-[32px] sm:text-[36px] md:text-[42px] lg:text-[48px] font-bold text-white mb-4">
-            Altyapı Sorgulama
+            {step === 3 && result
+              ? result.hasService 
+                ? "Adresinizde Hizmet Veriyoruz!" 
+                : "Altyapı Kontrolü Sonuçları"
+              : city 
+                ? `${city} ${district || ''} ${neighborhood || ''} Altyapı Sorgulama` 
+                : "Altyapı Sorgulama"}
           </h1>
           <p className="text-lg sm:text-xl text-blue-100 max-w-2xl">
-            Adresinizi girerek Türksat Kablo hizmetinin bölgenizde kullanılabilir olup olmadığını öğrenin.
+            {step === 3 && result
+              ? result.hasService 
+                ? "Tebrikler! Adresinizde Türksat Kablonet hizmetlerinden yararlanabilirsiniz." 
+                : "Henüz bölgenizde hizmet veremiyoruz. Altyapı çalışmalarımız devam ediyor."
+              : "Adresinizi girerek Türksat Kablo hizmetinin bölgenizde kullanılabilir olup olmadığını öğrenin."}
           </p>
         </div>
       </div>

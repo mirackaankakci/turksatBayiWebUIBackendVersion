@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { CampaignData } from '../helpers/CampaingData';
 import serit from "/assets/serit.png";
 import { FaWifi, FaTv, FaPhoneAlt, FaCheckCircle, FaInfoCircle, FaArrowRight, FaRegFileAlt, FaMoneyBillWave, FaListAlt, FaPhoneVolume, FaLaptop } from 'react-icons/fa';
 import { styleTable } from '../utils/htmlUtils';
 import axios from "axios";
-
 
 const CampaignDetail = () => {
   // kampanyaId yerine kampanyaSlug kullanın
@@ -15,6 +15,11 @@ const CampaignDetail = () => {
   const [campaign, setCampaign] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('ucretlendirme');
+
+  // SEO için state'ler
+  const [pageTitle, setPageTitle] = useState('Kampanya Detayı | Türksat Kablonet');
+  const [pageDescription, setPageDescription] = useState('Türksat Kablonet kampanya detayları');
+  const [pageKeywords, setPageKeywords] = useState('türksat, kablonet, kampanya, internet');
 
   const [formData, setFormData] = useState({
     name: "",
@@ -183,6 +188,9 @@ const CampaignDetail = () => {
 
       if (foundCampaign) {
         setCampaign(foundCampaign);
+        
+        // Kampanya bulunduğunda SEO meta bilgilerini güncelle
+        updateMetaTags(foundCampaign);
       } else {
         // Kampanya bulunamadıysa kampanyalar sayfasına yönlendir
         navigate('/kampanyalar');
@@ -191,6 +199,83 @@ const CampaignDetail = () => {
       setLoading(false);
     }, 500);
   }, [kampanyaSlug, navigate]);
+
+  // SEO meta etiketlerini güncelleme fonksiyonu
+  const updateMetaTags = (campaign) => {
+    if (!campaign) return;
+
+    let title = '';
+    let description = '';
+    let keywords = 'türksat, kablonet, kampanya';
+    
+    const categoryName = campaign.category;
+    const price = campaign.taahut12Fiyat || campaign.taahut24Fiyat || '';
+    const features = campaign.ozellikler?.slice(0, 3).join(', ') || '';
+    
+    // Kategori bazlı başlık ve açıklama
+    switch (categoryName) {
+      case 'internet':
+        title = `${campaign.kampanyaAdi} | Kablonet İnternet Kampanyası - Türksat`;
+        description = `${campaign.kampanyaAdi} internet kampanyası ile ${features} özellikleri ve ayda sadece ${price} TL. Fiber hızında kesintisiz internet için hemen başvurun.`;
+        keywords += ', fiber internet, kablonet, broadband, yüksek hız internet';
+        break;
+      case 'tv':
+        title = `${campaign.kampanyaAdi} | Kablo TV Kampanyası - Türksat`;
+        description = `${campaign.kampanyaAdi} TV kampanyası ile ${features} özellikleri ve ayda sadece ${price} TL. HD kalitesinde TV keyfi için hemen başvurun.`;
+        keywords += ', kablo tv, televizyon, hd tv, dijital yayın';
+        break;
+      case 'phone':
+        title = `${campaign.kampanyaAdi} | Kablo Ses Telefon Kampanyası - Türksat`;
+        description = `${campaign.kampanyaAdi} telefon kampanyası ile ${features} özellikleri ve ayda sadece ${price} TL. Ekonomik konuşma fırsatları için hemen başvurun.`;
+        keywords += ', kablo ses, sabit telefon, ev telefonu';
+        break;
+      case 'combo':
+        title = `${campaign.kampanyaAdi} | Kombo Paket Kampanyası - Türksat`;
+        description = `${campaign.kampanyaAdi} kombo paket ile internet, TV ve telefon tek pakette. ${features} özellikleri ile ayda sadece ${price} TL'den başlayan fiyatlarla.`;
+        keywords += ', kombo paket, internet tv paketi, üçlü paket';
+        break;
+      case 'mevcutmusteri':
+        title = `${campaign.kampanyaAdi} | Mevcut Müşteri Kampanyası - Türksat`;
+        description = `${campaign.kampanyaAdi} mevcut müşteri kampanyası ile ${features} özellikleri ve özel indirimler. Sadece Türksat müşterilerine özel fırsatlar.`;
+        keywords += ', mevcut müşteri, sadakat kampanyası, mevcut abone';
+        break;
+      default:
+        title = `${campaign.kampanyaAdi} | Türksat Kablonet Kampanyası`;
+        description = `${campaign.kampanyaAdi} kampanyası detayları ve fiyatları. ${features} özellikleri ile hemen başvurun, avantajlı fiyatlardan yararlanın.`;
+    }
+    
+    // SEO bilgilerini güncelle
+    setPageTitle(title);
+    setPageDescription(description);
+    setPageKeywords(keywords);
+    
+    // Doğrudan document.title'ı da güncelle
+    document.title = title;
+  };
+
+  // Aktif tab değiştiğinde meta açıklamayı güncelle
+  useEffect(() => {
+    if (campaign) {
+      let description = pageDescription;
+      
+      switch(activeTab) {
+        case 'ucretlendirme':
+          description = `${campaign.kampanyaAdi} kampanyası fiyatları ve ücretlendirme detayları. ${campaign.taahut12Fiyat ? '12 ay' : ''} ${campaign.taahut24Fiyat ? '/ 24 ay' : ''} taahhüt seçenekleri.`;
+          break;
+        case 'detaylar':
+          description = `${campaign.kampanyaAdi} kampanyası özellikleri ve içeriği. ${campaign.ozellikler?.slice(0, 2).join(', ')} ve daha fazlası için detaylı bilgi.`;
+          break;
+        case 'iletisim':
+          description = `${campaign.kampanyaAdi} kampanyası başvurusu için iletişim bilgileri. 0850 806 60 00 numaralı hattı arayarak detaylı bilgi alabilirsiniz.`;
+          break;
+        case 'cihazlar':
+          description = `${campaign.kampanyaAdi} kampanyası ile uyumlu modem ve cihaz seçenekleri. WiFi modem ve TV Box hakkında detaylı bilgi.`;
+          break;
+      }
+      
+      setPageDescription(description);
+    }
+  }, [activeTab, campaign]);
 
   //  useEffect ile kampanya yüklendiğinde 12 ay taahhüt kontrolü yapın
   useEffect(() => {
@@ -238,6 +323,10 @@ const CampaignDetail = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <Helmet>
+          <title>Kampanya Yükleniyor... | Türksat Kablonet</title>
+          <meta name="description" content="Türksat Kablonet kampanya detayları yükleniyor. Lütfen bekleyin." />
+        </Helmet>
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600 mb-4"></div>
           <p className="text-gray-600 text-lg">Kampanya bilgileri yükleniyor...</p>
@@ -250,6 +339,11 @@ const CampaignDetail = () => {
   if (!campaign) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <Helmet>
+          <title>Kampanya Bulunamadı | Türksat Kablonet</title>
+          <meta name="description" content="Aradığınız kampanya bulunamadı. Güncel kampanyalarımızı inceleyebilirsiniz." />
+          <meta name="robots" content="noindex, follow" />
+        </Helmet>
         <div className="text-center max-w-md mx-auto p-8 bg-white rounded-lg shadow-md">
           <FaInfoCircle className="text-red-500 text-5xl mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Kampanya Bulunamadı</h2>
@@ -269,6 +363,27 @@ const CampaignDetail = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content={pageKeywords} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:type" content="product" />
+        <meta property="og:image" content={campaign.imgsrc || "/src/assets/aileboyu.png"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={campaign.imgsrc || "/src/assets/aileboyu.png"} />
+        <link rel="canonical" href={`https://turksatkablonet.com/kampanyalar/${campaign.category}/${kampanyaSlug}`} />
+        {campaign.popular === "true" && (
+          <meta name="robots" content="index, follow" />
+        )}
+        {submitSuccess && (
+          <meta name="robots" content="noindex, follow" />
+        )}
+      </Helmet>
+
       {/* Hero Banner */}
       <div className="relative mx-auto w-full px-4 py-8 sm:px-6 sm:py-12 md:py-16 lg:px-8 lg:py-24 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2] text-white">
         <img
@@ -371,7 +486,7 @@ const CampaignDetail = () => {
                   <div className="text-xs sm:text-sm text-blue-200 mt-2">
                     {selectedTerm === '12'
                       ? `24 Ay taahhüt seçeneği: ${campaign.taahut24Fiyat}/ay`
-                      : `12 Ay taahhüt seçeneği: ${campaign.taahut12Fiyat}/ay`
+                      : `12 Ay taahüt seçeneği: ${campaign.taahut12Fiyat}/ay`
                     }
                   </div>
                 )}
