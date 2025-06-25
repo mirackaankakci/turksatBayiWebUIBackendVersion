@@ -136,7 +136,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gray-50">
             <Helmet>
-        <title>İletişim - Türksat Kablonet</title>
+        <title>İletişim - Türksat Kablonet ® Web Sitesi</title>
         <meta name="description" content="Türksat Kablo TV HD kanal frekans listesi" />
       </Helmet>
       {/* Banner */}
@@ -258,7 +258,7 @@ const Contact = () => {
             </div>
             
             <div className="p-6 bg-gray-50 border-t border-gray-200">
-              <a href="/sıkça-sorulan-sorular" className="text-blue-600 hover:text-blue-800 font-medium flex items-center justify-center transition-colors duration-300">
+              <a href="/sikca-sorulan-sorular" className="text-blue-600 hover:text-blue-800 font-medium flex items-center justify-center transition-colors duration-300">
                 Tüm Sık Sorulan Soruları Görüntüle
                 <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>

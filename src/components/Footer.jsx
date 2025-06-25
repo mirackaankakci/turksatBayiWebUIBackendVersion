@@ -6,8 +6,8 @@ import footerlogo from "/assets/footerlogo.svg";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-[#2F3D8D] to-[#3399D2] text-white mt-[200px]">
-      <div className="relative mx-auto w-full px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
+    <footer className="bg-gradient-to-r from-[#2F3D8D] to-[#3399D2] text-white mt-[50px]">
+      <div className="relative  w-full px-4 py-12 sm:px-6 sm:py-16 md:py-20 lg:px-8 lg:py-24 bg-gradient-to-b from-[#2F3D8D] to-[#3399D2]">
         {/* Üst kısım - şerit görsel */}
         <img
           src={ustserit}
@@ -31,20 +31,11 @@ const Footer = () => {
                 Türksat Kablonet, Türkiye'nin uydu operatörü Türksat A.Ş. tarafından sunulan yüksek hızlı internet ve TV hizmetidir.
               </p>
               <div className="flex space-x-4 mt-4">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors">
+                <a href="https://www.facebook.com/profile.php?id=61575775769144" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors">
                   <FaFacebook size={20} />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors">
-                  <FaTwitter size={20} />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors">
+                <a href="https://www.instagram.com/kablo_internet2025/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors">
                   <FaInstagram size={20} />
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors">
-                  <FaYoutube size={20} />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition-colors">
-                  <FaLinkedin size={20} />
                 </a>
               </div>
             </div>
@@ -85,7 +76,7 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4 border-b border-white/30 pb-2">Destek</h3>
               <ul className="space-y-2">
-                {['Sikca Sorulan Sorular', 'Fesih İşlemleri', 'Altyapı Sorgulama', 'İletişim'].map((item) => (
+                {['Sikca Sorulan Sorular', 'Fesih İşlemleri', 'Altyapi Sorgulama', 'iletişim'].map((item) => (
                   <li key={item}>
                     <Link to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
                       {item}

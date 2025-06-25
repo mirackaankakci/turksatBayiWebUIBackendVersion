@@ -130,15 +130,50 @@ const Kampanyalar = () => {
     document.title = pageTitle;
   }, [activeFilter]);
 
+  // URL değiştiğinde activeFilter'ı güncelle
+  useEffect(() => {
+    const newFilter = getInitialFilter();
+    if (newFilter !== activeFilter) {
+      setActiveFilter(newFilter);
+    }
+  }, [kategori]);
+
+  // Ayrı bir useEffect ile URL'yi güncelle
+  useEffect(() => {
+    // URL parametresini belirle
+    let urlPath = '';
+    switch (activeFilter) {
+      case 'internet':
+        urlPath = '/kampanyalar/kablonet';
+        break;
+      case 'tv':
+        urlPath = '/kampanyalar/kablotv';
+        break;
+      case 'phone':
+        urlPath = '/kampanyalar/kabloses';
+        break;
+      case 'mevcutmusteri':
+        urlPath = '/kampanyalar/mevcutmusteri';
+        break;
+      default:
+        urlPath = '/kampanyalar';
+    }
+    
+    // Mevcut URL ile hedef URL farklıysa güncelle
+    if (location.pathname !== urlPath) {
+      navigate(urlPath, { replace: true });
+    }
+  }, [activeFilter, navigate, location.pathname]);
+
   return (
     <div className="relative min-h-screen bg-gray-50 ">
       <Helmet>
         <title>
-          {activeFilter === 'all' ? 'Türksat Kablonet Kampanyaları' :
-            activeFilter === 'internet' ? 'Türksat Kablonet İnternet Kampanyaları' :
-              activeFilter === 'tv' ? 'Türksat Kablo TV Kampanyaları' :
-                activeFilter === 'phone' ? 'Türksat Kabloses Telefon Kampanyaları' :
-                  'Türksat Mevcut Müşteri Kampanyaları'}
+          {activeFilter === 'all' ? 'Türksat Kablonet Kampanyaları - Türksat Kablonet ® Web Sitesi' :
+            activeFilter === 'internet' ? 'Türksat Kablonet İnternet Kampanyaları - Türksat Kablonet ® Web Sitesi' :
+              activeFilter === 'tv' ? 'Türksat Kablo TV Kampanyaları - Türksat Kablonet ® Web Sitesi' :
+                activeFilter === 'phone' ? 'Türksat Kabloses Telefon Kampanyaları - Türksat Kablonet ® Web Sitesi' :
+                  'Türksat Mevcut Müşteri Kampanyaları - Türksat Kablonet ® Web Sitesi'}
         </title>
         <meta
           name="description"
@@ -296,7 +331,7 @@ const Kampanyalar = () => {
           </div>
 
           <div className="text-center mt-8">
-            <Link to="/sıkça-sorulan-sorular" className="text-blue-600 font-medium hover:text-blue-800 transition inline-flex items-center">
+            <Link to="/sikca-sorulan-sorular" className="text-blue-600 font-medium hover:text-blue-800 transition inline-flex items-center">
               Tüm Soruları Görüntüle <FaArrowRight className="ml-1" />
             </Link>
           </div>

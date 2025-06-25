@@ -20,25 +20,32 @@ const HemenBasvur = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [phoneError, setPhoneError] = useState("");
-  const [pageTitle, setPageTitle] = useState("Türksat Kablonet Başvuru | Fiber İnternet ve KabloTV");
+  const [pageTitle, setPageTitle] = useState("Türksat Kablonet Başvuru | Türksat Kablonet ® Web Sitesi");
   const [kampanyaAdi, setKampanyaAdi] = useState("");
 
   // Telefon numarasını formatla
   const formatPhoneNumber = (phone) => {
-    // Boşluk ve özel karakterleri temizle
-    let formattedPhone = phone.replace(/\s+/g, "");
-    formattedPhone = formattedPhone.replace(/[^\d+]/g, "");
-
-    // + işaretini kaldır
-    formattedPhone = formattedPhone.replace(/\+/g, "");
-
-    // 90 ile başlıyorsa ve 0 yoksa düzelt
-    if (formattedPhone.startsWith("90") && formattedPhone.length > 2) {
-      formattedPhone = "0" + formattedPhone.substring(2);
+    let formattedPhone = phone;
+    
+    // +90 ile başlıyorsa, +90'ı kaldır ve 0 ile başlat
+    if (formattedPhone.startsWith("+90")) {
+      formattedPhone = "0" + formattedPhone.substring(3);
     }
-    // Başında 0 yoksa ekle
-    else if (!formattedPhone.startsWith("0") && formattedPhone.length > 0) {
-      formattedPhone = "0" + formattedPhone;
+    
+    // Boşluk ve özel karakterleri temizle, sadece rakam bırak
+    formattedPhone = formattedPhone.replace(/[^\d]/g, "");
+    
+    // Sadece 0 veya 5 ile başlamaya izin ver
+    if (formattedPhone.length > 0) {
+      // İlk karakter 0 veya 5 değilse, input'u reddet (önceki değeri koru)
+      if (!formattedPhone.startsWith("0") && !formattedPhone.startsWith("5")) {
+        // Önceki değeri koru (yeni girişi reddet)
+        return formData.phoneNumber;
+      }
+      // 5 ile başlıyorsa başına 0 ekle
+      else if (formattedPhone.startsWith("5")) {
+        formattedPhone = "0" + formattedPhone;
+      }
     }
 
     // Maksimum 11 karakter (0 dahil)

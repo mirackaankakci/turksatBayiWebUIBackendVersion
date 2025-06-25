@@ -122,7 +122,7 @@ const Services = () => {
       <Helmet>
         <title>
           {selectedService && serviceContents[selectedService] 
-            ? `${serviceContents[selectedService].title} - Türksat Kablonet Servisleri` 
+            ? `${serviceContents[selectedService].title} - Türksat Kablonet Servisleri | Türksat Kablonet ® Web Sitesi` 
             : "Türksat Kablonet Servisler ve Ek Hizmetler"}
         </title>
         <meta 

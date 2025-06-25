@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Oluşturulma Tarihi: 2025-06-12 -->
+<!-- Otomatik oluşturuldu: 2025-06-25 -->
+<!-- Toplam 29 sayfa -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
   <url>
     <loc>https://www.kablointernet.com.tr/</loc>
     <changefreq>daily</changefreq>
@@ -61,5 +61,90 @@
     <loc>https://www.kablointernet.com.tr/iletisim</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/dordu-bir-arada-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/aramiza-hosgeldin-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/aile-boyu-fiber-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/her-eve-kablonet-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/hepsi-bir-arada-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/taahhutsuz-fiber-net-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/muhtesem-ikili-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/turksat-isim-kolay-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/sinema-keyfi-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/denemesi-bedava-s-sport-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/doyasiya-belgesel-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/aile-boyu-tv-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/denemesi-bedava-tv-her-yerde</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/doyasıya-muhabbet-kampanyası</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/mevcut-müsteriye-ozel-her-eve-kablonet</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/mevcut-musteriye-ozel-hepsi-bir-arada</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.kablointernet.com.tr/kampanyalar/mevcut-musteriye-ozel-dordu-bir-arada-kampanyasi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

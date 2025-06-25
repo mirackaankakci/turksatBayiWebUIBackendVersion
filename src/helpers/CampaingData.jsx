@@ -429,8 +429,8 @@ export const CampaignData = [
     id: 7,
     slug: "muhtesem-ikili-kampanyasi",
     kampanyaAdi: "Muhteşem İkili Kampanyası",
-    taahut12Fiyat: "",
-    taahut24Fiyat: "349,00 TL",
+    taahut12Fiyat: "349,00 TL",
+    taahut24Fiyat: "",
     ozellikler: [
       "50 Mbps Sınırsız Kablonet",
       "KabloTV Temel Paket"
@@ -463,7 +463,7 @@ export const CampaignData = [
       </td>
       <td style="padding: 12px; border: 1px solid #d3dce6; text-align: center;">
         İlk 3 ay <strong>444 TL/Ay</strong><br>
-        Sonraki 9 ay <strong>489 TL/Ay</strong>
+        Sonraki 9 ay <strong>534 TL/Ay</strong>
       </td>
     </tr>
     <tr>

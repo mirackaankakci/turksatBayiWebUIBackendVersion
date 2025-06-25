@@ -215,32 +215,27 @@ const CampaignDetail = () => {
     // Kategori bazlı başlık ve açıklama
     switch (categoryName) {
       case 'internet':
-        title = `${campaign.kampanyaAdi} | Kablonet İnternet Kampanyası - Türksat`;
+        title = `${campaign.kampanyaAdi} | Kablonet İnternet Kampanyası - Türksat Kablonet ® Web Sitesi`;
         description = `${campaign.kampanyaAdi} internet kampanyası ile ${features} özellikleri ve ayda sadece ${price} TL. Fiber hızında kesintisiz internet için hemen başvurun.`;
         keywords += ', fiber internet, kablonet, broadband, yüksek hız internet';
         break;
       case 'tv':
-        title = `${campaign.kampanyaAdi} | Kablo TV Kampanyası - Türksat`;
+        title = `${campaign.kampanyaAdi} | Kablo TV Kampanyası - Türksat Kablonet ® Web Sitesi`;
         description = `${campaign.kampanyaAdi} TV kampanyası ile ${features} özellikleri ve ayda sadece ${price} TL. HD kalitesinde TV keyfi için hemen başvurun.`;
         keywords += ', kablo tv, televizyon, hd tv, dijital yayın';
         break;
       case 'phone':
-        title = `${campaign.kampanyaAdi} | Kablo Ses Telefon Kampanyası - Türksat`;
+        title = `${campaign.kampanyaAdi} | Kablo Ses Telefon Kampanyası - Türksat Kablonet ® Web Sitesi`;
         description = `${campaign.kampanyaAdi} telefon kampanyası ile ${features} özellikleri ve ayda sadece ${price} TL. Ekonomik konuşma fırsatları için hemen başvurun.`;
         keywords += ', kablo ses, sabit telefon, ev telefonu';
         break;
-      case 'combo':
-        title = `${campaign.kampanyaAdi} | Kombo Paket Kampanyası - Türksat`;
-        description = `${campaign.kampanyaAdi} kombo paket ile internet, TV ve telefon tek pakette. ${features} özellikleri ile ayda sadece ${price} TL'den başlayan fiyatlarla.`;
-        keywords += ', kombo paket, internet tv paketi, üçlü paket';
-        break;
       case 'mevcutmusteri':
-        title = `${campaign.kampanyaAdi} | Mevcut Müşteri Kampanyası - Türksat`;
+        title = `${campaign.kampanyaAdi} | Mevcut Müşteri Kampanyası - Türksat Kablonet ® Web Sitesi`;
         description = `${campaign.kampanyaAdi} mevcut müşteri kampanyası ile ${features} özellikleri ve özel indirimler. Sadece Türksat müşterilerine özel fırsatlar.`;
         keywords += ', mevcut müşteri, sadakat kampanyası, mevcut abone';
         break;
       default:
-        title = `${campaign.kampanyaAdi} | Türksat Kablonet Kampanyası`;
+        title = `${campaign.kampanyaAdi} | Türksat Kablonet Kampanyası - Türksat Kablonet ® Web Sitesi`;
         description = `${campaign.kampanyaAdi} kampanyası detayları ve fiyatları. ${features} özellikleri ile hemen başvurun, avantajlı fiyatlardan yararlanın.`;
     }
     

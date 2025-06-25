@@ -6,8 +6,7 @@ export default {
   ],
   theme: {
     extend: {},
-  },
-  plugins: [
+  },  plugins: [
     function({ addUtilities }) {
       addUtilities({
         '.scrollbar-hide': {
@@ -19,6 +18,18 @@ export default {
           '&::-webkit-scrollbar': {
             display: 'none'
           }
+        },
+        '.line-clamp-2': {
+          overflow: 'hidden',
+          display: '-webkit-box',
+          '-webkit-box-orient': 'vertical',
+          '-webkit-line-clamp': '2',
+        },
+        '.line-clamp-3': {
+          overflow: 'hidden',
+          display: '-webkit-box',
+          '-webkit-box-orient': 'vertical',
+          '-webkit-line-clamp': '3',
         }
       })
     }

@@ -48,12 +48,27 @@ function HomePage() {
     
     // Telefon numarası formatını düzenle
     if (name === "phone") {
-      // Boşluk ve özel karakterleri temizle, sadece rakam bırak
-      let formattedValue = value.replace(/[^\d]/g, "");
+      let formattedValue = value;
       
-      // 0 ile başlamıyorsa başına 0 ekle (11 haneden az ise)
-      if (formattedValue.length > 0 && !formattedValue.startsWith("0") && formattedValue.length < 11) {
-        formattedValue = "0" + formattedValue;
+      // +90 ile başlıyorsa, +90'ı kaldır ve 0 ile başlat
+      if (formattedValue.startsWith("+90")) {
+        formattedValue = "0" + formattedValue.substring(3);
+      }
+      
+      // Boşluk ve özel karakterleri temizle, sadece rakam bırak
+      formattedValue = formattedValue.replace(/[^\d]/g, "");
+      
+      // Sadece 0 veya 5 ile başlamaya izin ver
+      if (formattedValue.length > 0) {
+        // İlk karakter 0 veya 5 değilse, input'u reddet
+        if (!formattedValue.startsWith("0") && !formattedValue.startsWith("5")) {
+          // Önceki değeri koru (yeni girişi reddet)
+          formattedValue = formData.phone.replace(/[^\d]/g, "");
+        }
+        // 5 ile başlıyorsa başına 0 ekle
+        else if (formattedValue.startsWith("5")) {
+          formattedValue = "0" + formattedValue;
+        }
       }
       
       // Maksimum 11 hane
@@ -204,8 +219,8 @@ function HomePage() {
 
   return (
     <div className="items-center w-full overflow-hidden">
-            <Helmet>
-        <title>Türksat Kablonet ® Resmi Yetkili Web Sitesi | Fiber İnternet, Kablo TV</title>
+      <Helmet>
+        <title>Türksat Kablonet ® Resmi Yetkili Web Sitesi</title>
         <meta name="description" content="Türksat Kablonet resmi web sitesi. Fiber internet, kablo TV ve telefon hizmetleri. En uygun kampanyalar ve tarifeler." />
       </Helmet>
       {/* Üst bölüm - Banner kısmı */}
@@ -292,74 +307,129 @@ function HomePage() {
         </div>
       </div>
 
-      {/* Form bölümü - HemenBasvur sayfasındaki API ile entegre edildi */}
+      {/* Form bölümü - Modernize edildi */}
       <form
         onSubmit={handleSubmit}
-        className="flex w-full justify-center -mt-[35px] sm:-mt-[65px] lg:-mt-[90px] xl:-mt-[110px] items-center py-3 px-3 sm:px-5 md:px-6 lg:px-8 xl:px-32 drop-shadow-md"
+        className="flex w-full justify-center -mt-[35px] sm:-mt-[65px] lg:-mt-[90px] xl:-mt-[110px] items-center py-3 px-3 sm:px-5 md:px-6 lg:px-8 xl:px-32 drop-shadow-2xl"
       >
-        <div className="flex flex-col sm:flex-row justify-between items-center bg-white rounded-lg w-[94%] sm:w-full max-w-[1200px] py-4 sm:py-3 md:py-0 sm:h-[60px] md:h-[65px] lg:h-[90px] xl:h-[130px] m-1 sm:m-2 px-3 sm:px-4 overflow-visible gap-4 sm:gap-3 md:gap-2 lg:gap-0">
-          {/* Sol div - Soldan taşan */}
-          <div className="relative sm:-ml-14 md:-ml-18 lg:-ml-22 xl:-ml-26 w-[95%] sm:w-[120px] md:w-[220px] lg:w-[320px] h-[35px] sm:h-[40px] md:h-[45px] lg:h-[65px] xl:h-[85px] bg-[#000F73] rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-[13px] sm:text-sm md:text-base lg:text-lg xl:text-xl">
-              Hızlı Başvuru Formu
-            </span>
+        <div className="flex flex-col sm:flex-row justify-between items-center bg-gradient-to-r from-white via-white to-gray-50 rounded-2xl w-[94%] sm:w-full max-w-[1200px] py-6 sm:py-4 md:py-3 sm:h-[90px] md:h-[110px] lg:h-[130px] xl:h-[160px] m-1 sm:m-2 px-4 sm:px-6 overflow-visible gap-6 sm:gap-4 md:gap-3 lg:gap-2 shadow-xl border border-gray-100">
+          
+          {/* Sol div - Başlık kısmı - Geliştirildi */}
+          <div className="relative sm:-ml-16 md:-ml-20 lg:-ml-24 xl:-ml-28 w-[95%] sm:w-[140px] md:w-[240px] lg:w-[340px] h-[45px] sm:h-[55px] md:h-[65px] lg:h-[85px] xl:h-[105px] bg-gradient-to-r from-[#000F73] to-[#2F3F8E] rounded-xl flex items-center justify-center shadow-lg border border-white/20">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <span className="text-xl md:text-2xl">🚀</span>
+                <span className="text-white font-bold text-[14px] sm:text-sm md:text-base lg:text-lg xl:text-xl tracking-wide">
+                  Hızlı Başvuru
+                </span>
+              </div>
+              <div className="hidden md:block">
+                <span className="text-blue-200 text-xs lg:text-sm font-medium">
+                  Fiber Hızında İşlem
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Orta div - Form içeren */}
-          <div className="w-[95%] sm:w-[260px] md:w-[320px] lg:w-[450px] xl:w-[550px] h-[80px] sm:h-[60px] md:h-[65px] lg:h-[75px] xl:h-[95px] rounded-lg flex flex-col items-center justify-center py-1.5 px-1.5 sm:px-2.5">
-            <div className="flex flex-col sm:flex-row w-full rounded-lg overflow-hidden border border-gray-300 shadow-md">
-              <div className="w-full sm:w-1/2 relative">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Adınız Soyadınız"
-                  className="w-full h-[36px] sm:h-[38px] md:h-[42px] lg:h-[48px] px-4 sm:px-4 text-sm sm:text-sm md:text-base lg:text-lg border-0 focus:outline-none"
-                  disabled={loading}
-                />
-                <div className="hidden sm:block absolute right-0 top-[10%] h-[80%] w-[1px] bg-gray-300"></div>
+          {/* Orta div - Form input'ları - Input'lar ayrıldı */}
+          <div className="w-[95%] sm:w-[320px] md:w-[420px] lg:w-[520px] xl:w-[620px] h-auto sm:h-[80px] md:h-[90px] lg:h-[100px] xl:h-[120px] rounded-xl flex flex-col items-center justify-center py-2 px-2 sm:px-3">
+            
+            <div className="flex flex-col sm:flex-row w-full gap-3 sm:gap-4">
+              
+              {/* Ad Soyad Input - Ayrı container */}
+              <div className="relative flex-1 group">
+                <div className="flex flex-col sm:flex-row w-full rounded-lg overflow-hidden shadow-md bg-white border-2 border-gray-200 hover:border-blue-300 transition-all duration-300">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500 transition-colors group-focus-within:text-blue-600 text-base z-10">
+                    👤
+                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Adınız ve Soyadınız"
+                    disabled={loading}
+                    className="w-full pl-11 pr-4 py-4 sm:py-3 md:py-4 bg-white border-0 focus:outline-none focus:ring-0 text-gray-700 placeholder-gray-400 text-sm md:text-base font-medium transition-all duration-200 hover:bg-gray-50 focus:bg-white disabled:bg-gray-100 disabled:cursor-not-allowed rounded-lg"
+                  />
+                  {/* Input focus efekti */}
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-focus-within:w-full"></div>
+                </div>
               </div>
-              <div className="w-full sm:w-1/2 mt-0 border-t sm:border-t-0 border-gray-300 sm:border-0">
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Telefon Numaranız"
-                  className="w-full h-[36px] sm:h-[38px] md:h-[42px] lg:h-[48px] px-4 sm:px-4 text-sm sm:text-sm md:text-base lg:text-lg border-0 focus:outline-none"
-                  disabled={loading}
-                />
+
+              {/* Telefon Input - Ayrı container */}
+              <div className="relative flex-1 group">
+                <div className="flex flex-col sm:flex-row w-full rounded-lg overflow-hidden shadow-md bg-white border-2 border-gray-200 hover:border-blue-300 transition-all duration-300">
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-500 transition-colors group-focus-within:text-blue-600 text-base z-10">
+                    📱
+                  </div>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Telefon Numaranız (05XX XXX XXXX)"
+                    disabled={loading}
+                    className={`w-full pl-11 pr-4 py-4 sm:py-3 md:py-4 bg-white border-0 focus:outline-none focus:ring-0 text-gray-700 placeholder-gray-400 text-sm md:text-base font-medium transition-all duration-200 hover:bg-gray-50 focus:bg-white disabled:bg-gray-100 disabled:cursor-not-allowed rounded-lg ${
+                      submitStatus.status === 'error' && submitStatus.message.includes('telefon') 
+                        ? "bg-red-50 border-red-200" 
+                        : ""
+                    }`}
+                  />
+                  {/* Input focus efekti */}
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-focus-within:w-full"></div>
+                </div>
               </div>
             </div>
             
-            {/* Form durum mesajları - Görünümü iyileştirme */}
+            {/* Form durum mesajları - Geliştirilmiş tasarım */}
             {submitStatus.status && (
-              <div className={`mt-2 p-2 rounded text-sm text-center ${
+              <div className={`mt-4 p-4 rounded-lg text-sm text-center w-full transition-all duration-300 transform animate-fadeIn ${
                 submitStatus.status === 'success' 
-                  ? 'bg-green-50 text-green-700 border border-green-200' 
-                  : 'bg-red-50 text-red-700 border border-red-200'
+                  ? 'bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 border-2 border-green-200 shadow-sm' 
+                  : 'bg-gradient-to-r from-red-50 to-pink-50 text-red-700 border-2 border-red-200 shadow-sm'
               }`}>
-                {submitStatus.message}
+                <div className="flex items-center justify-center gap-3">
+                  {submitStatus.status === 'success' ? (
+                    <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center animate-bounce">
+                      <span className="text-white text-xs">✓</span>
+                    </div>
+                  ) : (
+                    <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse">
+                      <span className="text-white text-xs">!</span>
+                    </div>
+                  )}
+                  <span className="font-medium text-sm">{submitStatus.message}</span>
+                </div>
               </div>
             )}
           </div>
 
-          {/* Sağ div - Yuvarlak (Gönder butonu) */}
+          {/* Sağ div - Gönder butonu - Uzun ve modern tasarım */}
           <button
             type="submit"
             disabled={loading}
-            className={`relative sm:-mr-14 md:-mr-18 lg:-mr-22 xl:-mr-26 w-[60px] sm:w-[75px] md:w-[95px] lg:w-[120px] xl:w-[150px] h-[60px] sm:h-[75px] md:h-[95px] lg:h-[120px] xl:h-[150px] ${
-              loading ? 'bg-gray-500' : 'bg-[#2F3F8E] hover:bg-[#1f2d6e]'
-            } rounded-full flex items-center justify-center shadow-lg transition-colors cursor-pointer`}
+            className={`relative sm:-mr-16 md:-mr-20 lg:-mr-24 xl:-mr-28 w-[160px] sm:w-[180px] md:w-[220px] lg:w-[260px] xl:w-[300px] h-[60px] sm:h-[70px] md:h-[80px] lg:h-[90px] xl:h-[100px] ${
+              loading 
+                ? 'bg-gradient-to-r from-gray-400 to-gray-500 cursor-not-allowed' 
+                : 'bg-gradient-to-r from-[#2F3F8E] to-[#3499D2] hover:from-[#1f2d6e] hover:to-[#2a7ba8] transform hover:scale-105 active:scale-95'
+            } rounded-lg flex items-center justify-center shadow-2xl transition-all duration-300 cursor-pointer group border-2 border-white/30`}
           >
             {loading ? (
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="animate-spin rounded-full h-6 w-6 md:h-8 md:w-8 border-b-2 border-white"></div>
+                <span className="text-white text-xs md:text-sm font-medium">Gönderiliyor...</span>
+              </div>
             ) : (
-              <span className="text-white font-bold text-[13px] sm:text-sm md:text-base lg:text-xl xl:text-2xl">
-                Gönder
-              </span>
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-white font-bold text-[12px] sm:text-sm md:text-base lg:text-lg tracking-wide text-center">
+                  Hemen Başvur
+                </span>
+                <span className="text-lg md:text-xl text-white">➤</span>
+              </div>
             )}
+            
+            {/* Buton hover efekti */}
+            <div className="absolute inset-0 rounded-lg bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </div>
       </form>
@@ -439,19 +509,6 @@ function HomePage() {
       <div>
         <MovieBanner />
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <div className="relative rounded-lg border border-gray-300 z-50 mt-[100px] bg-white max-w-7xl mx-auto md:-mb-20 px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-0 ">
           {/* Logo & Tagline */}
