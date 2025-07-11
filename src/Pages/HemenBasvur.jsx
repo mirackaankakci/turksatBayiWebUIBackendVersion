@@ -180,7 +180,13 @@ const HemenBasvur = () => {
           kampanyaId: formData.kampanyaId || 'Hemen Başvur Form'
         });
         
-        console.log("GTM Event gönderildi: formGonderildi");
+        // Google Search için FormSuccess eventi
+        window.dataLayer.push({
+          'event': 'FormSuccess',
+          'user-phone': '+90' + formData.phoneNumber.trim().substring(1) // 0'ı çıkar +90 ekle
+        });
+        
+        console.log("GTM Event gönderildi: formGonderildi ve FormSuccess");
 
         // Formu temizle
         setFormData({

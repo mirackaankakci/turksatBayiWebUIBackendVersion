@@ -272,20 +272,29 @@ const CampaignDetail = () => {
     }
   }, [activeTab, campaign]);
 
-  //  useEffect ile kampanya yüklendiğinde 12 ay taahhüt kontrolü yapın
+  //  useEffect ile kampanya yüklendiğinde taahhüt kontrolü yapın
   useEffect(() => {
     if (campaign) {
-      // Eğer 12 ay taahhüt varsa onu seç
-      if (campaign.taahut12Fiyat) {
-        setSelectedTerm('12');
+      // Yeni sistem: availableCommitments varsa
+      if (campaign.availableCommitments?.length > 0) {
+        // İlk mevcut taahhüt süresini seç (genellikle en küçük süre)
+        const firstAvailablePeriod = Math.min(...campaign.availableCommitments);
+        setSelectedTerm(firstAvailablePeriod.toString());
       } 
-      // Yoksa ve 24 ay taahhüt varsa 24 ayı seç
-      else if (campaign.taahut24Fiyat) {
-        setSelectedTerm('24');
-      }
-      // Her ikisi de yoksa boş bırak
+      // Fallback: Eski sistem
       else {
-        setSelectedTerm('');
+        // Eğer 12 ay taahhüt varsa onu seç
+        if (campaign.taahut12Fiyat) {
+          setSelectedTerm('12');
+        } 
+        // Yoksa ve 24 ay taahhüt varsa 24 ayı seç
+        else if (campaign.taahut24Fiyat) {
+          setSelectedTerm('24');
+        }
+        // Her ikisi de yoksa boş bırak
+        else {
+          setSelectedTerm('');
+        }
       }
     }
   }, [campaign]);
@@ -312,6 +321,26 @@ const CampaignDetail = () => {
       default:
         return <FaWifi className="text-blue-500" />;
     }
+  };
+
+  // Dinamik fiyat getirme fonksiyonu
+  const getCommitmentPrice = (commitmentPeriod) => {
+    if (!campaign) return null;
+    
+    // Dinamik olarak fiyat alanını oluştur
+    const priceField = `taahut${commitmentPeriod}Fiyat`;
+    return campaign[priceField] || null;
+  };
+
+  // Fiyat kontrolü fonksiyonu
+  const hasAnyPrice = () => {
+    if (!campaign) return false;
+    
+    if (campaign.availableCommitments) {
+      return campaign.availableCommitments.some(period => getCommitmentPrice(period));
+    }
+    
+    return campaign.taahut12Fiyat || campaign.taahut24Fiyat;
   };
 
   // Yükleniyor durumu
@@ -435,33 +464,56 @@ const CampaignDetail = () => {
                   <h2 className="text-lg sm:text-xl font-semibold">Taahhüt Seçenekleri</h2>
                 </div>
 
-                {/* Taahhüt butonları - sadece ilgili fiyatlar varsa göster */}
+                {/* Taahhüt butonları - dinamik gösterim */}
                 <div className="flex justify-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                  {campaign.taahut12Fiyat && (
-                    <button
-                      onClick={() => setSelectedTerm('12')}
-                      className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
-                        selectedTerm === '12'
-                          ? 'bg-white text-blue-700'
-                          : 'bg-blue-800/50 hover:bg-blue-800'
-                      }`}
-                    >
-                      12 Ay
-                    </button>
+                  {/* availableCommitments varsa onu kullan, yoksa eski sistemi kullan */}
+                  {campaign.availableCommitments ? (
+                    campaign.availableCommitments.map(period => (
+                      <button
+                        key={period}
+                        onClick={() => setSelectedTerm(period.toString())}
+                        className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
+                          selectedTerm === period.toString()
+                            ? 'bg-white text-blue-700'
+                            : 'bg-blue-800/50 hover:bg-blue-800'
+                        }`}
+                      >
+                        {period} Ay
+                      </button>
+                    ))
+                  ) : (
+                    /* Fallback: Eski sistem */
+                    <>
+                      {campaign.taahut12Fiyat && (
+                        <button
+                          onClick={() => setSelectedTerm('12')}
+                          className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
+                            selectedTerm === '12'
+                              ? 'bg-white text-blue-700'
+                              : 'bg-blue-800/50 hover:bg-blue-800'
+                          }`}
+                        >
+                          12 Ay
+                        </button>
+                      )}
+                      {campaign.taahut24Fiyat && (
+                        <button
+                          onClick={() => setSelectedTerm('24')}
+                          className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
+                            selectedTerm === '24'
+                              ? 'bg-white text-blue-700'
+                              : 'bg-blue-800/50 hover:bg-blue-800'
+                          }`}
+                        >
+                          24 Ay
+                        </button>
+                      )}
+                    </>
                   )}
-                  {campaign.taahut24Fiyat && (
-                    <button
-                      onClick={() => setSelectedTerm('24')}
-                      className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors ${
-                        selectedTerm === '24'
-                          ? 'bg-white text-blue-700'
-                          : 'bg-blue-800/50 hover:bg-blue-800'
-                      }`}
-                    >
-                      24 Ay
-                    </button>
+                  {(!campaign.availableCommitments && !hasAnyPrice()) && (
+                    <div className="text-white text-sm">Taahhüt bilgileri bulunmamaktadır.</div>
                   )}
-                  {!campaign.taahut12Fiyat && !campaign.taahut24Fiyat && (
+                  {(campaign.availableCommitments && !campaign.availableCommitments.some(period => getCommitmentPrice(period))) && (
                     <div className="text-white text-sm">Taahhüt bilgileri bulunmamaktadır.</div>
                   )}
                 </div>
@@ -469,31 +521,56 @@ const CampaignDetail = () => {
                 {/* Aktif fiyat gösterimi */}
                 <div className="flex items-baseline">
                   <span className="text-3xl sm:text-4xl font-bold mr-1 text-white">
-                    {selectedTerm === '12' ? campaign.taahut12Fiyat : campaign.taahut24Fiyat || "İletişime Geçin"}
+                    {getCommitmentPrice(selectedTerm) || "İletişime Geçin"}
                   </span>
-                  {(campaign.taahut12Fiyat || campaign.taahut24Fiyat) && (
+                  {getCommitmentPrice(selectedTerm) && (
                     <span className="text-blue-100">/ay</span>
                   )}
                 </div>
 
                 {/* Alternatif taahhüt bilgisi - Her iki seçenek varsa göster */}
-                {campaign.taahut12Fiyat && campaign.taahut24Fiyat && (
-                  <div className="text-xs sm:text-sm text-blue-200 mt-2">
-                    {selectedTerm === '12'
-                      ? `24 Ay taahhüt seçeneği: ${campaign.taahut24Fiyat}/ay`
-                      : `12 Ay taahüt seçeneği: ${campaign.taahut12Fiyat}/ay`
-                    }
-                  </div>
+                {campaign.availableCommitments ? (
+                  /* Yeni sistem: availableCommitments varsa */
+                  campaign.availableCommitments.length > 1 && (
+                    <div className="text-xs sm:text-sm text-blue-200 mt-2">
+                      {campaign.availableCommitments
+                        .filter(period => period.toString() !== selectedTerm)
+                        .map(period => {
+                          const price = getCommitmentPrice(period);
+                          return price ? `${period} Ay taahhüt seçeneği: ${price}/ay` : null;
+                        })
+                        .filter(Boolean)
+                        .join(', ')
+                      }
+                    </div>
+                  )
+                ) : (
+                  /* Fallback: Eski sistem */
+                  campaign.taahut12Fiyat && campaign.taahut24Fiyat && (
+                    <div className="text-xs sm:text-sm text-blue-200 mt-2">
+                      {selectedTerm === '12'
+                        ? `24 Ay taahhüt seçeneği: ${campaign.taahut24Fiyat}/ay`
+                        : `12 Ay taahüt seçeneği: ${campaign.taahut12Fiyat}/ay`
+                      }
+                    </div>
+                  )
                 )}
                 
                 {/* Tek seçenek varsa bilgilendirme */}
-                {(campaign.taahut12Fiyat && !campaign.taahut24Fiyat) && (
+                {(campaign.availableCommitments?.length === 1) && (
+                  <div className="text-xs sm:text-sm text-blue-200 mt-2">
+                    Sadece {campaign.availableCommitments[0]} Ay taahütlü seçenek mevcuttur.
+                  </div>
+                )}
+
+                {/* Fallback: Eski sistem için geriye dönük uyumluluk */}
+                {(!campaign.availableCommitments && campaign.taahut12Fiyat && !campaign.taahut24Fiyat) && (
                   <div className="text-xs sm:text-sm text-blue-200 mt-2">
                     Sadece 12 Ay taahütlü seçenek mevcuttur.
                   </div>
                 )}
                 
-                {(!campaign.taahut12Fiyat && campaign.taahut24Fiyat) && (
+                {(!campaign.availableCommitments && !campaign.taahut12Fiyat && campaign.taahut24Fiyat) && (
                   <div className="text-xs sm:text-sm text-blue-200 mt-2">
                     Sadece 24 Ay taahütlü seçenek mevcuttur.
                   </div>

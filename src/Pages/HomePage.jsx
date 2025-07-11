@@ -168,7 +168,13 @@ function HomePage() {
           kampanyaId: formData.kampanyaId || 'Hemen Başvur Form'
         });
         
-        console.log("GTM Event gönderildi: formgonderildi (Anasayfa Form)");
+        // Google Search için FormSuccess eventi
+        window.dataLayer.push({
+          'event': 'FormSuccess',
+          'user-phone': '+90' + formData.phone.replace(/\s/g, '').substring(1) // Boşlukları temizle, 0'ı çıkar +90 ekle
+        });
+        
+        console.log("GTM Event gönderildi: formgonderildi ve FormSuccess (Anasayfa Form)");
         
         // Formu temizle
         setFormData({ name: '', phone: '' });

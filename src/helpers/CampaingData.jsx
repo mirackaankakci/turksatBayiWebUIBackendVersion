@@ -4,7 +4,9 @@ export const CampaignData = [
     slug: "aile-boyu-fiber-kampanyasi",
     kampanyaAdi: "Aile Boyu Fiber Kampanyası",
     taahut12Fiyat: "99,00 TL",
+    taahut15Fiyat: "99,00 TL", // 15 ay taahhüt fiyatı
     taahut24Fiyat: "",
+    availableCommitments: [15], // Mevcut taahhüt süreleri (ay cinsinden)
     ozellikler: [
       "En Uygun Fiyata Sınırsız İnternet...",
       "Analog KabloTV",
@@ -214,6 +216,7 @@ export const CampaignData = [
     kampanyaAdi: "Aramıza Hoşgeldin Kampanyası",
     taahut12Fiyat: "309,00 TL",
     taahut24Fiyat: "",
+    availableCommitments: [12], // Sadece 12 ay taahhüt mevcut
     ozellikler: [
       "50 Mbps'ye kadar Sınırsız Kablonet Fiber"
 
@@ -689,6 +692,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     kampanyaAdi: "Her Eve Kablonet Kampanyası",
     taahut12Fiyat: "455,00 TL",
     taahut24Fiyat: "355,00 TL",
+    availableCommitments: [12, 24], // Hem 12 hem 24 ay taahhüt mevcut
     ozellikler: [
       "En Uygun Fiyata Sınırsız İnternet...",
       "Analog KabloTV",
@@ -945,6 +949,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     
     taahut12Fiyat: "495,00 TL",
     taahut24Fiyat: "395,00 TL",
+    availableCommitments: [12, 24], // Hem 12 hem 24 ay taahhüt mevcut
     ozellikler: [
       "Kablo Bulut 25 GB",
       "Gümüş Sinema Paketi",
@@ -1713,6 +1718,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     kampanyaAdi: "Taahhütsüz Fiber Net Kampanyası",
     taahut12Fiyat: "",
     taahut24Fiyat: "449,00 TL",
+    availableCommitments: [24], // Sadece 24 ay taahhüt mevcut
     ozellikler: [
       "100 Mbps'ye kadar Sınırsız Kablonet İnternet",
       "Taahhüt Yok!",
@@ -1955,6 +1961,7 @@ Kampanya ve uygulamalar kapsamında yukarıda yer alan cihazlar stok durumların
     kampanyaAdi: "Sinema Keyfi Kampanyası",
     taahut12Fiyat: "45,00 TL",
     taahut24Fiyat: "40,00 TL",
+    availableCommitments: [12, 24], // Hem 12 hem 24 ay taahhüt mevcut
     ozellikler: [
       "Eviniz Konforunda Sinema Keyfi",
       "Altın Sinema Paketi",
