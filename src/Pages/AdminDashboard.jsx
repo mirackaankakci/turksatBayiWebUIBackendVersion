@@ -18,12 +18,15 @@ import {
   FaTachometerAlt,
   FaSpinner,
   FaArrowUp,
-  FaArrowDown
+  FaArrowDown,
+  FaImage
 } from 'react-icons/fa';
 import { useAuth } from '../contexts/AuthContext';
 import { simpleBlogService as blogService } from '../services/simpleBlogService';
 import { adminService } from '../services/authService';
 import { toast } from 'react-toastify';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../App.jsx';
 
 function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -34,12 +37,15 @@ function AdminDashboard() {
     activeAdmins: 0,
     totalViews: 0,
     monthlyPosts: 0,
-    weeklyPosts: 0
+    weeklyPosts: 0,
+    categoryCount: 0
   });
   const [recentPosts, setRecentPosts] = useState([]);
   const [recentAdmins, setRecentAdmins] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timeframe, setTimeframe] = useState('week'); // week, month, year
+  const [refreshing, setRefreshing] = useState(false);
+  const [loadingInitialData, setLoadingInitialData] = useState(false);
   
   const { logout, currentUser } = useAuth();
   const navigate = useNavigate();
@@ -59,11 +65,31 @@ function AdminDashboard() {
       path: '/blog-admin',
       color: 'bg-green-500',
       count: stats.totalPosts
-    },    {
+    },
+    {
+      title: 'Kategori Yönetimi',
+      icon: FaNewspaper,
+      path: '/admin/categories',
+      color: 'bg-purple-500',
+      count: stats.categoryCount || 0
+    },
+    {
+      title: 'Medya Kütüphanesi',
+      icon: FaImage,
+      path: '/admin/media',
+      color: 'bg-orange-500'
+    },
+    {
+      title: 'Analytics',
+      icon: FaChartLine,
+      path: '/admin/analytics',
+      color: 'bg-indigo-500'
+    },
+    {
       title: 'Kullanıcı Yönetimi',
       icon: FaUsers,
       path: '/admin-management',
-      color: 'bg-purple-500',
+      color: 'bg-red-500',
       count: stats.totalAdmins
     },
     {
@@ -109,7 +135,8 @@ function AdminDashboard() {
         activeAdmins: admins.filter(a => a.isActive).length,
         totalViews,
         monthlyPosts,
-        weeklyPosts
+        weeklyPosts,
+        categoryCount: 0 // Placeholder, will be updated when category data is fetched
       });
 
       // Son blog yazıları
@@ -130,6 +157,186 @@ function AdminDashboard() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleLoadInitialData = async () => {
+    if (!window.confirm('Başlangıç verilerini yüklemek istediğinizden emin misiniz? Bu işlem örnek kategoriler ve blog yazıları ekleyecektir.')) {
+      return;
+    }
+
+    setLoadingInitialData(true);
+    
+    try {
+      // Kategoriler
+      const categories = [
+        { name: 'Teknoloji', slug: 'teknoloji', icon: '💻', description: 'Teknoloji dünyasından haberler ve gelişmeler', color: '#2F3D8D' },
+        { name: 'İnternet', slug: 'internet', icon: '🌐', description: 'İnternet teknolojileri ve hizmetleri', color: '#059669' },
+        { name: 'TV & Eğlence', slug: 'tv-eglence', icon: '📺', description: 'Televizyon ve eğlence dünyası', color: '#7C3AED' },
+        { name: 'Kampanyalar', slug: 'kampanyalar', icon: '🎯', description: 'Özel fırsatlar ve kampanyalar', color: '#DC2626' },
+        { name: 'Haberler', slug: 'haberler', icon: '📰', description: 'Sektör haberleri ve duyurular', color: '#EA580C' },
+        { name: 'Yenilikler', slug: 'yenilikler', icon: '🚀', description: 'Yeni özellikler ve güncellemeler', color: '#DB2777' }
+      ];
+      
+      // Kategorileri ekle
+      for (const category of categories) {
+        await addDoc(collection(db, 'blog_categories'), {
+          ...category,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
+        });
+      }
+      
+      // Örnek blog yazıları
+      const blogPosts = [
+        {
+          title: 'Fiber İnternet Nedir? Avantajları Nelerdir?',
+          slug: 'fiber-internet-nedir-avantajlari-nelerdir',
+          excerpt: 'Fiber internet teknolojisi ve sağladığı avantajlar hakkında detaylı bilgi. Neden fiber internet tercih etmelisiniz?',
+          content: `
+            <h2>Fiber İnternet Teknolojisi</h2>
+            <p>Fiber internet, günümüzün en hızlı internet teknolojisidir. Işık sinyalleri kullanarak veri iletimi yapan bu teknoloji, geleneksel bakır kablolara göre çok daha yüksek hızlar sunar.</p>
+            
+            <h3>Fiber İnternetin Avantajları</h3>
+            <ul>
+              <li><strong>Yüksek Hız:</strong> Gigabit hızlara kadar çıkabilir</li>
+              <li><strong>Düşük Gecikme:</strong> Online oyunlar ve video konferanslar için ideal</li>
+              <li><strong>Güvenilirlik:</strong> Hava koşullarından etkilenmez</li>
+              <li><strong>Simetrik Hız:</strong> Upload ve download hızları eşit</li>
+            </ul>
+            
+            <p>Türksat Kablonet olarak, en yeni fiber internet teknolojisiyle hizmet veriyoruz.</p>
+          `,
+          category: 'internet',
+          author: 'Türksat Kablonet',
+          image: '/assets/fiber-internet.png',
+          status: 'published',
+          viewCount: 1250
+        },
+        {
+          title: '2025 Yılının En İyi TV Paketleri',
+          slug: '2025-yilinin-en-iyi-tv-paketleri',
+          excerpt: '2025 yılında sunduğumuz en popüler ve avantajlı TV paketleri hakkında bilgi alın.',
+          content: `
+            <h2>2025 TV Paketleri</h2>
+            <p>Bu yıl TV izleme deneyiminizi en üst seviyeye çıkaracak paketlerimizi keşfedin.</p>
+            
+            <h3>Premium TV Paketi</h3>
+            <ul>
+              <li>200+ HD kanal</li>
+              <li>4K yayın desteği</li>
+              <li>Yerli ve yabancı film kanalları</li>
+              <li>Spor kanalları</li>
+            </ul>
+            
+            <p>Aile boyu eğlence için ideal çözüm!</p>
+          `,
+          category: 'tv-eglence',
+          author: 'Medya Uzmanı',
+          image: '/assets/tv-icon.png',
+          status: 'published',
+          viewCount: 890
+        },
+        {
+          title: 'Mart Ayı Özel Kampanyaları',
+          slug: 'mart-ayi-ozel-kampanyalari',
+          excerpt: 'Mart ayına özel hazırladığımız cazip kampanyalar ve fırsatlar sizleri bekliyor.',
+          content: `
+            <h2>Mart Kampanyaları</h2>
+            <p>Bahar aylarına özel kampanyalarımızla tanışın!</p>
+            
+            <h3>Kampanya Detayları</h3>
+            <ul>
+              <li>İlk 3 ay %50 indirim</li>
+              <li>Ücretsiz kurulum</li>
+              <li>Hediye modem</li>
+              <li>24 ay taahhütlü</li>
+            </ul>
+            
+            <p>Fırsatı kaçırmayın, hemen başvurun!</p>
+          `,
+          category: 'kampanyalar',
+          author: 'Pazarlama Ekibi',
+          image: '/assets/campaignsImg/mart-kampanyasi.jpg',
+          status: 'published',
+          viewCount: 2150
+        },
+        {
+          title: 'Yeni Nesil Modem Teknolojileri',
+          slug: 'yeni-nesil-modem-teknolojileri',
+          excerpt: 'WiFi 6 ve gelişmiş modem teknolojileri ile internet deneyiminizi yenileyin.',
+          content: `
+            <h2>Yeni Nesil Modemler</h2>
+            <p>Teknolojinin son harikası modemlerle tanışın.</p>
+            
+            <h3>WiFi 6 Avantajları</h3>
+            <ul>
+              <li>4 kata kadar daha hızlı bağlantı</li>
+              <li>Daha fazla cihaz desteği</li>
+              <li>Düşük enerji tüketimi</li>
+              <li>Gelişmiş güvenlik</li>
+            </ul>
+            
+            <p>Evinizdeki tüm cihazlar için optimize edilmiş performans.</p>
+          `,
+          category: 'teknoloji',
+          author: 'Teknik Ekip',
+          image: '/assets/modems/wifi6-modem.jpg',
+          status: 'published',
+          viewCount: 675
+        },
+        {
+          title: 'Türksat Kablonet Yeni Hizmet Bölgeleri',
+          slug: 'turksat-kablonet-yeni-hizmet-bolgeleri',
+          excerpt: 'Hizmet ağımızı genişletiyoruz. Yeni bölgelerdeki müşterilerimize hoş geldiniz!',
+          content: `
+            <h2>Büyüyoruz!</h2>
+            <p>Türksat Kablonet ailesi olarak hizmet verdiğimiz bölgeleri genişletiyoruz.</p>
+            
+            <h3>Yeni Hizmet Bölgeleri</h3>
+            <ul>
+              <li>Ankara Çankaya</li>
+              <li>İstanbul Kadıköy</li>
+              <li>İzmir Bornova</li>
+              <li>Bursa Nilüfer</li>
+            </ul>
+            
+            <p>Sizin de bölgenizde hizmet vermek için sabırsızlanıyoruz!</p>
+          `,
+          category: 'haberler',
+          author: 'Türksat Kablonet',
+          image: '/assets/coverage-map.jpg',
+          status: 'published',
+          viewCount: 1430
+        }
+      ];
+      
+      // Blog yazılarını ekle
+      for (const post of blogPosts) {
+        await addDoc(collection(db, 'blog_posts'), {
+          ...post,
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
+        });
+      }
+      
+      toast.success(`${categories.length} kategori ve ${blogPosts.length} blog yazısı başarıyla eklendi!`);
+      
+      // Verileri yenile
+      loadDashboardData();
+      
+    } catch (error) {
+      console.error('Başlangıç verileri yüklenirken hata:', error);
+      toast.error('Başlangıç verileri yüklenirken hata oluştu');
+    } finally {
+      setLoadingInitialData(false);
+    }
+  };
+
+  const handleRefreshData = async () => {
+    setRefreshing(true);
+    await loadDashboardData();
+    setRefreshing(false);
+    toast.success('Veriler yenilendi');
   };
 
   const handleLogout = async () => {
@@ -493,13 +700,44 @@ function AdminDashboard() {
                 >
                   <FaPlus className="mr-3" />
                   Yeni Blog Yazısı
-                </Link>                <Link
-                  to="/admin-management"
-                  className="flex items-center w-full p-3 text-left bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-                >
-                  <FaUsers className="mr-3" />
-                  Kullanıcı Yönetimi
                 </Link>
+                <Link
+                  to="/admin/categories"
+                  className="flex items-center w-full p-3 text-left bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  <FaNewspaper className="mr-3" />
+                  Kategori Yönetimi
+                </Link>
+                <Link
+                  to="/admin/media"
+                  className="flex items-center w-full p-3 text-left bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
+                >
+                  <FaImage className="mr-3" />
+                  Medya Kütüphanesi
+                </Link>
+                <Link
+                  to="/admin/analytics"
+                  className="flex items-center w-full p-3 text-left bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                >
+                  <FaChartLine className="mr-3" />
+                  Analytics
+                </Link>
+                <button
+                  onClick={handleRefreshData}
+                  disabled={refreshing}
+                  className="flex items-center w-full p-3 text-left bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50"
+                >
+                  <FaArrowDown className={`mr-3 ${refreshing ? 'animate-spin' : ''}`} />
+                  {refreshing ? 'Yenileniyor...' : 'Verileri Yenile'}
+                </button>
+                <button
+                  onClick={handleLoadInitialData}
+                  disabled={loadingInitialData}
+                  className="flex items-center w-full p-3 text-left bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors disabled:opacity-50"
+                >
+                  <FaPlus className={`mr-3 ${loadingInitialData ? 'animate-spin' : ''}`} />
+                  {loadingInitialData ? 'Yükleniyor...' : 'Başlangıç Verilerini Yükle'}
+                </button>
                 <Link
                   to="/blog"
                   className="flex items-center w-full p-3 text-left bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"

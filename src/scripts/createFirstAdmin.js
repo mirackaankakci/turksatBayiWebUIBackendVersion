@@ -7,15 +7,19 @@
 
 const createFirstAdmin = async () => {
   try {
+    // Firebase servislerini import et
+    const { createUserWithEmailAndPassword } = await import('https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js');
+    const { doc, setDoc, serverTimestamp } = await import('https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js');
+    
     // Admin bilgileri
     const adminData = {
       email: 'admin@kablonet.com',
-      password: 'admin123', // Değiştirin!
+      password: 'admin123', // Mutlaka değiştirin!
       name: 'Super Admin',
       role: 'super_admin'
     };
 
-    console.log('İlk admin oluşturuluyor...');
+    console.log('🔄 İlk admin oluşturuluyor...');
     
     // Firebase Auth ile kullanıcı oluştur
     const userCredential = await createUserWithEmailAndPassword(
@@ -25,7 +29,7 @@ const createFirstAdmin = async () => {
     );
     
     const user = userCredential.user;
-    console.log('Auth kullanıcısı oluşturuldu:', user.uid);
+    console.log('✅ Auth kullanıcısı oluşturuldu:', user.uid);
     
     // Firestore'da admin dökümanı oluştur
     await setDoc(doc(db, 'admins', user.uid), {
@@ -42,19 +46,28 @@ const createFirstAdmin = async () => {
       }
     });
     
-    console.log('✅ İlk admin başarıyla oluşturuldu!');
-    console.log('Email:', adminData.email);
-    console.log('Şifre:', adminData.password);
-    console.log('⚠️ Lütfen şifreyi değiştirin!');
+    console.log('🎉 İlk admin başarıyla oluşturuldu!');
+    console.log('📧 Email:', adminData.email);
+    console.log('🔑 Şifre:', adminData.password);
+    console.log('⚠️  GÜVENLİK: İlk girişten sonra şifreyi mutlaka değiştirin!');
     
     return user;
   } catch (error) {
     console.error('❌ Admin oluşturulurken hata:', error);
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('💡 Bu email zaten kullanımda. Mevcut admin bilgileri:');
+      console.log('📧 Email: admin@kablonet.com');
+      console.log('🔑 Şifre: admin123');
+    }
     throw error;
   }
 };
 
 // Kullanım:
 // createFirstAdmin();
+
+// Otomatik çalıştır
+console.log('🚀 Admin oluşturma script\'i hazır!');
+console.log('📝 createFirstAdmin() fonksiyonunu çalıştırın.');
 
 export default createFirstAdmin;

@@ -36,6 +36,10 @@ import AdminManagement from './Pages/AdminManagement';
 import AdminSettings from './Pages/AdminSettings';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
+import TestRegister from './Pages/TestRegister';
+import CategoryManagement from './Pages/CategoryManagement';
+import MediaLibrary from './Pages/MediaLibrary';
+import AnalyticsDashboard from './Pages/AnalyticsDashboard';
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
@@ -45,13 +49,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDEc45Bk2BICE37FLK6ARk_fRIAN9HZ8x4",
-  authDomain: "kablonet-1ff09.firebaseapp.com",
-  projectId: "kablonet-1ff09",
-  storageBucket: "kablonet-1ff09.firebasestorage.app",
-  messagingSenderId: "896035631187",
-  appId: "1:896035631187:web:99c8f7d73b1b3681e616a6",
-  measurementId: "G-GDNPESF16B"
+  apiKey: "AIzaSyB9jzX5NJNnjyimOVzqf5QeJUJxFoVFCzY",
+  authDomain: "turksatblog.firebaseapp.com",
+  projectId: "turksatblog",
+  storageBucket: "turksatblog.firebasestorage.app",
+  messagingSenderId: "162384380005",
+  appId: "1:162384380005:web:95714ffbc40707de00468c",
+  measurementId: "G-NFRG5EMW86"
 };
 
 // Firebase'i başlat
@@ -101,7 +105,11 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/kategori/:kategori" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogDetay />} />
-                {/* Admin Routes */}
+              
+              {/* Firebase Test Route */}
+              <Route path="/test-register" element={<TestRegister />} />
+              
+              {/* Admin Routes */}
               <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/admin-dashboard" element={
                 <ProtectedRoute>
@@ -136,6 +144,21 @@ function App() {
               <Route path="/admin/users" element={
                 <ProtectedRoute>
                   <AdminManagement />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/categories" element={
+                <ProtectedRoute>
+                  <CategoryManagement />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/media" element={
+                <ProtectedRoute>
+                  <MediaLibrary />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/analytics" element={
+                <ProtectedRoute>
+                  <AnalyticsDashboard />
                 </ProtectedRoute>
               } />
               

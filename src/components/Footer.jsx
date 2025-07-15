@@ -69,6 +69,11 @@ const Footer = () => {
                     Mevcut Müşteri Paketleri
                   </Link>
                 </li>
+                <li>
+                  <Link to="/blog" className="text-sm text-gray-200 hover:text-white hover:underline transition-colors">
+                    Blog Yazıları
+                  </Link>
+                </li>
               </ul>
             </div>
 
