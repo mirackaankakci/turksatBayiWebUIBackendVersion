@@ -19,10 +19,10 @@ import {
 import { simpleBlogService as blogService, blogUtils } from '../services/simpleBlogService';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet-async';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage } from '../App.jsx';
+import githubImageService from '../services/githubImageService';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../App.jsx';
+import '../Styles/BlogContent.css';
 
 function BlogForm() {
   const { id } = useParams();
@@ -253,30 +253,15 @@ function BlogForm() {
   //   }));
   // };
 
-  // Resim yükleme
+  // Resim yükleme - GitHub servisi
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
-    // Dosya boyutu kontrolü (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error('Dosya boyutu 5MB\'dan küçük olmalıdır');
-      return;
-    }
-
-    // Dosya tipi kontrolü
-    if (!file.type.startsWith('image/')) {
-      toast.error('Sadece resim dosyaları yüklenebilir');
-      return;
-    }
-
     setImageUploading(true);
     try {
-      const fileName = `blog-images/${Date.now()}-${file.name}`;
-      const storageRef = ref(storage, fileName);
-      
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
+      // GitHub servisi ile resim yükle
+      const downloadURL = await githubImageService.uploadImage(file);
       
       setFormData(prev => ({
         ...prev,
@@ -284,9 +269,8 @@ function BlogForm() {
         ogImage: prev.ogImage || downloadURL
       }));
       
-      toast.success('Resim başarıyla yüklendi');
     } catch (error) {
-      console.error('Resim yükleme hatası:', error);
+      console.error('GitHub resim yükleme hatası:', error);
       toast.error('Resim yüklenirken hata oluştu');
     } finally {
       setImageUploading(false);
@@ -968,7 +952,7 @@ function BlogForm() {
                   </div>
                 )}
                 
-                <div className="prose prose-lg max-w-none">
+                <div className="blog-content">
                   <div dangerouslySetInnerHTML={{ __html: formData.content }} />
                 </div>
                 

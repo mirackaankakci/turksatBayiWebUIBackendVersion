@@ -26,6 +26,7 @@ import { simpleBlogService as blogService } from '../services/simpleBlogService'
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../App.jsx';
 import { useAuth } from '../contexts/AuthContext';
+import '../Styles/BlogContent.css';
 
 function BlogDetay() {
   const { slug } = useParams();
@@ -495,11 +496,13 @@ function BlogDetay() {
             
             {/* Article Content */}
             <div className="lg:col-span-3">
-              <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
-                <div 
-                  className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-[#2F3D8D] prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700 prose-blockquote:border-l-[#2F3D8D] prose-blockquote:text-gray-700 prose-code:text-[#2F3D8D] prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div className="p-6 md:p-8">
+                  <div 
+                    className="blog-content"
+                    dangerouslySetInnerHTML={{ __html: post.content }}
+                  />
+                </div>
               </div>
             </div>
 

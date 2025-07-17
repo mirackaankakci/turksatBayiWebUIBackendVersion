@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
+  FaHome,
   FaPlus, 
   FaEdit, 
   FaTrash, 
@@ -9,7 +10,8 @@ import {
   FaSearch, 
   FaSpinner,
   FaSignOutAlt,
-  FaUsers
+  FaUsers,
+  FaArrowLeft
 } from 'react-icons/fa';
 import { simpleBlogService as blogService } from '../services/simpleBlogService';
 import { useAuth } from '../contexts/AuthContext';
@@ -112,12 +114,25 @@ function BlogAdmin() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
             <div>
+            <Link 
+                to="/admin-dashboard" 
+                className="mr-4 p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <FaArrowLeft />
+              </Link>
               <h1 className="text-2xl font-bold text-gray-900">Blog Yönetimi</h1>
               <p className="text-sm text-gray-600 mt-1">
                 Hoş geldiniz, {currentUser?.email}
               </p>
             </div>
             <div className="flex items-center gap-3">
+            <Link
+                to="/"
+                className="bg-[#2F3D8D] text-white px-4 py-2 rounded-lg hover:bg-[#1f2d6e] transition-colors flex items-center"
+              >
+                <FaHome className="mr-2" />
+                Anasayfa
+              </Link>
               <Link
                 to="/admin/users"
                 className="flex items-center px-4 py-2 text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"

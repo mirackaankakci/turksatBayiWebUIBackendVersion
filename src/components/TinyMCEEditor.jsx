@@ -1,38 +1,18 @@
 import React, { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { toast } from 'react-toastify';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage } from '../App.jsx';
+import githubImageService from '../services/githubImageService';
 
 const TinyMCEEditor = ({ value, onChange, onImageUpload }) => {
   const editorRef = useRef(null);
 
   const handleImageUpload = async (file) => {
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error('Dosya boyutu 5MB\'dan küçük olmalıdır');
-      return null;
-    }
-
-    if (!file.type.startsWith('image/')) {
-      toast.error('Sadece resim dosyaları yüklenebilir');
-      return null;
-    }
-
-    const loadingToast = toast.loading('Resim yükleniyor...');
     try {
-      const fileName = `blog-content-images/${Date.now()}-${file.name}`;
-      const storageRef = ref(storage, fileName);
-      
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
-      
-      toast.dismiss(loadingToast);
-      toast.success('Resim başarıyla eklendi');
-      return downloadURL;
+      // GitHub servisi ile resim yükle
+      const imageUrl = await githubImageService.uploadImage(file);
+      return imageUrl;
     } catch (error) {
-      toast.dismiss(loadingToast);
-      console.error('Resim yükleme hatası:', error);
-      toast.error('Resim yüklenirken hata oluştu');
+      console.error('GitHub resim yükleme hatası:', error);
       return null;
     }
   };
